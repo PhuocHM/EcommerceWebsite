@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity');
             $table->integer('sold');
             $table->integer('price');
-            $table->integer('discount');
+            $table->integer('discount')->default(0);
             $table->string('description');
             $table->integer('status')->default(0);
             $table->string('image');
