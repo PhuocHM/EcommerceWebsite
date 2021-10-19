@@ -21,7 +21,6 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->unsignedInteger('bonus_points');
             $table->unsignedInteger('user_id');
-
             $table->timestamps();
         });
     }
