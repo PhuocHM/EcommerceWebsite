@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateGroupPermision extends Migration
 {
     /**
-     * Run the migrations.
+
      *
      * @return void
      */
