@@ -666,7 +666,20 @@
                                 <a href="grid-product.html" class="shop-all">Shop all deals Now</a>
                             </div>
                             <div class="block-daily-deals style2">
-                                <div class="title-of-section">Best Seller</div>
+                                <div class="title-of-section">
+                                    Flash Sales
+                                    <div class="product-count-down">
+                                        <div class="kt-countdown is-countdown" data-y="2020" data-m="6" data-d="1" data-h="10" data-i="0" data-s="0">
+                                            <span class="box-count day"><span class="number">01</span>
+                                                <span class="text">Ngày</span></span><span class="dot">:</span>
+                                            <span class="box-count hrs"><span class="number">00</span>
+                                                <span class="text">Giờ</span></span><span class="dot">:</span>
+                                            <span class="box-count min"><span class="number">00</span>
+                                                <span class="text">Phút</span></span><span class="dot">:</span>
+                                            <span class="box-count secs"><span class="number">00</span>
+                                                <span class="text">Giây</span></span></div>
+                                    </div>
+                                </div>
                                 <div class="block-daily-deals-content">
                                     <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"992":{"items":2}}'>
                                         <div class="deal-of-day equal-elem">

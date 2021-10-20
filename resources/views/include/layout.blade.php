@@ -40,5 +40,5 @@
 <script type="text/javascript" src="{{asset('js/Modernizr.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.plugin.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.countdown.js')}}"></script>
-
+@yield('script')
 </html>
