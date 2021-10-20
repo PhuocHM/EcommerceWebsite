@@ -31,3 +31,6 @@ Route::get('cart', function () {
 Route::get('wishlist', function () {
     return view('Website.wishlist');
 });
+Route::get('admin/home', function () {
+    return view('admin.dashboard.home');
+});
