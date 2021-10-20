@@ -16,7 +16,7 @@
         </form>
         <div id="block-quick-view-popup" class="block-quick-view-popup">
             <div class="quick-view-content">
-                <a href="#" class="popup-btn-close"><span class="flaticon-close"></span></a>
+                <a href="#" class="popup-btn-close"><i class="fas fa-times"></i></a>
                 <div class="product-items">
                     <div class="product-image">
                         <a href="#"><img src="{{asset('images/popup-pro.jpg')}}" alt="p1"></a>
