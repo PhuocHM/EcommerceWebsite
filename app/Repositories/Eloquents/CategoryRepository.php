@@ -14,10 +14,25 @@ class CategoryRepository implements CategoryInterface {
     public function getOne(){
 
     }
-    public function store(){
-
+    public function store( $request){
+        $category = new Category();
+        $category->name    = $request->name;
+        $category->slug    = $request->slug;
+        $category->description  = $request->description;
+        $category->parent_id  = $request->parent_id;
+        $category->status  =$request->status;
+    
+        $category->save();
     }
     public function update($request, $id){
+        $category = Category::find($id);
+        $category->name  = $request->name;
+        $category->slug    = $request->slug;
+        $category->description = $request->description;
+        $category->parent_id  = $request->parent_id;
+        $category->status  =$request->status;
+
+        $category->save();  
         
     }
     public function destroy(){

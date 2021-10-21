@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\CategoryService;
-use Illuminate\Support\Facades\Request;
-
+use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 class CategoriesController extends Controller
 {   
     private $categoryService;
@@ -22,7 +22,9 @@ class CategoriesController extends Controller
     {
         $categories = $this->categoryService->getAll();
         $categories_arr = $categories->pluck('name','id')->toArray();
-        $categories_arr =array_merge(['0'=> 'Danh Mục cha'], $categories_arr);
+        $categories_arr = ['Danh mục cha'] + $categories_arr;
+    
+
         $params = [
             'categories' => $categories,
             'categories_arr' => $categories_arr,
@@ -48,19 +50,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $category = new Category();
-        $category->name    = $request['name'];
-        $category->slug    = $request['slug'];
-        $category->description  = $request['description'];
-        $category->parent_id  = $request['parent_id'];
-        $category->status  = $request['status'];
-    
-        $category->save();
-        // $category = new Category();
-        // $category ->Category::create($request->all());
-        // $request->session()->flash('success', 'Thêm danh mục thành công');
+        $categories =$this->categoryService->store($request);
         return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
     }
 
@@ -83,7 +75,14 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.categories.edit');
+        $categories = $this->categoryService->getAll();
+
+        $category = Category::find($id);
+        $params=[
+            'categories' => $categories,
+            'category' => $category
+        ];
+        return view('admin.categories.edit', $params);
     }
 
     /**
@@ -93,10 +92,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
+        
         $this->categoryService->update($request, $id);
-         
+        return redirect()->route('categories.index')->with('success','Cập nhật danh mục sản phẩm thành công!');    
     }
 
     /**
@@ -107,6 +107,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
