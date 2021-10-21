@@ -17,7 +17,6 @@ class CreateDiscountProductTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('discount_id');
             $table->unsignedInteger('product_id');
-
             $table->foreign('discount_id')->references('id')->on('discounts');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
