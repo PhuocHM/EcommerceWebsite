@@ -86,7 +86,7 @@
                                                               <form action="{{route('categories.destroy',[$category->id])}}" method="POST">
                                                                     @method('DELETE')
                                                                      @csrf
-                                                              <button  onclick="return confirm('Bạn muốn xóa danh mục này không?');" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></button>
+                                                             <button onclick="return confirm('Bạn muốn xóa danh mục này không?');" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete" href ='#'> <i  class="bi bi-trash-fill"></i></button>
                                                               </form>
                                                             </div>
                                                         </td>

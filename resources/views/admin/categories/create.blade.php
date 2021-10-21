@@ -51,16 +51,15 @@
                                     <option value="1">Không kích hoạt</option>
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col">
                                 <div class="d-grid">
-                                   
-                                <td>
-                                    <button class="btn btn-primary">Add Category</button>
-                                    
+                                    <button class="btn btn-primary">Thêm mới</button>
+                                <div>
+                            </div>
+                            <div class="col">
+                                <div class="d-grid">
                                     <a href="{{route('categories.index')}}" class="btn btn-danger">Trở về</a>
-                                </div>
-                                </td>
-
+                                <div>
                             </div>
                         </form>
                     </div>
