@@ -2421,7 +2421,7 @@ input[type=password] {
 }
 .block-daily-deals.style2 .product-count-down {
 	display: inline-block;
-	padding: 0 0 6px 210px;
+	padding: 0 0 0px 120px;
 }
 .block-daily-deals.style2 .product-count-down .number {
 	margin-right: 5px;
