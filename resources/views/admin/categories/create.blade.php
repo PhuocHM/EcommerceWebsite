@@ -20,17 +20,16 @@
                                 <div class="col-12">
                                     <label class="form-label">Name</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                        onkeyup="ChangeToSlug();" id="slug" placeholder="Tên danh muc">
+                                        onkeyup="ChangeToSlug();" id="slug" placeholder="Tên danh mục">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Slug</label>
                                     <input type="text" name="slug" class="form-control" value="{{ old('Slug') }}"
-                                        id="convert_slug" placeholder="Slug danh muc">
+                                        id="convert_slug" placeholder="Slug danh mục">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                     <div class="col-12">
-                                        <label class="form-label">Mô tả</label>
-
+                                        <label class="form-label">Mô tả</label> 
                                         <textarea name="description" value="{{ old('description') }}"
                                             id="ckeditor_category" class="form-control" rows="3"
                                             style="resize: none"></textarea>
