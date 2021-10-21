@@ -129,7 +129,7 @@ class CategoriesSeeder extends Seeder
         $item->name = "Laptop theo thương hiệu";
         $item->slug = "laptop-theo-thuong-hieu";
         $item->description = "Đây là điều hòa";
-        $item->parent_id = 1;
+        $item->parent_id = 2;
         $item->status = 0;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
@@ -140,7 +140,128 @@ class CategoriesSeeder extends Seeder
         $item->name = "Laptop theo giá";
         $item->slug = "laptop-theo-gia";
         $item->description = "Đây là điều hòa";
-        $item->parent_id = 1;
+        $item->parent_id = 2;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 13;
+        $item->name = "Laptop theo kích thước";
+        $item->slug = "laptop-theo-kich-thuoc";
+        $item->description = "Đây là điều hòa";
+        $item->parent_id = 2;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 14;
+        $item->name = "Laptop theo cấu hình";
+        $item->slug = "laptop-theo-cau-hinh";
+        $item->description = "Đây là cấu hình";
+        $item->parent_id = 2;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 15;
+        $item->name = "Tivi theo thương hiệu";
+        $item->slug = "tivi-theo-thuong-hieu";
+        $item->description = "Đây là TV";
+        $item->parent_id = 3;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 16;
+        $item->name = "TV theo tính năng";
+        $item->slug = "tivi-theo-tinh-nang";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 3;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 17;
+        $item->name = "TV theo kích thước";
+        $item->slug = "tivi-theo-kich-thuoc";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 3;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 18;
+        $item->name = "TV theo giá";
+        $item->slug = "tivi-theo-giá";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 3;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 19;
+        $item->name = "Điện thoại";
+        $item->slug = "dien-thoai";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 4;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 20;
+        $item->name = "Máy tính bảng";
+        $item->slug = "may-tinh-bang";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 4;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 21;
+        $item->name = "Phụ kiện";
+        $item->slug = "phu-kien";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 4;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 22;
+        $item->name = "PC theo thương hiệu";
+        $item->slug = "PC-theo-thuong-hieu";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 5;
+        $item->status = 0;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Categories;
+        $item->id = 23;
+        $item->name = "VGA - Card màn hình";
+        $item->slug = "vga-card-man-hinh";
+        $item->description = "Đây là TV tính năng";
+        $item->parent_id = 6;
         $item->status = 0;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
