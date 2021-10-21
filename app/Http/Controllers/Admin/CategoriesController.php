@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\CategoryService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 
 class CategoriesController extends Controller
 {   
@@ -23,13 +23,11 @@ class CategoriesController extends Controller
         $categories = $this->categoryService->getAll();
         $categories_arr = $categories->pluck('name','id')->toArray();
         $categories_arr =array_merge(['0'=> 'Danh Mục cha'], $categories_arr);
-
         $params = [
             'categories' => $categories,
             'categories_arr' => $categories_arr,
         ];
         return view('admin.categories.index',$params);
-      
     }
 
     /**
@@ -85,7 +83,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.categories.edit');
     }
 
     /**
@@ -97,7 +95,8 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->categoryService->update($request, $id);
+         
     }
 
     /**

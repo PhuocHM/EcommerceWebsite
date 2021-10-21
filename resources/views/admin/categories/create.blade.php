@@ -31,14 +31,14 @@
                             <div class="col-12">
                                 <label class="form-label">Parent</label>
                                 <select name="parent_id"  class="form-select" id="inputGroupSelect02">
-                                <option value="0">Danh mục cha</option>
-                        @foreach($categories as $category)
+                                    <option value="0">Danh mục cha</option>
+                            @foreach($categories as $category)
+                
+                        
+                            <option value="{{$category->id}}">{{$category->name}}</option>
             
-                       
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-         
-                        @endforeach 
-                        </select>
+                            @endforeach 
+                            </select>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" >Kích hoạt danh mục</label>
