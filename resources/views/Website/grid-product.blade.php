@@ -17,7 +17,7 @@
         </form>
         <div id="block-quick-view-popup" class="block-quick-view-popup">
             <div class="quick-view-content">
-                <a href="#" class="popup-btn-close"><span class="flaticon-close"></span></a>
+                <a href="#" class="popup-btn-close"><i class="fas fa-times"></i></a>
                 <div class="product-items">
                     <div class="product-image">
                         <a href="#"><img src="{{asset('images/popup-pro.jpg')}}" alt="p1"></a>
@@ -65,6 +65,395 @@
             </div>
             <div class="container">
                 <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                        <div class="col-sidebar">
+                            <div class="filter-options">
+                                <div class="block-title">Shop by</div>
+                                <div class="block-content">
+                                    <div class="filter-options-item filter-categori">
+                                        <div class="filter-options-title">Categories</div>
+                                        <div class="filter-options-content">
+                                            <ul>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Smartphone
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Computer
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Body
+                                                        Parts
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Printers
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Repair
+                                                        Partss</label>
+                                                </li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Camera
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Monitors
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Office
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Tablets
+                                                    </label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="filter-options-item filter-brand">
+                                        <div class="filter-options-title">Brand</div>
+                                        <div class="filter-options-content">
+                                            <ul>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Networking</label>
+                                                </li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Projector</label>
+                                                </li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Bentley
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Honda
+                                                    </label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Mercedes
+                                                    </label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="filter-options-item filter-price">
+                                        <div class="filter-options-title">Price</div>
+                                        <div class="filter-options-content">
+                                            <div class="price_slider_wrapper">
+                                                <div data-label-reasult="Price:" data-min="0" data-max="3000" data-unit="$" class="slider-range-price " data-value-min="85" data-value-max="2000">
+                                                    <span class="text-right">Filter</span>
+                                                </div>
+                                                <div class="price_slider_amount">
+                                                    <div class="price_label">
+                                                        Price: <span class="from">$85</span>-<span class="to">$2000</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="filter-options-item filter-size">
+                                        <div class="filter-options-title">Size</div>
+                                        <div class="filter-options-content">
+                                            <ul>
+                                                <li><label class="inline"><input type="checkbox"><span class="input">S</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input">M</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input">L</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input">XL</span></label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="filter-options-item filter-color">
+                                        <div class="filter-options-title">Color</div>
+                                        <div class="filter-options-content">
+                                            <ul>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Red<span class="value">(217)</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Black<span class="value">(79)</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Grey<span class="value">(116)</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>While<span class="value">(38)</span></label></li>
+                                            </ul>
+                                            <ul>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Yellow<span class="value">(179)</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Blue<span class="value">(283)</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Pink<span class="value">(29)</span></label></li>
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Green<span class="value">(205)</span></label></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block-banner-sidebar">
+                                <a href="#"><img src="{{asset('images/product/banner-sidebar.jpg')}}" alt="banner-sidebar"></a>
+                                <div class="promotion-banner-inner">
+                                    <h4>Fly Drone</h4>
+                                    <h3>Tincidunt interdum senectus fames sociis sem platea </h3>
+                                    <a class="banner-link" href="grid-product.html">Shop now</a>
+                                </div>
+                            </div>
+                            <div class="block-latest-roducts">
+                                <div class="block-title">Latest Products</div>
+                                <div class="block-latest-roducts-content">
+                                    <div class="owl-carousel nav-style2" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
+                                        <div class="owl-ones-row">
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p1.jpg')}}" alt="p1"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Homasy Portable</a></div>
+                                                        <span class="price">
+
+                                                            <ins>$229.00</ins>
+
+                                                            <del>$259.00</del>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p2.jpg')}}" alt="p2"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Lexani Forged</a>
+                                                        </div>
+                                                        <span class="price">
+
+                                                            <ins>$229.00</ins>
+
+                                                            <del>$259.00</del>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p3.jpg')}}" alt="p3"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Custom Laptop
+                                                            </a></div>
+                                                        <span class="price price-dark">
+
+                                                            <ins>$229.00</ins>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p4.jpg')}}" alt="p4"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Pocket RC Drone </a>
+                                                        </div>
+                                                        <span class="price">
+
+                                                            <ins>$229.00</ins>
+
+                                                            <del>$259.00</del>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="owl-ones-row">
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p1.jpg')}}" alt="p1"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Homasy Portable</a></div>
+                                                        <span class="price">
+
+                                                            <ins>$229.00</ins>
+
+                                                            <del>$259.00</del>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p2.jpg')}}" alt="p2"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Lexani Forged</a>
+                                                        </div>
+                                                        <span class="price">
+
+                                                            <ins>$229.00</ins>
+
+                                                            <del>$259.00</del>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p3.jpg')}}" alt="p3"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Custom Laptop
+                                                            </a></div>
+                                                        <span class="price price-dark">
+
+                                                            <ins>$229.00</ins>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-item style1">
+                                                <div class="product-inner">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{asset('images/blog/p4.jpg')}}" alt="p4"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">Pocket RC Drone </a>
+                                                        </div>
+                                                        <span class="price">
+
+                                                            <ins>$229.00</ins>
+
+                                                            <del>$259.00</del>
+
+                                                        </span>
+                                                        <span class="star-rating">
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                            <span class="review">5 Review(s)</span>
+
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-9 col-sm-8 float-none float-right">
                         <div class="main-content">
                             <div class="promotion-banner style-3">
@@ -671,395 +1060,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="col-sidebar">
-                            <div class="filter-options">
-                                <div class="block-title">Shop by</div>
-                                <div class="block-content">
-                                    <div class="filter-options-item filter-categori">
-                                        <div class="filter-options-title">Categories</div>
-                                        <div class="filter-options-content">
-                                            <ul>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Smartphone
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Computer
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Body
-                                                        Parts
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Printers
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Repair
-                                                        Partss</label>
-                                                </li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Camera
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Monitors
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Office
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Tablets
-                                                    </label></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="filter-options-item filter-brand">
-                                        <div class="filter-options-title">Brand</div>
-                                        <div class="filter-options-content">
-                                            <ul>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Networking</label>
-                                                </li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Projector</label>
-                                                </li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Bentley
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Honda
-                                                    </label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Mercedes
-                                                    </label></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="filter-options-item filter-price">
-                                        <div class="filter-options-title">Price</div>
-                                        <div class="filter-options-content">
-                                            <div class="price_slider_wrapper">
-                                                <div data-label-reasult="Price:" data-min="0" data-max="3000" data-unit="$" class="slider-range-price " data-value-min="85" data-value-max="2000">
-                                                    <span class="text-right">Filter</span>
-                                                </div>
-                                                <div class="price_slider_amount">
-                                                    <div class="price_label">
-                                                        Price: <span class="from">$85</span>-<span class="to">$2000</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="filter-options-item filter-size">
-                                        <div class="filter-options-title">Size</div>
-                                        <div class="filter-options-content">
-                                            <ul>
-                                                <li><label class="inline"><input type="checkbox"><span class="input">S</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input">M</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input">L</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input">XL</span></label></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="filter-options-item filter-color">
-                                        <div class="filter-options-title">Color</div>
-                                        <div class="filter-options-content">
-                                            <ul>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Red<span class="value">(217)</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Black<span class="value">(79)</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Grey<span class="value">(116)</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>While<span class="value">(38)</span></label></li>
-                                            </ul>
-                                            <ul>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Yellow<span class="value">(179)</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Blue<span class="value">(283)</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Pink<span class="value">(29)</span></label></li>
-                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>Green<span class="value">(205)</span></label></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block-banner-sidebar">
-                                <a href="#"><img src="{{asset('images/product/banner-sidebar.jpg')}}" alt="banner-sidebar"></a>
-                                <div class="promotion-banner-inner">
-                                    <h4>Fly Drone</h4>
-                                    <h3>Tincidunt interdum senectus fames sociis sem platea </h3>
-                                    <a class="banner-link" href="grid-product.html">Shop now</a>
-                                </div>
-                            </div>
-                            <div class="block-latest-roducts">
-                                <div class="block-title">Latest Products</div>
-                                <div class="block-latest-roducts-content">
-                                    <div class="owl-carousel nav-style2" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
-                                        <div class="owl-ones-row">
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p1.jpg')}}" alt="p1"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Homasy Portable</a></div>
-                                                        <span class="price">
 
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p2.jpg')}}" alt="p2"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Lexani Forged</a>
-                                                        </div>
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p3.jpg')}}" alt="p3"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Custom Laptop
-                                                            </a></div>
-                                                        <span class="price price-dark">
-
-                                                            <ins>$229.00</ins>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p4.jpg')}}" alt="p4"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Pocket RC Drone </a>
-                                                        </div>
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="owl-ones-row">
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p1.jpg')}}" alt="p1"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Homasy Portable</a></div>
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p2.jpg')}}" alt="p2"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Lexani Forged</a>
-                                                        </div>
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p3.jpg')}}" alt="p3"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Custom Laptop
-                                                            </a></div>
-                                                        <span class="price price-dark">
-
-                                                            <ins>$229.00</ins>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-                                                <div class="product-inner">
-                                                    <div class="product-thumb">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{asset('images/blog/p4.jpg')}}" alt="p4"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">Pocket RC Drone </a>
-                                                        </div>
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </main><!-- end MAIN -->
