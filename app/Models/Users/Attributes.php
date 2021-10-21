@@ -9,7 +9,7 @@ use App\Models\Categories;
 class Attributes extends Model
 {
     use HasFactory;
-    private $table = "attributes";
+    protected $table = "attributes";
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
