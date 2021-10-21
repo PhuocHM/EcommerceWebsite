@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
     {
         $item = new Products;
         $item->id = 1;
+        $item->code = "C01";
         $item->name = "Tủ lạnh LG Inverter 613 lít GR-B247JDS";
         $item->slug = "tu-lanh-lg-inverter";
         $item->tag = "Tủ lạnh";
@@ -31,6 +32,7 @@ class ProductSeeder extends Seeder
 
         $item = new Products;
         $item->id = 2;
+        $item->code = "C02";
         $item->name = "Laptop LG Gram 2021";
         $item->slug = "laptop-lg-gram-2021";
         $item->tag = "Laptop";
@@ -46,6 +48,7 @@ class ProductSeeder extends Seeder
 
         $item = new Products;
         $item->id = 3;
+        $item->code = "C03";
         $item->name = "Smart Tivi Samsung 4K 43 inch";
         $item->slug = "smart-tivi-samsung";
         $item->tag = "Tivi";
@@ -61,6 +64,7 @@ class ProductSeeder extends Seeder
 
         $item = new Products;
         $item->id = 4;
+        $item->code = "C04";
         $item->name = "Điện Thoại Di Động iPhone 11 64GB ";
         $item->slug = "dien-thoai-apple-11";
         $item->tag = "Tivi";
@@ -76,6 +80,7 @@ class ProductSeeder extends Seeder
 
         $item = new Products;
         $item->id = 5;
+        $item->code = "C05";
         $item->name = "PC HP 22-b201d AIO (Z8F51AA)  ";
         $item->slug = "pc-hp";
         $item->tag = "PC";
@@ -91,6 +96,7 @@ class ProductSeeder extends Seeder
 
         $item = new Products;
         $item->id = 6;
+        $item->code = "C06";
         $item->name = "RAM desktop Apacer Panther Golden";
         $item->slug = "ram-pc";
         $item->tag = "RAM";
