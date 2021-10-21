@@ -16,56 +16,49 @@
     <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/bootstrap-extended.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- loader-->
-    <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" /> --}}
 
     <!--Theme Styles-->
     <link href="{{ asset('admin/assets/css/dark-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/header-colors.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-    <font></font>
-    <font></font>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script><font></font>
+   
 
     <title>Admin Ecommerce</title>
 </head>
 
 <body>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            < font > < /font>
-            $('#table_id').DataTable(); < font > < /font>
-        }); < font > < /font>
-    </script>
+
     @include('admin.include.header')
     @include('admin.include.sidebar')
     <!--start wrapper-->
     @yield('main')
     <!--end wrapper-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Bootstrap bundle JS -->
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
-    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script> --}}
     <script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/easyPieChart/jquery.easypiechart.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/peity/jquery.peity.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/plugins/easyPieChart/jquery.easypiechart.js') }}"></script> --}}
+    {{-- <script src="{{ asset('admin/assets/plugins/peity/jquery.peity.min.js') }}"></script> --}}
     <script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pace.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
+    {{-- <script src="{{ asset('admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script> --}}
     <script src="{{ asset('admin/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
     <!--app-->
+
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
     <script src="{{ asset('admin/assets/js/index2.js') }}"></script>
     <script type="text/javascript">
@@ -100,9 +93,15 @@
             document.getElementById('convert_slug').value = slug;
         }
     </script>
-    <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
-    <script type="text/javascript">
+    {{-- <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script> --}}
+    {{-- <script type="text/javascript">
         CKEDITOR.replace('ckeditor_category');;
+    </script> --}}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
     </script>
 </body>
 

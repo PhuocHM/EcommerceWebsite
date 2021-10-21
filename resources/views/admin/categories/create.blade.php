@@ -30,9 +30,9 @@
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                     <div class="col-12">
                                         <label class="form-label">Mô tả</label> 
-                                        <textarea name="description" value="{{ old('description') }}"
+                                        <textarea name="description" value=""
                                             id="ckeditor_category" class="form-control" rows="3"
-                                            style="resize: none"></textarea>
+                                            style="resize: none">{!! old('description') !!}</textarea>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Parent</label>

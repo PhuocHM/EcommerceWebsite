@@ -37,7 +37,7 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table ">
+                                        <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
                                                                    
@@ -90,7 +90,7 @@
                                         </table>
                                     </div>
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $categories->links() }}
+                                        {{-- {{ $categories->links() }} --}}
                                     </div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@ class CategoryRepository implements CategoryInterface {
 
     public function getAll(){
 
-        return Category::paginate(1);
+        return Category::all();
     }
     public function getOne(){
 
