@@ -17,6 +17,7 @@ class CategoryService
     }
     public function update(Request $request, $id)
     {
+        
         return $this->categoryRepository->update($request, $id);
 
 

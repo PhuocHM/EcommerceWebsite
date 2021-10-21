@@ -81,7 +81,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->categoryService->update($request, $id);
+        $this->categoryService->update($request, $id);
          
     }
 
