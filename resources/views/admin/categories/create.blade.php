@@ -21,9 +21,7 @@
                                 <label class="form-label">Parent</label>
                                 <select class="form-select">
                                     <option>Fashion</option>
-                                    <option>Electronics</option>
-                                    <option>Furniture</option>
-                                    <option>Sports</option>
+                                   
                                 </select>
                             </div>
                             <div class="col-12">

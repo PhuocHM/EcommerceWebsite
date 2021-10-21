@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Repositories\Eloquents\CategoryRepository;
+use Illuminate\Support\Facades\Request;
 
 class CategoryService
 {   private $categoryRepository;
@@ -11,7 +12,13 @@ class CategoryService
 
     public function getAll()
     {
-        return $this->categoryRepository-> all();
+        return $this->categoryRepository->getAll();
        
+    }
+    public function update(Request $request, $id)
+    {
+        return $this->categoryRepository->update($request, $id);
+
+
     }
 }
