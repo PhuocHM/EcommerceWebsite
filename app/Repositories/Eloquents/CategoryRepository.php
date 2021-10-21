@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Models\Category;
 use App\Repositories\Interfaces\CategoryInterface;
-
+use Carbon\Carbon;
 class CategoryRepository implements CategoryInterface {
 
     public function getAll(){
@@ -21,6 +21,7 @@ class CategoryRepository implements CategoryInterface {
         $category->description  = $request->description;
         $category->parent_id  = $request->parent_id;
         $category->status  =$request->status;
+        $category->created_at = Carbon::now('Asia/Ho_Chi_Minh');
     
         $category->save();
     }

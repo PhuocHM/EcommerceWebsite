@@ -19,17 +19,17 @@
                             @csrf
                             <div class="col-12">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" onkeyup="ChangeToSlug();" id="slug"  placeholder="Tên danh muc">
+                                <input type="text" name="name" value="{{old('name')}}" class="form-control" onkeyup="ChangeToSlug();" id="slug"  placeholder="Tên danh muc">
                                 <span style="color:red;">@error("name"){{ $message }} @enderror</span>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Slug</label>
-                                <input type="text" name="slug" class="form-control" id="convert_slug"  placeholder="Slug danh muc">
+                                <input type="text" name="slug" class="form-control" value="{{old('Slug')}}" id="convert_slug"  placeholder="Slug danh muc">
                                 <span style="color:red;">@error("slug"){{ $message }} @enderror</span>
                             <div class="col-12">
                                 <label class="form-label">Mô tả</label>
-                                <input type="text" class="form-control" name="description" placeholder="Slug name">
-                                <span style="color:red;">@error("description"){{ $message }} @enderror</span>
+                              
+                                <textarea name="description" value="{{old('description')}}" id="ckeditor_category" class="form-control" rows="3" style="resize: none"></textarea>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Parent</label>
@@ -44,7 +44,7 @@
                             </select>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" >Kích hoạt danh mục</label>
+                                <label for="exampleInputEmail1" >Trạng Thái</label>
                                 <select name="status" class="form-select" id="inputGroupSelect02">
                             
                                     <option value="0">Kích hoạt</option>
@@ -53,8 +53,14 @@
                             </div>
                             <div class="col-2">
                                 <div class="d-grid">
+                                   
+                                <td>
                                     <button class="btn btn-primary">Add Category</button>
+                                    
+                                    <a href="{{route('categories.index')}}" class="btn btn-danger">Trở về</a>
                                 </div>
+                                </td>
+
                             </div>
                         </form>
                     </div>

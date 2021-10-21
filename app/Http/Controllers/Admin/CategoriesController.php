@@ -107,6 +107,5 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        
     }
 }
