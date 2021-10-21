@@ -18,7 +18,6 @@ class CreateCartItemsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
             $table->unsignedInteger('cart_id');
-            $table->integer('total_price');
             $table->timestamps();
             $table->foreign('cart_id')->references('id')->on('carts');
         });
