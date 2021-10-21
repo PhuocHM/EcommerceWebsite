@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Users\FlashSalesController;
 use App\Http\Controllers\Users\HomeController;
+use App\Http\Controllers\Users\NewCategoriesController;
+use App\Http\Controllers\Users\RateProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', HomeController::class);
 
 
-Route::get('login', function () {
-    return view('Website.login');
-});
-Route::get('category', function () {
-    return view('Website.list-product');
-});
-Route::get('detail', function () {
-    return view('Website.detail');
-});
-Route::get('cart', function () {
-    return view('Website.shopping-cart');
-});
-Route::get('wishlist', function () {
-    return view('Website.wishlist');
-});
+Route::resource('new-categories', NewCategoriesController::class);
+
+
+Route::resource('flash-sales', FlashSalesController::class);
+
+
+Route::resource('rate-products', RateProductsController::class);
+
+
+Route::resource('maybe-you-like', MaybeYouLikeController::class);
+
+
