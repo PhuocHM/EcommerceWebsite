@@ -9,9 +9,14 @@ use App\Models\Categories;
 class Attributes extends Model
 {
     use HasFactory;
-    protected $table = "attributes";
+    private $table = "attributes";
+
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
+    }
+
+    public function product(){
+        return $this->belongsToMany(Product::class, 'product_attributes');
     }
 }
