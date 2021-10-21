@@ -44,6 +44,16 @@ class User extends Authenticatable
 
     public function product()
     {
-        $this->belongsToMany(Products::class, 'wishlist');
+        return  $this->belongsToMany(Products::class, 'wishlist');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customers::class);
     }
 }

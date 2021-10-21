@@ -13,31 +13,40 @@ class Products extends Model
 
     public function image()
     {
-        $this->hasMany(ProductsImages::class);
+        return $this->hasMany(ProductsImages::class);
     }
 
     public function comment()
     {
-        $this->hasMany(Comments::class);
+        return $this->hasMany(Comments::class);
     }
 
     public function attribute()
     {
-        $this->belongsToMany(Attributes::class, 'product_attributes');
+        return $this->belongsToMany(Attributes::class, 'product_attributes');
     }
 
     public function user()
     {
-        $this->belongsToMany(User::class, 'wishlist');
+        return  $this->belongsToMany(User::class, 'wishlist');
     }
 
     public function orderItem()
     {
-        $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class);
     }
 
     public function cartItem()
     {
-        $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function discount()
+    {
+        return  $this->belongsToMany(Discounts::class, 'discount_product');
+    }
+
+    public function supplier(){
+        return $this->belongsToMany(Supplier::class, 'stock');
     }
 }
