@@ -36,5 +36,3 @@ Route::resource('rate-products', RateProductsController::class);
 
 
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
-
-
