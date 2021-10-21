@@ -29,10 +29,12 @@
   <link href="{{asset('admin/assets/css/semi-dark.css')}}" rel="stylesheet" />
   <link href="{{asset('admin/assets/css/header-colors.css')}}" rel="stylesheet" />
 
-  <title>Skodash - Bootstrap 5 Admin Template</title>
+  <title>Admin Ecommerce</title>
 </head>
 
 <body>
+  @include('admin.include.header')
+  @include('admin.include.sidebar')
   <!--start wrapper-->
   @yield('main')
   <!--end wrapper-->
