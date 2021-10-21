@@ -21,6 +21,8 @@
             <ul>
                 <li> <a href="index.html"><i class="bi bi-arrow-right-short"></i> danh mục sản phẩm</a>
                 </li>
+                <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
+                </li>
                
             </ul>
         </li>

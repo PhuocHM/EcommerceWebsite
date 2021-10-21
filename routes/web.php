@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +34,5 @@ Route::get('wishlist', function () {
 Route::get('admin/home', function () {
     return view('admin.dashboard.home');
 });
+
+Route::resource('/product', ProductController::class);
