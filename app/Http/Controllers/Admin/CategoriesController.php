@@ -97,6 +97,9 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categories = Category::find($id);
+      
+        $categories->delete();
+        return redirect()->back()->with('status','Xóa danh mục thành công');
     }
 }

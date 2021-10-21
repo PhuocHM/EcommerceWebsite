@@ -83,7 +83,11 @@
                                                             <div class="d-flex align-items-center gap-3 fs-6">
                                                               <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
                                                               <a href="{{ route('categories.edit', $category->id)}}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                                              <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                                              <form action="{{route('categories.destroy',[$category->id])}}" method="POST">
+                                                                    @method('DELETE')
+                                                                     @csrf
+                                                              <button  onclick="return confirm('Bạn muốn xóa danh mục này không?');" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></button>
+                                                              </form>
                                                             </div>
                                                         </td>
                                                     </tr>
