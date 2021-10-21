@@ -97,7 +97,7 @@
                         <div class="promotion-banner-inner">
                             <h4>Trending Products</h4>
                             <h3>Smart Phone Collection</h3>
-                            <a class="banner-link" href="grid-product.html">Shop now</a>
+                            <a class="banner-link" href="{{ route('trending.index') }}">Shop now</a>
                         </div>
                     </div>
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
@@ -105,7 +105,7 @@
                         <div class="promotion-banner-inner">
                             <h4>Best Seller</h4>
                             <h3>Get Rewards Watches</h3>
-                            <a class="banner-link" href="grid-product.html">Shop now</a>
+                            <a class="banner-link" href="{{ route('bestseller.index') }}">Shop now</a>
                         </div>
                     </div>
                 </div>
