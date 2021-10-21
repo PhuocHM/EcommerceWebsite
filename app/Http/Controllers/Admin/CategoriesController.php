@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\CategoryService;
-use Illuminate\Support\Facades\Request;
-
+use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 class CategoriesController extends Controller
 {   
     private $categoryService;
@@ -48,19 +48,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $category = new Category();
-        $category->name    = $request['name'];
-        $category->slug    = $request['slug'];
-        $category->description  = $request['description'];
-        $category->parent_id  = $request['parent_id'];
-        $category->status  = $request['status'];
-    
-        $category->save();
-        // $category = new Category();
-        // $category ->Category::create($request->all());
-        // $request->session()->flash('success', 'Thêm danh mục thành công');
+        $this->categoryService->store($request);
         return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
     }
 

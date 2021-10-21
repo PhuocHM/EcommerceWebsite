@@ -24,18 +24,23 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories,category_name,'.$this->route('category'),
-            // 'category_desc' => 'required',
-            // 'category_status' => 'required'
+            'name'=>'required|unique:categories,name,'.$this->route('category'),
+            'slug'=>'required',    
+            
+            'description'=>'required',
+            'parent_id'=>'required',
+            'status'=>'required',     
+                  
         ];
     }
     public function messages()
     {
         return [
-            // 'category_name.required' => 'vui lòng nhập tên ',
-            // 'category_name.unique' => 'tên đã tồn tại',
-            // 'category_desc.required' => 'vui lòng nhập mô tả',          
-            // 'category_status.required' => 'vui lòng nhập trạng thái ',          
+            'name.required' => 'Vui lòng nhập tên danh mục',
+            'name.unique' => 'Tên đã tồn tại',
+            'slug.required' => 'Vui lòng nhập slug danh mục',
+            'description.required' => 'vui lòng nhập mô tả',          
+           
         ];
     }
 }

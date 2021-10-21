@@ -20,13 +20,16 @@
                             <div class="col-12">
                                 <label class="form-label">Name</label>
                                 <input type="text" name="name" class="form-control" onkeyup="ChangeToSlug();" id="slug"  placeholder="Tên danh muc">
+                                <span style="color:red;">@error("name"){{ $message }} @enderror</span>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Slug</label>
                                 <input type="text" name="slug" class="form-control" id="convert_slug"  placeholder="Slug danh muc">
+                                <span style="color:red;">@error("slug"){{ $message }} @enderror</span>
                             <div class="col-12">
                                 <label class="form-label">Mô tả</label>
                                 <input type="text" class="form-control" name="description" placeholder="Slug name">
+                                <span style="color:red;">@error("description"){{ $message }} @enderror</span>
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Parent</label>
