@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Website.index');
-});
+Route::resource('/', HomeController::class);
+
+
 Route::get('login', function () {
     return view('Website.login');
 });
 Route::get('category', function () {
-    return view('Website.grid-product');
+    return view('Website.list-product');
 });
 Route::get('detail', function () {
     return view('Website.detail');

@@ -95,7 +95,7 @@
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
                         <a href="#" class="banner-img"><img src="{{asset('images/home3/banner1.jpg')}}" alt="banner1"></a>
                         <div class="promotion-banner-inner">
-                            <h4>New Collection</h4>
+                            <h4>Trending Products</h4>
                             <h3>Smart Phone Collection</h3>
                             <a class="banner-link" href="grid-product.html">Shop now</a>
                         </div>
@@ -602,7 +602,7 @@
                                 </div>
                             </div>
                             <div class="block-the-blog sb">
-                                <div class="title-of-section">From The Blog</div>
+                                <div class="title-of-section">New comments</div>
                                 <div class="owl-carousel nav-style2" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":1}}'>
                                     <div class="blog-item">
                                         <div class="post-thumb">
@@ -1130,7 +1130,7 @@
                                 </div>
                             </div>
                             <div class="block-bestseller-product bestseller-opt-5">
-                                <div class="title-of-section style2">Featured Products</div>
+                                <div class="title-of-section style2">Maybe you like</div>
                                 <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":2}}'>
                                     <div class="owl-one-row">
                                         <div class="product-item style2">
