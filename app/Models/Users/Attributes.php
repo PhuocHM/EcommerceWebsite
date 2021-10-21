@@ -10,8 +10,13 @@ class Attributes extends Model
 {
     use HasFactory;
     private $table = "attributes";
+
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
+    }
+
+    public function product(){
+        return $this->belongsToMany(Product::class, 'product_attributes');
     }
 }

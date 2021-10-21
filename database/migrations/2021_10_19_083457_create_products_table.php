@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('tag');
             $table->integer('sold');
             $table->decimal('price');
-            $table->string('description');
+            $table->longText('description');
             $table->integer('status')->default(0);
             $table->unsignedInteger('brand_id');
             $table->unsignedInteger('category_id');

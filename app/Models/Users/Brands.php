@@ -9,4 +9,8 @@ class Brands extends Model
 {
     use HasFactory;
     private $table = "brands";
+
+    public function product(){
+        return $this->hasMany(Products::class);
+    }
 }
