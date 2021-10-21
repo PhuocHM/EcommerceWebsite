@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Slug</label>
-                                    <input type="text" name="slug" class="form-control" value="{{ old('Slug') }}"
+                                    <input type="text" name="slug" class="form-control" value="{{ old('slug') }}"
                                         id="convert_slug" placeholder="Slug danh mục">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                     <div class="col-12">

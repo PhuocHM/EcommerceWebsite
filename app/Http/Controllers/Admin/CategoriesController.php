@@ -24,7 +24,6 @@ class CategoriesController extends Controller
         $categories_arr = $categories->pluck('name','id')->toArray();
         $categories_arr = ['Danh mục cha'] + $categories_arr;
     
-
         $params = [
             'categories' => $categories,
             'categories_arr' => $categories_arr,
@@ -53,7 +52,7 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $categories =$this->categoryService->store($request);
-        return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
+        return redirect()->route('categories.index')->with('status','Thêm danh mục sản phẩm thành công !');
     }
 
     /**
@@ -96,7 +95,7 @@ class CategoriesController extends Controller
     {
         
         $this->categoryService->update($request, $id);
-        return redirect()->route('categories.index')->with('success','Cập nhật danh mục sản phẩm thành công!');    
+        return redirect()->route('categories.index')->with('status','Cập nhật danh mục sản phẩm thành công!');    
     }
 
     /**
