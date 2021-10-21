@@ -51,7 +51,7 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $this->categoryService->store($request);
-        return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
+        return redirect()->route('categories.index')->with('status','Thêm danh mục sản phẩm thành công');
     }
 
     /**

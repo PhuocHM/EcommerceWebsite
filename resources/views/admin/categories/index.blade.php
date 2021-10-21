@@ -1,6 +1,8 @@
 @extends('admin.include.layout')
 @section('main')
+
     <div class="wrapper">
+        
         <main class="page-content">
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -16,15 +18,26 @@
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{route('categories.create')}}"  class="btn btn-primary">Thêm danh mục</a>
-                       
-                       
-                    </div>
+                        <a href="{{route('categories.create')}}"  class="btn btn-primary">Thêm danh mục</a>                                             
+                    </div> 
+                    
+                                     
                 </div>
+                
+                
             </div>
+            
             <!--end breadcrumb-->
             <div class="card">
+          
                 <div class="card-body">
+               
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+  
                     <div class="row">
                         <div class="col-12 d-flex">
                             <div class="card border shadow-none w-100">
@@ -41,6 +54,7 @@
                                                     <th>Parent_id</th>
                                                     <th>Trạng thái</th>
                                                     <th>Ngày tạo</th>
+                                                    <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
@@ -59,7 +73,12 @@
                                                                 <span class='text text-success'>Ẩn</span>
                                                             @endif
                                                         </td>
-                                                        <td>{{ $category->created_at }}</td>
+                                                        <td>{{ date('d-m-Y', strtotime($category->created_at)) }}</td>
+                                                        <td>
+                                                            @if($category->updated_at !='')
+                                                            {{ date('d-m-Y', strtotime($category->updated_at)) }}
+                                                            @endif
+                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
                                                               <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
@@ -91,4 +110,5 @@
             </div>
 
         </main>
+</div>
 @endsection

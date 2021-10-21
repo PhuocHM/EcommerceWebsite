@@ -92,6 +92,15 @@
          document.getElementById('convert_slug').value = slug;
      }
 </script>
+<script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+<script type="text/javascript">
+      
+      
+      CKEDITOR.replace('ckeditor_category');
+     ;
+
+
+  </script>
 </body>
 
 </html>
