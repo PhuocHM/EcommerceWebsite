@@ -1,28 +1,35 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Category;
+use App\Services\CategoryService;
+use Illuminate\Http\Request;
 
-use Carbon\Carbon;
-
-class ProductController extends Controller
-{
-    /**
+class CategoriesController extends Controller
+{   
+    private $categoryService;
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $list_product = Product::with('category')->orderBy('id','DESC')->get();
-        // Có thể thay thế như này
-        // $item= Danhmuctruyen::all;
-        // $param=['item'=>$item];
-        return view('admin.product.index')->with(compact('list_product'));
+        $categories = $this->categoryService->getAll();
+        $categories_arr = $categories->pluck('name','id')->toArray();
+        $categories_arr =array_merge(['0'=> 'Danh Mục cha'], $categories_arr);
+
+        $params = [
+            'categories' => $categories,
+            'categories_arr' => $categories_arr,
+        ];
+        return view('admin.categories.index',$params);
+      
     }
 
     /**
@@ -32,7 +39,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories= Category::orderBy('id','DESC')->get();
+        // dd($category);
+        return view('admin.categories.create')->with(compact('categories'));
     }
 
     /**
@@ -43,7 +52,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name    = $request['name'];
+        $category->slug    = $request['slug'];
+        $category->description  = $request['description'];
+        $category->parent_id  = $request['parent_id'];
+        $category->status  = $request['status'];
+    
+        $category->save();
+        // $category = new Category();
+        // $category ->Category::create($request->all());
+        // $request->session()->flash('success', 'Thêm danh mục thành công');
+        return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
     }
 
     /**

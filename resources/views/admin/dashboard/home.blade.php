@@ -1,11 +1,6 @@
 @extends('admin.include.layout')
 @section('main')
-    <div class="wrapper">
-        
-@include('admin.include.header')
-@include('admin.include.sidebar')
-       
-
+    <div class="wrapper">        
         <!--start content-->
         <main class="page-content">
 

@@ -13,13 +13,13 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="javascript:;" class="has-arrow">
+            <a href="/admin/home" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-house-door"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class="bi bi-arrow-right-short"></i> danh mục sản phẩm</a>
+                <li> <a href="/admin/categories"><i class="bi bi-arrow-right-short"></i> Danh mục sản phẩm</a>
                 </li>
                 <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                 </li>
@@ -28,9 +28,7 @@
         </li>
         
      
-         
-        </li>
-      
+           
     </ul>
     <!--end navigation-->
 </aside>
