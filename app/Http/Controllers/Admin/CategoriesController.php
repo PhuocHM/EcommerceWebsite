@@ -21,12 +21,13 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = $this->categoryService->getAll();
-    
+        $categories_arr = $categories->pluck('name','id')->toArray();
+        $categories_arr =array_merge(['0'=> 'Danh Mục cha'], $categories_arr);
         $params = [
-            'categories' => $categories
+            'categories' => $categories,
+            'categories_arr' => $categories_arr,
         ];
         return view('admin.categories.index',$params);
-      
     }
 
     /**
@@ -36,7 +37,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        
+        $categories= Category::orderBy('id','DESC')->get();
+        // dd($category);
+        return view('admin.categories.create')->with(compact('categories'));
     }
 
     /**
@@ -47,7 +50,18 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name    = $request['name'];
+        $category->slug    = $request['slug'];
+        $category->description  = $request['description'];
+        $category->parent_id  = $request['parent_id'];
+        $category->status  = $request['status'];
+    
+        $category->save();
+        // $category = new Category();
+        // $category ->Category::create($request->all());
+        // $request->session()->flash('success', 'Thêm danh mục thành công');
+        return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
     }
 
     /**

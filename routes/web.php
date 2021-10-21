@@ -2,7 +2,7 @@
 // use App\Services\CategoryService;
 use App\Http\Controllers\Admin\CategoriesController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

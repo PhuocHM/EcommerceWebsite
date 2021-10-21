@@ -16,17 +16,9 @@
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Settings</button>
-                        <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                                href="javascript:;">Action</a>
-                            <a class="dropdown-item" href="javascript:;">Another action</a>
-                            <a class="dropdown-item" href="javascript:;">Something else here</a>
-                            <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated
-                                link</a>
-                        </div>
+                        <a href="{{route('categories.create')}}"  class="btn btn-primary">Thêm danh mục</a>
+                       
+                       
                     </div>
                 </div>
             </div>
@@ -41,7 +33,7 @@
                                         <table class="table ">
                                             <thead class="table-light">
                                                 <tr>
-                                                    <th><input class="form-check-input" type="checkbox"></th>                 
+                                                                   
                                                     <th>#</th>
                                                     <th>Tên</th>
                                                     <th>Slug</th>
@@ -59,7 +51,7 @@
                                                         <td>{{$category->name}}</td>
                                                         <td>{{$category->slug}}</td>
                                                         <td>{{$category->description}}</td>
-                                                        <td>{{$category->parent_id}}</td>
+                                                        <td>{{$categories_arr[$category->parent_id]}}</td>
                                                         <td>
                                                             @if ($category->status == 0)
                                                                 <span class='text text-success'>Hiển thị</span>
@@ -67,11 +59,11 @@
                                                                 <span class='text text-success'>Ẩn</span>
                                                             @endif
                                                         </td>
-                                                        <td>{{ $item->created_at }}</td>
+                                                        <td>{{ $category->created_at }}</td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
                                                               <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="View detail" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                              <a href="{{ route('categories.dit', $category->id)}}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                                              <a href="{{ route('categories.edit', $category->id)}}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Edit info" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
                                                               <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
                                                             </div>
                                                         </td>

@@ -5,31 +5,50 @@
             <div class="card-header py-3">
                 <h6 class="mb-0">Add Product Category</h6>
             </div>
-            <div class="col-12 col-lg-4 d-flex">
+            <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+               
+            <div class="col-12 col-lg-12 d-flex">
                 <div class="card border shadow-none w-100">
                     <div class="card-body">
-                        <form class="row g-3">
+                        <form class="row g-3" method="POST" action="{{route('categories.store')}}">
+                            @csrf
                             <div class="col-12">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control" placeholder="Category name">
+                                <input type="text" name="name" class="form-control" onkeyup="ChangeToSlug();" id="slug"  placeholder="Tên danh muc">
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Slug</label>
-                                <input type="text" class="form-control" placeholder="Slug name">
+                                <input type="text" name="slug" class="form-control" id="convert_slug"  placeholder="Slug danh muc">
+                            <div class="col-12">
+                                <label class="form-label">Mô tả</label>
+                                <input type="text" class="form-control" name="description" placeholder="Slug name">
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Parent</label>
-                                <select class="form-select">
-                                    <option>Fashion</option>
-                                   
+                                <select name="parent_id"  class="form-select" id="inputGroupSelect02">
+                                    <option value="0">Danh mục cha</option>
+                            @foreach($categories as $category)
+                
+                        
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+            
+                            @endforeach 
+                            </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" >Kích hoạt danh mục</label>
+                                <select name="status" class="form-select" id="inputGroupSelect02">
+                            
+                                    <option value="0">Kích hoạt</option>
+                                    <option value="1">Không kích hoạt</option>
                                 </select>
                             </div>
-                            <div class="col-12">
-                                <label class="form-label">Description</label>
-                                <textarea class="form-control" rows="3" cols="3"
-                                    placeholder="Product Description"></textarea>
-                            </div>
-                            <div class="col-12">
+                            <div class="col-2">
                                 <div class="d-grid">
                                     <button class="btn btn-primary">Add Category</button>
                                 </div>
@@ -38,3 +57,4 @@
                     </div>
                 </div>
             </div>
+@endsection
