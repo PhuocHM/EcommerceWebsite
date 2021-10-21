@@ -18,13 +18,11 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('tag');
-            $table->integer('quantity');
             $table->integer('sold');
             $table->integer('price');
             $table->integer('discount')->default(0);
             $table->string('description');
             $table->integer('status')->default(0);
-            $table->string('image');
             $table->unsignedInteger('brand_id');
             $table->unsignedInteger('category_id');
             $table->timestamps();
