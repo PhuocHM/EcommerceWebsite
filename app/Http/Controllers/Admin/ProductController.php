@@ -18,11 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $list_product = Product::with('category')->orderBy('id','DESC')->get();
-        // Có thể thay thế như này
-        // $item= Danhmuctruyen::all;
-        // $param=['item'=>$item];
-        return view('admin.product.index')->with(compact('list_product'));
+        // $list_product = Product::with('category')->orderBy('id','DESC')->get();
+        // // Có thể thay thế như này
+        // // $item= Danhmuctruyen::all;
+        // // $param=['item'=>$item];
+        // return view('admin.product.index')->with(compact('list_product'));
     }
 
     /**
