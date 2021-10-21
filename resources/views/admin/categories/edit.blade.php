@@ -41,7 +41,7 @@
                                         <option value="0">-----------Danh mục cha-----------</option>
                                         @foreach($categories as $key => $val)
                                             @if($val->id != $category->id)
-                                                <option {{$val->id ==   $category->parent_id ? 'selected' : '' }} value="{{$val->id}}">{{$val->name}}</option>
+                                                <option {{$val->id == $category->parent_id ? 'selected' : '' }} value="{{$val->id}}">{{$val->name}}</option>
                                             @endif
                                         @endforeach
                                     </select>
