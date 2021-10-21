@@ -10,3 +10,4 @@ class Discounts extends Model
     use HasFactory;
     protected $table = 'discounts';
 }
+// End Here
