@@ -19,14 +19,9 @@
                 <div class="ms-auto">
                     <div class="btn-group">
                         <a href="{{route('categories.create')}}"  class="btn btn-primary">Thêm danh mục</a>                                             
-                    </div> 
-                    
-                                     
-                </div>
-                
-                
-            </div>
-            
+                    </div>                                 
+                </div>        
+            </div>      
             <!--end breadcrumb-->
             <div class="card">
           
@@ -37,7 +32,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-  
                     <div class="row">
                         <div class="col-12 d-flex">
                             <div class="card border shadow-none w-100">

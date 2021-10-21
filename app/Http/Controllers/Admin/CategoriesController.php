@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Admin\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
