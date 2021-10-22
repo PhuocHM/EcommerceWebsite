@@ -24,7 +24,7 @@ class CartController extends Controller
             ->where('type', 1)
             ->get();
 
-        $related_categories = 
+//        $related_categories =
 
         $related_items = Categories::all();
 
