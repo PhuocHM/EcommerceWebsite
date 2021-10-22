@@ -14,7 +14,8 @@
                 <div class="col-12 col-lg-8 mx-auto d-flex">
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
-                            <form method="POST" class="row g-3" action="{{ route('categories.update', $category->id) }}">
+                            <form method="POST" class="row g-3"
+                                action="{{ route('categories.update', $category->id) }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="col-12">
@@ -31,17 +32,19 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Mô tả</label>
-                                    <textarea class="form-control" rows="3" cols="3" name="description"
-                                        placeholder="Product Description"> {{ $category->description }}</textarea>
+                                    <textarea class="form-control" rows="3" name="description"
+                                        id="ckeditor_category"
+                                        style="resize: none"> {!! $category->description !!}</textarea>
                                     <span style="color:red;">@error('description'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Thuộc danh mục</label>
-                                      <select name="parent_id" class="form-control input-sm m-bot15">
+                                    <select name="parent_id" class="form-control input-sm m-bot15">
                                         <option value="0">----Danh mục----</option>
-                                        @foreach($categories as $key => $val)
-                                            @if($val->id != $category->id)
-                                                <option {{$val->id == $category->parent_id ? 'selected' : ''}} value="{{$val->id}}">{{$val->name}}</option>
+                                        @foreach ($categories as $key => $val)
+                                            @if ($val->id != $category->id)
+                                                <option {{ $val->id == $category->parent_id ? 'selected' : '' }}
+                                                    value="{{ $val->id }}">{{ $val->name }}</option>
                                             @endif
                                         @endforeach
                                     </select>
