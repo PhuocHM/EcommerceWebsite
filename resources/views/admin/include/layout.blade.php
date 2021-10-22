@@ -28,7 +28,6 @@
     <link href="{{ asset('admin/assets/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/header-colors.css') }}" rel="stylesheet" />
-   
 
     <title>Admin Ecommerce</title>
 </head>
@@ -93,8 +92,8 @@
             document.getElementById('convert_slug').value = slug;
         }
     </script>
-    {{-- <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script> --}}
-    {{-- <script type="text/javascript">
+    <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+    <script type="text/javascript">
         CKEDITOR.replace('ckeditor_category');;
     </script> --}}
 
