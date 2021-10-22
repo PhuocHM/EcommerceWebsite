@@ -16,7 +16,7 @@
         </form>
         <div id="block-quick-view-popup" class="block-quick-view-popup">
             <div class="quick-view-content">
-                <a href="#" class="popup-btn-close"><span class="flaticon-close"></span></a>
+                <a href="#" class="popup-btn-close"><i class="fas fa-times"></i></a>
                 <div class="product-items">
                     <div class="product-image">
                         <a href="#"><img src="{{asset('images/popup-pro.jpg')}}" alt="p1"></a>
@@ -95,9 +95,9 @@
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
                         <a href="#" class="banner-img"><img src="{{asset('images/home3/banner1.jpg')}}" alt="banner1"></a>
                         <div class="promotion-banner-inner">
-                            <h4>New Collection</h4>
+                            <h4>Trending Products</h4>
                             <h3>Smart Phone Collection</h3>
-                            <a class="banner-link" href="grid-product.html">Shop now</a>
+                            <a class="banner-link" href="{{ route('trending.index') }}">Shop now</a>
                         </div>
                     </div>
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
@@ -105,7 +105,7 @@
                         <div class="promotion-banner-inner">
                             <h4>Best Seller</h4>
                             <h3>Get Rewards Watches</h3>
-                            <a class="banner-link" href="grid-product.html">Shop now</a>
+                            <a class="banner-link" href="{{ route('bestseller.index') }}">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -602,7 +602,7 @@
                                 </div>
                             </div>
                             <div class="block-the-blog sb">
-                                <div class="title-of-section">From The Blog</div>
+                                <div class="title-of-section">New comments</div>
                                 <div class="owl-carousel nav-style2" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":1}}'>
                                     <div class="blog-item">
                                         <div class="post-thumb">
@@ -666,7 +666,20 @@
                                 <a href="grid-product.html" class="shop-all">Shop all deals Now</a>
                             </div>
                             <div class="block-daily-deals style2">
-                                <div class="title-of-section">Best Seller</div>
+                                <div class="title-of-section">
+                                    Flash Sales
+                                    <div class="product-count-down">
+                                        <div class="kt-countdown is-countdown" data-y="2020" data-m="6" data-d="1" data-h="10" data-i="0" data-s="0">
+                                            <span class="box-count day"><span class="number">01</span>
+                                                <span class="text">Ngày</span></span><span class="dot">:</span>
+                                            <span class="box-count hrs"><span class="number">00</span>
+                                                <span class="text">Giờ</span></span><span class="dot">:</span>
+                                            <span class="box-count min"><span class="number">00</span>
+                                                <span class="text">Phút</span></span><span class="dot">:</span>
+                                            <span class="box-count secs"><span class="number">00</span>
+                                                <span class="text">Giây</span></span></div>
+                                    </div>
+                                </div>
                                 <div class="block-daily-deals-content">
                                     <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"992":{"items":2}}'>
                                         <div class="deal-of-day equal-elem">
@@ -1117,7 +1130,7 @@
                                 </div>
                             </div>
                             <div class="block-bestseller-product bestseller-opt-5">
-                                <div class="title-of-section style2">Featured Products</div>
+                                <div class="title-of-section style2">Maybe you like</div>
                                 <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":2}}'>
                                     <div class="owl-one-row">
                                         <div class="product-item style2">

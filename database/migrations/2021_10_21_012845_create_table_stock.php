@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderItemsTable extends Migration
+class CreateTableStock extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateOrderItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('stock', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_id');
-            $table->decimal('price');
+            $table->unsignedInteger('employee_id');
             $table->integer('quantity');
-            $table->unsignedInteger('order_id');
+            $table->unsignedInteger('supplier_id');
+            $table->decimal('cost_price');
+
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('employee_id')->references('id')->on('employee');
+
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateOrderItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('table_stock');
     }
 }

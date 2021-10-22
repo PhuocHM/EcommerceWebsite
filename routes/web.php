@@ -1,7 +1,8 @@
 <?php
-
+// use App\Services\CategoryService;
+use App\Http\Controllers\Admin\CategoriesController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Website.index');
-});
+// Route::get('/', function () {
+//     return view('Website.index');
+// });
 Route::get('login', function () {
     return view('Website.login');
 });
@@ -34,3 +35,7 @@ Route::get('wishlist', function () {
 Route::get('admin/home', function () {
     return view('admin.dashboard.home');
 });
+Route::group(['prefix'=>'admin'],function() {
+    Route::resource('/categories',CategoriesController::class);
+});
+
