@@ -5,12 +5,13 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brands extends Model
+class Supplier extends Model
 {
     use HasFactory;
-    protected $table = "brands";
+
+    protected $table = 'supplier';
 
     public function product(){
-        return $this->hasMany(Products::class);
+        return $this->belongsToMany(Products::class, 'stock');
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NewCategoriesController extends Controller
+class BrandsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class NewCategoriesController extends Controller
      */
     public function index()
     {
-        return view('list-products');
+        //
     }
 
     /**
