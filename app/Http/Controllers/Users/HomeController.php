@@ -43,10 +43,10 @@ class HomeController extends Controller
         $highest_star_product = Comments::all();
         $random_products = Products::join('products_images', 'products.id', 'products_images.product_id')->where('type', '=', 1)
             ->join('comments', 'products.id', 'comments.product_id')->inRandomOrder()->limit(6)->get()->chunk(2);
-        $highest_star_products = Comments::select(DB::raw('product_id,count(product_id) as total_comments, AVG(star_value) as avg_star_value,products.name'))
+        $highest_star_products = Comments::select(DB::raw('products.name,products.price,product_id,count(product_id) as total_comments, AVG(star_value) as avg_star_value'))
             ->join('products', 'products.id', 'comments.product_id')
             ->groupBy('product_id')->orderBy('avg_star_value', 'DESC')->orderBy('total_comments', 'DESC')->get();
-        dd($highest_star_products);
+        // dd($highest_star_products);
         $params = [
             "products" => $products,
             "new_products" => $new_products,

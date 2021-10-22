@@ -11,6 +11,11 @@ class Products extends Model
 
     protected $table = 'products';
 
+    public function coverImage()
+    {
+        return $this->hasMany(ProductsImages::class)->where('type', '=', 1);
+    }
+
     public function image()
     {
         return $this->hasMany(ProductsImages::class);
@@ -28,7 +33,7 @@ class Products extends Model
 
     public function user()
     {
-        return  $this->belongsToMany(User::class, 'wishlist', 'product_id','supplier_id');
+        return  $this->belongsToMany(User::class, 'wishlist', 'product_id', 'supplier_id');
     }
 
     public function orderItem()

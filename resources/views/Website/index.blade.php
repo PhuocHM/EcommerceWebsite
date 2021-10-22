@@ -898,65 +898,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="owl-one-row">
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f4.jpg')}}" alt="f4"></a>
-                                                </div>
-                                                <span class="onsale">-50%</span>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Cio Balance
-                                                    </a></div>
-                                                <span class="price">
 
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f8.jpg')}}" alt="f8"></a>
-                                                </div>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">D-Link Omna
-                                                    </a></div>
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="block-promotion-banner">
