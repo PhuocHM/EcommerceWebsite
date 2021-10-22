@@ -62,34 +62,18 @@
                 <div class="container">
                     <div class="main-slide slide-opt-3">
                         <div class="owl-carousel nav-style5" data-nav="false" data-autoplay="false" data-dots="true" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
-                            <div class="item-slide item-slide-1">
-                                <div class="slide-desc slide-desc-1">
-                                    <div class="container-inner">
-                                        <div class="p-primary">Limited Items Sale Your Hand</div>
-                                        <p>Lorem ipsum dolor sit amet adipiscing elit.</p>
-                                        <a href="grid-product.html" class="btn-shop-now">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item-slide item-slide-2">
+                            @foreach($products as $key => $product)
+                            <div class="item-slide" style="background-image: url({{ $product->image }})">
                                 <div class="slide-desc slide-desc-2">
                                     <div class="container-inner">
-                                        <div class="p-primary">Everyone dreams of an headphone
+                                        <div class="p-primary">{{$product->name}}
                                         </div>
-                                        <p>On Online Purchases of Small Appliances</p>
+                                        <p>{{number_format($product->price)}}&ensp;VND</p>
                                         <a href="grid-product.html" class="btn-shop-now">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item-slide item-slide-3">
-                                <div class="slide-desc slide-desc-3">
-                                    <div class="container-inner">
-                                        <div class="p-primary">Up to 70% On All Electric Store</div>
-                                        <p>Find appliances that consume more money.</p>
-                                        <a href="grid-product.html" class="btn-shop-now">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
@@ -126,49 +110,21 @@
                                 <div class="vertical-menu-content">
                                     <span class="btn-close hidden-md"><i class="flaticon-close" aria-hidden="true"></i></span>
                                     <ul class="vertical-menu-list">
-                                        <li><a href="#">New Arrivals</a></li>
+                                        @foreach($categories as $key => $category)
                                         <li class="menu-item-has-children arrow item-megamenu">
-                                            <a href="#">Tv & Audio</a>
+                                            <a href="#">{{ $category['name'] }}</a>
                                             <span class="toggle-submenu hidden-md"></span>
                                             <div class="submenu parent-megamenu megamenu">
                                                 <div class="row">
                                                     <div class="submenu-banner submenu-banner-menu-1">
                                                         <div class="col-md-4">
                                                             <div class="dropdown-menu-info">
-                                                                <h6 class="dropdown-menu-title">Smartphone</h6>
                                                                 <div class="dropdown-menu-content">
                                                                     <ul class="menu">
-                                                                        <li class="menu-item"><a href="#">Monitors
+                                                                        @foreach($category['children'] as $key => $child)
+                                                                        <li class="menu-item"><a href="#">{{$child['name']}}
                                                                             </a></li>
-                                                                        <li class="menu-item"><a href="#">Tablet</a></li>
-                                                                        <li class="menu-item"><a href="#">Computer
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Bestseller</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Top Rated</a></li>
-                                                                        <li class="menu-item"><a href="#">Office</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Networking</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="dropdown-menu-info">
-                                                                <h6 class="dropdown-menu-title">Computer</h6>
-                                                                <div class="dropdown-menu-content">
-                                                                    <ul class="menu">
-                                                                        <li class="menu-item"><a href="#">Smart
-                                                                                Computer</a></li>
-                                                                        <li class="menu-item"><a href="#">Bluetooth
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Soundbars</a></li>
-                                                                        <li class="menu-item"><a href="#">
-                                                                                Computer</a></li>
-                                                                        <li class="menu-item"><a href="#">New Arrivals</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Monitors</a></li>
+                                                                        @endforeach
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -177,115 +133,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="menu-item-has-children arrow item-megamenu">
-                                            <a href="#">Laptop</a>
-                                            <span class="toggle-submenu hidden-md"></span>
-                                            <div class="submenu parent-megamenu megamenu">
-                                                <div class="row">
-                                                    <div class="submenu-banner submenu-banner-menu-1">
-                                                        <div class="col-md-4">
-                                                            <div class="dropdown-menu-info">
-                                                                <h6 class="dropdown-menu-title">Smartphone</h6>
-                                                                <div class="dropdown-menu-content">
-                                                                    <ul class="menu">
-                                                                        <li class="menu-item"><a href="#">Monitors
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Tablet</a></li>
-                                                                        <li class="menu-item"><a href="#">Computer
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Bestseller</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Top Rated</a></li>
-                                                                        <li class="menu-item"><a href="#">Office</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Networking</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="dropdown-menu-info">
-                                                                <h6 class="dropdown-menu-title">Computer</h6>
-                                                                <div class="dropdown-menu-content">
-                                                                    <ul class="menu">
-                                                                        <li class="menu-item"><a href="#">Smart
-                                                                                Computer</a></li>
-                                                                        <li class="menu-item"><a href="#">Bluetooth
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Soundbars</a></li>
-                                                                        <li class="menu-item"><a href="#">
-                                                                                Computer</a></li>
-                                                                        <li class="menu-item"><a href="#">New Arrivals</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Monitors</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li><a href="#">Computer</a>
-                                        </li>
-                                        <li><a href="#">Smartphone </a></li>
-                                        <li class="menu-item-has-children arrow item-megamenu">
-                                            <a href="#">Printers</a>
-                                            <span class="toggle-submenu hidden-md"></span>
-                                            <div class="submenu parent-megamenu megamenu">
-                                                <div class="row">
-                                                    <div class="submenu-banner submenu-banner-menu-1">
-                                                        <div class="col-md-4">
-                                                            <div class="dropdown-menu-info">
-                                                                <h6 class="dropdown-menu-title">Camera</h6>
-                                                                <div class="dropdown-menu-content">
-                                                                    <ul class="menu">
-                                                                        <li class="menu-item"><a href="#">Monitor
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Speakers</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Tablet
-                                                                                Computer</a></li>
-                                                                        <li class="menu-item"><a href="#">Monitors</a></li>
-                                                                        <li class="menu-item"><a href="#">Projector</a></li>
-                                                                        <li class="menu-item"><a href="#">Office</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Networking</a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="dropdown-menu-info">
-                                                                <h6 class="dropdown-menu-title">Computer</h6>
-                                                                <div class="dropdown-menu-content">
-                                                                    <ul class="menu">
-                                                                        <li class="menu-item"><a href="#">Computer</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Phone
-                                                                            </a></li>
-                                                                        <li class="menu-item"><a href="#">Printers</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Game & Consoles</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">New Arrivals</a>
-                                                                        </li>
-                                                                        <li class="menu-item"><a href="#">Monitors</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li><a href="#">Camera</a></li>
-                                        <li><a href="#">Game & Consoles</a></li>
-                                        <li><a href="#">Tablet</a></li>
-                                        <li><a href="#">Monitors</a></li>
-                                        <li><a href="#">Drivers</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -643,783 +491,678 @@
                             <div class="block-top-categori">
                                 <div class="title-of-section">New Categories</div>
                                 <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"640":{"items":3},"768":{"items":2},"992":{"items":3},"1200":{"items":4}}'>
-                                    <div class="block-top-categori-item">
+                                    {{-- <div class="block-top-categori-item">
                                         <a href="#"><img src="{{asset('images/home3/h1.jpg')}}" alt="h1"></a>
-                                        <div class="block-top-categori-title">Computer</div>
+                                    <div class="block-top-categori-title">Computer</div>
+                                </div>
+                                <div class="block-top-categori-item">
+                                    <a href="#"><img src="{{asset('images/home3/h2.jpg')}}" alt="h2"></a>
+                                    <div class="block-top-categori-title">Watches</div>
+                                </div>
+                                <div class="block-top-categori-item">
+                                    <a href="#"><img src="{{asset('images/home3/h3.jpg')}}" alt="h3"></a>
+                                    <div class="block-top-categori-title">Smartphone Sport</div>
+                                </div>
+                                <div class="block-top-categori-item">
+                                    <a href="#"><img src="{{asset('images/home3/h4.jpg')}}" alt="h4"></a>
+                                    <div class="block-top-categori-title">Tablet</div>
+                                </div> --}}
+                                @foreach($new_products as $key => $product)
+                                <div class="block-top-categori-item">
+                                    <a href="#"><img src="{{asset($product->image)}}" alt="h3"></a>
+                                    <div class="block-top-categori-title">{{ $product->name }}</div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="block-up-to">
+                            <div class="up-to-content">Save up to 40%<span> all online store items.</span></div>
+                            <a href="grid-product.html" class="shop-all">Shop all deals Now</a>
+                        </div>
+                        <div class="block-daily-deals style2">
+                            <div class="title-of-section">
+                                Flash Sales
+                                <div class="product-count-down">
+                                    <div class="kt-countdown is-countdown" data-y="2020" data-m="6" data-d="1" data-h="10" data-i="0" data-s="0">
+                                        <span class="box-count day"><span class="number">01</span>
+                                            <span class="text">Ngày</span></span><span class="dot">:</span>
+                                        <span class="box-count hrs"><span class="number">00</span>
+                                            <span class="text">Giờ</span></span><span class="dot">:</span>
+                                        <span class="box-count min"><span class="number">00</span>
+                                            <span class="text">Phút</span></span><span class="dot">:</span>
+                                        <span class="box-count secs"><span class="number">00</span>
+                                            <span class="text">Giây</span></span></div>
+                                </div>
+                            </div>
+                            <div class="block-daily-deals-content">
+                                <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"992":{"items":2}}'>
+                                    <div class="deal-of-day equal-elem">
+                                        <div class="product-thumb style1">
+                                            <div class="thumb-inner">
+                                                <a href="#"><img src="{{asset('images/home3/d1.jpg')}}" alt="d1"></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-innfo">
+                                            <div class="info-text">
+                                                <div class="product-name"><a href="#">Notebook Pro
+                                                    </a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                    <span class="onsale">-50%</span>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                            </div>
+                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
+                                        </div>
                                     </div>
-                                    <div class="block-top-categori-item">
-                                        <a href="#"><img src="{{asset('images/home3/h2.jpg')}}" alt="h2"></a>
-                                        <div class="block-top-categori-title">Watches</div>
+                                    <div class="deal-of-day equal-elem">
+                                        <div class="product-thumb style1">
+                                            <div class="thumb-inner">
+                                                <a href="#"><img src="{{asset('images/home3/d2.jpg')}}" alt="d2"></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-innfo">
+                                            <div class="info-text">
+                                                <div class="product-name"><a href="#">Smartwatch Seri
+                                                    </a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                    <span class="onsale">-50%</span>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                            </div>
+                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
+                                        </div>
                                     </div>
-                                    <div class="block-top-categori-item">
-                                        <a href="#"><img src="{{asset('images/home3/h3.jpg')}}" alt="h3"></a>
-                                        <div class="block-top-categori-title">Smartphone Sport</div>
-                                    </div>
-                                    <div class="block-top-categori-item">
-                                        <a href="#"><img src="{{asset('images/home3/h4.jpg')}}" alt="h4"></a>
-                                        <div class="block-top-categori-title">Tablet</div>
+                                    <div class="deal-of-day equal-elem">
+                                        <div class="product-thumb style1">
+                                            <div class="thumb-inner">
+                                                <a href="#"><img src="{{asset('images/home3/d2.jpg')}}" alt="d2"></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-innfo">
+                                            <div class="info-text">
+                                                <div class="product-name"><a href="#">Cellphone Factory</a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                    <span class="onsale">-50%</span>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                            </div>
+                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="block-up-to">
-                                <div class="up-to-content">Save up to 40%<span> all online store items.</span></div>
-                                <a href="grid-product.html" class="shop-all">Shop all deals Now</a>
-                            </div>
-                            <div class="block-daily-deals style2">
-                                <div class="title-of-section">
-                                    Flash Sales
-                                    <div class="product-count-down">
-                                        <div class="kt-countdown is-countdown" data-y="2020" data-m="6" data-d="1" data-h="10" data-i="0" data-s="0">
-                                            <span class="box-count day"><span class="number">01</span>
-                                                <span class="text">Ngày</span></span><span class="dot">:</span>
-                                            <span class="box-count hrs"><span class="number">00</span>
-                                                <span class="text">Giờ</span></span><span class="dot">:</span>
-                                            <span class="box-count min"><span class="number">00</span>
-                                                <span class="text">Phút</span></span><span class="dot">:</span>
-                                            <span class="box-count secs"><span class="number">00</span>
-                                                <span class="text">Giây</span></span></div>
+                        </div>
+                        <div class="block-feature-product small">
+                            <div class="title-of-section">Rated Products</div>
+                            <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":2},"992":{"items":3},"1200":{"items":3}}'>
+                                <div class="owl-one-row">
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f1.jpg')}}" alt="f1"></a>
+                                                </div>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Custom Laptop
+                                                    </a></div>
+                                                <span class="price price-dark">
+
+                                                    <ins>$229.00</ins>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f5.jpg')}}" alt="f5"></a>
+                                                </div>
+                                                <span class="onsale">-50%</span>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Power Printers
+                                                    </a></div>
+                                                <span class="price price-dark">
+
+                                                    <ins>$229.00</ins>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="block-daily-deals-content">
-                                    <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"992":{"items":2}}'>
-                                        <div class="deal-of-day equal-elem">
+                                <div class="owl-one-row">
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f2.jpg')}}" alt="f2"></a>
+                                                </div>
+                                                <span class="onsale">-50%</span>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Era Beats Studio
+                                                    </a></div>
+                                                <span class="price">
+                                                    <ins>$229.00</ins>
+                                                    <del>$259.00</del>
+                                                </span>
+                                                <span class="star-rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <span class="review">5 Review(s)</span>
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f6.jpg')}}" alt="f6"></a>
+                                                </div>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Poss Headphone
+                                                    </a></div>
+                                                <span class="price">
+                                                    <ins>$229.00</ins>
+                                                    <del>$259.00</del>
+                                                </span>
+                                                <span class="star-rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <span class="review">5 Review(s)</span>
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-one-row">
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f3.jpg')}}" alt="f3"></a>
+                                                </div>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Poss Headphone
+                                                    </a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f7.jpg')}}" alt="f7"></a>
+                                                </div>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                                <span class="onsale">-50%</span>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Pocket RC Drone
+                                                    </a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                </span>
+                                                <span class="star-rating">
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                    <span class="review">5 Review(s)</span>
+
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="owl-one-row">
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f4.jpg')}}" alt="f4"></a>
+                                                </div>
+                                                <span class="onsale">-50%</span>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">Cio Balance
+                                                    </a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
+                                                <div class="thumb-inner">
+                                                    <a href="#"><img src="{{asset('images/home3/f8.jpg')}}" alt="f8"></a>
+                                                </div>
+                                                <a href="#" class="quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-innfo">
+                                                <div class="product-name"><a href="#">D-Link Omna
+                                                    </a></div>
+                                                <span class="price">
+
+                                                    <ins>$229.00</ins>
+
+                                                    <del>$259.00</del>
+
+                                                </span>
+                                                <div class="group-btn-hover">
+                                                    <div class="inner">
+                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                        <a href="#" class="add-to-cart">Add to cart</a>
+                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-promotion-banner">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 padding-right-10">
+                                    <div class="promotion-banner style-2">
+                                        <a href="#" class="banner-img"><img src="{{asset('images/home3/banner5.jpg')}}" alt="banner5"></a>
+                                        <div class="promotion-banner-inner">
+                                            <h4>Laptop Collection</h4>
+                                            <h3>Get <strong>25%</strong> Flat Off</h3>
+                                            <a class="banner-link" href="grid-product.html">Shop now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 padding-left-10">
+                                    <div class="promotion-banner style-2">
+                                        <a href="#" class="banner-img"><img src="{{asset('images/home3/banner6.jpg')}}" alt="banner6"></a>
+                                        <div class="promotion-banner-inner">
+                                            <h4>Smart Watches Parts</h4>
+                                            <h3>Sale Up To <strong>30%</strong> Off</h3>
+                                            <a class="banner-link" href="grid-product.html">Shop now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-bestseller-product bestseller-opt-5">
+                            <div class="title-of-section style2">Maybe you like</div>
+                            <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":2}}'>
+                                @foreach($random_products as $key => $list_products)
+                                <div class="owl-one-row">
+                                    @foreach($list_products as $key => $product)
+                                    <div class="product-item style2">
+                                        <div class="product-inner equal-elem">
                                             <div class="product-thumb style1">
                                                 <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/d1.jpg')}}" alt="d1"></a>
+                                                    <a href="#"><img src="{{asset($product->image)}}" alt="b4"></a>
                                                 </div>
                                             </div>
                                             <div class="product-innfo">
-                                                <div class="info-text">
-                                                    <div class="product-name"><a href="#">Notebook Pro
-                                                        </a></div>
-                                                    <span class="price">
+                                                <div class="product-name"><a href="#">{{$product->name}}
+                                                    </a></div>
+                                                <span class="price">
+                                                    @if($product->discount&&$product->discount->first())
+                                                    <ins>{{ number_format($product->price - $product->discount->first()->amounts)}}&ensp;<u>đ</u></ins>
+                                                    <del>{{$product->price}}&ensp;<u>đ</u></del>
+                                                    @else
+                                                    <ins>{{ number_format($product->price) }}&ensp;<u>đ</u></ins>
+                                                    @endif
+                                                </span>
+                                                <span class="star-rating">
 
-                                                        <ins>$229.00</ins>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                        <del>$259.00</del>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                        <span class="onsale">-50%</span>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    </span>
-                                                    <span class="star-rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <span class="review">5 Review(s)</span>
 
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                </div>
-                                                <a href="#" class="btn-add-to-cart">Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="deal-of-day equal-elem">
-                                            <div class="product-thumb style1">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/d2.jpg')}}" alt="d2"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="info-text">
-                                                    <div class="product-name"><a href="#">Smartwatch Seri
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                        <span class="onsale">-50%</span>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                </div>
-                                                <a href="#" class="btn-add-to-cart">Add to cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="deal-of-day equal-elem">
-                                            <div class="product-thumb style1">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/d2.jpg')}}" alt="d2"></a>
-                                                </div>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="info-text">
-                                                    <div class="product-name"><a href="#">Cellphone Factory</a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                        <span class="onsale">-50%</span>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                </div>
+                                                </span>
                                                 <a href="#" class="btn-add-to-cart">Add to cart</a>
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
-                            </div>
-                            <div class="block-feature-product small">
-                                <div class="title-of-section">Rated Products</div>
-                                <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":2},"992":{"items":3},"1200":{"items":3}}'>
-                                    <div class="owl-one-row">
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f1.jpg')}}" alt="f1"></a>
-                                                    </div>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Custom Laptop
-                                                        </a></div>
-                                                    <span class="price price-dark">
-
-                                                        <ins>$229.00</ins>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f5.jpg')}}" alt="f5"></a>
-                                                    </div>
-                                                    <span class="onsale">-50%</span>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Power Printers
-                                                        </a></div>
-                                                    <span class="price price-dark">
-
-                                                        <ins>$229.00</ins>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="owl-one-row">
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f2.jpg')}}" alt="f2"></a>
-                                                    </div>
-                                                    <span class="onsale">-50%</span>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Era Beats Studio
-                                                        </a></div>
-                                                    <span class="price">
-                                                        <ins>$229.00</ins>
-                                                        <del>$259.00</del>
-                                                    </span>
-                                                    <span class="star-rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <span class="review">5 Review(s)</span>
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f6.jpg')}}" alt="f6"></a>
-                                                    </div>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Poss Headphone
-                                                        </a></div>
-                                                    <span class="price">
-                                                        <ins>$229.00</ins>
-                                                        <del>$259.00</del>
-                                                    </span>
-                                                    <span class="star-rating">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <span class="review">5 Review(s)</span>
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="owl-one-row">
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f3.jpg')}}" alt="f3"></a>
-                                                    </div>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Poss Headphone
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f7.jpg')}}" alt="f7"></a>
-                                                    </div>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                    <span class="onsale">-50%</span>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Pocket RC Drone
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="owl-one-row">
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f4.jpg')}}" alt="f4"></a>
-                                                    </div>
-                                                    <span class="onsale">-50%</span>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Cio Balance
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f8.jpg')}}" alt="f8"></a>
-                                                    </div>
-                                                    <a href="#" class="quick-view">Quick View</a>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">D-Link Omna
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-                                                    <div class="group-btn-hover">
-                                                        <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block-promotion-banner">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-12 padding-right-10">
-                                        <div class="promotion-banner style-2">
-                                            <a href="#" class="banner-img"><img src="{{asset('images/home3/banner5.jpg')}}" alt="banner5"></a>
-                                            <div class="promotion-banner-inner">
-                                                <h4>Laptop Collection</h4>
-                                                <h3>Get <strong>25%</strong> Flat Off</h3>
-                                                <a class="banner-link" href="grid-product.html">Shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 padding-left-10">
-                                        <div class="promotion-banner style-2">
-                                            <a href="#" class="banner-img"><img src="{{asset('images/home3/banner6.jpg')}}" alt="banner6"></a>
-                                            <div class="promotion-banner-inner">
-                                                <h4>Smart Watches Parts</h4>
-                                                <h3>Sale Up To <strong>30%</strong> Off</h3>
-                                                <a class="banner-link" href="grid-product.html">Shop now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block-bestseller-product bestseller-opt-5">
-                                <div class="title-of-section style2">Maybe you like</div>
-                                <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":2}}'>
-                                    <div class="owl-one-row">
-                                        <div class="product-item style2">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb style1">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/b1.jpg')}}" alt="b1"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Blue Smartphone
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                        <span class="onsale">-50%</span>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <a href="#" class="btn-add-to-cart">Add to cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-item style2">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb style1">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/b3.jpg')}}" alt="b3"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Pocket RC Drone
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                        <span class="onnew">new</span>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <a href="#" class="btn-add-to-cart">Add to cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="owl-one-row">
-                                        <div class="product-item style2">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb style1">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/b2.jpg')}}" alt="b2"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Gaming Mouse
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                        <span class="onnew">new</span>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <a href="#" class="btn-add-to-cart">Add to cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-item style2">
-                                            <div class="product-inner equal-elem">
-                                                <div class="product-thumb style1">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/b4.jpg')}}" alt="b4"></a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Nectarine Sport
-                                                        </a></div>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-                                                    <a href="#" class="btn-add-to-cart">Add to cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main><!-- end MAIN -->
-        <!-- FOOTER -->
-        <footer class="site-footer footer-opt-2">
-            <div class="footer-top full-width">
-                <div class="owl-carousel instagram" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":2},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":5}}'>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{asset('images/item-instagram-1.jpg')}}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
+    </div>
+    </main><!-- end MAIN -->
+    <!-- FOOTER -->
+    <footer class="site-footer footer-opt-2">
+        <div class="footer-top full-width">
+            <div class="owl-carousel instagram" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":2},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":5}}'>
+                <div class="item-instagram">
+                    <a href="#">
+                        <img src="{{asset('images/item-instagram-1.jpg')}}" alt="img">
+                    </a>
+                    <span class="text">
+                        <i class="icon fa fa-instagram" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="item-instagram">
+                    <a href="#">
+                        <img src="{{asset('images/item-instagram-2.jpg')}}" alt="img">
+                    </a>
+                    <span class="text">
+                        <i class="icon fa fa-instagram" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="item-instagram">
+                    <a href="#">
+                        <img src="{{asset('images/item-instagram-3.jpg')}}" alt="img">
+                    </a>
+                    <span class="text">
+                        <i class="icon fa fa-instagram" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="item-instagram">
+                    <a href="#">
+                        <img src="{{asset('images/item-instagram-4.jpg')}}" alt="img">
+                    </a>
+                    <span class="text">
+                        <i class="icon fa fa-instagram" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="item-instagram">
+                    <a href="#">
+                        <img src="{{asset('images/item-instagram-5.jpg')}}" alt="img">
+                    </a>
+                    <span class="text">
+                        <i class="icon fa fa-instagram" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column equal-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 equal-elem">
+                        <div class="logo-footer"><img src="{{asset('images/logo-light.png')}}" alt="logo"></div>
+                        <div class="contacts">
+                            <p class="contacts-info">Nullam tristique tortor nibh, in viverra libero sollicitudin ac.
+                                Suspendisse quis lacinia ipsum. Etiam scelerisque sit amet lectus quis lacinia. Sed.</p>
+                            <span class="contacts-info info-address ">218 Fifth Avenue, HeavenTower NewYork City</span>
+                            <span class="contacts-info info-phone">(+68) 123 456 7890</span>
+                            <span class="contacts-info info-support">Hot-Support@Dagon.com</span>
+                        </div>
                     </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{asset('images/item-instagram-2.jpg')}}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
+                    <div class="col-md-2 col-sm-6 equal-elem">
+                        <div class="links">
+                            <h3 class="title-of-section">My account</h3>
+                            <ul>
+                                <li><a href="#">Sign In</a></li>
+                                <li><a href="#">View Cart</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Track My Order</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{asset('images/item-instagram-3.jpg')}}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
+                    <div class="col-md-2 col-sm-6 equal-elem">
+                        <div class="links">
+                            <h3 class="title-of-section">Information</h3>
+                            <ul>
+                                <li><a href="#">Specials</a></li>
+                                <li><a href="#">New products</a></li>
+                                <li><a href="#">Best sellers</a></li>
+                                <li><a href="#">Our stores</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Sitemap</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{asset('images/item-instagram-4.jpg')}}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{asset('images/item-instagram-5.jpg')}}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
+                    <div class="col-md-4 col-sm-6 equal-elem">
+                        <div class="links">
+                            <h3 class="title-of-section">Newsletter</h3>
+                            <span class="span-newsletter">Get notified of new products, limited releases, and more.</span>
+                            <div class="newsletter-form">
+                                <form id="newsletter-validate-detail" class="form subscribe">
+                                    <div class="control">
+                                        <input type="email" placeholder="Enter your email" id="newsletter" name="email" class="input-subscribe">
+                                        <button type="submit" title="Subscribe" class="btn subscribe">
+                                            <span>Sign Up</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="socials">
+                                <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#" class="social"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-column equal-container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 equal-elem">
-                            <div class="logo-footer"><img src="{{asset('images/logo-light.png')}}" alt="logo"></div>
-                            <div class="contacts">
-                                <p class="contacts-info">Nullam tristique tortor nibh, in viverra libero sollicitudin ac.
-                                    Suspendisse quis lacinia ipsum. Etiam scelerisque sit amet lectus quis lacinia. Sed.</p>
-                                <span class="contacts-info info-address ">218 Fifth Avenue, HeavenTower NewYork City</span>
-                                <span class="contacts-info info-phone">(+68) 123 456 7890</span>
-                                <span class="contacts-info info-support">Hot-Support@Dagon.com</span>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-6 equal-elem">
-                            <div class="links">
-                                <h3 class="title-of-section">My account</h3>
-                                <ul>
-                                    <li><a href="#">Sign In</a></li>
-                                    <li><a href="#">View Cart</a></li>
-                                    <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="#">Help</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-6 equal-elem">
-                            <div class="links">
-                                <h3 class="title-of-section">Information</h3>
-                                <ul>
-                                    <li><a href="#">Specials</a></li>
-                                    <li><a href="#">New products</a></li>
-                                    <li><a href="#">Best sellers</a></li>
-                                    <li><a href="#">Our stores</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 equal-elem">
-                            <div class="links">
-                                <h3 class="title-of-section">Newsletter</h3>
-                                <span class="span-newsletter">Get notified of new products, limited releases, and more.</span>
-                                <div class="newsletter-form">
-                                    <form id="newsletter-validate-detail" class="form subscribe">
-                                        <div class="control">
-                                            <input type="email" placeholder="Enter your email" id="newsletter" name="email" class="input-subscribe">
-                                            <button type="submit" title="Subscribe" class="btn subscribe">
-                                                <span>Sign Up</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="socials">
-                                    <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#" class="social"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                    <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        </div>
+        <div class="copyright full-width">
+            <div class="container">
+                <div class="copyright-right">
+                    © Copyright 2020<span> Dagon</span>. All Rights Reserved.
+                </div>
+                <div class="pay-men">
+                    <a href="#"><img src="{{asset('images/general/pay1.jpg')}}" alt="pay1"></a>
+                    <a href="#"><img src="{{asset('images/general/pay2.jpg')}}" alt="pay2"></a>
+                    <a href="#"><img src="{{asset('images/general/pay3.jpg')}}" alt="pay3"></a>
+                    <a href="#"><img src="{{asset('images/general/pay4.jpg')}}" alt="pay4"></a>
                 </div>
             </div>
-            <div class="copyright full-width">
-                <div class="container">
-                    <div class="copyright-right">
-                        © Copyright 2020<span> Dagon</span>. All Rights Reserved.
-                    </div>
-                    <div class="pay-men">
-                        <a href="#"><img src="{{asset('images/general/pay1.jpg')}}" alt="pay1"></a>
-                        <a href="#"><img src="{{asset('images/general/pay2.jpg')}}" alt="pay2"></a>
-                        <a href="#"><img src="{{asset('images/general/pay3.jpg')}}" alt="pay3"></a>
-                        <a href="#"><img src="{{asset('images/general/pay4.jpg')}}" alt="pay4"></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- end FOOTER -->
+        </div>
+    </footer>
+    <!-- end FOOTER -->
     </div>
     <a href="#" id="scrollup" title="Scroll to Top">Scroll</a>
 </body>
