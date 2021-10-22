@@ -74,7 +74,7 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        $brands = $this->categoryService->getAll();
+        $brands = $this->brandService->getAll();
 
         $brand = Brand::find($id);
         $params=[
@@ -93,8 +93,8 @@ class BrandsController extends Controller
      */
     public function update(BrandRequest $request, $id)
     {
-        $this->categoryService->update($request, $id);
-        return redirect()->route('categories.index')->with('status','Cập nhật danh mục sản phẩm thành công!');
+        $this->brandService->update($request, $id);
+        return redirect()->route('brands.index')->with('status','Cập nhật thương hiệu sản phẩm thành công!');
     }
 
     /**
@@ -105,6 +105,10 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $brand = Brand::find($id);
+        // $brand->delete();
+        $this->brandService->destroy($id);
+
+        return redirect()->route('brands.index')->with('status', 'Xóa sản phẩm thành công !');
     }
 }

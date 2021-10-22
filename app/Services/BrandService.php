@@ -27,4 +27,8 @@ class BrandService
     {
         return $this->brandRepository->update($request, $id);
     }
+    public function destroy($id)
+    {
+        return $this->brandRepository->destroy($id);
+    }
 }

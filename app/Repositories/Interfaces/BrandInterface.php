@@ -10,6 +10,6 @@ Interface BrandInterface {
     public function getOne();
     public function store($request);
     public function update(BrandRequest $request, $id);
-    public function destroy();
+    public function destroy($id);
     public function search(); 
 }
