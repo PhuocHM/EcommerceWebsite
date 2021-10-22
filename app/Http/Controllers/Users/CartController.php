@@ -26,7 +26,7 @@ class CartController extends Controller
         $cate_ids = $items->pluck('category_id')->toArray();
 
         $related_items = Products::join('products_images', 'products_images.product_id', '=', 'products.id')
-            ->where('category_id', $cate_ids)
+            ->whereIn('category_id', $cate_ids)
             ->where('type', 1)
             ->get();
 

@@ -157,64 +157,20 @@
                         <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true"
                             data-autoplay="false" data-dots="false" data-loop="true" data-margin="30"
                             data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":4}}'>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r1.jpg') }}" alt="r1"></a>
-                                        </div>
-                                        <span class="onsale">-50%</span>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Modern Watches</a></div>
-                                        <span class="price">
-
-                                            <ins>$229.00</ins>
-
-                                            <del>$259.00</del>
-
-                                        </span>
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             @foreach ($related_items as $related_item)
                             <div class="product-item style1">
                                 <div class="product-inner equal-elem">
                                     <div class="product-thumb">
                                         <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r3.jpg') }}" alt="r3"></a>
+                                            <a href="#"><img src="{{ asset($related_item->image) }}" alt="r3"></a>
                                         </div>
                                         <a href="#" class="quick-view">Quick View</a>
                                     </div>
                                     <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Smartphone 4 GB</a></div>
+                                        <div class="product-name"><a href="#">{{$related_item->name}}</a></div>
                                         <span class="price price-dark">
 
-                                            <ins>$229.00</ins>
+                                            <ins>{{$related_item->price}}</ins>
 
                                         </span>
                                         <span class="star-rating">

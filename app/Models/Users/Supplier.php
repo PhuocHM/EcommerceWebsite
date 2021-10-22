@@ -12,6 +12,6 @@ class Supplier extends Model
     protected $table = 'supplier';
 
     public function product(){
-        return $this->belongsToMany(Products::class, 'stock');
+        return $this->belongsToMany(Products::class, 'stock', 'product_id','supplier_id');
     }
 }
