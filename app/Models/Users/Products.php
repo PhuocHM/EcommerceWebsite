@@ -23,12 +23,12 @@ class Products extends Model
 
     public function attribute()
     {
-        return $this->belongsToMany(Attributes::class, 'product_attributes');
+        return $this->belongsToMany(Attributes::class, 'product_attributes', 'attribute_id', 'product_id');
     }
 
     public function user()
     {
-        return  $this->belongsToMany(User::class, 'wishlist');
+        return  $this->belongsToMany(User::class, 'wishlist', 'product_id','supplier_id');
     }
 
     public function orderItem()
