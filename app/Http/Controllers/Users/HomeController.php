@@ -8,6 +8,7 @@ use App\Models\Users\Products;
 use App\Models\Users\ProductsImages;
 use App\Models\Users\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -42,12 +43,16 @@ class HomeController extends Controller
         $highest_star_product = Comments::all();
         $random_products = Products::join('products_images', 'products.id', 'products_images.product_id')->where('type', '=', 1)
             ->join('comments', 'products.id', 'comments.product_id')->inRandomOrder()->limit(6)->get()->chunk(2);
-        // dd($random_products);
+        $highest_star_products = Comments::select(DB::raw('product_id,count(product_id) as total_comments, AVG(star_value) as avg_star_value,products.name'))
+            ->join('products', 'products.id', 'comments.product_id')
+            ->groupBy('product_id')->orderBy('avg_star_value', 'DESC')->orderBy('total_comments', 'DESC')->get();
+        dd($highest_star_products);
         $params = [
             "products" => $products,
             "new_products" => $new_products,
             "categories" => $tree,
-            "random_products" => $random_products
+            "random_products" => $random_products,
+            // "highest_star_products" => $highest_star_products
         ];
         return view('Website.index', $params);
     }
