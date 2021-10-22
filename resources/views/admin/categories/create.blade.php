@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Add Product Category</h6>
+                <h6 class="mb-0">Thêm Mới Danh Mục</h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -29,10 +29,9 @@
                                         id="convert_slug" placeholder="Slug danh mục">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                     <div class="col-12">
-                                        <label class="form-label">Mô tả</label> 
-                                        <textarea name="description" value=""
-                                            id="ckeditor_category" class="form-control" rows="3"
-                                            style="resize: none">{!! old('description') !!}</textarea>
+                                        <label class="form-label">Mô tả</label>
+                                        <textarea name="description" value="" id="ckeditor_category" class="form-control"
+                                            rows="3" style="resize: none">{!! old('description') !!}</textarea>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label">Parent</label>
