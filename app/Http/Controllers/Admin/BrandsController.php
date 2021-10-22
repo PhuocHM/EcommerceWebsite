@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\BrandRequest;
 use App\Services\BrandService;
 use Illuminate\Http\Request;
+use App\Models\Admin\Brand;
+// use App\Http\Requests\BrandRequest;
 
 class BrandsController extends Controller
 {
@@ -33,7 +37,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.brands.create');
     }
 
     /**
@@ -42,12 +46,13 @@ class BrandsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrandRequest $request)
     {
-        //
+        $this->brandService->store($request);
+        return redirect()->route('brands.index')->with('status','Thêm thương hiệu sản phẩm thành công !');
     }
 
-    /**
+    /** 
      * Display the specified resource.
      *
      * @param  int  $id

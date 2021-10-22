@@ -25,22 +25,18 @@ class BrandRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:brans,name,'.$this->route('brand'),
-            'slug'=>'required',    
-            
-            'description'=>'required',
-            'parent_id'=>'required',
-            'status'=>'required',     
+            'slug'=>'required',      
+            'image'=>'required',
+         
                   
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập tên danh mục',
+            'name.required' => 'Vui lòng nhập tên thương hiệu',
             'name.unique' => 'Tên đã tồn tại',
-            'slug.required' => 'Vui lòng nhập slug danh mục',
-            'description.required' => 'vui lòng nhập mô tả',          
-           
+            'image.required' => 'Vui lòng nhập slug danh mục',               
         ];
     }
 }
