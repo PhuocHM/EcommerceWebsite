@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Users\Cart;
 use App\Models\Users\CartItem;
+use App\Models\Users\Categories;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -16,13 +17,21 @@ class CartController extends Controller
      */
     public function index()
     {
-        $items = Cart::join('cart_items','carts.id', '=', 'cart_items.cart_id')
-        ->join('products', 'cart_items.product_id', '=', 'products.id')
-        ->join('products_images', 'products_images.product_id', '=', 'products.id')
-        ->where('products.');
+        $items = Cart::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
+            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('products_images', 'products_images.product_id', '=', 'products.id')
+            ->where('user_id', 1)
+            ->where('type', 1)
+            ->get();
 
+        $related_categories = 
 
-        return view('Website.shopping-cart');
+        $related_items = Categories::all();
+
+        $param = [
+            'items' => $items,
+        ];
+        return view('Website.shopping-cart', $param);
     }
 
     /**

@@ -82,65 +82,39 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="tb-image"><a href="#" class="item-photo"><img
-                                                            src="{{ asset('images/cart1.jpg') }}" alt="cart"></a></td>
-                                                <td class="tb-product">
-                                                    <div class="product-name"><a href="#">Modern Watches</a></div>
-                                                </td>
-                                                <td class="tb-price">
-                                                    <span class="price">$229.00</span>
-                                                </td>
-                                                <td class="tb-qty">
-                                                    <div class="quantity">
-                                                        <div class="buttons-added">
-                                                            <input type="text" value="1"
-                                                                title="Qty" class="input-text qty text" size="1">
-                                                            <a href="#" class="sign plus"><i
-                                                                    class="fa fa-plus"></i></a>
-                                                            <a href="#" class="sign minus"><i
-                                                                    class="fa fa-minus"></i></a>
+                                            @foreach ($items as $item)
+                                                <tr>
+                                                    <td class="tb-image"><a href="#" class="item-photo"><img
+                                                                src="{{ asset($item->image) }}" alt="cart"></a>
+                                                    </td>
+                                                    <td class="tb-product">
+                                                        <div class="product-name"><a
+                                                                href="#">{{ $item->name . ' ' . $item->code }}</a></div>
+                                                    </td>
+                                                    <td class="tb-price">
+                                                        <span class="price">{{number_format($item->price)}}</span>
+                                                    </td>
+                                                    <td class="tb-qty">
+                                                        <div class="quantity">
+                                                            <div class="buttons-added">
+                                                                <input type="text" value="1" title="Qty"
+                                                                    class="input-text qty text" size="1">
+                                                                <a href="#" class="sign plus"><i
+                                                                        class="fa fa-plus"></i></a>
+                                                                <a href="#" class="sign minus"><i
+                                                                        class="fa fa-minus"></i></a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="tb-total">
-                                                    <span class="price">$229.00</span>
-                                                </td>
-                                                <td class="tb-remove">
-                                                    <a href="#" class="action-remove"><span><i class="flaticon-close"
-                                                                aria-hidden="true"></i></span></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="tb-image"><a href="#" class="item-photo"><img
-                                                            src="{{ asset('images/cart2.jpg') }}" alt="cart"></a>
-                                                <td class="tb-product">
-                                                    <div class="product-name"><a href="#">Photo Camera
-                                                        </a></div>
-                                                </td>
-                                                <td class="tb-price">
-                                                    <span class="price">$229.00</span>
-                                                </td>
-                                                <td class="tb-qty">
-                                                    <div class="quantity">
-                                                        <div class="buttons-added">
-                                                            <input type="text" value="1" title="Qty"
-                                                                class="input-text qty text" size="1">
-                                                            <a href="#" class="sign plus"><i
-                                                                    class="fa fa-plus"></i></a>
-                                                            <a href="#" class="sign minus"><i
-                                                                    class="fa fa-minus"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="tb-total">
-                                                    <span class="price">$229.00</span>
-                                                </td>
-                                                <td class="tb-remove">
-                                                    <a href="#" class="action-remove"><span><i class="flaticon-close"
-                                                                aria-hidden="true"></i></span></a>
-                                                </td>
-                                            </tr>
+                                                    </td>
+                                                    <td class="tb-total">
+                                                        <span class="price">{{ number_format($item->price)   }}</span>
+                                                    </td>
+                                                    <td class="tb-remove">
+                                                        <a href="#" class="action-remove"><span><i class="flaticon-close"
+                                                                    aria-hidden="true"></i></span></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
