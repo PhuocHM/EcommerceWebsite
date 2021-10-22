@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Users\Cart;
-use App\Models\Users\CartItem;
-use App\Models\Users\Categories;
+use App\Models\Users\Products;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -24,12 +23,16 @@ class CartController extends Controller
             ->where('type', 1)
             ->get();
 
-        $related_categories = 
+        $cate_ids = $items->pluck('category_id')->toArray();
 
-        $related_items = Categories::all();
+        $related_items = Products::join('products_images', 'products_images.product_id', '=', 'products.id')
+            ->where('category_id', $cate_ids)
+            ->where('type', 1)
+            ->get();
 
         $param = [
             'items' => $items,
+            'related_items' => $related_items,
         ];
         return view('Website.shopping-cart', $param);
     }
