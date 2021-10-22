@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\Eloquents\BrandRepository;
@@ -6,8 +7,10 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Requests\BrandRequest;
 
 class BrandService
-{   private $brandRepository;
-    public function __construct(BrandRepository $brandRepository){
+{
+    private $brandRepository;
+    public function __construct(BrandRepository $brandRepository)
+    {
         $this->brandRepository = $brandRepository;
     }
 
@@ -15,13 +18,13 @@ class BrandService
     {
         return $this->brandRepository->getAll();
     }
-    public function store(Request $request){
-       
+    public function store($request)
+    {
+
         return $this->brandRepository->store($request);
     }
     public function update($request, $id)
     {
         return $this->brandRepository->update($request, $id);
     }
- 
 }

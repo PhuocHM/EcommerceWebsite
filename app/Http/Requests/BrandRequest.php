@@ -24,7 +24,7 @@ class BrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:brans,name,'.$this->route('brand'),
+            'name'=>'required|unique:brands,name,'.$this->route('brand'),
             'slug'=>'required',      
             'image'=>'required',               
         ];

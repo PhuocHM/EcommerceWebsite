@@ -7,6 +7,8 @@ use App\Http\Requests\BrandRequest;
 use App\Services\BrandService;
 use Illuminate\Http\Request;
 use App\Models\Admin\Brand;
+
+
 // use App\Http\Requests\BrandRequest;
 
 class BrandsController extends Controller
@@ -37,10 +39,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        // $brands = Brand::orderBy('id', 'DESC')->get();
-        // $params = [
-        //     'brands' => $brands,
-        // ];
+        
         return view('admin.brands.create');
     }
 
@@ -75,7 +74,14 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brands = $this->categoryService->getAll();
+
+        $brand = Brand::find($id);
+        $params=[
+            'brands' => $brands,
+            'brand' => $brand
+        ];
+        return view('admin.brands.edit', $params);
     }
 
     /**
@@ -85,9 +91,10 @@ class BrandsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id)
     {
-        //
+        $this->categoryService->update($request, $id);
+        return redirect()->route('categories.index')->with('status','Cập nhật danh mục sản phẩm thành công!');
     }
 
     /**

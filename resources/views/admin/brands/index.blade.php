@@ -54,8 +54,7 @@
                                                         <td>
                                                             <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
                                                                 style="width: 150px">
-                                                        </td>
-                                                      
+                                                        </td>        
                                                         <td>{{ date('d-m-Y', strtotime($brand->created_at)) }}</td>
                                                         <td>
                                                             @if ($brand->updated_at != '')

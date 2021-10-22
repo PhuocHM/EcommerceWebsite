@@ -15,6 +15,7 @@ class BrandRepository implements BrandInterface {
 
     }
     public function store( $request){
+        
         $brand = new Brand();
         $brand->name    = $request->name;
         $brand->slug    = $request->slug;
@@ -31,7 +32,7 @@ class BrandRepository implements BrandInterface {
         }
       
         $brand->created_at = Carbon::now('Asia/Ho_Chi_Minh');
-    
+
         $brand->save();
     }
     public function update($request, $id){
