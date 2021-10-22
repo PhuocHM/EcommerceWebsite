@@ -23,7 +23,7 @@ class CategoriesController extends Controller
         $categories = $this->categoryService->getAll();
         $categories_arr = $categories->pluck('name','id')->toArray();
         $categories_arr = ['Danh mục cha'] + $categories_arr;
-    
+       
 
         $params = [
             'categories' => $categories,
