@@ -39,7 +39,7 @@ class CategoriesController extends Controller
     public function create()
     {
         $categories= Category::orderBy('id','DESC')->get();
-        // dd($category);
+       
         return view('admin.categories.create')->with(compact('categories'));
     }
 

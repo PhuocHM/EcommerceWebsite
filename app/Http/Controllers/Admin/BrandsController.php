@@ -37,6 +37,10 @@ class BrandsController extends Controller
      */
     public function create()
     {
+        // $brands = Brand::orderBy('id', 'DESC')->get();
+        // $params = [
+        //     'brands' => $brands,
+        // ];
         return view('admin.brands.create');
     }
 
@@ -49,7 +53,7 @@ class BrandsController extends Controller
     public function store(BrandRequest $request)
     {
         $this->brandService->store($request);
-        return redirect()->route('brands.index')->with('status','Thêm thương hiệu sản phẩm thành công !');
+        return redirect()->route('brands.index')->with('status', 'Thêm thương hiệu sản phẩm thành công !');
     }
 
     /** 
