@@ -16,13 +16,19 @@ class CartController extends Controller
      */
     public function index()
     {
-        $items = Cart::join('cart_items','carts.id', '=', 'cart_items.cart_id')
-        ->join('products', 'cart_items.product_id', '=', 'products.id')
-        ->join('products_images', 'products_images.product_id', '=', 'products.id')
-        ->where('products.');
+        $items = Cart::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
+            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('products_images', 'products_images.product_id', '=', 'products.id')
+            ->where('user_id', 1)
+            ->where('type', 1)
+            ->get();
 
+        $related_items = 
 
-        return view('Website.shopping-cart');
+        $param = [
+            'items' => $items,
+        ];
+        return view('Website.shopping-cart', $param);
     }
 
     /**
