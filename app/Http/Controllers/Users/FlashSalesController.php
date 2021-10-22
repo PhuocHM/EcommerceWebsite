@@ -14,7 +14,7 @@ class FlashSalesController extends Controller
      */
     public function index()
     {
-        return view('list-products');
+        return view('Website.list-product');
     }
 
     /**

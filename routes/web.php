@@ -23,7 +23,6 @@ Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);
 Route::resource('trending', TrendingProductController::class);
 
-Route::resource('new-categories', NewCategoriesController::class);
 Route::resource('flash-sales', FlashSalesController::class);
 Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
