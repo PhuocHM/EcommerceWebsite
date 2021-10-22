@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Thuộc danh mục</label>
                                     <select name="parent_id" class="form-control input-sm m-bot15">
-                                        <option value="0">----Danh mục----</option>
+                                        <option value="0">---Danh mục cha---</option>
                                         @foreach ($categories as $key => $val)
                                             @if ($val->id != $category->id)
                                                 <option {{ $val->id == $category->parent_id ? 'selected' : '' }}
