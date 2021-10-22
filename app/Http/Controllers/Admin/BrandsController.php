@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BrandService;
 use Illuminate\Http\Request;
 
 class BrandsController extends Controller
 {
+    private $brandService;
+    public function __construct(BrandService $brandService)
+    {
+        $this->brandService = $brandService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,11 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        //
+        $brands = $this->brandService->getAll();
+        $params = [
+            'brands' => $brands,
+        ];
+        return view('admin.brands.index', $params);
     }
 
     /**
@@ -23,7 +33,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
