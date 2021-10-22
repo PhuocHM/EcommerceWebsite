@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Users\Products;
+use App\Models\Users\ProductsImages;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,8 +15,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $items = Products::orderBy('created_at', 'DESC')->limit(3)->get();
-        dd($items);
+        $items = ProductsImages::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->get();
+        // dd($items);
+        $params = [
+            "product"
+        ];
         return view('Website.index');
     }
 
