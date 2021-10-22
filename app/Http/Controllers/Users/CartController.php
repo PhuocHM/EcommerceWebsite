@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Users\Cart;
 use App\Models\Users\CartItem;
+use App\Models\Users\Categories;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -23,7 +24,9 @@ class CartController extends Controller
             ->where('type', 1)
             ->get();
 
-        $related_items = 
+        $related_categories = 
+
+        $related_items = Categories::all();
 
         $param = [
             'items' => $items,
