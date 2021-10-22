@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\Products;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $items = Products::orderBy('created_at', 'DESC')->limit(3)->get();
+        dd($items);
         return view('Website.index');
     }
 
