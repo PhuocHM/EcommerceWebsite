@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquents;
 
-use App\Models\Category;
+use App\Models\Admin\Category;
 use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class CategoryRepository implements CategoryInterface {

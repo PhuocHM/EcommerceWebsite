@@ -18,7 +18,7 @@ class CreateOrderTable extends Migration
             $table->string('code');
             $table->unsignedInteger('customer_id');
             $table->string('payment_method');
-            $table->integer('total_price');
+            $table->decimal('total_price');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

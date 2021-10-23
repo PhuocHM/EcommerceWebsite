@@ -14,12 +14,12 @@ use App\Http\Controllers\admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('Website.index');
-});
-// Route::get('login', function () {
-//     return view('Website.login');
+// Route::get('/', function () {
+//     return view('Website.index');
 // });
+Route::get('login', function () {
+    return view('Website.login');
+});
 Route::get('category', function () {
     return view('Website.grid-product');
 });
@@ -36,8 +36,6 @@ Route::get('admin/home', function () {
     return view('admin.dashboard.home');
 });
 Route::group(['prefix'=>'admin'],function() {
-
     Route::resource('/categories',CategoriesController::class);
-    
 });
 

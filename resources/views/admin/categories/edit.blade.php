@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Chỉnh sửa danh mục </h6>
+                <h6 class="mb-0">Chỉnh Sửa Danh Mục </h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -11,15 +11,16 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <div class="col-12  d-flex">
+                <div class="col-12 col-lg-8 mx-auto d-flex">
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
-                            <form method="POST" class="row g-3" action="{{ route('categories.update', $category->id) }}">
+                            <form method="POST" class="row g-3"
+                                action="{{ route('categories.update', $category->id) }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
-                                    <input type="text" class="form-control" placeholder="Category name" name="name"
+                                    <input type="text" class="form-control" placeholder="Tên danh mục" name="name"
                                         value="{{ $category->name }}">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
@@ -31,17 +32,19 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Mô tả</label>
-                                    <textarea class="form-control" rows="3" cols="3" name="description"
-                                        placeholder="Product Description"> {{ $category->description }}</textarea>
+                                    <textarea class="form-control" rows="3" name="description"
+                                        id="ckeditor_category"
+                                        style="resize: none"> {!! $category->description !!}</textarea>
                                     <span style="color:red;">@error('description'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Thuộc danh mục</label>
-                                      <select name="parent_id" class="form-control input-sm m-bot15">
-                                        <option value="0">-----------Danh mục cha-----------</option>
-                                        @foreach($categories as $key => $val)
-                                            @if($val->id != $category->id)
-                                                <option {{$val->id==$category->parent_id ? 'selected' : '' }} value="{{$val->id}}">{{$val->name}}</option>
+                                    <select name="parent_id" class="form-control input-sm m-bot15">
+                                        <option value="0">---Danh mục cha---</option>
+                                        @foreach ($categories as $key => $val)
+                                            @if ($val->id != $category->id)
+                                                <option {{ $val->id == $category->parent_id ? 'selected' : '' }}
+                                                    value="{{ $val->id }}">{{ $val->name }}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -60,12 +63,12 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col-3">
                                     <div class="d-grid">
                                         <button class="btn btn-primary">Cập nhật</button>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-2">
                                     <div class="d-grid">
                                         <a href="{{ route('categories.index') }}" class="btn btn-danger">Trở về </a>
                                     </div>

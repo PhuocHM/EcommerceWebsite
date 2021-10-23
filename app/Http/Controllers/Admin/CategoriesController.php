@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Admin\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
@@ -53,7 +53,7 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $categories =$this->categoryService->store($request);
-        return redirect()->back()->with('status','Thêm danh mục sản phẩm thành công');
+        return redirect()->route('categories.index')->with('status','Thêm danh mục sản phẩm thành công !');
     }
 
     /**
@@ -96,7 +96,7 @@ class CategoriesController extends Controller
     {
         
         $this->categoryService->update($request, $id);
-        return redirect()->route('categories.index')->with('success','Cập nhật danh mục sản phẩm thành công!');    
+        return redirect()->route('categories.index')->with('status','Cập nhật danh mục sản phẩm thành công!');    
     }
 
     /**
@@ -107,5 +107,9 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
+        $category = Category::find($id);
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
     }
 }
