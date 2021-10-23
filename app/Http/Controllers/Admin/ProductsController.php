@@ -27,7 +27,7 @@ class ProductsController extends Controller
     {
         $products = $this->productService->getAll();
         $params = [
-            'products' => $products,
+            'products' => $products
         ];
         return view('admin.products.index', $params);
     }

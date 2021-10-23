@@ -7,7 +7,7 @@ use App\Http\Requests\ProductRequest;
 
 class ProductService
 {  
-    private $ProductRepository;
+    private $productRepository;
     public function __construct(ProductRepository $productRepository){
         $this->productRepository = $productRepository;
     }
