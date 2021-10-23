@@ -21,7 +21,7 @@
             <ul>
                 <li> <a href="/admin/categories"><i class="bi bi-arrow-right-short"></i> Danh mục sản phẩm</a>
                 </li>
-                <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
+                <li> <a href="/admin/products"><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                 </li>
                
             </ul>
