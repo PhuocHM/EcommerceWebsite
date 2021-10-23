@@ -23,6 +23,8 @@
                 </li>
                 <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                 </li>
+                <li> <a href="/admin/attributes"><i class="bi bi-arrow-right-short"></i>Thuộc tính</a>
+                </li>
                
             </ul>
         </li>

@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Attributes extends Model
 {
     use HasFactory;
     protected $dates = [
@@ -14,12 +14,13 @@ class Category extends Model
         // your other new column
     ];
     protected $fillable = [
-        'id', 'name', 'slug', 'description', 'parent_id', 'status'
+        'name', 'slug', 'category_id'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'categories';
+    protected $table = 'attributes';
     public $timestamps = true;
-    public function attributes(){
-        return $this->hasMany('App\Models\Admin\Attributes');
+
+    public function category(){
+        return $this->belongsTo('App\Models\Admin\Category','category_id','id');
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\Admin\AttributesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,5 +38,6 @@ Route::get('admin/home', function () {
 });
 Route::group(['prefix'=>'admin'],function() {
     Route::resource('/categories',CategoriesController::class);
+    Route::resource('/attributes',AttributesController::class);
 });
 
