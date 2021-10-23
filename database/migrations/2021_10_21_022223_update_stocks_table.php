@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateStockTable extends Migration
+class UpdateStocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateStockTable extends Migration
      */
     public function up()
     {
-        Schema::table('stock', function (Blueprint $table) {
-            $table->foreign('supplier_id')->references('id')->on('supplier');
+        Schema::table('stocks', function (Blueprint $table) {
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 
@@ -25,7 +25,7 @@ class UpdateStockTable extends Migration
      */
     public function down()
     {
-        Schema::table('stock', function (Blueprint $table) {
+        Schema::table('stocks', function (Blueprint $table) {
             //
         });
     }
