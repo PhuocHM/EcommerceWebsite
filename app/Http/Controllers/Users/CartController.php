@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Users\Carts;
 use App\Models\Users\Products;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -55,7 +56,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**

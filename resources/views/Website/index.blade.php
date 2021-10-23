@@ -377,7 +377,7 @@
                                                     <div class="group-btn-hover">
                                                         <div class="inner">
                                                             <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                            <a href="#" class="add-to-cart">Add to cart</a>
+                                                            <button type="button" class="add-to-cart" onclick="addToCart({{ $product->product_id }});">Add to cart</button>
                                                             <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
@@ -455,7 +455,7 @@
                                                         <span class="review">5 Review(s)</span>
 
                                                     </span>
-                                                    <a href="#" class="btn-add-to-cart">Add to cart</a>
+                                                    <button type="button" onclick="addToCart({{$product->product_id}})" class="btn-add-to-cart">Add to cart</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -599,4 +599,27 @@
     </div>
     <a href="#" id="scrollup" title="Scroll to Top">Scroll</a>
 </body>
+@endsection
+@section('script')
+<script>
+    function addToCart(product_id) {
+        var url = `{{ route('cart.addToCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: {
+                product_id: product_id
+                , user_id: 1
+            }
+            , success: function(response) {
+                if (response.success) {
+                    console.log('123')
+                } else {
+                    // 
+                }
+            }
+        })
+    }
+
+</script>
 @endsection

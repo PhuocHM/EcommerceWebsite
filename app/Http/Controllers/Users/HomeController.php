@@ -9,6 +9,7 @@ use App\Models\Users\ProductImage;
 use App\Models\Users\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Users\Carts;
 
 class HomeController extends Controller
 {
@@ -52,7 +53,6 @@ class HomeController extends Controller
             ->join('products', 'products.id', 'comments.product_id')
             ->join('users', 'users.id', 'comments.user_id')
             ->limit(4)->get();
-     
         $params = [
             "products" => $products,
             "new_products" => $new_products,
@@ -83,6 +83,11 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    public function addToCart(Request $request)
+    {
+        $cart = new Carts;
+        return response()->json(['success' => 'Product id : ' . $request->product_id . ' and user id : ' . $request->user_id]);
     }
 
     /**
