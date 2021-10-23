@@ -14,7 +14,12 @@ class Products extends Model
 
     public function coverImage()
     {
-        return $this->hasMany(ProductImage::class, 'id', 'product_id')->where('type', '=', 1);
+        return $this->hasMany(ProductImage::class,'id' ,'product_id')->where('type', '=', 1);
+    }
+
+    public function cover2Image()
+    {
+        return $this->hasMany(ProductImage::class ,'product_id')->where('type', '=', 1);
     }
 
     public function image()
@@ -24,8 +29,10 @@ class Products extends Model
 
     public function comment()
     {
-        return $this->hasMany(Comments::class);
+        return $this->hasMany(Comments::class, 'product_id');
     }
+
+
 
     public function attribute()
     {

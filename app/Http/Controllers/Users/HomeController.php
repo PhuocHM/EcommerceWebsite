@@ -56,7 +56,20 @@ class HomeController extends Controller
             ->join('users', 'users.id', 'comments.user_id')
             ->limit(4)->get();
         // dd($highest_star_products);
-        $sales_items = Products::with('coverImage', 'discount')->get();
+        $data = [];
+        $sales_items = Products::with('cover2Image', 'discount', 'comment')->get()
+            ->each(function ($item) use (&$data) {
+                $item1 = $item->toArray();
+                if ($item->comment->count('star_value') > 0) {
+                    $avg = ($item->comment->sum('star_value')) /  ($item->comment->count('star_value'));
+                } else {
+                    $avg = 5;
+                }
+                $item1['rate'] = $avg;
+                array_push($data, $item1);
+            });
+      
+
         $params = [
             "products" => $products,
             "new_products" => $new_products,
@@ -64,7 +77,7 @@ class HomeController extends Controller
             "random_products" => $random_products,
             "highest_star_products" => $highest_star_products,
             "latest_comments" => $latest_comments,
-            "sales_items" => $sales_items
+            "sales_items" => $data
         ];
         return view('Website.index', $params);
     }
