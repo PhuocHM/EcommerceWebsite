@@ -52,7 +52,7 @@ class HomeController extends Controller
             ->join('products', 'products.id', 'comments.product_id')
             ->join('users', 'users.id', 'comments.user_id')
             ->limit(4)->get();
-        // dd($latest_comments);
+     
         $params = [
             "products" => $products,
             "new_products" => $new_products,
