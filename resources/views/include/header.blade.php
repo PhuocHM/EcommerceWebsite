@@ -11,23 +11,28 @@
             <ul class="nav-top-right dagon-nav">
                 <li class="menu-item-has-children">
                     <a href="#" class="dropdown-toggle">
-                        <img src="{{asset('images/general/l1.jpg')}}" alt="flag">English
+                        <img src="{{ asset('images/general/l1.jpg') }}" alt="flag">English
                     </a>
                     <ul class="submenu parent-megamenu">
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{asset('images/general/l1.jpg')}}" alt="flag">English</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l1.jpg') }}"
+                                    alt="flag">English</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{asset('images/general/l2.jpg')}}" alt="flag">Hungary</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l2.jpg') }}"
+                                    alt="flag">Hungary</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{asset('images/general/l3.jpg')}}" alt="flag">German</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l3.jpg') }}"
+                                    alt="flag">German</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{asset('images/general/l4.jpg')}}" alt="flag">French</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l4.jpg') }}"
+                                    alt="flag">French</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{asset('images/general/l5.jpg')}}" alt="flag">Canada</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l5.jpg') }}"
+                                    alt="flag">Canada</a>
                         </li>
                     </ul>
                 </li>
@@ -58,7 +63,7 @@
                 <div class="col-md-2 nav-left">
                     <!-- logo -->
                     <strong class="logo">
-                        <a href="index.html"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
+                        <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                     </strong><!-- logo -->
                 </div>
                 <div class="col-md-8 nav-mind">
@@ -66,7 +71,8 @@
                     <div class="block-search">
                         <div class="block-content">
                             <div class="categori-search  ">
-                                <select title="categories" data-placeholder="All Categories" class="chosen-select categori-search-option">
+                                <select title="categories" data-placeholder="All Categories"
+                                    class="chosen-select categori-search-option">
                                     <option value="">All Categories</option>
                                     <optgroup label="LifeStyle">
                                         <option>Cell Phones</option>
@@ -94,7 +100,8 @@
                                 <form>
                                     <div class="box-group">
                                         <input type="text" class="form-control" placeholder="Search keyword here...">
-                                        <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
+                                        <button class="btn btn-search" type="button"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -123,7 +130,7 @@
 
                             <span class="counter qty">
 
-                                <span class="cart-icon"><img src="{{asset('images/cart.png')}}" alt="#"></span>
+                                <span class="cart-icon"><img src="{{ asset('images/cart.png') }}" alt="#"></span>
 
                                 <span class="counter-number">5</span>
 
@@ -144,42 +151,27 @@
                                     </div>
                                     <div class="minicart-items-wrapper">
                                         <ol class="minicart-items">
-                                            <li class="product-inner">
-                                                <div class="product-thumb style1">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home1/c1.jpg')}}" alt="c1"></a>
+                                            {{-- @foreach ($cart_items as $item)
+                                                <li class="product-inner">
+                                                    <div class="product-thumb style1">
+                                                        <div class="thumb-inner">
+                                                            <a href="#"><img src="{{ asset($item->image) }}"
+                                                                    alt="c1"></a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Notebook Pro
-                                                        </a></div>
-                                                    <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                                    <span class="price price-dark">
+                                                    <div class="product-innfo">
+                                                        <div class="product-name"><a href="#">{{$item->name}}
+                                                            </a></div>
+                                                        <a href="#" class="remove"><i class="fa fa-times"
+                                                                aria-hidden="true"></i></a>
+                                                        <span class="price price-dark">
 
-                                                        <ins>$229.00</ins>
+                                                            <ins>{{$item->price}}</ins>
 
-                                                    </span>
-                                                </div>
-                                            </li>
-                                            <li class="product-inner">
-                                                <div class="product-thumb style1">
-                                                    <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home1/c2.jpg')}}" alt="c2"></a>
+                                                        </span>
                                                     </div>
-                                                </div>
-                                                <div class="product-innfo">
-                                                    <div class="product-name"><a href="#">Bluetooth Speaker
-                                                        </a></div>
-                                                    <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            @endforeach --}}
                                         </ol>
                                     </div>
                                     <div class="subtotal">
@@ -189,7 +181,8 @@
                                     <div class="actions">
                                         <div class="row">
                                             <div class="col-6">
-                                                {{-- <a class="btn btn-viewcart" href="{{ route('cart.index')}}">View cart</a> --}}
+                                                <a class="btn btn-viewcart" href="{{ route('cart.index') }}">View
+                                                    cart</a>
                                             </div>
                                             <div class="col-6">
                                                 <a class="btn btn-checkout" href="checkout.html">Checkout</a>
@@ -201,7 +194,8 @@
                         </div>
                     </div><!-- block mini cart -->
                     <a href="#" class="hidden-md search-hidden"><span class="flaticon-magnifying-glass"></span></a>
-                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o"
+                            aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -225,7 +219,8 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="#" class="title-template transport hidden-sm"><i class="far fa-building"></i>Hệ thống showroom</a>
+                    <a href="#" class="title-template transport hidden-sm"><i class="far fa-building"></i>Hệ thống
+                        showroom</a>
                 </div>
             </div>
         </div>

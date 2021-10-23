@@ -203,7 +203,7 @@
                             </div>
                             <div class="col-md-9 col-sm-8 site-main-main">
                                 <div class="block-top-categori">
-                                    <div class="title-of-section">New Categories</div>
+                                    <div class="title-of-section">Sản phẩm mới nhất</div>
                                     <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false"
                                         data-dots="false" data-loop="true" data-margin="20"
                                         data-responsive='{"0":{"items":1},"480":{"items":2},"640":{"items":3},"768":{"items":2},"992":{"items":3},"1200":{"items":4}}'>
@@ -273,7 +273,8 @@
                                                                     @endfor
                                                                 </span>
                                                             </div>
-                                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
+                                                            <button onclick="addToCart({{ $sales_item['id'] }})"
+                                                                class="btn-add-to-cart">Add to cart</a>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -311,17 +312,9 @@
                                                                 </span>
                                                                 <span class="star-rating">
 
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                    <span class="review">5 Review(s)</span>
+                                                                    @for ($i = 0; $i < $product->avg_star_value; $i++)
+                                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    @endfor
 
                                                                 </span>
                                                                 <div class="group-btn-hover">
@@ -347,32 +340,7 @@
 
                                     </div>
                                 </div>
-                                <div class="block-promotion-banner">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12 padding-right-10">
-                                            <div class="promotion-banner style-2">
-                                                <a href="#" class="banner-img"><img
-                                                        src="{{ asset('images/home3/banner5.jpg') }}" alt="banner5"></a>
-                                                <div class="promotion-banner-inner">
-                                                    <h4>Laptop Collection</h4>
-                                                    <h3>Get <strong>25%</strong> Flat Off</h3>
-                                                    <a class="banner-link" href="grid-product.html">Shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 padding-left-10">
-                                            <div class="promotion-banner style-2">
-                                                <a href="#" class="banner-img"><img
-                                                        src="{{ asset('images/home3/banner6.jpg') }}" alt="banner6"></a>
-                                                <div class="promotion-banner-inner">
-                                                    <h4>Smart Watches Parts</h4>
-                                                    <h3>Sale Up To <strong>30%</strong> Off</h3>
-                                                    <a class="banner-link" href="grid-product.html">Shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="block-bestseller-product bestseller-opt-5">
                                     <div class="title-of-section style2">Maybe you like</div>
                                     <div class="owl-carousel nav-style2 equal-container" data-nav="true"

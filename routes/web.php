@@ -29,4 +29,4 @@ Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
 
 Route::resource('cart', CartController::class);
-Route::GET('cart', [HomeController::class, 'addToCart'])->name('cart.addToCart');
+Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');

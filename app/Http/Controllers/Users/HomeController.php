@@ -46,16 +46,18 @@ class HomeController extends Controller
         }
         $random_products = Products::join('product_image', 'products.id', 'product_image.product_id')->where('type', '=', 1)
             ->join('comments', 'products.id', 'comments.product_id')->inRandomOrder()->limit(6)->get()->chunk(2);
+
         $highest_star_products = Products::select(DB::raw('products.name,products.price,product_id,count(product_id) as total_comments, AVG(star_value) as avg_star_value'))
             ->join('comments', 'products.id', 'comments.product_id')
             ->groupBy('product_id')->orderBy('avg_star_value', 'DESC')->orderBy('total_comments', 'DESC')->limit(6)->get()->chunk(2);
+
         $latest_comments = Comments::select('star_value', 'users.name as user_name', 'image', 'products.name', 'comments.created_at', 'content')
             ->orderBy('comments.created_at', 'DESC')
             ->join('product_image', 'product_image.id', 'comments.product_id')
             ->join('products', 'products.id', 'comments.product_id')
             ->join('users', 'users.id', 'comments.user_id')
             ->limit(4)->get();
-        // dd($highest_star_products);
+
         $data = [];
         $sales_items = Products::with('cover2Image', 'discount', 'comment')->get()
             ->each(function ($item) use (&$data) {
@@ -68,7 +70,13 @@ class HomeController extends Controller
                 $item1['rate'] = $avg;
                 array_push($data, $item1);
             });
-      
+
+        // $cart_items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
+        //     ->join('products', 'cart_items.product_id', '=', 'products.id')
+        //     ->join('product_image', 'product_image.product_id', '=', 'products.id')
+        //     ->where('user_id', 1)
+        //     ->where('type', 1)
+        //     ->get();
 
         $params = [
             "products" => $products,
@@ -77,7 +85,8 @@ class HomeController extends Controller
             "random_products" => $random_products,
             "highest_star_products" => $highest_star_products,
             "latest_comments" => $latest_comments,
-            "sales_items" => $data
+            "sales_items" => $data,
+            // "cart_items" => $cart_items,
         ];
         return view('Website.index', $params);
     }
