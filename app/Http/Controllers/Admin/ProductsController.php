@@ -4,13 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\ProductService;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Brand;
 
 use Carbon\Carbon;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
+    private $productService;
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +25,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $list_product = Product::with('category')->orderBy('id','DESC')->get();
-        // // Có thể thay thế như này
-        // // $item= Danhmuctruyen::all;
-        // // $param=['item'=>$item];
-        // return view('admin.product.index')->with(compact('list_product'));
+        $products = $this->productService->getAll();
+        $params = [
+            'products' => $products,
+        ];
+        return view('admin.products.index', $params);
     }
 
     /**
@@ -32,7 +39,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
