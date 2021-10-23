@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Users\OrderItems;
 
-class OrderItemSeeder extends Seeder
+class OrderItemsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

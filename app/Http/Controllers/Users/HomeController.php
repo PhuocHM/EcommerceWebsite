@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\Users\Categories;
 use App\Models\Users\Products;
-use App\Models\Users\ProductsImages;
+use App\Models\Users\ProductImage;
 use App\Models\Users\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,8 +20,8 @@ class HomeController extends Controller
     public function index()
     {
         // Hiện tại mối quan hệ đang bị lỗi ... Không xuất hình được ở rated product và comments
-        $products = ProductsImages::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
-        $new_products = ProductsImages::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
+        $products = ProductImage::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
+        $new_products = ProductImage::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
         $categories = Categories::all();
         $tree = [];
         foreach ($categories as $key => $category) {

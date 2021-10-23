@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Users\ProductAttributes;
+use App\Models\Users\ProductAttribute;
 
-class ProductAttributesSeeder extends Seeder
+class ProductAttributeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ProductAttributesSeeder extends Seeder
      */
     public function run()
     {
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 1;
         $item->product_id = 1;
         $item->attribute_id = 1;
@@ -23,7 +23,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 2;
         $item->product_id = 1;
         $item->attribute_id = 2;
@@ -32,7 +32,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 3;
         $item->product_id = 1;
         $item->attribute_id = 3;
@@ -41,7 +41,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 4;
         $item->product_id = 2;
         $item->attribute_id = 4;
@@ -50,7 +50,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 5;
         $item->product_id = 1;
         $item->attribute_id = 5;
@@ -59,7 +59,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 6;
         $item->product_id = 1;
         $item->attribute_id = 6;
@@ -68,7 +68,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 7;
         $item->product_id = 1;
         $item->attribute_id = 7;
@@ -77,7 +77,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 8;
         $item->product_id = 1;
         $item->attribute_id = 8;
@@ -86,7 +86,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 9;
         $item->product_id = 1;
         $item->attribute_id = 9;
@@ -95,7 +95,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 10;
         $item->product_id = 1;
         $item->attribute_id = 10;
@@ -104,7 +104,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 11;
         $item->product_id = 1;
         $item->attribute_id = 11;
@@ -113,7 +113,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 12;
         $item->product_id = 1;
         $item->attribute_id = 12;
@@ -122,7 +122,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 13;
         $item->product_id = 1;
         $item->attribute_id = 13;
@@ -131,7 +131,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 14;
         $item->product_id = 1;
         $item->attribute_id = 14;
@@ -140,7 +140,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 15;
         $item->product_id = 1;
         $item->attribute_id = 15;
@@ -149,7 +149,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 16;
         $item->product_id = 1;
         $item->attribute_id = 16;
@@ -158,7 +158,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 17;
         $item->product_id = 1;
         $item->attribute_id = 17;
@@ -167,7 +167,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 18;
         $item->product_id = 1;
         $item->attribute_id = 18;
@@ -176,7 +176,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 19;
         $item->product_id = 1;
         $item->attribute_id = 19;
@@ -185,7 +185,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 20;
         $item->product_id = 1;
         $item->attribute_id = 20;
@@ -194,7 +194,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 21;
         $item->product_id = 1;
         $item->attribute_id = 21;
@@ -203,7 +203,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 22;
         $item->product_id = 1;
         $item->attribute_id = 22;
@@ -212,7 +212,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 23;
         $item->product_id = 1;
         $item->attribute_id = 23;
@@ -221,7 +221,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 24;
         $item->product_id = 1;
         $item->attribute_id = 24;
@@ -230,7 +230,7 @@ class ProductAttributesSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductAttributes;
+        $item = new ProductAttribute;
         $item->id = 25;
         $item->product_id = 1;
         $item->attribute_id = 25;
