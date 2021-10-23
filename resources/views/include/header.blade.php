@@ -189,7 +189,7 @@
                                     <div class="actions">
                                         <div class="row">
                                             <div class="col-6">
-                                                <a class="btn btn-viewcart" href="{{ route('cart.index')}}">View cart</a>
+                                                {{-- <a class="btn btn-viewcart" href="{{ route('cart.index')}}">View cart</a> --}}
                                             </div>
                                             <div class="col-6">
                                                 <a class="btn btn-checkout" href="checkout.html">Checkout</a>

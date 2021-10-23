@@ -343,6 +343,7 @@
                                     @foreach($highest_star_products as $key => $list_products)
                                     <div class="owl-one-row">
                                         @foreach($list_products as $key => $product)
+                                        {{-- {{ $product->coverImage }} --}}
                                         <div class="product-item style1">
                                             <div class="product-inner equal-elem">
                                                 <div class="product-thumb">
