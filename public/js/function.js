@@ -26,10 +26,10 @@ jQuery(document).ready(function (a) {
                 var $styles = [
                     {
                         stylers: [
-                            {hue: $hue},
-                            {invert_lightness: false},
-                            {saturation: $saturation},
-                            {lightness: 1},
+                            { hue: $hue },
+                            { invert_lightness: false },
+                            { saturation: $saturation },
+                            { lightness: 1 },
                             {
                                 featureType: "landscape.man_made",
                                 stylers: [{
@@ -40,55 +40,55 @@ jQuery(document).ready(function (a) {
                     }, {
                         "featureType": "all",
                         "elementType": "labels.text.fill",
-                        "stylers": [{"saturation": 36}, {"color": "#000000"}, {"lightness": 40}]
+                        "stylers": [{ "saturation": 36 }, { "color": "#000000" }, { "lightness": 40 }]
                     }, {
                         "featureType": "all",
                         "elementType": "labels.text.stroke",
-                        "stylers": [{"visibility": "on"}, {"color": "#000000"}, {"lightness": 16}]
+                        "stylers": [{ "visibility": "on" }, { "color": "#000000" }, { "lightness": 16 }]
                     }, {
                         "featureType": "all",
                         "elementType": "labels.icon",
-                        "stylers": [{"visibility": "off"}]
+                        "stylers": [{ "visibility": "off" }]
                     }, {
                         "featureType": "administrative",
                         "elementType": "geometry.fill",
-                        "stylers": [{"color": "#000000"}, {"lightness": 20}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 20 }]
                     }, {
                         "featureType": "administrative",
                         "elementType": "geometry.stroke",
-                        "stylers": [{"color": "#000000"}, {"lightness": 17}, {"weight": 1.2}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 17 }, { "weight": 1.2 }]
                     }, {
                         "featureType": "landscape",
                         "elementType": "geometry",
-                        "stylers": [{"color": "#000000"}, {"lightness": 20}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 20 }]
                     }, {
                         "featureType": "poi",
                         "elementType": "geometry",
-                        "stylers": [{"color": "#000000"}, {"lightness": 21}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 21 }]
                     }, {
                         "featureType": "road.highway",
                         "elementType": "geometry.fill",
-                        "stylers": [{"color": "#000000"}, {"lightness": 17}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 17 }]
                     }, {
                         "featureType": "road.highway",
                         "elementType": "geometry.stroke",
-                        "stylers": [{"color": "#000000"}, {"lightness": 29}, {"weight": 0.2}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 29 }, { "weight": 0.2 }]
                     }, {
                         "featureType": "road.arterial",
                         "elementType": "geometry",
-                        "stylers": [{"color": "#000000"}, {"lightness": 18}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 18 }]
                     }, {
                         "featureType": "road.local",
                         "elementType": "geometry",
-                        "stylers": [{"color": "#000000"}, {"lightness": 16}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 16 }]
                     }, {
                         "featureType": "transit",
                         "elementType": "geometry",
-                        "stylers": [{"color": "#000000"}, {"lightness": 19}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 19 }]
                     }, {
                         "featureType": "water",
                         "elementType": "geometry",
-                        "stylers": [{"color": "#000000"}, {"lightness": 17}]
+                        "stylers": [{ "color": "#000000" }, { "lightness": 17 }]
                     }
                 ];
             }
@@ -152,7 +152,7 @@ jQuery(document).ready(function (a) {
             if (typeof q != "undefined") {
                 s.animateIn = q
             }
-            if (typeof(w) != "undefined") {
+            if (typeof (w) != "undefined") {
                 s.smartSpeed = w
             }
             var v = a(this);
@@ -224,7 +224,7 @@ jQuery(document).ready(function (a) {
             var r = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
             a(".kt-countdown").each(function () {
                 var s = new Date(a(this).data("y"), a(this).data("m") - 1, a(this).data("d"), a(this).data("h"), a(this).data("i"), a(this).data("s"));
-                a(this).countdown({until: s, labels: q, layout: r})
+                a(this).countdown({ until: s, labels: q, layout: r })
             })
         }
     }
@@ -315,10 +315,10 @@ jQuery(document).ready(function (a) {
                     var r = q.offset();
                     setTimeout(function () {
                         a(".header-menu .item-megamenu").each(function (x, w) {
-                            a(w).children(".megamenu").css({"max-width": s + "px"});
+                            a(w).children(".megamenu").css({ "max-width": s + "px" });
                             var D = a(w).children(".megamenu").outerWidth();
                             var z = a(w).outerWidth();
-                            a(w).children(".megamenu").css({left: "-" + (D / 2 - z / 2) + "px"});
+                            a(w).children(".megamenu").css({ left: "-" + (D / 2 - z / 2) + "px" });
                             var u = r.left;
                             var v = (u + s);
                             var y = a(w).offset().left;
@@ -326,12 +326,12 @@ jQuery(document).ready(function (a) {
                             var C = ((D / 2 + y) > v);
                             if (B) {
                                 var A = (y - u);
-                                a(w).children(".megamenu").css({left: -A + "px"})
+                                a(w).children(".megamenu").css({ left: -A + "px" })
                             }
                             if (C && !B) {
                                 var A = (y - u);
                                 A = A - (s - D);
-                                a(w).children(".megamenu").css({left: -A + "px"})
+                                a(w).children(".megamenu").css({ left: -A + "px" })
                             }
                         })
                     }, 100)
@@ -366,7 +366,7 @@ jQuery(document).ready(function (a) {
             a(".equal-container").each(function () {
                 var q = a(this);
                 if (q.find(".equal-elem").length) {
-                    q.find(".equal-elem").css({height: "auto"});
+                    q.find(".equal-elem").css({ height: "auto" });
                     var r = 0;
                     q.find(".equal-elem").each(function () {
                         var s = parseFloat(a(this).height());
@@ -485,7 +485,7 @@ jQuery(document).ready(function (a) {
             return false
         });
         a("#scrollup").on("click", function () {
-            a("html, body").animate({scrollTop: 0}, 600);
+            a("html, body").animate({ scrollTop: 0 }, 600);
             return false
         })
     }
@@ -504,24 +504,24 @@ jQuery(document).ready(function (a) {
 
     function f() {
         if (a.fancybox) {
-            a.fancybox.defaults.direction = {next: "left", prev: "right"}
+            a.fancybox.defaults.direction = { next: "left", prev: "right" }
         }
         if (a(".fancybox_item").length) {
             a(".fancybox_item").fancybox({
                 openEffect: "elastic",
                 closeEffect: "elastic",
-                helpers: {overlay: {css: {background: "rgba(0,0,0, .6)"}}, thumbs: {width: 50, height: 50}}
+                helpers: { overlay: { css: { background: "rgba(0,0,0, .6)" } }, thumbs: { width: 50, height: 50 } }
             })
         }
         if (a(".fancybox_item_media").length) {
-            a(".fancybox_item_media").fancybox({openEffect: "none", closeEffect: "none", helpers: {media: {}}})
+            a(".fancybox_item_media").fancybox({ openEffect: "none", closeEffect: "none", helpers: { media: {} } })
         }
     }
 
     function b(q) {
         if (a.arcticmodal) {
             a.arcticmodal("setDefault", {
-                type: "ajax", ajax: {cache: false}, afterOpen: function (s) {
+                type: "ajax", ajax: { cache: false }, afterOpen: function (s) {
                     var r = a(".modal_window");
                     r.find(".custom_select").customSelect();
                     r.find(".product_preview .owl_carousel").owlCarousel({
@@ -538,9 +538,7 @@ jQuery(document).ready(function (a) {
         }
     }
 
-    $(document).on("ready", function () {
-        dagon_google_maps();
-    });
+
     a(window).on("load", function () {
         k();
         c()
@@ -565,7 +563,7 @@ jQuery(document).ready(function (a) {
         a(".chosen-select").chosen()
     }
     if (a("#popup-newsletter").length > 0) {
-        a("#popup-newsletter").modal({keyboard: false})
+        a("#popup-newsletter").modal({ keyboard: false })
     }
     m();
     o();

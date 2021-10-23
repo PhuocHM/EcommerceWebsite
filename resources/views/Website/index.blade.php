@@ -331,6 +331,7 @@
                                         </div>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="block-feature-product small">
                                     <div class="title-of-section">Rated Products</div>
                                     <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true"
@@ -354,6 +355,28 @@
                                                                         href="#">{{ $product->name }}
                                                                     </a></div>
                                                                 <span class="price price-dark">
+=======
+                            </div>
+                            <div class="block-feature-product small">
+                                <div class="title-of-section">Rated Products</div>
+                                <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":2},"992":{"items":3},"1200":{"items":3}}'>
+                                    @foreach($highest_star_products as $key => $list_products)
+                                    <div class="owl-one-row">
+                                        @foreach($list_products as $key => $product)
+                                        {{-- {{dd($product->coverImage)}} --}}
+                                        <div class="product-item style1">
+                                            <div class="product-inner equal-elem">
+                                                <div class="product-thumb">
+                                                    <div class="thumb-inner">
+                                                        <a href="#"><img src="{{asset($product->coverImage->first()->image)}}" alt="f1"></a>
+                                                    </div>
+                                                    <a href="#" class="quick-view">Quick View</a>
+                                                </div>
+                                                <div class="product-innfo">
+                                                    <div class="product-name"><a href="#">{{$product->name}}
+                                                        </a></div>
+                                                    <span class="price price-dark">
+>>>>>>> e4e5aa422054f942a45793c318cdd605a93fd057
 
                                                                     <ins>{{ $product->price }}</ins>
 
@@ -372,6 +395,7 @@
 
                                                                     <span class="review">5 Review(s)</span>
 
+<<<<<<< HEAD
                                                                 </span>
                                                                 <div class="group-btn-hover">
                                                                     <div class="inner">
@@ -384,6 +408,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+=======
+                                                    </span>
+                                                    <div class="group-btn-hover">
+                                                        <div class="inner">
+                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                            <button type="button" class="add-to-cart" onclick="addToCart({{ $product->product_id }});">Add to cart</button>
+                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+>>>>>>> e4e5aa422054f942a45793c318cdd605a93fd057
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -462,12 +494,18 @@
 
                                                                     <span class="review">5 Review(s)</span>
 
+<<<<<<< HEAD
                                                                 </span>
                                                                 <a href="#" class="btn-add-to-cart">Add to cart</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 @endforeach
+=======
+                                                    </span>
+                                                    <button type="button" onclick="addToCart({{$product->product_id}})" class="btn-add-to-cart">Add to cart</button>
+                                                </div>
+>>>>>>> e4e5aa422054f942a45793c318cdd605a93fd057
                                             </div>
                                         @endforeach
                                     </div>
@@ -619,4 +657,27 @@
         </div>
         <a href="#" id="scrollup" title="Scroll to Top">Scroll</a>
     </body>
+@endsection
+@section('script')
+<script>
+    function addToCart(product_id) {
+        var url = `{{ route('cart.addToCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: {
+                product_id: product_id
+                , user_id: 1
+            }
+            , success: function(response) {
+                if (response.success) {
+                    console.log('123')
+                } else {
+                    // 
+                }
+            }
+        })
+    }
+
+</script>
 @endsection
