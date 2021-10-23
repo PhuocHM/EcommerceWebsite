@@ -55,13 +55,16 @@ class HomeController extends Controller
             ->join('products', 'products.id', 'comments.product_id')
             ->join('users', 'users.id', 'comments.user_id')
             ->limit(4)->get();
+
+        $sales_items = Products::with('coverImage', 'discount')->get();
         $params = [
             "products" => $products,
             "new_products" => $new_products,
             "categories" => $tree,
             "random_products" => $random_products,
             "highest_star_products" => $highest_star_products,
-            "latest_comments" => $latest_comments
+            "latest_comments" => $latest_comments,
+            "sales_items" => $sales_items
         ];
         return view('Website.index', $params);
     }
