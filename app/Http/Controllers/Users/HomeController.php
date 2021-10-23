@@ -20,8 +20,8 @@ class HomeController extends Controller
     public function index()
     {
         // Hiện tại mối quan hệ đang bị lỗi ... Không xuất hình được ở rated product và comments
-        $products = ProductImage::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
-        $new_products = ProductImage::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
+        $products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
+        $new_products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
         $categories = Categories::all();
         $tree = [];
         foreach ($categories as $key => $category) {
@@ -41,13 +41,18 @@ class HomeController extends Controller
                 ];
             }
         }
-        $random_products = Products::join('products_images', 'products.id', 'products_images.product_id')->where('type', '=', 1)
+        $random_products = Products::join('product_image', 'products.id', 'product_image.product_id')->where('type', '=', 1)
             ->join('comments', 'products.id', 'comments.product_id')->inRandomOrder()->limit(6)->get()->chunk(2);
         $highest_star_products = Comments::select(DB::raw('products.name,products.price,product_id,count(product_id) as total_comments, AVG(star_value) as avg_star_value'))
             ->join('products', 'products.id', 'comments.product_id')
             ->groupBy('product_id')->orderBy('avg_star_value', 'DESC')->orderBy('total_comments', 'DESC')->limit(6)->get()->chunk(2);
-        $latest_comments = Comments::orderBy('created_at', 'DESC')->limit(2)->get();
-        // dd($latest_comment[0]->coverImage->image);
+        $latest_comments = Comments::select('star_value', 'users.name as user_name', 'image', 'products.name', 'comments.created_at', 'content')
+            ->orderBy('comments.created_at', 'DESC')
+            ->join('product_image', 'product_image.id', 'comments.product_id')
+            ->join('products', 'products.id', 'comments.product_id')
+            ->join('users', 'users.id', 'comments.user_id')
+            ->limit(4)->get();
+        // dd($latest_comments);
         $params = [
             "products" => $products,
             "new_products" => $new_products,

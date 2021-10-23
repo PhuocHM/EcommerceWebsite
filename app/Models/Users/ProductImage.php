@@ -4,6 +4,7 @@ namespace App\Models\Users;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Users\Products;
 
 class ProductImage extends Model
 {
@@ -11,6 +12,6 @@ class ProductImage extends Model
     protected $table = 'product_image';
     public function product()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Products::class, 'product_id');
     }
 }

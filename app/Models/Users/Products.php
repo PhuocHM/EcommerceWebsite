@@ -4,6 +4,7 @@ namespace App\Models\Users;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Users\ProductImage;
 
 class Products extends Model
 {
@@ -13,12 +14,12 @@ class Products extends Model
 
     public function coverImage()
     {
-        return $this->hasMany(ProductsImages::class)->where('type', '=', 1);
+        return $this->hasMany(ProductImage::class)->where('type', '=', 1);
     }
 
     public function image()
     {
-        return $this->hasMany(ProductsImages::class);
+        return $this->hasMany(ProductImage::class);
     }
 
     public function comment()

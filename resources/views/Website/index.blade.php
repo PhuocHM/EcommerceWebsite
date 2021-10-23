@@ -166,18 +166,18 @@
                             </div>
 
                             <div class="block-the-blog sb">
-                                <div class="title-of-section">New comments</div>
+                                <div class="title-of-section">Bình luận mới nhất</div>
                                 <div class="owl-carousel nav-style2" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":1}}'>
                                     @foreach($latest_comments as $key => $comment)
                                     <div class="blog-item">
                                         <div class="post-thumb">
-                                            <a href="#"><img src="{{asset('images/home3/blog1.jpg')}}" alt="blog"></a>
+                                            <a href="#"><img src="{{asset($comment->image)}}" alt="blog"></a>
                                         </div>
                                         <div class="post-item-info">
-                                            <h3 class="post-name"><a href="#">Comment</a></h3>
+                                            <h3 class="post-name"><a href="#">{{ $comment->name }}</a></h3>
                                             <div class="post-metas">
-                                                <span class="author">Post by: <span>Admin</span></span>
-                                                <span class="comment"><i class="fa fa-comment" aria-hidden="true"></i>36 Comments</span>
+                                                <span class="author">Post by: <span>{{ $comment->user_name }}</span></span>
+                                                <span class="comment"><i class="fas fa-star text-warning"></i>{{ $comment->star_value }}</span>
                                             </div>
                                             <div>
                                                 {{$comment->content}}
