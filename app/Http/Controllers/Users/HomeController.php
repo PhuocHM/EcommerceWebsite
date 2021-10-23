@@ -19,6 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Hiện tại mối quan hệ đang bị lỗi ... Không xuất hình được ở rated product và comments
         $products = ProductsImages::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
         $new_products = ProductsImages::join('products', 'products.id', 'products_images.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
         $categories = Categories::all();
@@ -45,13 +46,15 @@ class HomeController extends Controller
         $highest_star_products = Comments::select(DB::raw('products.name,products.price,product_id,count(product_id) as total_comments, AVG(star_value) as avg_star_value'))
             ->join('products', 'products.id', 'comments.product_id')
             ->groupBy('product_id')->orderBy('avg_star_value', 'DESC')->orderBy('total_comments', 'DESC')->limit(6)->get()->chunk(2);
-        // dd($highest_star_products);
+        $latest_comments = Comments::orderBy('created_at', 'DESC')->limit(2)->get();
+        // dd($latest_comment[0]->coverImage->image);
         $params = [
             "products" => $products,
             "new_products" => $new_products,
             "categories" => $tree,
             "random_products" => $random_products,
-            "highest_star_products" => $highest_star_products
+            "highest_star_products" => $highest_star_products,
+            "latest_comments" => $latest_comments
         ];
         return view('Website.index', $params);
     }
