@@ -105,10 +105,8 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        // $brand = Brand::find($id);
-        // $brand->delete();
+       
         $this->brandService->destroy($id);
-
         return redirect()->route('brands.index')->with('status', 'Xóa sản phẩm thành công !');
     }
 }
