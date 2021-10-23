@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('slug');
-            $table->string('tag');
+            // $table->string('tag');
             $table->integer('sold');
             $table->decimal('price');
             $table->longText('description');
