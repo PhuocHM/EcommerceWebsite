@@ -16,7 +16,7 @@
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('categories.create') }}" class="btn btn-primary">Thêm danh mục</a>
+                        <a href="{{ route('products.create') }}" class="btn btn-primary">Thêm sản phẩm</a>
                     </div>
                 </div>
             </div>
