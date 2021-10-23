@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Users\Cart;
+use App\Models\Users\Carts;
 use App\Models\Users\Products;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $items = Cart::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
+        $items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
             ->join('products', 'cart_items.product_id', '=', 'products.id')
             ->join('products_images', 'products_images.product_id', '=', 'products.id')
             ->where('user_id', 1)
