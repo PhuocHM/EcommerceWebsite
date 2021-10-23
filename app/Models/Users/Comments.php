@@ -10,7 +10,7 @@ class Comments extends Model
     use HasFactory;
     protected $table = 'comments';
 
-    public function products(){
+    public function product(){
         return $this->belongsTo(Products::class);
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateProductAttributesTable extends Migration
+class UpdateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class UpdateProductAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::table('product_attributes', function (Blueprint $table){
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('attribute_id')->references('id')->on('attributes');
+        Schema::table('employees', function (Blueprint $table) {
+            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 
@@ -26,6 +25,8 @@ class UpdateProductAttributesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('employees', function (Blueprint $table) {
+            //
+        });
     }
 }
