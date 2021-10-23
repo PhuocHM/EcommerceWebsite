@@ -614,7 +614,7 @@
             }
             , success: function(response) {
                 if (response.success) {
-                    console.log('123')
+                    alert('Đã thêm vào giỏ hàng')
                 } else {
                     // 
                 }
