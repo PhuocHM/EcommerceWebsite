@@ -56,6 +56,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     @yield('scripts')
+    
     <!-- Bootstrap bundle JS -->
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
