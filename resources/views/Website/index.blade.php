@@ -343,11 +343,12 @@
                                     @foreach($highest_star_products as $key => $list_products)
                                     <div class="owl-one-row">
                                         @foreach($list_products as $key => $product)
+                                        {{-- {{dd($product->coverImage)}} --}}
                                         <div class="product-item style1">
                                             <div class="product-inner equal-elem">
                                                 <div class="product-thumb">
                                                     <div class="thumb-inner">
-                                                        <a href="#"><img src="{{asset('images/home3/f1.jpg')}}" alt="f1"></a>
+                                                        <a href="#"><img src="{{asset($product->coverImage->first()->image)}}" alt="f1"></a>
                                                     </div>
                                                     <a href="#" class="quick-view">Quick View</a>
                                                 </div>
