@@ -52,7 +52,7 @@ class BrandsController extends Controller
     public function store(BrandRequest $request)
     {
         $this->brandService->store($request);
-        return redirect()->route('brands.index')->with('status', 'Thêm thương hiệu sản phẩm thành công !');
+        return redirect()->route('brands.index')->with('status', 'Thêm thương hiệu thành công !');
     }
 
     /** 
@@ -77,7 +77,7 @@ class BrandsController extends Controller
         $brands = $this->brandService->getAll();
 
         $brand = Brand::find($id);
-        $params=[
+        $params = [
             'brands' => $brands,
             'brand' => $brand
         ];
@@ -94,7 +94,7 @@ class BrandsController extends Controller
     public function update(BrandRequest $request, $id)
     {
         $this->brandService->update($request, $id);
-        return redirect()->route('brands.index')->with('status','Cập nhật thương hiệu sản phẩm thành công!');
+        return redirect()->route('brands.index')->with('status','Cập nhật thương hiệu thành công!');
     }
 
     /**
@@ -107,6 +107,6 @@ class BrandsController extends Controller
     {
        
         $this->brandService->destroy($id);
-        return redirect()->route('brands.index')->with('status', 'Xóa sản phẩm thành công !');
+        return redirect()->route('brands.index')->with('status', 'Xóa thương hiệu thành công !');
     }
 }
