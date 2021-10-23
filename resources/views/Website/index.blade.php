@@ -655,7 +655,9 @@
                         <div class="block-feature-product small">
                             <div class="title-of-section">Rated Products</div>
                             <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":2},"992":{"items":3},"1200":{"items":3}}'>
+                                @foreach($highest_star_products as $key => $list_products)
                                 <div class="owl-one-row">
+                                    @foreach($list_products as $key => $products)
                                     <div class="product-item style1">
                                         <div class="product-inner equal-elem">
                                             <div class="product-thumb">
@@ -665,11 +667,11 @@
                                                 <a href="#" class="quick-view">Quick View</a>
                                             </div>
                                             <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Custom Laptop
+                                                <div class="product-name"><a href="#">{{$product->name}}
                                                     </a></div>
                                                 <span class="price price-dark">
 
-                                                    <ins>$229.00</ins>
+                                                    <ins>{{$product->price}}</ins>
 
                                                 </span>
                                                 <span class="star-rating">
@@ -697,207 +699,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f5.jpg')}}" alt="f5"></a>
-                                                </div>
-                                                <span class="onsale">-50%</span>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Power Printers
-                                                    </a></div>
-                                                <span class="price price-dark">
+                                    @endforeach
 
-                                                    <ins>$229.00</ins>
-
-                                                </span>
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="owl-one-row">
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f2.jpg')}}" alt="f2"></a>
-                                                </div>
-                                                <span class="onsale">-50%</span>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Era Beats Studio
-                                                    </a></div>
-                                                <span class="price">
-                                                    <ins>$229.00</ins>
-                                                    <del>$259.00</del>
-                                                </span>
-                                                <span class="star-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span class="review">5 Review(s)</span>
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f6.jpg')}}" alt="f6"></a>
-                                                </div>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Poss Headphone
-                                                    </a></div>
-                                                <span class="price">
-                                                    <ins>$229.00</ins>
-                                                    <del>$259.00</del>
-                                                </span>
-                                                <span class="star-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span class="review">5 Review(s)</span>
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-one-row">
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f3.jpg')}}" alt="f3"></a>
-                                                </div>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Poss Headphone
-                                                    </a></div>
-                                                <span class="price">
+                                @endforeach
 
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-                                        <div class="product-inner equal-elem">
-                                            <div class="product-thumb">
-                                                <div class="thumb-inner">
-                                                    <a href="#"><img src="{{asset('images/home3/f7.jpg')}}" alt="f7"></a>
-                                                </div>
-                                                <a href="#" class="quick-view">Quick View</a>
-                                                <span class="onsale">-50%</span>
-                                            </div>
-                                            <div class="product-innfo">
-                                                <div class="product-name"><a href="#">Pocket RC Drone
-                                                    </a></div>
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-                                                <div class="group-btn-hover">
-                                                    <div class="inner">
-                                                        <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
-                                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
