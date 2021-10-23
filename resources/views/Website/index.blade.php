@@ -105,7 +105,7 @@
                                         <span></span>
                                         <span></span>
                                     </span>
-                                    <span class="title-menu">All Categories</span>
+                                    <span class="title-menu">Danh mục sản phẩm</span>
                                 </h4>
                                 <div class="vertical-menu-content">
                                     <span class="btn-close hidden-md"><i class="flaticon-close" aria-hidden="true"></i></span>
@@ -141,8 +141,8 @@
                                 <div class="iconbox-inner">
                                     <div class="icon"><span class="flaticon-delivery-truck"></span></div>
                                     <div class="content">
-                                        <h4 class="title">FAST SHIPPING</h4>
-                                        <p class="text">Dispatch on most items</p>
+                                        <h4 class="title">CHUYỂN PHÁT NHANH</h4>
+                                        <p class="text">Cam kết chuyển phát trong 1 tuần</p>
                                     </div>
                                 </div>
                             </div>
@@ -150,8 +150,8 @@
                                 <div class="iconbox-inner">
                                     <div class="icon"><span class="flaticon-refresh"></span></div>
                                     <div class="content">
-                                        <h4 class="title">30 DAY RETURns</h4>
-                                        <p class="text">For peace of mind</p>
+                                        <h4 class="title">30 NGÀY ĐỔI TRẢ</h4>
+                                        <p class="text">Thoải mái trải nghiệm sản phẩm</p>
                                     </div>
                                 </div>
                             </div>
@@ -159,8 +159,8 @@
                                 <div class="iconbox-inner">
                                     <div class="icon"><span class="flaticon-quality-badge"></span></div>
                                     <div class="content">
-                                        <h4 class="title">BEST FURNITURE</h4>
-                                        <p class="text">Online retailer for home</p>
+                                        <h4 class="title">CHẤT LƯỢNG TỐT NHẤT</h4>
+                                        <p class="text">Ở nhà có thể mua mọi thứ</p>
                                     </div>
                                 </div>
                             </div>

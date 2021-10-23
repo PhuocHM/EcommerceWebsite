@@ -17,7 +17,6 @@ class CouponSeeder extends Seeder
         $item = new Coupon;
         $item->id = 1;
         $item->code = "C0055";
-        $item->type = "Cash";
         $item->amounts = 50000;
         $item->expired_day = '2021-10-19';
         $item->description = '1 hôm duy nhất 1 hôm duy nhất';
@@ -29,7 +28,6 @@ class CouponSeeder extends Seeder
         $item = new Coupon;
         $item->id = 2;
         $item->code = "C123";
-        $item->type = "Percent";
         $item->amounts = 50;
         $item->expired_day = '2021-10-19';
         $item->description = '1 hôm duy nhất 1 hôm duy nhất';
