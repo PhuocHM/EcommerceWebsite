@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Users\ProductsImages;
+use App\Models\Users\ProductImage;
 
 class ProductImageSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class ProductImageSeeder extends Seeder
      */
     public function run()
     {
-        $item = new ProductsImages;
+        $item = new ProductImage;
         $item->id = 1;
         $item->product_id = 1;
         $item->image = "images/product/tulanh1.jpg";
@@ -23,7 +23,7 @@ class ProductImageSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductsImages;
+        $item = new ProductImage;
         $item->id = 2;
         $item->product_id = 2;
         $item->image = "images/product/laptop.jpg";
@@ -32,7 +32,7 @@ class ProductImageSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductsImages;
+        $item = new ProductImage;
         $item->id = 3;
         $item->product_id = 3;
         $item->image = "images/product/tivi.jpg";
@@ -41,7 +41,7 @@ class ProductImageSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductsImages;
+        $item = new ProductImage;
         $item->id = 4;
         $item->product_id = 4;
         $item->image = "images/product/iphone.jpg";
@@ -50,7 +50,7 @@ class ProductImageSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductsImages;
+        $item = new ProductImage;
         $item->id = 5;
         $item->product_id = 5;
         $item->image = "images/product/pc.jpg";
@@ -59,7 +59,7 @@ class ProductImageSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new ProductsImages;
+        $item = new ProductImage;
         $item->id = 6;
         $item->product_id = 6;
         $item->image = "images/product/ram.jpg";
