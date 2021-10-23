@@ -18,14 +18,14 @@ class CartController extends Controller
     {
         $items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
             ->join('products', 'cart_items.product_id', '=', 'products.id')
-            ->join('products_images', 'products_images.product_id', '=', 'products.id')
+            ->join('product_image', 'product_image.product_id', '=', 'products.id')
             ->where('user_id', 1)
             ->where('type', 1)
             ->get();
 
         $cate_ids = $items->pluck('category_id')->toArray();
 
-        $related_items = Products::join('products_images', 'products_images.product_id', '=', 'products.id')
+        $related_items = Products::join('product_image', 'product_image.product_id', '=', 'products.id')
             ->whereIn('category_id', $cate_ids)
             ->where('type', 1)
             ->get();
