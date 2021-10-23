@@ -55,7 +55,7 @@ class HomeController extends Controller
             ->join('products', 'products.id', 'comments.product_id')
             ->join('users', 'users.id', 'comments.user_id')
             ->limit(4)->get();
-
+        // dd($highest_star_products);
         $sales_items = Products::with('coverImage', 'discount')->get();
         $params = [
             "products" => $products,
