@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Users\Coupon;
+use App\Models\Users\Coupons;
 
 class CouponSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class CouponSeeder extends Seeder
      */
     public function run()
     {
-        $item = new Coupon;
+        $item = new Coupons;
         $item->id = 1;
         $item->code = "C0055";
         $item->amounts = 50000;
@@ -25,7 +25,7 @@ class CouponSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new Coupon;
+        $item = new Coupons;
         $item->id = 2;
         $item->code = "C123";
         $item->amounts = 50;

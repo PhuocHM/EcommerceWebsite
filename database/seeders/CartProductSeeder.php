@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Users\CartItem;
+use App\Models\Users\CartItems;
 
 class CartProductSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class CartProductSeeder extends Seeder
      */
     public function run()
     {
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 1;
         $item->product_id = 1;
         $item->quantity = 1;
@@ -23,7 +23,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 2;
         $item->product_id = 2;
         $item->quantity = 1;
@@ -32,7 +32,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 3;
         $item->product_id = 3;
         $item->quantity = 1;
@@ -41,7 +41,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 4;
         $item->product_id = 4;
         $item->quantity = 1;
@@ -50,7 +50,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 5;
         $item->product_id = 5;
         $item->quantity = 1;
@@ -59,7 +59,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 6;
         $item->product_id = 2;
         $item->quantity = 1;
@@ -68,7 +68,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 7;
         $item->product_id = 1;
         $item->quantity = 1;
@@ -77,7 +77,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 8;
         $item->product_id = 4;
         $item->quantity = 1;
@@ -86,7 +86,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 9;
         $item->product_id = 3;
         $item->quantity = 1;
@@ -95,7 +95,7 @@ class CartProductSeeder extends Seeder
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
-        $item = new CartItem;
+        $item = new CartItems;
         $item->id = 10;
         $item->product_id = 2;
         $item->quantity = 1;
