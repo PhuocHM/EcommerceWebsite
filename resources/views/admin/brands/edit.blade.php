@@ -32,7 +32,8 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Hình ảnh</label>
-                                    <input type="file" name="image" class="form-control-file" id="image" value="{{ $brand->image }}"> <br>
+                                    <input type="file" name="image" class="form-control-file" id="image"
+                                        value="{{ $brand->image }}"> <br>
                                     <img src="{{ asset('/images/brand/' . $brand->image) }}" alt="" style="width: 150px">
                                     <span style="color:red;">@error('image'){{ $message }} @enderror</span>
                                 </div>
