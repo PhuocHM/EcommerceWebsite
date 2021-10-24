@@ -104,8 +104,7 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-       
+    {   
         $this->brandService->destroy($id);
         return redirect()->route('brands.index')->with('status', 'Xóa thương hiệu thành công !');
     }

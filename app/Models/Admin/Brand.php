@@ -20,4 +20,8 @@ class Brand extends Model
     protected $primaryKey = 'id';
     protected $table = 'brands';
     public $timestamps = true;
+    
+    public function get_products(){
+        return $this->hasMany(Product::class);
+    }
 }

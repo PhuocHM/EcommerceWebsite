@@ -23,7 +23,7 @@
                 </li>
                 <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                 </li>
-                <li> <a href="/admin/brands"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
+                <li> <a href="{{ route('brands.index') }}"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
                 </li>
                 
             </ul>

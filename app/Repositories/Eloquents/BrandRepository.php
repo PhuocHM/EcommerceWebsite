@@ -60,6 +60,7 @@ class BrandRepository implements BrandInterface
                 $data['brand_image'] = $new_image;
             }
         }
+        $brand->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
         $brand->save();
     }
