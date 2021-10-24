@@ -58,8 +58,8 @@
                                                         <td>{{ $product->code }}</td>
                                                         <td>{{ $product->name }}</td>
                                                         <td>{{ $product->slug }}</td>
-                                                        <td>{{ $product->brand_id }}</td>
                                                         <td>{{ $product->category_id }}</td>
+                                                        <td>{{ $product->brand_id }}</td>
                                                         <td>{{ $product->sold }}</td>
                                                         <td>{{ $product->price }}</td>
                                                         <td>{{ $product->description }}</td>   

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
 use App\Models\Product;
@@ -39,7 +40,13 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        
+        $categories = $this->categoryService->getAll();
+        $brands = $this->brandService->getAll();
+        $params = [
+            'categories' => $categories,
+            'brands' => $brands
+        ];
+        return view('admin.products.create', $params);
     }
 
     /**
@@ -48,9 +55,10 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $this->productService->store($request);
+        return redirect()->route('products.index')->with('status','Thêm sản phẩm thành công !');
     }
 
     /**

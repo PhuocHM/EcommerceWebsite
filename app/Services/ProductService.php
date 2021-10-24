@@ -16,8 +16,8 @@ class ProductService
     {
         return $this->productRepository->getAll();
     }
-    public function store(ProductRequest $request){
-       
+    public function store(ProductRequest $request)
+    {  
         return $this->productRepository->store($request);
     }
     public function update($request, $id)
