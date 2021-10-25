@@ -41,8 +41,8 @@
                                     <select name="parent_id" class="form-control input-sm m-bot15">
                                         <option value="0"></option>
                                         @foreach ($categories as $key => $category)
-                                            @if ($category->id == $product->id)
-                                                <option {{ $val->id == $category->parent_id ? 'selected' : '' }}
+                                            @if ($category->id == $product->category_id)
+                                                <option {{ $category->id == $category->parent_id ? 'selected' : '' }}
                                                     value="{{ $val->id }}">{{ $val->name }}</option>
                                             @endif
                                         @endforeach
@@ -50,7 +50,16 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Thương hiệu</label>
-                                    
+                                    <select name="parent_id" class="form-control input-sm m-bot15">
+                                        <option value="0"></option>
+                                        @foreach ($brand as $key => $brand)
+                                            @if ($category->id == $product->category_id)
+                                                <option {{ $val->id == $category->parent_id ? 'selected' : '' }}
+                                                    value="{{ $val->id }}">{{ $val->name }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Đã bán</label>
@@ -68,17 +77,17 @@
                                     <label class="form-label">Mô tả</label>
                                     <textarea class="form-control" rows="3" name="description"
                                         id="ckeditor_category"
-                                        style="resize: none"> {!! $category->description !!}</textarea>
+                                        style="resize: none"> {!! $product->description !!}</textarea>
                                     <span style="color:red;">@error('description'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Trạng thái</label>
                                     <select name="status" class="form-select" id="inputGroupSelect02">
-                                        @if ($category->status == 0)
+                                        @if ($product->status == 0)
                                             <option selected value="0">Kích hoạt<table></table>
                                             </option>
                                             <option value="1">Không kích hoạt</option>
-                                        @else ($category->status == 1)
+                                        @else ($product->status == 1)
                                             <option value="0">Kích hoạt<table></table>
                                             </option>
                                             <option selected value="1">Không kích hoạt</option>

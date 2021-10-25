@@ -12,4 +12,6 @@ Interface ProductInterface {
     public function update(ProductRequest $request, $id);
     public function destroy();
     public function search(); 
+    public function findByCategory($category_id);
+    public function findByBrand($brand_id);
 }
