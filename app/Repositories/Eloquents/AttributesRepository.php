@@ -35,6 +35,10 @@ class AttributesRepository implements AttributesInterface {
         $attributes->save();  
         
     }
+    public function destroy($id){
+        $attributes = Attributes::find($id);
+         return $attributes->delete();
+    }
     public function search(){
 
     }
@@ -42,11 +46,7 @@ class AttributesRepository implements AttributesInterface {
         return Category::orderBy('id','DESC')->get();
     }
     public function edit($id){
-       return Attributes::find($id);
+        Attributes::find($id);
     }
-    public function destroy($id){
-        $attribute= Attributes::find($id);
-        return $attribute->delete();
-   }
   
 }

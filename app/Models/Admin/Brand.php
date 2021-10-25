@@ -22,7 +22,7 @@ class Brand extends Model
     protected $table = 'brands';
     public $timestamps = true;
     
-    public function get_products(){
-        return $this->hasMany(Product::class);
+    public function product(){
+        return $this->hasMany(Products::class);
     }
 }

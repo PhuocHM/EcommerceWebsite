@@ -5,7 +5,8 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Attributes extends Model
+
+class Products extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -15,13 +16,17 @@ class Attributes extends Model
         // your other new column
     ];
     protected $fillable = [
-        'name', 'slug', 'category_id'
+        'code', 'name', 'slug','sold','price','description','status','brand_id','category_id'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'attributes';
+    protected $table = 'products';
     public $timestamps = true;
 
     public function category(){
         return $this->belongsTo(Category::class,'category_id','id');
     }
+    public function brand(){
+        return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+
 }

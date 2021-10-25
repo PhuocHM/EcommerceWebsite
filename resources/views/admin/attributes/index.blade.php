@@ -79,9 +79,9 @@
                                              @method('DELETE')
                                              @csrf
                                              <a href="#"
-                                                onclick="deleteCategory({{ $attribute->id }})"
+                                                onclick="deleteAttributes({{ $attribute->id }})"
                                                 class="text-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deleteCategory"> <i
+                                                data-bs-target="#deleteAttributes"> <i
                                                 class="bi bi-trash-fill"></i></a>
                                           </form>
                                        </div>
@@ -93,7 +93,7 @@
                         </div>
                         {{-- Test Modal Delete --}}
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteCategory" tabindex="-1"
+                        <div class="modal fade" id="deleteAttributes" tabindex="-1"
                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog">
                               <div class="modal-content">
@@ -134,8 +134,8 @@
 @endsection
 @section('scripts')
 <script>
-   function deleteCategory(id) {
-       var url = '{{ route('categories.index') }}' + '/' + id;
+   function deleteAttributes(id) {
+       var url = '{{ route('attributes.index') }}' + '/' + id;
        $('#deleteForm').attr('action', url)
    }
 </script>

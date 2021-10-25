@@ -21,17 +21,20 @@ class ProductAttributesService
     {
         return $this->productAttributesRepository->update($request, $id);
     }
-    public function store(ProductAttributesRequest $request){
-       
+    public function store(ProductAttributesRequest $request)
+    {
         return $this->productAttributesRepository->store($request);
     }
-    public function create(){
+    public function create()
+    {
         return $this->productAttributesRepository->create();
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return $this->productAttributesRepository->edit($id);
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         return $this->productAttributesRepository->destroy($id);
     }
 }

@@ -37,7 +37,6 @@ class CategoryRepository implements CategoryInterface {
     public function destroy($id)
     {
         $category = Category::find($id);
-
         $category->delete();
     }
     

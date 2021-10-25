@@ -3,6 +3,8 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Admin\ProductAttributes;
+use App\Models\Admin\Products;
+use App\Models\Admin\Attributes;
 
 use App\Repositories\Interfaces\ProductAttributesInterface;
 use Carbon\Carbon;

@@ -21,7 +21,7 @@ class CategoriesController extends Controller
     {
         $categories = $this->categoryService->getAll();
         $categories_arr = $this->categoryService->categories_arr();
-
+        
         $params = [
             'categories'        => $categories,
             'categories_arr'    => $categories_arr,
@@ -104,7 +104,14 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         // $check= Attributes::where('category_id','=',$id)->get();
-        $this->categoryService->destroy($id);
-        return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+        try{
+            $this->categoryService->destroy($id);
+            return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+        }
+       catch(\Exception $e){
+        return redirect()->route('categories.index')->with('status', 'Xóa không thành công! '.$e);
     }
+       }
+        // return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+    
 }
