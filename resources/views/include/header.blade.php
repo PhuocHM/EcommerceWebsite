@@ -5,7 +5,7 @@
         <div class="container">
             <!-- hotline -->
             <ul class="nav-top-left">
-                <li><a href="#">Welcome to Dagon Shop</a></li>
+                <li><a href="#">Chào mừng đến với Horizon</a></li>
             </ul><!-- hotline -->
             <!-- heder links -->
             <ul class="nav-top-right dagon-nav">
@@ -15,44 +15,24 @@
                     </a>
                     <ul class="submenu parent-megamenu">
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l1.jpg') }}"
-                                    alt="flag">English</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l1.jpg') }}" alt="flag">English</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l2.jpg') }}"
-                                    alt="flag">Hungary</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l2.jpg') }}" alt="flag">Hungary</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l3.jpg') }}"
-                                    alt="flag">German</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l3.jpg') }}" alt="flag">German</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l4.jpg') }}"
-                                    alt="flag">French</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l4.jpg') }}" alt="flag">French</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l5.jpg') }}"
-                                    alt="flag">Canada</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l5.jpg') }}" alt="flag">Canada</a>
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item-has-children">
-                    <a href="#" class="dropdown-toggle">
-                        <span>Dollar (US)</span>
-                    </a>
-                    <ul class="submenu parent-megamenu">
-                        <li class="switcher-option">
-                            <a href="#" class="switcher-flag icon">Pound (GBP)</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="switcher-flag icon">Euro (EUR)</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="switcher-flag icon">Dollar (USD)</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="flaticon-profile" aria-hidden="true"></i>Register / Sign in</a></li>
+
+                <li><a href="#"><i class="flaticon-profile" aria-hidden="true"></i>Đăng kí / Đăng nhập</a></li>
             </ul><!-- heder links -->
         </div>
     </div> <!-- header-top -->
@@ -71,8 +51,7 @@
                     <div class="block-search">
                         <div class="block-content">
                             <div class="categori-search  ">
-                                <select title="categories" data-placeholder="All Categories"
-                                    class="chosen-select categori-search-option">
+                                <select title="categories" data-placeholder="All Categories" class="chosen-select categori-search-option">
                                     <option value="">All Categories</option>
                                     <optgroup label="LifeStyle">
                                         <option>Cell Phones</option>
@@ -100,8 +79,7 @@
                                 <form>
                                     <div class="box-group">
                                         <input type="text" class="form-control" placeholder="Search keyword here...">
-                                        <button class="btn btn-search" type="button"><i
-                                                class="fas fa-search"></i></button>
+                                        <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -150,28 +128,8 @@
                                         You have <span>2</span> item(s) in your cart
                                     </div>
                                     <div class="minicart-items-wrapper">
-                                        <ol class="minicart-items">
-                                            {{-- @foreach ($cart_items as $item)
-                                                <li class="product-inner">
-                                                    <div class="product-thumb style1">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{ asset($item->image) }}"
-                                                                    alt="c1"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">{{$item->name}}
-                                                            </a></div>
-                                                        <a href="#" class="remove"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a>
-                                                        <span class="price price-dark">
-
-                                                            <ins>{{$item->price}}</ins>
-
-                                                        </span>
-                                                    </div>
-                                                </li>
-                                            @endforeach --}}
+                                        <ol class="minicart-items" id="mini-cart">
+                                            {{-- Mini cart --}}
                                         </ol>
                                     </div>
                                     <div class="subtotal">
@@ -194,8 +152,7 @@
                         </div>
                     </div><!-- block mini cart -->
                     <a href="#" class="hidden-md search-hidden"><span class="flaticon-magnifying-glass"></span></a>
-                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o"
-                            aria-hidden="true"></i></a>
+                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>

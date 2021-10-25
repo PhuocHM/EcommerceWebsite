@@ -38,6 +38,7 @@ Route::resource('product-detail', ProductDetailController::class);
 
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
+Route::GET('check-cart', [HomeController::class, 'checkCart'])->name('cart.checkCart');
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
