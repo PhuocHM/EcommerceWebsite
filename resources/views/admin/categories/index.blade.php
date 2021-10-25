@@ -42,7 +42,7 @@
                                                     <th>Tên</th>
                                                     <th>Slug</th>
                                                     <th>Mô tả</th>
-                                                    <th>Parent_id</th>
+                                                    <th>Thuộc danh mục</th>
                                                     <th>Trạng thái</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>

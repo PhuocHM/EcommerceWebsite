@@ -7,14 +7,12 @@ use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class CategoryRepository implements CategoryInterface {
 
-    public function getAll(){
-
+    public function getAll()
+    {
         return Category::all();
     }
-    public function getOne(){
-
-    }
-    public function store( $request){
+    public function store( $request)
+    {
         $category = new Category();
         $category->name    = $request->name;
         $category->slug    = $request->slug;
@@ -25,7 +23,8 @@ class CategoryRepository implements CategoryInterface {
     
         $category->save();
     }
-    public function update($request, $id){
+    public function update($request, $id)
+    {
         $category = Category::find($id);
         $category->name  = $request->name;
         $category->slug    = $request->slug;
@@ -34,13 +33,27 @@ class CategoryRepository implements CategoryInterface {
         $category->status  =$request->status;
 
         $category->save();  
-        
     }
-    public function destroy(){
+    public function destroy($id)
+    {
+        $category = Category::find($id);
 
-    }
-    public function search(){
-
+        $category->delete();
     }
     
+    public function categories_arr()
+    {
+     $categories= Category::all();
+     $categories_arr = $categories->pluck('name','id')->toArray();
+      return  $categories_arr = ['Danh mục cha'] + $categories_arr;
+       
+    }
+    public function create()
+    {
+        return Category::orderBy('id','DESC')->get();
+    }
+    public function edit($id)
+    {
+        return Category::find($id);
+    }
 }

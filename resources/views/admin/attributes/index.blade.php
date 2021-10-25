@@ -46,12 +46,16 @@
                                  </tr>
                               </thead>
                               <tbody>
-                                 @foreach ($list_attributes as $attribute)
+                                 @foreach ($attributes as $attribute)
                                  <tr>
                                     <td>{{ $attribute->id }}</td>
                                     <td>{{ $attribute->name }}</td>
                                     <td>{{ $attribute->slug }}</td>
-                                    <td>{{$attribute->category->name}}</td>    
+                                    @if ($attribute->category)
+                                    <td>{{$attribute->category->name}}</td>
+                                    @else
+                                    <td></td>       
+                                    @endif
                                     <td>{{ date('d-m-Y', strtotime($attribute->created_at)) }}</td>
                                     <td>
                                        @if ($attribute->updated_at != '')

@@ -64,6 +64,9 @@ class BrandRepository implements BrandInterface
 
         $brand->save();
     }
+    public function edit($id){
+        return Brand::find($id);
+     }
     public function destroy($id)
     {
         $brand = Brand::find($id);

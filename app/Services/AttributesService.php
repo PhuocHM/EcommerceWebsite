@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Repositories\Eloquents\AttributesRepository;
+use App\Repositories\Eloquents\CategoryRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\AttributesRequest;
 
@@ -22,5 +23,15 @@ class AttributesService
     public function store(AttributesRequest $request){
        
         return $this->attributesRepository->store($request);
+    }
+    public function create(){
+        return $this->attributesRepository->create();
+    }
+   
+    public function edit($id){
+        return $this->attributesRepository->edit($id);
+    }
+    public function destroy($id){
+        return $this->attributesRepository->destroy($id);
     }
 }

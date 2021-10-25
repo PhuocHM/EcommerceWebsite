@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandRequest;
 use App\Services\BrandService;
 use Illuminate\Http\Request;
-use App\Models\Admin\Brand;
+
 
 
 // use App\Http\Requests\BrandRequest;
@@ -75,8 +75,7 @@ class BrandsController extends Controller
     public function edit($id)
     {
         $brands = $this->brandService->getAll();
-
-        $brand = Brand::find($id);
+        $brand = $this->brandService->edit($id);
         $params = [
             'brands' => $brands,
             'brand' => $brand

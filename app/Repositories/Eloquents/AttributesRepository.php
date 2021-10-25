@@ -3,14 +3,15 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Admin\Attributes;
-
+use App\Models\Admin\Category;
 use App\Repositories\Interfaces\AttributesInterface;
+use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class AttributesRepository implements AttributesInterface {
 
     public function getAll(){
 
-        return Attributes::all();
+        return Attributes::with('category')->orderBy('id','DESC')->get();
     }
     public function getOne(){
 
@@ -34,11 +35,18 @@ class AttributesRepository implements AttributesInterface {
         $attributes->save();  
         
     }
-    public function destroy(){
-
-    }
     public function search(){
 
     }
-    
+    public function create(){
+        return Category::orderBy('id','DESC')->get();
+    }
+    public function edit($id){
+       return Attributes::find($id);
+    }
+    public function destroy($id){
+        $attribute= Attributes::find($id);
+        return $attribute->delete();
+   }
+  
 }

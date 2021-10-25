@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
@@ -21,13 +20,11 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = $this->categoryService->getAll();
-        $categories_arr = $categories->pluck('name','id')->toArray();
-        $categories_arr = ['Danh mục cha'] + $categories_arr;
-       
+        $categories_arr = $this->categoryService->categories_arr();
 
         $params = [
-            'categories' => $categories,
-            'categories_arr' => $categories_arr,
+            'categories'        => $categories,
+            'categories_arr'    => $categories_arr,
         ];
         return view('admin.categories.index',$params);
     }
@@ -39,7 +36,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories= Category::orderBy('id','DESC')->get();
+        $categories = $this->categoryService->create();
        
         return view('admin.categories.create')->with(compact('categories'));
     }
@@ -76,11 +73,10 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $categories = $this->categoryService->getAll();
-
-        $category = Category::find($id);
+        $category = $this->categoryService->edit($id);
         $params=[
             'categories' => $categories,
-            'category' => $category
+            'category'   => $category
         ];
         return view('admin.categories.edit', $params);
     }
@@ -107,9 +103,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-
+        // $check= Attributes::where('category_id','=',$id)->get();
+        $this->categoryService->destroy($id);
         return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
     }
 }

@@ -9,7 +9,10 @@ Interface AttributesInterface {
     public function getAll();
     public function getOne();
     public function store($request);
-    public function update(AttributesRequest $request, $id);
-    public function destroy();
+    public function update($request, $id); 
     public function search(); 
+    public function create();
+    public function edit($id);
+    public function destroy($id);
+  
 }

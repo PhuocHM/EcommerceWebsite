@@ -2,11 +2,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Category;
-use App\Models\Admin\Attributes;
 use App\Services\AttributesService;
 use Illuminate\Http\Request;
+
 use App\Http\Requests\AttributesRequest;
+
 
 class AttributesController extends Controller
 {   
@@ -22,10 +22,11 @@ class AttributesController extends Controller
      */
     public function index()
     {
-        $attributes = $this->attributesService->getAll();
-        $list_attributes = Attributes::with('category')->orderBy('id','DESC')->get();
-       
-        return view('admin.attributes.index')->with(compact('list_attributes','attributes'));
+        $attributes = $this->attributesService->getAll(); 
+        $params = [
+            'attributes' => $attributes,
+        ];
+        return view('admin.attributes.index', $params);
     }
 
     /**
@@ -35,8 +36,11 @@ class AttributesController extends Controller
      */
     public function create()
     {
-        $categories= Category::orderBy('id','DESC')->get();
-        return view('admin.attributes.create')->with(compact('categories'));
+        $categories = $this->attributesService->create();
+        $params = [
+            'categories' => $categories,
+        ];
+        return view('admin.attributes.create', $params);
     }
 
     /**
@@ -70,9 +74,13 @@ class AttributesController extends Controller
      */
     public function edit($id)
     {
-        $attributes= Attributes::find($id);
-        $categories= Category::orderBy('id','DESC')->get();
-         return view('admin.attributes.edit')->with(compact('attributes','categories'));
+        $categories = $this->attributesService->create();
+        $attributes = $this->attributesService->edit($id);
+        $params = [
+            'categories'    => $categories,
+            'attributes'    =>  $attributes
+        ];
+        return view('admin.attributes.edit', $params);
     
     }
     /**
@@ -96,10 +104,8 @@ class AttributesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $attributes = Attributes::find($id);
-        $attributes->delete();
-
+    { 
+        $this->attributesService->destroy($id);
         return redirect()->route('attributes.index')->with('status', 'Xóa thuộc tính thành công !');
     }
 }

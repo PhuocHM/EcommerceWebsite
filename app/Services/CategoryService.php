@@ -23,4 +23,20 @@ class CategoryService
        
         return $this->categoryRepository->store($request);
     }
+    public function categories_arr()
+    {
+        return $this->categoryRepository->categories_arr();
+    }
+    public function create()
+    {
+        return $this->categoryRepository->create();
+    }
+    public function destroy($id)
+    {
+        return $this->categoryRepository->destroy($id);
+    }
+    public function edit($id)
+    {
+        return $this->categoryRepository->edit($id);
+    }
 }
