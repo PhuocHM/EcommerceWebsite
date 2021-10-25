@@ -485,6 +485,10 @@
                                 </div>
                             </div>
                             <div class="products products-list products-grid equal-container auto-clear">
+                                {{-- {{dd($category_products->first())}} --}}
+                                @if($category_products->first() == null)
+                                <span style="color:red;">Không có sản phẩm nào</span>
+                                @else
                                 @foreach($category_products as $key => $product)
                                 <div class="product-item style1 width-33 col-md-4 col-sm-6 col-xs-6 equal-elem">
                                     <div class="product-inner">
@@ -534,7 +538,7 @@
                                     </div>
                                 </div>
                                 @endforeach
-
+                                @endif
                             </div>
                             <div class="pagination d-flex justify-content-end">
                                 {{ $category_products->links() }}

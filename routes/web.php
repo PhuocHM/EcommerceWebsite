@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
-
+use App\Http\Controllers\Users\ProductDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,7 @@ Route::resource('flash-sales', FlashSalesController::class);
 Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
 Route::resource('category', CategoriesProductController::class);
+Route::resource('product-detail', ProductDetailController::class);
 
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');

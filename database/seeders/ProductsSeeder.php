@@ -121,7 +121,7 @@ class ProductsSeeder extends Seeder
         $item->description = "Bộ nhớ DDR4 Apacer 8GB (2400) Panther Golden Heatsink (EK.08G2T.GEC)";
         $item->status = 0;
         $item->brand_id = 3;
-        $item->category_id = 1;
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
@@ -137,7 +137,7 @@ class ProductsSeeder extends Seeder
         $item->description = "Bộ nhớ DDR4 Apacer 8GB (2400) Panther Golden Heatsink (EK.08G2T.GEC)";
         $item->status = 0;
         $item->brand_id = 3;
-        $item->category_id = 1;
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
@@ -153,7 +153,7 @@ class ProductsSeeder extends Seeder
         $item->description = "Bộ nhớ DDR4 Apacer 8GB (2400) Panther Golden Heatsink (EK.08G2T.GEC)";
         $item->status = 0;
         $item->brand_id = 3;
-        $item->category_id = 1;
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();

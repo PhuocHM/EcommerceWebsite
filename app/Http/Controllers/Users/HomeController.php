@@ -115,31 +115,35 @@ class HomeController extends Controller
     {
 
         $check_cart = Carts::where('user_id', '=', $request->user_id)->first();
-        if ($check_cart == null) {
-            $cart = new Carts;
-            $cart->code = Carbon::now()->timestamp;
-            $cart->user_id = $request->user_id;
-            $cart->save();
+        if (!isset($request->product_quantity)) {
+            if ($check_cart == null) {
+                $cart = new Carts;
+                $cart->code = Carbon::now()->timestamp;
+                $cart->user_id = $request->user_id;
+                $cart->save();
 
-            $cart_items = new CartItems;
-            $cart_items->product_id = $request->product_id;
-            $cart_items->quantity = 1;
-            $cart_items->cart_id = $cart->id;
-            $cart_items->save();
-        } else {
-            $product = CartItems::where('product_id', '=', $request->product_id)->first();
-            if ($product == null) {
                 $cart_items = new CartItems;
                 $cart_items->product_id = $request->product_id;
                 $cart_items->quantity = 1;
-                $cart_items->cart_id = $check_cart->id;
+                $cart_items->cart_id = $cart->id;
                 $cart_items->save();
             } else {
-                $product->quantity += 1;
-                $product->save();
+                $product = CartItems::where('product_id', '=', $request->product_id)->first();
+                if ($product == null) {
+                    $cart_items = new CartItems;
+                    $cart_items->product_id = $request->product_id;
+                    $cart_items->quantity = 1;
+                    $cart_items->cart_id = $check_cart->id;
+                    $cart_items->save();
+                } else {
+                    $product->quantity += 1;
+                    $product->save();
+                }
             }
+        } else {
+            return response()->json(['success' => 'Product quantity' . $request->product_quantity . 'Product id' . $request->product_id]);
         }
-        return response()->json(['success' => 'Product id : ' . $request->product_id . ' and user id : ' . $request->user_id]);
+        return response()->json(['success' => 'Oke']);
     }
 
     /**
