@@ -3,14 +3,14 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Admin\ProductAttributes;
-use App\Models\Admin\Category;
+
 use App\Repositories\Interfaces\ProductAttributesInterface;
 use Carbon\Carbon;
 class ProductAttributesRepository implements ProductAttributesInterface 
 {
     public function getAll()
     {
-        // return ProductAttributes::with('category')->orderBy('id','DESC')->get();
+        return ProductAttributes::with('products','attributes')->orderBy('id','DESC')->get();
     }
     public function getOne()
     {
@@ -39,7 +39,7 @@ class ProductAttributesRepository implements ProductAttributesInterface
 
     }
     public function create(){
-        return Category::orderBy('id','DESC')->get();
+        // return Product::orderBy('id','DESC')->get();
     }
     public function edit($id){
     //    return ProductAttributes::find($id);
