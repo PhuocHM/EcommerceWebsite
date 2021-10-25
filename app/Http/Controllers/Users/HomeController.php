@@ -113,9 +113,8 @@ class HomeController extends Controller
     }
     public function addToCart(Request $request)
     {
-
-        $check_cart = Carts::where('user_id', '=', $request->user_id)->first();
         if (!isset($request->product_quantity)) {
+            $check_cart = Carts::where('user_id', '=', $request->user_id)->first();
             if ($check_cart == null) {
                 $cart = new Carts;
                 $cart->code = Carbon::now()->timestamp;

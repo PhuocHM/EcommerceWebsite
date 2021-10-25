@@ -14,15 +14,16 @@
                 </div>
             </div>
         </form>
+        {{-- Hiển thị modal sản phẩm --}}
         <div id="block-quick-view-popup" class="block-quick-view-popup">
             <div class="quick-view-content">
-                <a href="#" class="popup-btn-close"><span class="flaticon-close"></span></a>
+                <a href="#" class="popup-btn-close"><i class="fas fa-times"></i></a>
                 <div class="product-items">
                     <div class="product-image">
                         <a href="#"><img src="{{asset('images/popup-pro.jpg')}}" alt="p1"></a>
                     </div>
                     <div class="product-info">
-                        <div class="product-name"><a href="#">Photo Camera</a></div>
+                        <div class="product-name"><a href="#">photo Camera</a></div>
                         <span class="star-rating">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>

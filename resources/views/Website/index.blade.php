@@ -15,6 +15,7 @@
                 </div>
             </div>
         </form>
+       
         <div id="block-quick-view-popup" class="block-quick-view-popup">
             <div class="quick-view-content">
                 <a href="#" class="popup-btn-close"><i class="fas fa-times"></i></a>
@@ -71,7 +72,7 @@
                                         <div class="p-primary">{{ $product->name }}
                                         </div>
                                         <p>{{ number_format($product->price) }}&ensp;VND</p>
-                                        <a href="grid-product.html" class="btn-shop-now">Shop Now</a>
+                                        <a href="{{ route('product-detail.show',$product->id) }}" class="btn-shop-now">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
