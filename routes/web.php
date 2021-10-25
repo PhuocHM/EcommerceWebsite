@@ -25,10 +25,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/logout-user', [LoginController::class, 'logout'])->name('logout.user');
+
 Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);
 Route::resource('trending', TrendingProductController::class);
-
 Route::resource('flash-sales', FlashSalesController::class);
 Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);

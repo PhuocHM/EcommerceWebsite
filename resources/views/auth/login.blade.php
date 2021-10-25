@@ -1,5 +1,5 @@
 @extends('include.layout')
-@section('title, Đăng nhập')
+@section('title', ' Đăng nhập')
 
 @section('main')
 
@@ -14,14 +14,15 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-sm-6">
-                        <h5 class="title-login">Đăng nhập vào tài khoản</h5>
-                        <p class="p-title-login">Nhập thông tin</p>
+                        <div class="text-center">
+                            <h5 class="title-login">Đăng nhập vào tài khoản</h5>
+                            <p class="p-title-login">Nhập thông tin</p>
+                        </div>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <p class="form-row form-row-wide">
                                 <label>Email:<span class="required"></span></label>
-                                <input type="text" value="" name="email"
-                                    placeholder="Nhập email" class="input-text">
+                                <input type="text" value="" name="email" placeholder="Nhập email" class="input-text">
 
                                 @error('email')
                                     <span class="text-danger" role="alert">
@@ -36,7 +37,7 @@
 
                                 @error('password')
                                     <span class="text-danger" role="alert">
-                                        <strong>{{  $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @enderror
                             </p>
