@@ -12,7 +12,7 @@ class Product extends Model
 		'created_at',
 		'updated_at',
 	];
-	public $timestamps = false;
+	public $timestamps = true;
 	protected $fillable = [
 		'id', 'code', 'name', 'slug', 'tag', 'sold', 'price', 'description', 'status', 'brand_id', 'category_id', 'created_at', 'updated_at'
 	];

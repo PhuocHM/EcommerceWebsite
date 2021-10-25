@@ -47,10 +47,20 @@ class ProductRepository implements ProductInterface
 
         $product->save();
     }
-    public function destroy()
+    public function destroy($id)
     {
+        $product = Product::find($id);
+        $product->delete(); 
     }
     public function search()
     {
+    }
+    public function findByCategory($category_id)
+    {
+        return Product::where('category_id')->get();
+    }
+    public function findByBrand($brand_id)
+    {
+        return Product::where('brand_id')->get();
     }
 }

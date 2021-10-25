@@ -14,7 +14,7 @@ class MaybeYouLikeController extends Controller
      */
     public function index()
     {
-        return view('list-products');
+        return view('Website.list-product');
     }
 
     /**

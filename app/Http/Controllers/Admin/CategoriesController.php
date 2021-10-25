@@ -39,7 +39,7 @@ class CategoriesController extends Controller
     public function create()
     {
         $categories= Category::orderBy('id','DESC')->get();
-        // dd($category);
+       
         return view('admin.categories.create')->with(compact('categories'));
     }
 
@@ -51,7 +51,7 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $categories =$this->categoryService->store($request);
+        $this->categoryService->store($request);
         return redirect()->route('categories.index')->with('status','Thêm danh mục sản phẩm thành công !');
     }
 
