@@ -10,12 +10,12 @@ class Categories extends Model
 {
     use HasFactory;
     protected $table = "categories";
-    public function attributes()
+    public function attribute()
     {
         return $this->hasMany(Attributes::class);
     }
 
-    public function products(){
+    public function product(){
         return $this->hasMany(Products::class);
     }
 }

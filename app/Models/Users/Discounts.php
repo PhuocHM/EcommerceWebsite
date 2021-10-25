@@ -10,8 +10,9 @@ class Discounts extends Model
     use HasFactory;
     protected $table = 'discounts';
 
-    public function product(){
-        return $this->belongsToMany(Products::class, 'discount_product');
+    public function product()
+    {
+        return $this->belongsToMany(Products::class, 'discount_product', 'product_id', 'discount_id');
     }
 }
 // End Here

@@ -44,3 +44,5 @@ Route::group(['prefix'=>'admin'],function() {
     Route::resource('/brands',BrandsController::class);
 });
 
+Route::resource('cart', CartController::class);
+Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');

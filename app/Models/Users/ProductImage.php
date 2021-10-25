@@ -4,13 +4,14 @@ namespace App\Models\Users;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Users\Products;
 
-class ProductsImages extends Model
+class ProductImage extends Model
 {
     use HasFactory;
-    protected $table = 'products_images';
+    protected $table = 'product_image';
     public function product()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Products::class, 'product_id');
     }
 }

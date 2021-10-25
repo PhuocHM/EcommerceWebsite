@@ -92,13 +92,14 @@
                                                                 href="#">{{ $item->name . ' ' . $item->code }}</a></div>
                                                     </td>
                                                     <td class="tb-price">
-                                                        <span class="price">{{number_format($item->price)}}</span>
+                                                        <span
+                                                            class="price">{{ number_format($item->price) }}</span>
                                                     </td>
                                                     <td class="tb-qty">
                                                         <div class="quantity">
                                                             <div class="buttons-added">
-                                                                <input type="text" value="1" title="Qty"
-                                                                    class="input-text qty text" size="1">
+                                                                <input type="text" value="{{ $item->quantity }}"
+                                                                    title="Qty" class="input-text qty text" size="1">
                                                                 <a href="#" class="sign plus"><i
                                                                         class="fa fa-plus"></i></a>
                                                                 <a href="#" class="sign minus"><i
@@ -107,7 +108,8 @@
                                                         </div>
                                                     </td>
                                                     <td class="tb-total">
-                                                        <span class="price">{{ number_format($item->price)   }}</span>
+                                                        <span
+                                                            class="price">{{ number_format($item->price) }}</span>
                                                     </td>
                                                     <td class="tb-remove">
                                                         <a href="#" class="action-remove"><span><i class="flaticon-close"
@@ -119,12 +121,12 @@
                                     </table>
                                 </div>
                                 <div class="cart-actions">
-                                    <button type="submit" class="btn-continue">
-                                        <span>Continue Shopping</span>
+                                    <button type="button" class="btn-continue">
+                                        <a href="{{ route('index') }}" class="text-light">Continue Shopping</a>
                                     </button>
-                                    <button type="submit" class="btn-clean">
+                                    {{-- <button type="submit" class="btn-clean">
                                         <span>Update Shopping Cart</span>
-                                    </button>
+                                    </button> --}}
                                     <button type="submit" class="btn-update">
                                         <span>Clear Shopping Cart</span>
                                     </button>
@@ -157,259 +159,51 @@
                         <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true"
                             data-autoplay="false" data-dots="false" data-loop="true" data-margin="30"
                             data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":4}}'>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r1.jpg') }}" alt="r1"></a>
+                            @foreach ($related_items as $related_item)
+                                <div class="product-item style1">
+                                    <div class="product-inner equal-elem">
+                                        <div class="product-thumb">
+                                            <div class="thumb-inner">
+                                                <a href="#"><img src="{{ asset($related_item->image) }}" alt="r3"></a>
+                                            </div>
+                                            <a href="#" class="quick-view">Quick View</a>
                                         </div>
-                                        <span class="onsale">-50%</span>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Modern Watches</a></div>
-                                        <span class="price">
+                                        <div class="product-innfo">
+                                            <div class="product-name"><a href="#">{{ $related_item->name }}</a></div>
+                                            <span class="price price-dark">
 
-                                            <ins>$229.00</ins>
+                                                <ins>{{ $related_item->price }}</ins>
 
-                                            <del>$259.00</del>
+                                            </span>
+                                            <span class="star-rating">
 
-                                        </span>
-                                        <span class="star-rating">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                <span class="review">5 Review(s)</span>
 
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r2.jpg') }}" alt="r2"></a>
-                                        </div>
-                                        <span class="onnew">new</span>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Cellphone Factory</a></div>
-                                        <span class="price price-dark">
-
-                                            <ins>$229.00</ins>
-
-                                        </span>
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
+                                            </span>
+                                            <div class="group-btn-hover style2">
+                                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
+                                                        aria-hidden="true"></i></a>
+                                                <a href="compare.html" class="compare"><i
+                                                        class="fa fa-exchange"></i></a>
+                                                <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
+                                                        aria-hidden="true"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r3.jpg') }}" alt="r3"></a>
-                                        </div>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Smartphone 4 GB</a></div>
-                                        <span class="price price-dark">
+                            @endforeach
 
-                                            <ins>$229.00</ins>
 
-                                        </span>
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r4.jpg') }}" alt="r4"></a>
-                                        </div>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Extra Bass On</a></div>
-                                        <span class="price price-dark">
-
-                                            <ins>$229.00</ins>
-
-                                        </span>
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r5.jpg') }}" alt="r5"></a>
-                                        </div>
-                                        <span class="onsale">-50%</span>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Smartwatch</a></div>
-                                        <span class="price">
-
-                                            <ins>$229.00</ins>
-
-                                            <del>$259.00</del>
-
-                                        </span>
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style1">
-                                <div class="product-inner equal-elem">
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#"><img src="{{ asset('images/home1/r6.jpg') }}" alt="r6"></a>
-                                        </div>
-                                        <a href="#" class="quick-view">Quick View</a>
-                                    </div>
-                                    <div class="product-innfo">
-                                        <div class="product-name"><a href="#">Modern Watches</a></div>
-                                        <span class="price price-dark">
-
-                                            <ins>$229.00</ins>
-
-                                        </span>
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-                                        <div class="group-btn-hover style2">
-                                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"
-                                                    aria-hidden="true"></i></a>
-                                            <a href="compare.html" class="compare"><i
-                                                    class="fa fa-exchange"></i></a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o"
-                                                    aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

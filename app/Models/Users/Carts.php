@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CartItem;
 
-class Cart extends Model
+class Carts extends Model
 {
     use HasFactory;
     protected $table = "carts";
@@ -14,6 +14,4 @@ class Cart extends Model
     {
         return $this->hasMany(CartItem::class);
     }
-
-    
 }

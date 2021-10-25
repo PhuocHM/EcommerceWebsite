@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Users\Cart;
-use App\Models\Users\CartItem;
-use App\Models\Users\Categories;
+use App\Models\Users\Carts;
+use App\Models\Users\Products;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -17,19 +17,23 @@ class CartController extends Controller
      */
     public function index()
     {
-        $items = Cart::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
+        $items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
             ->join('products', 'cart_items.product_id', '=', 'products.id')
-            ->join('products_images', 'products_images.product_id', '=', 'products.id')
+            ->join('product_image', 'product_image.product_id', '=', 'products.id')
             ->where('user_id', 1)
             ->where('type', 1)
             ->get();
 
-        $related_categories = 
+        $cate_ids = $items->pluck('category_id')->toArray();
 
-        $related_items = Categories::all();
+        $related_items = Products::join('product_image', 'product_image.product_id', '=', 'products.id')
+            ->whereIn('category_id', $cate_ids)
+            ->where('type', 1)
+            ->get();
 
         $param = [
             'items' => $items,
+            'related_items' => $related_items,
         ];
         return view('Website.shopping-cart', $param);
     }
@@ -52,7 +56,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**
