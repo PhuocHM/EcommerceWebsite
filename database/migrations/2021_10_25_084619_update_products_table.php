@@ -25,6 +25,6 @@ class UpdateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('soft_delete');
+        Schema::dropIfExists('products');
     }
 }

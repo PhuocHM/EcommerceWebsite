@@ -77,7 +77,15 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = $this->productsService->create_category();
+        $brands     = $this->productsService->create_brand();
+        $products   = $this->productsService->edit($id);
+        $params = [
+            'categories'     => $categories,
+            'products'       =>  $products,
+            'brands'         =>  $brands
+        ];
+        return view('admin.products.edit', $params);
     }
 
     /**
@@ -89,7 +97,8 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->productsService->update($request, $id);
+        return redirect()->route('products.index')->with('status','Cập nhật sản phẩm thành công!');    
     }
 
     /**
@@ -100,6 +109,17 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->productsService->destroy($id);
+        return redirect()->route('products.index')->with('status', 'Xóa sản phẩm thành công !');
+    }
+    public function search()
+    {
+     $products = $this->productsService->getAll(); 
+     $search = $this->productsService->search();
+    $params = [
+        'products'     => $products,
+        'search'       =>  $search,
+    ];
+    return view('admin.products.search', $params);
     }
 }

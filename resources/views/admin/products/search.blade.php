@@ -29,7 +29,7 @@
              
               <form  class="form-inline my-2 my-lg-0" action="{{url('search')}}" method="GET">
                 @csrf
-                  <input class="form-control mr-sm-2 name="tukhoa" type="search" placeholder="Tìm kiếm...." aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" name="tukhoa" placeholder="Tìm kiếm ...." aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>            
                     </select>
                 </form>

@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Danh mục sản phẩm</label>
-                                    <select name="parent_id" class="form-select" id="inputGroupSelect02">                                  
+                                    <select name="category_id" class="form-select" id="inputGroupSelect02">                                  
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Thương hiệu</label>
-                                    <select name="parent_id" class="form-select" id="inputGroupSelect02">
+                                    <select name="brand_id" class="form-select" id="inputGroupSelect02">
                                         @foreach ($brands as $brand)
                                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                         @endforeach

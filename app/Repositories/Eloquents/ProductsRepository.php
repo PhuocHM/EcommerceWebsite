@@ -20,7 +20,6 @@ class ProductsRepository implements ProductsInterface
     }
     public function store($request)
     {
-
         $product                 = new Products();
         $product->name           = $request->name;
         $product->code           = $request->code;
@@ -46,6 +45,7 @@ class ProductsRepository implements ProductsInterface
         $product->status         = $request->status;
         $product->brand_id	     = $request->brand_id	;
         $product->category_id    = $request->category_id;  
+        $product->code           = $request->code;  
         $product->updated_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
         $product->save();
@@ -58,9 +58,7 @@ class ProductsRepository implements ProductsInterface
         $product = Products::find($id);
         $product->delete();
     }
-    public function search()
-    {
-    }
+   
     public function create_category()
     {
         return Category::orderBy('id','DESC')->get();
@@ -68,5 +66,11 @@ class ProductsRepository implements ProductsInterface
     public function create_brand()
     {
         return Brand::orderBy('id','DESC')->get();
+    }
+    public function search()
+    {
+        $search = $_GET['tukhoa'];
+        $products =Product::with('brand','category')->where('name','LIKE','%'.$search.'%')->get();
+        return $products;
     }
 }

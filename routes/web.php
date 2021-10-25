@@ -45,3 +45,4 @@ Route::group(['prefix'=>'admin'],function() {
     Route::resource('/brands',BrandsController::class);
     Route::resource('/products',ProductsController::class);
 });
+Route::get('/search', [ProductsController::class,'search']);

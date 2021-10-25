@@ -40,4 +40,7 @@ class ProductsService
     public function create_brand(){
         return $this->productsRepository->create_brand();
     }
+    public function search(){
+        return $this->productsRepository->search();
+    }
 }

@@ -15,78 +15,71 @@
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
                             <form method="POST" class="row g-3"
-                                action="{{ route('products.update', $product->id) }}">
+                                action="{{ route('products.update', $products->id) }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="col-12">
                                     <label class="form-label">Mã</label>
                                     <input type="text" class="form-control" placeholder="Mã sản phẩm" name="code"
-                                        value="{{ $product->code }}">
+                                        value="{{ $products->code }}">
                                     <span style="color:red;">@error('code'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" class="form-control" placeholder="Tên sản phẩm" name="name"
-                                        value="{{ $product->name }}">
+                                        value="{{ $products->name }}">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Slug</label>
                                     <input type="text" class="form-control" placeholder="Slug name" name="slug"
-                                        value="{{ $product->slug }}">
+                                        value="{{ $products->slug }}">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Danh mục</label>
-                                    <select name="parent_id" class="form-control input-sm m-bot15">
-                                        <option value="0"></option>
-                                        @foreach ($categories as $key => $category)
-                                            @if ($category->id == $product->category_id)
-                                                <option {{ $category->id == $category->parent_id ? 'selected' : '' }}
-                                                    value="{{ $val->id }}">{{ $val->name }}</option>
-                                            @endif
-                                        @endforeach
+                                    <label class="form-label">Danh mục sản phẩm</label>
+                                    <select name="category_id" class="form-control input-sm m-bot15">
+                                    @foreach($categories as $category)
+                        <option {{$category->id==$products->category_id ?'selected' :''}} value="{{$category->id}}">{{$category->name}}</option>
+                                     @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Thương hiệu</label>
-                                    <select name="parent_id" class="form-control input-sm m-bot15">
-                                        <option value="0"></option>
-                                        @foreach ($brand as $key => $brand)
-                                            @if ($category->id == $product->category_id)
-                                                <option {{ $val->id == $category->parent_id ? 'selected' : '' }}
-                                                    value="{{ $val->id }}">{{ $val->name }}</option>
-                                            @endif
-                                        @endforeach
+                                    <label class="form-label">Thương hiệu sản phẩm</label>
+                                    <select name="brand_id" class="form-control input-sm m-bot15">
+                                    @foreach($brands as $brand)
+                        <option {{$brand->id==$products->brand_id ?'selected' :''}} value="{{$brand->id}}">{{$brand->name}}</option>
+                                     @endforeach
                                     </select>
                                 </div>
+                             
                                 <div class="col-12">
                                     <label class="form-label">Đã bán</label>
                                     <input type="text" class="form-control" placeholder="Đã bán" name="sold"
-                                        value="{{ $product->sold }}">
+                                        value="{{ $products->sold }}">
                                     <span style="color:red;">@error('sold'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Giá</label>
                                     <input type="text" class="form-control" placeholder="Giá" name="price"
-                                        value="{{ $product->price }}">
+                                        value="{{ $products->price }}">
                                     <span style="color:red;">@error('price'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Mô tả</label>
                                     <textarea class="form-control" rows="3" name="description"
                                         id="ckeditor_category"
-                                        style="resize: none"> {!! $product->description !!}</textarea>
+                                        style="resize: none"> {!! $products->description !!}</textarea>
                                     <span style="color:red;">@error('description'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Trạng thái</label>
                                     <select name="status" class="form-select" id="inputGroupSelect02">
-                                        @if ($product->status == 0)
+                                        @if ($products->status == 0)
                                             <option selected value="0">Kích hoạt<table></table>
                                             </option>
                                             <option value="1">Không kích hoạt</option>
-                                        @else ($product->status == 1)
+                                        @else ($products->status == 1)
                                             <option value="0">Kích hoạt<table></table>
                                             </option>
                                             <option selected value="1">Không kích hoạt</option>
@@ -100,7 +93,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="d-grid">
-                                        <a href="{{ route('categories.index') }}" class="btn btn-danger">Trở về </a>
+                                        <a href="{{ route('products.index') }}" class="btn btn-danger">Trở về </a>
                                     </div>
                                 </div>
                             </form>

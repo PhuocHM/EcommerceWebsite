@@ -24,24 +24,27 @@ class ProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:2|max:255|unique:products,name,'.$this->route('product'),
+            'name'=>'required|unique:products,name,'.$this->route('product'),
             'slug'=>'required',    
-            'code'=>'required',    
-            'sold'=>'required',
-            'description'=>'required',
-            'status'=>'required',
-            'brand_id'=>'required',
-            'category_id'=>'required',   
-            'status'=>'required',           
+            'code'=>'required',   
+            'sold'=>'required',   
+            'price'=>'required',   
+            'description'=>'required',   
+            'status'=>'required',   
+            'brand_id '=>'required',   
+            'category_id'=>'required',
+             
+              
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập tên sản phẩm',
-            'name.unique' => 'Tên đã tồn tại',
-            'slug.required' => 'Vui lòng nhập slug sản phẩm',   
-            'description.required' => 'Vui lòng nhập mô tả sản phẩm ',  
+            'name.required'          => 'Vui lòng nhập tên sản phẩm',
+            'name.unique'            => 'Tên đã tồn tại',
+            'slug.required'          => 'Vui lòng nhập slug mô tả',   
+            'description.required'   => 'Vui lòng nhập mô tả',   
+           
         ];
     }
 }

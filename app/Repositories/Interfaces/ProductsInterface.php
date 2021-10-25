@@ -13,4 +13,5 @@ Interface ProductsInterface {
     public function destroy($id);
     public function create_category();
     public function create_brand();
+    public function search();
 }
