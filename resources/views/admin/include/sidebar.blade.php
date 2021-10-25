@@ -23,7 +23,9 @@
                 </li>
                 <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                 </li>
-               
+                <li> <a href="{{ route('brands.index') }}"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
+                </li>
+                
             </ul>
         </li>
         

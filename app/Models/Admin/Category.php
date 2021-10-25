@@ -20,7 +20,7 @@ class Category extends Model
     protected $table = 'categories';
     public $timestamps = true;
 
-    // public function get_products(){
-    //     return $this->hasMany(Product::class);
-    // }
+    public function get_products(){
+        return $this->hasMany(Product::class);
+    }
 }

@@ -9,9 +9,11 @@ use App\Models\CartItem;
 class Cart extends Model
 {
     use HasFactory;
-    private $table = "cart";
+    protected $table = "carts";
     public function cart_item()
     {
         return $this->hasMany(CartItem::class);
     }
+
+    
 }

@@ -1,8 +1,6 @@
 @extends('admin.include.layout')
 @section('main')
-
     <div class="wrapper">
-
         <main class="page-content">
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -40,7 +38,6 @@
                                         <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
-
                                                     <th>#</th>
                                                     <th>Tên</th>
                                                     <th>Slug</th>

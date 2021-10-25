@@ -12,10 +12,10 @@ class Orders extends Model
     protected $table = 'orders';
 
     public function orderItem(){
-        $this->hasMany(OrderItems::class);
+        return  $this->hasMany(OrderItems::class);
     }
 
     public function customer(){
-        $this->belongsTo(Customers::class);
+        return  $this->belongsTo(Customers::class);
     }
 }
