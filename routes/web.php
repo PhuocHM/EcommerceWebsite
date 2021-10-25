@@ -10,6 +10,7 @@ use App\Http\Controllers\Users\TrendingProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);
@@ -32,5 +36,8 @@ Route::resource('maybe-you-like', MaybeYouLikeController::class);
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('/categories', CategoriesController::class);
+    Route::resource('/attributes', AttributesController::class);
+    Route::resource('/brands', BrandsController::class);
+});
