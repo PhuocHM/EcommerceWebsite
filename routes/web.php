@@ -9,6 +9,10 @@ use App\Http\Controllers\Users\HomeController;
 use App\Http\Controllers\Users\RateProductsController;
 use App\Http\Controllers\Users\TrendingProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\Admin\AttributesController;
+use App\Http\Controllers\Admin\BrandsController;
 
 /*
 |--------------------------------------------------------------------------
