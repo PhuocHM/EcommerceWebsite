@@ -10,7 +10,6 @@ use App\Http\Controllers\Users\RateProductsController;
 use App\Http\Controllers\Users\TrendingProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoriesController;
-
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Admin\ProductAttributesController;
@@ -45,7 +44,6 @@ Route::group(['prefix'=>'admin'],function() {
     Route::resource('/attributes',AttributesController::class);
     Route::resource('/brands',BrandsController::class);
     Route::resource('/productAttributes',ProductAttributesController::class);
-});
     Route::resource('/products',ProductsController::class);
 });
 Route::get('/search', [ProductsController::class,'search']);

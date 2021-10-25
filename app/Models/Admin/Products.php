@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Products extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
     protected $dates = [
         'created_at',
         'updated_at',
@@ -27,6 +27,9 @@ class Products extends Model
     }
     public function brand(){
         return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+    public function attribute(){
+        return $this->belongsToMany(Attributes::class,'product_attribute');
     }
 
 }

@@ -12,29 +12,31 @@ class ProductAttributesService
     public function __construct(ProductAttributesRepository $productAttributesRepository){
         $this->productAttributesRepository = $productAttributesRepository;
     }
-
     public function getAll()
     {
         return $this->productAttributesRepository->getAll();
     }
-    public function update($request, $id)
-    {
-        return $this->productAttributesRepository->update($request, $id);
+    public function create_product(){
+        return $this->productAttributesRepository->create_product();
     }
-    public function store(ProductAttributesRequest $request)
+    public function create_attribute(){
+        return $this->productAttributesRepository->create_attribute();
+    }
+    public function store($request)
     {
         return $this->productAttributesRepository->store($request);
-    }
-    public function create()
-    {
-        return $this->productAttributesRepository->create();
     }
     public function edit($id)
     {
         return $this->productAttributesRepository->edit($id);
     }
+    public function update($request, $id)
+    {
+        return $this->productAttributesRepository->update($request, $id);
+    }
     public function destroy($id)
     {
         return $this->productAttributesRepository->destroy($id);
     }
+  
 }

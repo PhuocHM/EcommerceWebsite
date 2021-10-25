@@ -70,7 +70,7 @@ class ProductsRepository implements ProductsInterface
     public function search()
     {
         $search = $_GET['tukhoa'];
-        $products =Product::with('brand','category')->where('name','LIKE','%'.$search.'%')->get();
+        $products =Products::with('brand','category')->where('name','LIKE','%'.$search.'%')->get();
         return $products;
     }
 }

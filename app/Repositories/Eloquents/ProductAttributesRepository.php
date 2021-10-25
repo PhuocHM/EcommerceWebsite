@@ -5,50 +5,50 @@ namespace App\Repositories\Eloquents;
 use App\Models\Admin\ProductAttributes;
 use App\Models\Admin\Products;
 use App\Models\Admin\Attributes;
-
 use App\Repositories\Interfaces\ProductAttributesInterface;
 use Carbon\Carbon;
 class ProductAttributesRepository implements ProductAttributesInterface 
 {
     public function getAll()
     {
-        return ProductAttributes::with('products','attributes')->orderBy('id','DESC')->get();
+        return ProductAttributes::with('product','attribute')->orderBy('id','DESC')->get();
     }
-    public function getOne()
+    public function create_product()
     {
-
+        return Products::orderBy('id','DESC')->get();
+    }
+    public function create_attribute()
+    {
+        return Attributes::orderBy('id','DESC')->get();
     }
     public function store( $request){
-        // $attributes = new ProductAttributes();
-        // $attributes->name    = $request->name;
-        // $attributes->slug    = $request->slug;
-        // $attributes->category_id  = $request->category_id;
-        // $attributes->created_at = Carbon::now('Asia/Ho_Chi_Minh');
+        $productAttribute                = new ProductAttributes();
+        $productAttribute->product_id    = $request->product_id;
+        $productAttribute->attribute_id  = $request->attribute_id;
+        $productAttribute->content       = $request->content;
+        $productAttribute->created_at    = Carbon::now('Asia/Ho_Chi_Minh');
     
-        // $attributes->save();
-    }
-    public function update($request, $id){
-        // $attributes = ProductAttributes::find($id);
-        // $attributes->name  = $request->name;
-        // $attributes->slug    = $request->slug;
-        // $attributes->category_id = $request->category_id;
-        // $attributes->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
-
-        // $attributes->save();  
-        
-    }
-    public function search(){
-
-    }
-    public function create(){
-        // return Product::orderBy('id','DESC')->get();
+        $productAttribute->save();
     }
     public function edit($id){
-    //    return ProductAttributes::find($id);
+        return ProductAttributes::find($id);
+    }
+    public function update($request, $id){
+        $productAttribute                = ProductAttributes::find($id);
+        $productAttribute->product_id    = $request->product_id;
+        $productAttribute->attribute_id  = $request->attribute_id;
+        $productAttribute->content       = $request->content;
+        $productAttribute->updated_at    = Carbon::now('Asia/Ho_Chi_Minh');
+
+        $productAttribute->save();  
+        
     }
     public function destroy($id){
-        // $attribute= ProductAttributes::find($id);
-        // return $attribute->delete();
-   }
-  
+        $productAttribute = ProductAttributes::find($id);
+        return $productAttribute->delete();
+    }
+    public function search()
+    {
+    }
+
 }

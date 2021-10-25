@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Thêm thuộc tính</h6>
+                <h6 class="mb-0">Thêm Thuộc Tính Sản Phẩm</h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -11,13 +11,12 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
                 <div class="col-12 col-lg-8 mx-auto d-flex">
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
                             <form class="row g-3" method="POST" action="{{ route('productAttributes.store') }}">
                                 @csrf
-              
+
                                 <div class="col-12">
                                     <label class="form-label">Sản phẩm</label>
                                     <select name="category_id" class="form-select" id="inputGroupSelect02">
@@ -37,7 +36,7 @@
                                 <div class="col-12">
                                     <label class="form-label">Nội dung</label>
                                     <input type="text" name="content" value="{{ old('content') }}" class="form-control"
-                                        onkeyup="ChangeToSlug();" id="slug" placeholder="Nội dung">
+                                        placeholder="Nội dung">
                                     <span style="color:red;">@error('content'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="row">

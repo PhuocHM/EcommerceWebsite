@@ -49,8 +49,8 @@
                                                 @foreach ($productAttributes as $productAttribute)
                                                     <tr>
                                                         <td>{{ $productAttribute->id }}</td>
-                                                        <td>{{ $productAttribute->product_id }}</td>
-                                                        <td>{{ $productAttribute->attribute_id }}</td>
+                                                        <td>{{ $productAttribute->product->name }}</td>
+                                                        <td>{{ $productAttribute->attribute->name }}</td>
                                                         <td>{{ $productAttribute->content }}</td>
 
                                                         <td>{{ date('d-m-Y', strtotime($productAttribute->created_at)) }}
@@ -66,19 +66,19 @@
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('productAttribute.edit', $brand->id) }}"
+                                                                <a href="{{ route('productAttributes.edit', $productAttribute->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
                                                                 <form
-                                                                    action="{{ route('productAttribute.destroy', [$brand->id]) }}"
+                                                                    action="{{ route('productAttributes.destroy', [$productAttribute->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleteBrand({{ $brand->id }})"
+                                                                    <a href="#" onclick="deleteProductAtrribute({{ $productAttribute->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteBrand"> <i
+                                                                        data-bs-target="#deleteProductAtrribute"> <i
                                                                             class="bi bi-trash-fill"></i></a>
                                                                 </form>
                                                             </div>
@@ -90,7 +90,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteBrand" tabindex="-1"
+                                    <div class="modal fade" id="deleteProductAtrribute" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -132,8 +132,8 @@
 @endsection
 @section('scripts')
     <script>
-        function deleteBrand(id) {
-            var url = '{{ route('brands.index') }}' + '/' + id;
+        function deleteProductAtrribute(id) {
+            var url = '{{ route('productAttributes.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>
