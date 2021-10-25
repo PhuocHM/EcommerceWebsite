@@ -131,7 +131,6 @@
                                         @endif
                                     </span>
                                     <form action="GET" id="cart-form">
-                                        @csrf
                                         <div class="quantity">
                                             <h6 class="quantity-title">Số lượng:</h6>
                                             <div class="buttons-added">
@@ -435,24 +434,21 @@
 @section('script')
 <script>
     function addToCart2() {
-        $("#submit-button").click(function(e) {
-            e.preventDefault();
-            var url = `{{ route('cart.addToCart') }}`;
-            $.ajax({
-                url: url
-                , method: 'GET'
-                , data: $('#cart-form').serialize()
-                , success: function(response) {
-                    if (response.success) {
-                        alert('Đã thêm vào giỏ hàng thành công !')
-                    } else {
-                        // 
-                    }
+        let url = `{{ route('cart.addToCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: $('#cart-form').serialize()
+            , success: function(response) {
+                if (response.success) {
+                    console.log('Đã thêm vào giỏ hàng thành công !')
+                } else {
+                    console.log('Errror !')
                 }
-                , error: function(error) {
-                    console.log(error)
-                }
-            });
+            }
+            , error: function(error) {
+                console.log(error)
+            }
         });
     }
 

@@ -15,7 +15,7 @@
                 </div>
             </div>
         </form>
-       
+
         <div id="block-quick-view-popup" class="block-quick-view-popup">
             <div class="quick-view-content">
                 <a href="#" class="popup-btn-close"><i class="fas fa-times"></i></a>
@@ -174,10 +174,10 @@
                                     @foreach ($latest_comments as $key => $comment)
                                     <div class="blog-item">
                                         <div class="post-thumb">
-                                            <a href="#"><img src="{{ asset($comment->image) }}" alt="blog"></a>
+                                            <a href="{{ route('product-detail.show',$comment->product_id) }}"><img src="{{ asset($comment->image) }}" alt="blog"></a>
                                         </div>
                                         <div class="post-item-info">
-                                            <h3 class="post-name"><a href="#">{{ $comment->name }}</a></h3>
+                                            <h3 class="post-name"><a href="{{ route('product-detail.show',$comment->product_id) }}">{{ $comment->name }}</a></h3>
                                             <div class="post-metas">
                                                 <span class="author">Post by:
                                                     <span>{{ $comment->user_name }}</span></span>
@@ -198,8 +198,10 @@
                                 <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"640":{"items":3},"768":{"items":2},"992":{"items":3},"1200":{"items":4}}'>
                                     @foreach ($new_products as $key => $product)
                                     <div class="block-top-categori-item">
-                                        <a href="#"><img src="{{ asset($product->image) }}" alt="h3"></a>
-                                        <div class="block-top-categori-title">{{ $product->name }}</div>
+                                        <a href="{{ route('product-detail.show', $product->id) }}"><img src="{{ asset($product->image) }}" alt="h3"></a>
+                                        <div class="block-top-categori-title">
+                                            <a href="{{ route('product-detail.show', $product->id) }}">{{ $product->name }}</a>
+                                        </div>
                                     </div>
                                     @endforeach
                                 </div>
@@ -513,6 +515,27 @@
             }
         })
     }
+
+    function checkCart() {
+        var url = `{{ route('cart.checkCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , success: function(response) {
+                if (response.success) {
+                    $.each(response.success, function(key, value) {
+
+                        console.log(value)
+                    });
+                } else {
+                    //
+                }
+            }
+        })
+    }
+    $(document).ready(function() {
+        checkCart();
+    });
 
 </script>
 @endsection

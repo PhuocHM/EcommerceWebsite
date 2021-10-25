@@ -496,7 +496,9 @@
                                             <div class="thumb-inner">
                                                 <a href="#"><img src="{{asset($product->cover2Image->first()->image)}}" alt="p8"></a>
                                             </div>
-                                            <span class="onsale">-50%</span>
+                                            @if ($product->discount && $product->discount->first())
+                                            <span class="onsale">-{{number_format($product->discount->first()->amounts ) }}&ensp;VND</span>
+                                            @endif
                                             <a href="#" class="quick-view">Quick View</a>
                                         </div>
                                         <div class="product-innfo">
@@ -504,10 +506,12 @@
                                                 </a></div>
                                             <span class="price">
 
-                                                <ins>$229.00</ins>
-
-                                                <del>$259.00</del>
-
+                                                @if ($product->discount && $product->discount->first())
+                                                <ins>{{ number_format($product->price - $product->discount->first()->amounts) }}&ensp;<u>đ</u></ins>
+                                                <del>{{ $product->price }}&ensp;<u>đ</u></del>
+                                                @else
+                                                <ins>{{ number_format($product->price) }}&ensp;<u>đ</u></ins>
+                                                @endif
                                             </span>
                                             <span class="star-rating">
 
