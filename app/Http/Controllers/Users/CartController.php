@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\Carts;
+use App\Models\Users\Products;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
-class NewCategoriesController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,25 @@ class NewCategoriesController extends Controller
      */
     public function index()
     {
-        return view('list-products');
+        $items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
+            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('product_image', 'product_image.product_id', '=', 'products.id')
+            ->where('user_id', 1)
+            ->where('type', 1)
+            ->get();
+
+        $cate_ids = $items->pluck('category_id')->toArray();
+
+        $related_items = Products::join('product_image', 'product_image.product_id', '=', 'products.id')
+            ->whereIn('category_id', $cate_ids)
+            ->where('type', 1)
+            ->get();
+
+        $param = [
+            'items' => $items,
+            'related_items' => $related_items,
+        ];
+        return view('Website.shopping-cart', $param);
     }
 
     /**
@@ -35,7 +56,7 @@ class NewCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**

@@ -5,17 +5,16 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderItems extends Model
+class Comments extends Model
 {
     use HasFactory;
-
-    protected $table = 'order_items';
+    protected $table = 'comments';
 
     public function product(){
-        return  $this->belongsTo(Products::class);
+        return $this->belongsTo(Products::class);
     }
 
-    public function order(){
-        return  $this->belongsTo(Orders::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

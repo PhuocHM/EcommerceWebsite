@@ -14,11 +14,11 @@ class UpdateGroupPermission extends Migration
     public function up()
     {
         Schema::table('group_permision', function (Blueprint $table) {
-            $table->foreign('group_id')->references('id')->on('group');
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->foreign('role_id')->references('id')->on('roles');
         });
     }
-    
+
 
     /**
      * Reverse the migrations.

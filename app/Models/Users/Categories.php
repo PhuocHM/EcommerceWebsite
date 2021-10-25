@@ -9,9 +9,13 @@ use App\Models\Attributes;
 class Categories extends Model
 {
     use HasFactory;
-    private $table = "categories";
-    public function attributes()
+    protected $table = "categories";
+    public function attribute()
     {
         return $this->hasMany(Attributes::class);
+    }
+
+    public function product(){
+        return $this->hasMany(Products::class);
     }
 }

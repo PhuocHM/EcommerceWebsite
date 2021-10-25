@@ -21,38 +21,8 @@ FOOTER
 HOME SLIDE
 REPONSIVE
 /*-------------------------*/
-@font-face {
-	font-family: 'sofia_proregular';
-	src: url('../fonts/sofia_pro_regular.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'sofia_prolight';
-	src: url('../fonts/sofia_pro_light.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'sofia_promedium';
-	src: url('../fonts/sofia_pro_medium.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'sofia_prosemibold';
-	src: url('../fonts/sofia_pro_semibold.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'sofia_bold';
-	src: url('../fonts/sofia_pro_bold.otf') format('opentype');
-	font-weight: normal;
-	font-style: normal;
-}
-@import url(../js/fancybox/source/jquery.fancybox.css);
-@import url(../js/fancybox/source/helpers/jquery.fancybox-thumbs.css);
+
+
 body {
 	font-family: 'sofia_proregular', sans-serif;
 	font-size: 14px;

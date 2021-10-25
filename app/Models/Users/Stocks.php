@@ -5,12 +5,11 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductsImages extends Model
+class Stocks extends Model
 {
     use HasFactory;
 
-    public function product(){
-        $this->belongsTo(Products::class);
-    }
-    
+    protected $table = 'stocks';
+
+
 }
