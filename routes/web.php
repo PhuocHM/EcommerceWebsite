@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Users\BestSellerController;
 use App\Http\Controllers\Users\CartController;
 use App\Http\Controllers\Users\FlashSalesController;
@@ -23,8 +24,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/logout-user', [LoginController::class, 'logout'])->name('logout.user');
 Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);
 Route::resource('trending', TrendingProductController::class);

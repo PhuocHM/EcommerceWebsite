@@ -52,7 +52,25 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="flaticon-profile" aria-hidden="true"></i>Register / Sign in</a></li>
+                <li>
+                    @if (Auth::check())
+                        <div class="dropdown show">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="text-light">{{ Auth::user()->name }}</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+                                style="min-width:0px !important">
+                                <a class="dropdown-item text-dark" href="#">Setting</a>
+                                <a class="dropdown-item text-dark" href="{{route('logout.user')}}">Logout</a>
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ route('register') }}"><i class="flaticon-profile" aria-hidden="true"></i>Register
+                            /</a>
+                        <a href="{{ route('login') }}">Sign in</a>
+                    @endif
+                </li>
             </ul><!-- heder links -->
         </div>
     </div> <!-- header-top -->
@@ -63,7 +81,7 @@
                 <div class="col-md-2 nav-left">
                     <!-- logo -->
                     <strong class="logo">
-                        <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+                        <a href="{{ route('index') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                     </strong><!-- logo -->
                 </div>
                 <div class="col-md-8 nav-mind">
@@ -130,7 +148,8 @@
 
                             <span class="counter qty">
 
-                                <span class="cart-icon"><img src="{{ asset('images/cart.png') }}" alt="#"></span>
+                                <span class="cart-icon"><img src="{{ asset('images/cart.png') }}"
+                                        alt="#"></span>
 
                                 <span class="counter-number">5</span>
 
