@@ -16,6 +16,9 @@ class CreateSoftDeleteTable extends Migration
         Schema::table('brands', function (Blueprint $table) {
             $table->softDeletes();
         });
+        Schema::table('brands', function (Blueprint $table) {
+            $table->softDeletes();
+        });
     }
 
     /**

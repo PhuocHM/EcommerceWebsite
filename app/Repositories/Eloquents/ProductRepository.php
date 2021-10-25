@@ -3,6 +3,8 @@
 namespace App\Repositories\Eloquents;
 
 use App\Models\Admin\Product;
+use App\Models\Admin\Category;
+use App\Models\Admin\Brand;
 use App\Repositories\Interfaces\ProductInterface;
 use Carbon\Carbon;
 
@@ -10,11 +12,9 @@ class ProductRepository implements ProductInterface
 {
     public function getAll()
     {
-        return Product::all();
+        return Product::with('category','brand');
     }
-    public function getOne()
-    {
-    }
+
     public function store($request)
     {
         $product = new Product();

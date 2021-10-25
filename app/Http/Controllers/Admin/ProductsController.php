@@ -28,7 +28,7 @@ class ProductsController extends Controller
     {
         $products = $this->productService->getAll();
         $params = [
-            'products' => $products
+            'products' => $products,
         ];
         return view('admin.products.index', $params);
     }
@@ -40,13 +40,13 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = $this->categoryService->getAll();
-        $brands = $this->brandService->getAll();
+        $categories = $this->productService->findByCategory($category_id);
+        $brands = $this->productService->findByBrand($brand_id);
         $params = [
             'categories' => $categories,
             'brands' => $brands
         ];
-        return view('admin.products.create', $params);
+        return view('admin.products.create');
     }
 
     /**
