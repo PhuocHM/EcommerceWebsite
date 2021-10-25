@@ -21,6 +21,8 @@
             <ul>
                 <li> <a href="{{ route('categories.index') }}"><i class="bi bi-arrow-right-short"></i> Danh mục sản phẩm</a>
                 </li>
+                <li> <a href="{{ route('products.index') }}"><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
+                </li>
                 <li> <a href="{{ route('attributes.index') }}"><i class="bi bi-arrow-right-short"></i>Thuộc tính</a>
                 </li>  
                 <li> <a href="{{ route('brands.index') }}"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
