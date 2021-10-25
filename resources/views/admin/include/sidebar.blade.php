@@ -19,13 +19,16 @@
                 <div class="menu-title">Dashboard</div>
             </a>
             <ul>
-                <li> <a href="/admin/categories"><i class="bi bi-arrow-right-short"></i> Danh mục sản phẩm</a>
+                <li> <a href="{{ route('categories.index') }}"><i class="bi bi-arrow-right-short"></i> Danh mục sản phẩm</a>
                 </li>
                 <li> <a href=""><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                 </li>
-                <li> <a href="/admin/attributes"><i class="bi bi-arrow-right-short"></i>Thuộc tính</a>
+                <li> <a href="{{ route('attributes.index') }}"><i class="bi bi-arrow-right-short"></i>Thuộc tính</a>
                 </li>
                
+                <li> <a href="{{ route('brands.index') }}"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
+                </li>
+                
             </ul>
         </li>
         

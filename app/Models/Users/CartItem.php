@@ -10,7 +10,7 @@ use App\Models\Products;
 class CartItem extends Model
 {
     use HasFactory;
-    private $table = "cart_item";
+    protected $table = "cart_items";
     public function cart()
     {
         return $this->belongsTo(Cart::class, 'cart_id');

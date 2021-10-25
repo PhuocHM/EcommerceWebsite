@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProductsImages extends Model
 {
     use HasFactory;
-
-    public function product(){
-        $this->belongsTo(Products::class);
+    protected $table = 'products_images';
+    public function product()
+    {
+        return $this->belongsTo(Products::class);
     }
-    
 }
