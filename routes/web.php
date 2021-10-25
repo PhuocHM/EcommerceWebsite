@@ -26,7 +26,8 @@ use App\Http\Controllers\Users\ProductDetailController;
 |
 */
 
-Route::resource('/ccccc', HomeController::class);
+
+Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);
 Route::resource('trending', TrendingProductController::class);
 
