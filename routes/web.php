@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
