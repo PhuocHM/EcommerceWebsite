@@ -109,5 +109,53 @@ class ProductsSeeder extends Seeder
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
+
+        $item = new Products;
+        $item->id = 7;
+        $item->code = "C06";
+        $item->name = "RAM desktop Apacer Panther Golden";
+        $item->slug = "ram-pc";
+        // $item->tag = "RAM";
+        $item->sold = 0;
+        $item->price = 17900;
+        $item->description = "Bộ nhớ DDR4 Apacer 8GB (2400) Panther Golden Heatsink (EK.08G2T.GEC)";
+        $item->status = 0;
+        $item->brand_id = 3;
+        $item->category_id = 1;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Products;
+        $item->id = 8;
+        $item->code = "C06";
+        $item->name = "RAM Panther Golden";
+        $item->slug = "ram-pc";
+        // $item->tag = "RAM";
+        $item->sold = 0;
+        $item->price = 17900;
+        $item->description = "Bộ nhớ DDR4 Apacer 8GB (2400) Panther Golden Heatsink (EK.08G2T.GEC)";
+        $item->status = 0;
+        $item->brand_id = 3;
+        $item->category_id = 1;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Products;
+        $item->id = 9;
+        $item->code = "C06";
+        $item->name = "desktop Apacer Panther Golden";
+        $item->slug = "ram-pc";
+        // $item->tag = "RAM";
+        $item->sold = 0;
+        $item->price = 17900;
+        $item->description = "Bộ nhớ DDR4 Apacer 8GB (2400) Panther Golden Heatsink (EK.08G2T.GEC)";
+        $item->status = 0;
+        $item->brand_id = 3;
+        $item->category_id = 1;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
     }
 }

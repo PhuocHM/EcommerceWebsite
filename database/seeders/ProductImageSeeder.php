@@ -67,5 +67,32 @@ class ProductImageSeeder extends Seeder
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
+
+        $item = new ProductImage;
+        $item->id = 7;
+        $item->product_id = 7;
+        $item->image = "images/product/ram.jpg";
+        $item->type = 1;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new ProductImage;
+        $item->id = 8;
+        $item->product_id = 8;
+        $item->image = "images/product/ram.jpg";
+        $item->type = 1;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new ProductImage;
+        $item->id = 9;
+        $item->product_id = 9;
+        $item->image = "images/product/ram.jpg";
+        $item->type = 1;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
     }
 }

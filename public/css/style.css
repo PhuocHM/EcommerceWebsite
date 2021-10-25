@@ -4997,8 +4997,15 @@ button.btn-searchform {
 .pagination .nav-links li a:hover,
 .pagination .nav-links li.active a {
 	color: #fff;
-	background-color: #e03737;
+	background-color: #e03737 !important;
 	border: 1px solid #e03737;
+}
+.pagination .page-item a{
+	color:black !important;
+}
+.pagination .page-item.active span{
+	background-color: #e03737 !important;
+	border: 1px solid #e03737 !important;
 }
 /********blog-grid*******/
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Users\BestSellerController;
 use App\Http\Controllers\Users\CartController;
+use App\Http\Controllers\Users\CategoriesProductController;
 use App\Http\Controllers\Users\FlashSalesController;
 use App\Http\Controllers\Users\HomeController;
 
@@ -27,6 +28,7 @@ Route::resource('trending', TrendingProductController::class);
 Route::resource('flash-sales', FlashSalesController::class);
 Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
+Route::resource('category', CategoriesProductController::class);
 
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
