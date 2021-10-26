@@ -83,7 +83,7 @@ class ProductAttributesController extends Controller
             'attributes'       => $attributes,
             'productAttribute' => $productAttribute
         ];
-        // dd($products,$attributes,$productAttribute);
+    
         return view('admin.productAttributes.edit', $params);
     }
 
@@ -108,7 +108,13 @@ class ProductAttributesController extends Controller
      */
     public function destroy($id)
     {
-        $this->productAttributesService->destroy($id);
-        return redirect()->route('productAttributes.index')->with('status', 'Xóa thuộc tính sản phẩm thành công !');
+        try{
+            $this->productAttributesService->destroy($id);
+            return redirect()->route('productAttributes.index')->with('status', 'Xóa thuộc tính sản phẩm thành công !');
+        }
+        catch(\Exception $e){
+            return redirect()->route('productAttributes.index')->with('status', 'Xóa không thành công! '.$e);
+
+        } 
     }
 }
