@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Products</li>
+                            <li class="breadcrumb-item active" aria-current="page">Sản Phẩm</li>
                         </ol>
                     </nav>
                 </div>

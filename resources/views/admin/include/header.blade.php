@@ -7,14 +7,14 @@
         <div class="top-navbar d-none d-xl-block">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Dashboard</a>
+                    <a class="nav-link" href="index.html">Trang chủ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="app-emailbox.html">Email</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="javascript:;">Projects</a>
-                </li>
+                </li> --}}
                 <li class="nav-item d-none d-xxl-block">
                     <a class="nav-link" href="javascript:;">Events</a>
                 </li>
@@ -38,7 +38,8 @@
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link  dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="{{asset('admin/assets/images/avatars/avatar-1.png')}}" class="user-img" alt="">
+                            <img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" class="user-img"
+                                alt="">
                             <div class="user-name d-none d-sm-block">Jhon Deo</div>
                         </div>
                     </a>
@@ -46,12 +47,12 @@
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{asset('admin/assets/images/avatars/avatar-1.png')}}" alt="" class="rounded-circle"
-                                        width="60" height="60">
+                                    <img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" alt=""
+                                        class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
                                         <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
-                                        <small class="mb-0 dropdown-user-designation text-secondary">HR
-                                            Manager</small>
+                                        {{-- <small class="mb-0 dropdown-user-designation text-secondary">HR
+                                            Manager</small> --}}
                                     </div>
                                 </div>
                             </a>
@@ -113,11 +114,11 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown dropdown-large">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
+                    {{-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                         <div class="projects">
                             <i class="bi bi-grid-3x3-gap-fill"></i>
                         </div>
-                    </a>
+                    </a> --}}
                     <div class="dropdown-menu dropdown-menu-end">
                         <div class="row row-cols-3 gx-2">
                             <div class="col">
@@ -214,23 +215,23 @@
                         <!--end row-->
                     </div>
                 </li>
-                <li class="nav-item dropdown dropdown-large">
+                {{-- <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
-                        <div class="messages">
+                        {{-- <div class="messages">
                             <span class="notify-badge">5</span>
                             <i class="bi bi-messenger"></i>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end p-0">
-                        <div class="p-2 border-bottom m-2">
+                        </div> --}}
+                {{-- </a> --}}
+                {{-- <div class="dropdown-menu dropdown-menu-end p-0">
+                        {{-- <div class="p-2 border-bottom m-2">
                             <h5 class="h5 mb-0">Messages</h5>
-                        </div>
-                        <div class="header-message-list p-2">
+                        </div> --}}
+                {{-- <div class="header-message-list p-2">
                             <div class="dropdown-item bg-light radius-10 mb-1">
                                 <form class="dropdown-searchbar position-relative">
-                                    <div
-                                        class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon">
-                                        <i class="bi bi-search"></i></div>
+                                    <div class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon">
+                                        <i class="bi bi-search"></i>
+                                    </div>
                                     <input class="form-control" type="search" placeholder="Search Messages">
                                 </form>
                             </div>
@@ -351,24 +352,24 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="p-2">
+                        </div> --}}
+                {{-- <div class="p-2">
                             <div>
                                 <hr class="dropdown-divider">
                             </div>
                             <a class="dropdown-item" href="#">
                                 <div class="text-center">View All Messages</div>
                             </a>
-                        </div>
-                    </div>
-                </li>
+                        </div> --}}
+                {{-- </div> --}}
+                {{-- </li> --}}
                 <li class="nav-item dropdown dropdown-large d-none d-sm-block">
-                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
+                    {{-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                         <div class="notifications">
                             <span class="notify-badge">8</span>
                             <i class="bi bi-bell-fill"></i>
                         </div>
-                    </a>
+                    </a> --}}
                     <div class="dropdown-menu dropdown-menu-end p-0">
                         <div class="p-2 border-bottom m-2">
                             <h5 class="h5 mb-0">Notifications</h5>
@@ -376,9 +377,9 @@
                         <div class="header-notifications-list p-2">
                             <div class="dropdown-item bg-light radius-10 mb-1">
                                 <form class="dropdown-searchbar position-relative">
-                                    <div
-                                        class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon">
-                                        <i class="bi bi-search"></i></div>
+                                    <div class="position-absolute top-50 start-0 translate-middle-y px-3 search-icon">
+                                        <i class="bi bi-search"></i>
+                                    </div>
                                     <input class="form-control" type="search" placeholder="Search Messages">
                                 </form>
                             </div>
@@ -408,8 +409,8 @@
                             </a>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <div class="notification-box"><i
-                                            class="bi bi-file-earmark-bar-graph-fill"></i></div>
+                                    <div class="notification-box"><i class="bi bi-file-earmark-bar-graph-fill"></i>
+                                    </div>
                                     <div class="ms-3 flex-grow-1">
                                         <h6 class="mb-0 dropdown-msg-user">24 PDF File <span
                                                 class="msg-time float-end text-secondary">2 h</span></h6>

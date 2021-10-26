@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                            <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
@@ -55,8 +55,8 @@
                                                         <td>{{ $category->id }}</td>
                                                         <td>{{ $category->name }}</td>
                                                         <td>{{ $category->slug }}</td>
-                                                        <td>{{ $category->description }}</td>                                                   
-                                                        <td>{{ $categories_arr[$category->parent_id] }}</td>                                                                                    
+                                                        <td>{{ $category->description }}</td>
+                                                        <td>{{ $categories_arr[$category->parent_id] }}</td>
                                                         <td>
                                                             @if ($category->status == 0)
                                                                 <span class='text text-success'>Hiển thị</span>
