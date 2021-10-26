@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\Attributes;
 use App\Models\Users\Categories;
 use App\Models\Users\Products;
 use App\Models\Users\ProductImage;
@@ -70,13 +71,6 @@ class HomeController extends Controller
                 $item1['rate'] = $avg;
                 array_push($data, $item1);
             });
-
-        // $cart_items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-        //     ->join('products', 'cart_items.product_id', '=', 'products.id')
-        //     ->join('product_image', 'product_image.product_id', '=', 'products.id')
-        //     ->where('user_id', 1)
-        //     ->where('type', 1)
-        //     ->get();
 
         $params = [
             "products" => $products,

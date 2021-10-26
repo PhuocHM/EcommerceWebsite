@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\RegisterUserRequest;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Users\Customers;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,14 +51,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+    // protected function validator(array $data)
+    // {
+    //     dd($data);
+    //     return Validator::make($data, [
+    //         'user_name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //         'customer_name' => ['required', 'string', 'max:255'],
+    //         'phone' => ['required', 'string', 'max:10'],
+    //         'address' => ['required', 'string', 'max:255']
+    //     ]);
+    // }
 
     /**
      * Create a new user instance after a valid registration.
@@ -64,10 +72,37 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return [
+            User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]),
+            //chưa xxong
+            Customers::create([
+                'name' => $data['customer_name'],
+                'slug' => $data['slug'],
+                'phone' => $data['phone'],
+                'address' => $data['address'],
+                'user_id' => $data['user_id'],
+            ])
+        ];
+    }
+
+    public function register(RegisterUserRequest $request)
+    {
+        // $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 201)
+            : redirect($this->redirectPath());
     }
 }
