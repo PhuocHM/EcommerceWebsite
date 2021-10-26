@@ -136,53 +136,8 @@
                         <span class="title-menu-mobile">Main menu</span>
 
                     </span>
-                    <div class="block-minicart dropdown style2">
-                        <a class="minicart" href="#">
-
-                            <span class="counter qty">
-
-                                <span class="cart-icon"><img src="{{ asset('images/cart.png') }}" alt="#"></span>
-
-                                <span class="counter-number">5</span>
-
-                            </span>
-                            <span class="counter-your-cart">
-
-                                <span class="counter-label">Your Cart:</span>
-
-                                <span class="counter-price">$00.00</span>
-
-                            </span>
-                        </a>
-                        <div class="parent-megamenu">
-                            <form>
-                                <div class="minicart-content-wrapper">
-                                    <div class="subtitle">
-                                        You have <span>2</span> item(s) in your cart
-                                    </div>
-                                    <div class="minicart-items-wrapper">
-                                        <ol class="minicart-items" id="mini-cart">
-                                            {{-- Mini cart --}}
-                                        </ol>
-                                    </div>
-                                    <div class="subtotal">
-                                        <span class="label">Total :</span>
-                                        <span class="price">$480.00</span>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <a class="btn btn-viewcart" href="{{ route('cart.index') }}">View
-                                                    cart</a>
-                                            </div>
-                                            <div class="col-6">
-                                                <a class="btn btn-checkout" href="checkout.html">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="block-minicart dropdown style2" id="mini-cart">
+                        {{-- --}}
                     </div><!-- block mini cart -->
                     <a href="#" class="hidden-md search-hidden"><span class="flaticon-magnifying-glass"></span></a>
                     <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>

@@ -532,6 +532,7 @@
             , success: function(response) {
                 if (response.success) {
                     $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
+                    checkCart();
                     $("#noti-button").trigger("click");
                 } else {
                     //
@@ -546,13 +547,7 @@
             url: url
             , method: 'GET'
             , success: function(response) {
-                if (response.success) {
-                    $.each(response.success, function(key, value) {
-                        console.log(value)
-                    });
-                } else {
-                    //
-                }
+                $("#mini-cart").html(response)
             }
         })
     }
@@ -603,6 +598,7 @@
 
     $(document).ready(function() {
         getFlashSales();
+        checkCart();
     });
 
 </script>

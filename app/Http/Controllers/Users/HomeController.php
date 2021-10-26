@@ -77,16 +77,6 @@ class HomeController extends Controller
             "latest_comments" => $latest_comments,
             "sales_items" => $data,
         ];
-
-        // Cart Item
-        // $user_id = 1;
-        // $cart_items = CartItems::join('carts', 'carts.id', 'cart_items.cart_id')
-        //     ->join('discount_product', 'discount_product.id', 'cart_items.product_id')
-        //     ->join('products', 'products.id', 'cart_items.product_id')
-        //     ->where('user_id', $user_id)
-        //     ->get();
-        // dd($cart_items);
-
         return view('Website.index', $params);
     }
 
@@ -101,14 +91,13 @@ class HomeController extends Controller
     }
     public function checkCart()
     {
-        // Cart Item
-        $user_id = 1;
-        $cart_items = CartItems::join('carts', 'carts.id', 'cart_items.cart_id')
-            ->join('discount_product', 'discount_product.id', 'cart_items.product_id')
-            ->join('products', 'products.id', 'cart_items.product_id')
-            ->where('user_id', $user_id)
-            ->get();
-        return response()->json(['success' => $cart_items]);
+        $user_id = Auth::id();
+        $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
+        $cart_items = Products::with('cover2Image', 'discount')->whereIn('id', $product_ids)->get();
+        $params = [
+            "cart_items" => $cart_items
+        ];
+        return view('include.cart', $params)->render();
     }
     public function getFlashSale()
     {
@@ -124,25 +113,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        // $("#mini-cart").append(`
-        // <li class="product-inner">
-        //                         <div class="product-thumb style1">
-        //                             <div class="thumb-inner">
-        //                                 <a href="#"><img src="{{ asset($item->image) }}" alt="c1"></a>
-        //                             </div>
-        //                         </div>
-        //                         <div class="product-innfo">
-        //                             <div class="product-name"><a href="#">{{$item->name}}
-        //                                 </a></div>
-        //                             <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true"></i></a>
-        //                             <span class="price price-dark">
-
-        //                                 <ins>{{$item->price}}</ins>
-
-        //                             </span>
-        //                         </div>
-        //                     </li>
-        // `);
+        // 
     }
     public function addToCart(Request $request)
     {

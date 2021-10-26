@@ -53,6 +53,7 @@ class CategoriesProductController extends Controller
             ->where('category_id', '=', $id)
             ->orderBy('products.created_at')->paginate(6);
         $attributes = Attributes::with('product')->where('category_id', '=', $id)->get();
+        // dd($attributes->toArray());
         $params = [
             'category_products' => $category_products,
             "attributes" => $attributes

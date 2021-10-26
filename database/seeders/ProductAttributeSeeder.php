@@ -43,7 +43,7 @@ class ProductAttributeSeeder extends Seeder
 
         $item = new ProductAttribute;
         $item->id = 4;
-        $item->product_id = 2;
+        $item->product_id = 1;
         $item->attribute_id = 4;
         $item->content = 'Core i9 9900K';
         $item->created_at = "2021-09-25 23:19:08";
@@ -235,6 +235,33 @@ class ProductAttributeSeeder extends Seeder
         $item->product_id = 1;
         $item->attribute_id = 25;
         $item->content = 'RTX 3000 Series';
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new ProductAttribute;
+        $item->id = 26;
+        $item->product_id = 2;
+        $item->attribute_id = 1;
+        $item->content = 'RTX 3070 Ti';
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new ProductAttribute;
+        $item->id = 27;
+        $item->product_id = 2;
+        $item->attribute_id = 2;
+        $item->content = 'RTX 30890 Ti';
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new ProductAttribute;
+        $item->id = 28;
+        $item->product_id = 2;
+        $item->attribute_id = 3;
+        $item->content = 'RTX 3099990 Ti';
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
