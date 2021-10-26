@@ -20,10 +20,13 @@
              </a>
              <ul>
                  <li> <a style="text-decoration: none" href="{{ route('categories.index') }}"><i
-                             class="bi bi-arrow-right-short"></i> Danh mục sản phẩm</a>
+                             class="bi bi-arrow-right-short"></i>Danh mục sản phẩm</a>
                  </li>
                  <li> <a style="text-decoration: none" href="{{ route('products.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Sản phẩm</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('productImages.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Hình ảnh sản phẩm</a>
                  </li>
                  <li> <a style="text-decoration: none" href="{{ route('attributes.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Thuộc tính</a>
@@ -34,7 +37,7 @@
                  <li> <a style="text-decoration: none" href="{{ route('productAttributes.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Thuộc tính sản phẩm</a>
                  </li>
-
+                 
              </ul>
          </li>
 
