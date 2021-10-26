@@ -32,7 +32,6 @@
                     </ul>
                 </li>
 
-                <li><a href="#"><i class="flaticon-profile" aria-hidden="true"></i>Đăng kí / Đăng nhập</a></li>
                 <li class="menu-item-has-children">
                     <a href="#" class="dropdown-toggle">
                         <span>Dollar (US)</span>
@@ -51,19 +50,19 @@
                 </li>
                 <li>
                     @if (Auth::check())
-                    <div class="dropdown show">
+                    <div class="dropdown ">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="text-light">{{ Auth::user()->name }}</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="min-width:0px !important">
-                            <a class="dropdown-item text-dark" href="#">Setting</a>
-                            <a class="dropdown-item text-dark" href="{{route('logout.user')}}">Logout</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="min-width:75px !important">
+                            <a class="dropdown-item text-dark" style="color: black" href="#">Setting</a>
+                            <a class="dropdown-item text-dark" style="color: black" href="{{route('logout.user')}}">Đăng xuất</a>
                         </div>
                     </div>
                     @else
-                    <a href="{{ route('register') }}"><i class="flaticon-profile" aria-hidden="true"></i>Register
+                    <a href="{{ route('register') }}"><i class="flaticon-profile" aria-hidden="true"></i>Đăng kí
                         /</a>
-                    <a href="{{ route('login') }}">Sign in</a>
+                    <a href="{{ route('login') }}">Đăng nhập</a>
                     @endif
                 </li>
             </ul><!-- heder links -->

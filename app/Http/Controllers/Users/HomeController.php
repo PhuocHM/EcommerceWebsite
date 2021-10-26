@@ -78,6 +78,7 @@ class HomeController extends Controller
             "latest_comments" => $latest_comments,
             "sales_items" => $data,
         ];
+
         return view('Website.index', $params);
     }
 
@@ -90,9 +91,16 @@ class HomeController extends Controller
     {
         //
     }
+    public function deleteCart()
+    {
+        // 
+    }
     public function checkCart()
     {
         $user_id = Auth::id();
+        if (!$user_id) {
+            return false;
+        }
         $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
         $cart_items = Products::with('cover2Image', 'discount')->whereIn('id', $product_ids)->get();
         $params = [

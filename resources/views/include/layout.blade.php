@@ -37,4 +37,41 @@
 <script type="text/javascript" src="{{asset('js/jquery.plugin.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.countdown.js')}}"></script>
 @yield('script')
+<script>
+    function checkCart() {
+        var url = `{{ route('cart.checkCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , success: function(response) {
+                $("#mini-cart").html(response)
+            }
+        })
+    }
+    $(document).ready(function() {
+        checkCart();
+    });
+
+    function deleteCartItem(product_id) {
+        var url = `{{ route('cart.deleteCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: {
+                product_id: product_id
+                , user_id: 1
+            }
+            , success: function(response) {
+                if (response.success) {
+                    $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
+                    checkCart();
+                    $("#noti-button").trigger("click");
+                } else {
+                    //
+                }
+            }
+        })
+    }
+
+</script>
 </html>

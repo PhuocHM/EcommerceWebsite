@@ -35,7 +35,12 @@
                                 </a></div>
                             <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true"></i></a>
                             <span class="price price-dark">
-                                <ins>{{$item->price}}</ins>
+                                @if ($item->discount && $item->discount->first())
+                                <ins style="color: red">{{ number_format(($item->price - $item->discount->first()->amounts)*$item->cartItem->first()->quantity) }}&ensp;<u>đ</u></ins>
+                                <del>{{ $item->price * $item->cartItem->first()->quantity }}&ensp;<u>đ</u></del>
+                                @else
+                                <ins style="color: red">{{ number_format($item->price  * $item->cartItem->first()->quantity) }}&ensp;<u>đ</u></ins>
+                                @endif
                             </span>
                         </div>
                     </li>

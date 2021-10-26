@@ -699,3 +699,8 @@
     <a href="#" id="scrollup" title="Scroll to Top">Scroll</a>
 </body>
 @endsection
+@section('script')
+<script>
+
+</script>
+@endsection

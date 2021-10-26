@@ -541,17 +541,6 @@
         })
     }
 
-    function checkCart() {
-        var url = `{{ route('cart.checkCart') }}`;
-        $.ajax({
-            url: url
-            , method: 'GET'
-            , success: function(response) {
-                $("#mini-cart").html(response)
-            }
-        })
-    }
-
     function getFlashSales() {
         var url = `{{ route('discounts.getFlashSale') }}`;
         $.ajax({
@@ -598,7 +587,6 @@
 
     $(document).ready(function() {
         getFlashSales();
-        checkCart();
     });
 
 </script>
