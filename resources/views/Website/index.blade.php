@@ -204,7 +204,7 @@
                                             <div class="post-metas">
                                                 <span class="author">Post by:
                                                     <span>{{ $comment->user_name }}</span></span>
-                                                <span class="comment"><i class="fas fa-star text-warning"></i>{{ $comment->star_value }}</span>
+                                                <span class="comment"><i class="fas fa-star" style="color:orange"></i>{{ $comment->star_value }}</span>
                                             </div>
                                             <div>
                                                 {{ $comment->content }}
