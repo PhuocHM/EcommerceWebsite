@@ -76,14 +76,8 @@ class HomeController extends Controller
             "latest_comments" => $latest_comments,
             "sales_items" => $data,
         ];
-        // $user_id = 1;
-        // $cart_items = CartItems::join('carts', 'carts.id', 'cart_items.cart_id')
-        //     // ->join('discount_product', 'discount_product.id', 'cart_items.product_id')
-        //     ->join('discounts', 'discounts.id', 'cart_items.product_id')
-        //     ->join('products', 'products.id', 'cart_items.product_id')
-        //     // ->where('user_id', $user_id)
-        //     ->get();
-        // dd($cart_items);
+
+
         return view('Website.index', $params);
     }
 
@@ -138,12 +132,13 @@ class HomeController extends Controller
     }
     public function addToCart(Request $request)
     {
+        $user_id = 1;
         if (!isset($request->product_quantity)) {
-            $check_cart = Carts::where('user_id', '=', $request->user_id)->first();
+            $check_cart = Carts::where('user_id', '=', $user_id)->first();
             if ($check_cart == null) {
                 $cart = new Carts;
                 $cart->code = Carbon::now()->timestamp;
-                $cart->user_id = $request->user_id;
+                $cart->user_id = $user_id;
                 $cart->save();
 
                 $cart_items = new CartItems;
@@ -165,7 +160,32 @@ class HomeController extends Controller
                 }
             }
         } else {
-            return response()->json(['success' => 'Product quantity' . $request->product_quantity . 'Product id' . $request->product_id]);
+            $check_cart = Carts::where('user_id', '=', $user_id)->first();
+            if ($check_cart == null) {
+                $cart = new Carts;
+                $cart->code = Carbon::now()->timestamp;
+                $cart->user_id = $user_id;
+                $cart->save();
+
+                $cart_items = new CartItems;
+                $cart_items->product_id = $request->product_id;
+                $cart_items->quantity = $request->product_quantity;
+                $cart_items->cart_id = $cart->id;
+                $cart_items->save();
+            } else {
+                $product = CartItems::where('product_id', '=', $request->product_id)->first();
+                if ($product == null) {
+                    $cart_items = new CartItems;
+                    $cart_items->product_id = $request->product_id;
+                    $cart_items->quantity = $request->product_quantity;
+                    $cart_items->cart_id = $check_cart->id;
+                    $cart_items->save();
+                } else {
+                    $product->quantity += $request->product_quantity;
+                    $product->save();
+                }
+            }
+            return response()->json(['success' => 'Đã thêm thành công']);
         }
         return response()->json(['success' => 'Oke']);
     }

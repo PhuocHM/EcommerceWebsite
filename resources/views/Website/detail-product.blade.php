@@ -138,6 +138,7 @@
                                                 <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
                                                 <a href="#" class="sign minus"><i class="fa fa-minus"></i></a>
                                             </div>
+                                            <input type="hidden" name="product_id" value="{{$detail_products->id}}">
                                         </div>
                                         <div class="single-add-to-cart">
                                             <button onclick="addToCart2()" id="submit-button" type="button" class="btn-add-to-cart">Thêm vào giỏ hàng</button>
@@ -441,7 +442,7 @@
             , data: $('#cart-form').serialize()
             , success: function(response) {
                 if (response.success) {
-                    console.log('Đã thêm vào giỏ hàng thành công !')
+                    alert('Đã thêm vào giỏ hàng thành công !')
                 } else {
                     console.log('Errror !')
                 }
