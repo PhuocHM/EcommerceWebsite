@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\ProductAttributes;
 use App\Models\Admin\Products;

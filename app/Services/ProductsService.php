@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquents\ProductsRepository;
+use App\Repositories\Eloquent\ProductsRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\ProductsRequest;
 

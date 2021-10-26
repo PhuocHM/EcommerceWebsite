@@ -38,7 +38,8 @@ class ProductImagesService
     {
         return $this->productImagesRepository->destroy($id);
     }
-    public function search(){
+    public function search()
+    {
         return $this->productImagesRepository->search();
     }
 }

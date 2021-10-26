@@ -15,9 +15,10 @@
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
                             <form method="POST" class="row g-3"
-                                action="{{ route('productImages.update', $productImage->id) }}">
+                                action="{{ route('productImages.update', $productImage->id) }}"
+                                enctype="multipart/form-data">
                                 @method('PUT')
-                                @csrf
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Thuộc danh mục</label>
                                     <select name="product_id" value="{{ $productImage->product->name }}"
@@ -30,9 +31,10 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Hình ảnh</label>
-                                    <input type="file" name="image" class="form-control-file" id="image"
+                                    <input type="file" name="image[]" class="form-control-file" id="image"
                                         value="{{ $productImage->image }}"> <br>
-                                    <img src="{{ asset('/images/product/' . $productImage->image) }}" alt="" style="width: 150px">
+                                    <img src="{{ asset('/images/product/' . $productImage->image) }}" alt=""
+                                        style="width: 150px">
                                     <span style="color:red;">@error('image'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">

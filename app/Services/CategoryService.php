@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Repositories\Eloquents\CategoryRepository;
+use App\Repositories\Eloquent\CategoryRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\CategoryRequest;
 

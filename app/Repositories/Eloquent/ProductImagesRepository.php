@@ -43,29 +43,29 @@ class ProductImagesRepository implements ProductImagesInterface
     }
     public function update($request, $id)
     {
-        $productImage              = ProductImages::find($id);
-        $productImage->product_id  = $request->product_id;
-        $productImage->type        = $request->type;
+        $productImage             = ProductImages::find($id);
+        $productImage->product_id = $request->product_id;
+        $productImage->type       = $request->type;
 
         if ($request->hasFile('image')) {
             $get_image = $request->file('image');
             if ($get_image) {
-                $path = 'images/brand/' . $productImage->image;
+                $path = 'images/product/' . $productImage->image;
                 if (file_exists($path)) {
                     unlink($path);
                 }
-                $path = 'images/brand/';
+                $path = 'images/product/';
                 $get_name_image = $get_image->getClientOriginalName();
                 $name_image = current(explode('.', $get_name_image));
                 $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
                 $get_image->move($path, $new_image);
                 $productImage->image = $new_image;
-                $data['productImage_image'] = $new_image;
+                $data['brand_image'] = $new_image;
             }
-        }
-        $productImage->updated_at  = Carbon::now('Asia/Ho_Chi_Minh');
+            $productImage->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
-        $productImage->save();
+            $productImage->save();
+        }
     }
     public function destroy($id)
     {
@@ -82,5 +82,8 @@ class ProductImagesRepository implements ProductImagesInterface
         $search = $_GET['tukhoa'];
         $productImages = ProductImages::with('brand', 'category')->where('name', 'LIKE', '%' . $search . '%')->get();
         return $productImages;
+    }
+    public function find($id){
+        return ProductImages::find($id);
     }
 }
