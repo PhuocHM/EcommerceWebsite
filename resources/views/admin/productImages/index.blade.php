@@ -16,7 +16,7 @@
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('productImages.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('productImages.create') }}" class="btn btn-primary">Thêm hình ảnh</a>
                     </div>
                 </div>
             </div>
@@ -48,10 +48,19 @@
                                             <tbody>
                                                 @foreach ($productImages as $productImage)
                                                     <tr>
+                                                        <td>{{ $productImage->id }}</td>
                                                         <td>{{ $productImage->product->name }}</td>
-                                                        <td>{{ $productImage->image }}</td>
-                                                        <td>{{ $productImage->type }}</td>
-                           
+                                                        <td>
+                                                            <img src="{{ asset('images/product/' . $productImage->image) }}"
+                                                                alt="" style="width: 150px">
+                                                        </td>
+                                                        <td>
+                                                            @if ($productImage->type == 0)
+                                                                <span class='text text-success'>Ảnh bìa</span>
+                                                            @else
+                                                                <span class='text text-success'>Ảnh thường</span>
+                                                            @endif
+                                                        </td>
                                                         <td>{{ date('d-m-Y', strtotime($productImage->created_at)) }}</td>
                                                         <td>
                                                             @if ($productImage->updated_at != '')

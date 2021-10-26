@@ -18,6 +18,10 @@ class ProductImagesService
     {
         return $this->productImagesRepository->getAll();
     }
+    public function create_product()
+    {
+        return $this->productImagesRepository->create_product();
+    }
     public function store($request)
     {
         return $this->productImagesRepository->store($request);

@@ -38,6 +38,7 @@
                                     <input type="text" name="content" value="{{ old('content') }}" class="form-control"
                                         placeholder="Nội dung">
                                     <span style="color:red;">@error('content'){{ $message }} @enderror</span>
+                                    <br>
                                 </div>
                                 <div class="row">
                                     <div class="col-3">

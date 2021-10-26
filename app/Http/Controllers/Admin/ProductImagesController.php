@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductImagesRequest;
 use App\Services\ProductImagesService;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,11 @@ class ProductImagesController extends Controller
      */
     public function create()
     {
-        //
+        $products = $this->productImagesService->create_product();
+        $params = [
+            'products' => $products,
+        ];
+        return view('admin.productImages.create', $params);
     }
 
     /**
@@ -43,9 +48,10 @@ class ProductImagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductImagesRequest $request)
     {
-        //
+        $this->productImagesService->store($request);
+        return redirect()->route('productImages.index')->with('status','Thêm hình ảnh sản phẩm thành công !');
     }
 
     /**
@@ -67,7 +73,13 @@ class ProductImagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products         = $this->productImagesService->create_product();
+        $productImage = $this->productImagesService->edit($id);
+        $params = [
+            'products'   => $products,
+            'productImage' => $productImage
+        ];
+        return view('admin.productImages.edit', $params);
     }
 
     /**
@@ -77,9 +89,10 @@ class ProductImagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductImagesRequest $request, $id)
     {
-        //
+        $this->productImagesService->update($request, $id);
+        return redirect()->route('productImages.index')->with('status','Cập nhật hình ảnh sản phẩm thành công!');
     }
 
     /**
@@ -90,6 +103,13 @@ class ProductImagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $this->productImagesService->destroy($id);
+            return redirect()->route('productImages.index')->with('status', 'Xóa hình ảnh sản phẩm thành công !');
+        }
+        catch(\Exception $e){
+            return redirect()->route('productImages.index')->with('status', 'Xóa không thành công! '.$e);
+
+        }    
     }
 }

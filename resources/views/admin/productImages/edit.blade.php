@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Chỉnh Sửa Thuộc Tính </h6>
+                <h6 class="mb-0">Chỉnh Sửa Hình Ảnh Sản Phẩm </h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -15,31 +15,39 @@
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
                             <form method="POST" class="row g-3"
-                                action="{{ route('attributes.update', $attributes->id) }}">
+                                action="{{ route('productImages.update', $productImage->id) }}">
                                 @method('PUT')
                                 @csrf
-                                <div class="col-12">
-                                    <label class="form-label">Tên</label>
-                                    <input type="text" class="form-control" placeholder="Tên danh mục" name="name"
-                                        value="{{ $attributes->name }}">
-                                    <span style="color:red;">@error('name'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Slug</label>
-                                    <input type="text" class="form-control" placeholder="Slug name" name="slug"
-                                        value="{{ $attributes->slug }}">
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                                </div>
-                              
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Thuộc danh mục</label>
-                                    <select name="category_id" value="{{$attributes->category->name}}"  class="form-select" id="inputGroupSelect02">
-                      
-                      @foreach($categories as $category)
-                     <option {{$category->id==$attributes->category_id ?'selected' :''}} value="{{$category->id}}">{{$category->name}}</option>
-                      @endforeach
-              
-                                         </select>
+                                    <select name="product_id" value="{{ $productImage->product->name }}"
+                                        class="form-select" id="inputGroupSelect02">
+                                        @foreach ($products as $product)
+                                            <option {{ $product->id == $productImage->product_id ? 'selected' : '' }}
+                                                value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Hình ảnh</label>
+                                    <input type="file" name="image" class="form-control-file" id="image"
+                                        value="{{ $productImage->image }}"> <br>
+                                    <img src="{{ asset('/images/product/' . $productImage->image) }}" alt="" style="width: 150px">
+                                    <span style="color:red;">@error('image'){{ $message }} @enderror</span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Thể loại</label>
+                                    <select name="type" class="form-select" id="inputGroupSelect02">
+                                        @if ($productImage->type == 0)
+                                            <option selected value="0">Ảnh bìa <table></table>
+                                            </option>
+                                            <option value="1">Ảnh thường</option>
+                                        @else ($productImage->type == 1)
+                                            <option value="0">Ảnh bìa<table></table>
+                                            </option>
+                                            <option selected value="1">Ảnh thường</option>
+                                        @endif
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <div class="d-grid">
@@ -48,7 +56,7 @@
                                 </div>
                                 <div class="col-2">
                                     <div class="d-grid">
-                                        <a href="{{ route('attributes.index') }}" class="btn btn-danger">Trở về </a>
+                                        <a href="{{ route('productImages.index') }}" class="btn btn-danger">Trở về </a>
                                     </div>
                                 </div>
                             </form>

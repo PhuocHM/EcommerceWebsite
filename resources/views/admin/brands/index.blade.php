@@ -16,7 +16,7 @@
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm thương hiệu</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                                                     <th>#</th>
                                                     <th>Tên</th>
                                                     <th>Slug</th>
-                                                    <th>Hình ảnh</th>                           
+                                                    <th>Hình ảnh</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
@@ -54,7 +54,7 @@
                                                         <td>
                                                             <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
                                                                 style="width: 150px">
-                                                        </td>        
+                                                        </td>
                                                         <td>{{ date('d-m-Y', strtotime($brand->created_at)) }}</td>
                                                         <td>
                                                             @if ($brand->updated_at != '')
@@ -72,13 +72,11 @@
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('brands.destroy', [$brand->id]) }}"
+                                                                <form action="{{ route('brands.destroy', [$brand->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteBrand({{ $brand->id }})"
+                                                                    <a href="#" onclick="deleteBrand({{ $brand->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteBrand"> <i
                                                                             class="bi bi-trash-fill"></i></a>
