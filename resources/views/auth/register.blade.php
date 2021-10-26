@@ -25,12 +25,12 @@
                                         <label>Tên đăng nhập<span class="required">*</span></label>
                                         <input type="text" value="{{ old('user_name') }}" name="user_name"
                                             placeholder="Tên đăng nhập" class="input-text">
+                                        @error('user')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('user_name') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('user')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('user_name') }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
 
                                 <div class="col-sm-6">
@@ -38,12 +38,13 @@
                                         <label>Họ và tên<span class="required">*</span></label>
                                         <input type="text" value="{{ old('user_name') }}" name="customer_name"
                                             placeholder="Tên đầy đủ người dùng" class="input-text">
+                                        @error('customer_name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('customer_name') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('customer_name')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('customer_name') }}</strong>
-                                        </span>
-                                    @enderror
+
                                 </div>
 
                                 <div class="col-sm-12">
@@ -51,12 +52,13 @@
                                         <label>Email<span class="required">*</span></label>
                                         <input type="email" value="{{ old('user_name') }}" name="email"
                                             placeholder="Email" class="input-text">
+                                        @error('email')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('email')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @enderror
+
                                 </div>
 
                                 <div class="col-sm-12">
@@ -64,12 +66,13 @@
                                         <label>Số Điện Thoại<span class="required">*</span></label>
                                         <input type="text" value="{{ old('phone') }}" name="phone" placeholder="SĐT"
                                             class="input-text">
+                                        @error('phone')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('phone') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('phone')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('phone') }}</strong>
-                                        </span>
-                                    @enderror
+
                                 </div>
 
                                 <div class="col-sm-12">
@@ -77,12 +80,13 @@
                                         <label>Địa chỉ<span class="required">*</span></label>
                                         <input value="{{ old('address') }}" type="text" name="address"
                                             placeholder="Địa chỉ" class="input-text">
+                                        @error('address')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('address') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('address')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('address') }}</strong>
-                                        </span>
-                                    @enderror
+
                                 </div>
 
                                 <div class="col-sm-12">
@@ -93,25 +97,26 @@
                                     <p class="form-row form-row-wide padding-left">
                                         <label>Mật khẩu<span class="required">*</span></label>
                                         <input type="password" name="password" class="input-text">
-
+                                        @error('password')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('password')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @enderror
+
                                 </div>
 
                                 <div class="col-sm-6">
                                     <p class="form-row form-row-wide padding-right">
                                         <label>Nhập lại mật khẩu<span class="required">*</span></label>
                                         <input type="password" name="password_confirmation" class="input-text">
+                                        @error('password_confirmation')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                            </span>
+                                        @enderror
                                     </p>
-                                    @error('password_confirmation')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                        </span>
-                                    @enderror
+
                                 </div>
 
                                 <div class="col-sm-12">
