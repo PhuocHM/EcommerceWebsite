@@ -23,13 +23,7 @@
                                     <input type="text" class="form-control" placeholder="Tên khách hàng" name="name"
                                         value="{{ $user->name }}">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Slug</label>
-                                    <input type="text" class="form-control" placeholder="Slug name" name="slug"
-                                        value="{{ $user->slug }}">
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                                </div>
+                                </div>                              
                                 <div class="col-12">
                                     <label class="form-label">Email</label>
                                     <input type="email" class="form-control" placeholder="Email" name="email"

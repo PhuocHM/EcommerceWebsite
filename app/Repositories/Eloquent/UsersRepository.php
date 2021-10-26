@@ -16,8 +16,8 @@ class UsersRepository implements UsersInterface
     {         
         $user = new Users();
         $user->name       = $request->name;
-        $user->slug       = $request->slug;
-        $user->password   = $request->description;
+        $user->email      = $request->email;
+        $user->password   = $request->password;
         $user->created_at = Carbon::now('Asia/Ho_Chi_Minh');
     
         $user->save();
@@ -26,13 +26,14 @@ class UsersRepository implements UsersInterface
     {
         $user             = Users::find($id);
         $user->name       = $request->name;
-        $user->slug       = $request->slug;
-        $user->password   = $request->description;
+        $user->email      = $request->email;
+        $user->password   = $request->password;
         $user->created_at = Carbon::now('Asia/Ho_Chi_Minh');
     
         $user->save();
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return Users::find($id);
      }
     public function destroy($id)

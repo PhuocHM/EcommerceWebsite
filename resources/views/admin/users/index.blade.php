@@ -38,7 +38,6 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Slug</th>
                                                     <th>Email</th>
                                                     <th>Password</th>
                                                     <th>Ngày tạo</th>
@@ -51,7 +50,6 @@
                                                     <tr>
                                                         <td>{{ $user->id }}</td>
                                                         <td>{{ $user->name }}</td>
-                                                        <td>{{ $user->slug }}</td>
                                                         <td>{{ $user->email }}</td>
                                                         <td>{{ $user->password }}</td>
 

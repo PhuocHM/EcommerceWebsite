@@ -24,12 +24,6 @@
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Slug</label>
-                                    <input type="text" name="slug" class="form-control" value="{{ old('slug') }}"
-                                        id="convert_slug" placeholder="Slug ">
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
                                     <label class="form-label">Email</label>
                                     <input type="email" name="email" value="{{ old('email') }}" class="form-control"
                                         placeholder="Email">
@@ -40,8 +34,8 @@
                                     <input type="text" name="password" value="{{ old('password') }}"
                                         class="form-control" placeholder="Password">
                                     <span style="color:red;">@error('password'){{ $message }} @enderror</span>
+                                    <br>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="d-grid">

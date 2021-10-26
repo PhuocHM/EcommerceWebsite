@@ -25,7 +25,7 @@ class UsersRequest extends FormRequest
     {
         return [
             'name'=>'required|min:2|max:255|unique:users,name,'.$this->route('user'),
-            'slug'=>'required',      
+            // 'slug'=>'required',      
             'email'=>'required|min:2|max:255|unique:users,name,'.$this->route('user'), 
             'password'=>'required'
         ];
@@ -37,11 +37,12 @@ class UsersRequest extends FormRequest
             'name.unique'    => 'Tên đã tồn tại',
             'name.min'       => 'Tên không được thấp hơn 2 ký tự',   
             'name.max'       => 'Tên không được quá 255 ký tự',   
-            'slug.required'  => 'Vui lòng nhập slug thương hiệu',
+            // 'slug.required'  => 'Vui lòng nhập slug ',
             'email.required' => 'Vui lòng nhập email',  
+            'email.unique'   => 'Email đã tồn tại',  
             'email.min'      => 'Email không được thấp hơn 2 ký tự',   
             'email.max'      => 'Email không được quá 255 ký tự',     
-            'email.required' => 'Vui lòng nhập password',  
+            'password.required' => 'Vui lòng nhập password',  
 
         ];
     }
