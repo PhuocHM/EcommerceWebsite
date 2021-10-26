@@ -109,7 +109,6 @@ class ProductImagesController extends Controller
         }
         catch(\Exception $e){
             return redirect()->route('productImages.index')->with('status', 'Xóa không thành công! '.$e);
-
         }    
     }
 }

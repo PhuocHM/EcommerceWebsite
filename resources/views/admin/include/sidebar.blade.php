@@ -37,7 +37,10 @@
                  <li> <a style="text-decoration: none" href="{{ route('productAttributes.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Thuộc tính sản phẩm</a>
                  </li>
-                 
+                 <li> <a style="text-decoration: none" href="{{ route('users.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Tài khoản khách hàng</a>
+                 </li>
+
              </ul>
          </li>
 

@@ -13,21 +13,20 @@ class BrandService
     {
         $this->brandRepository = $brandRepository;
     }
-
     public function getAll()
     {
         return $this->brandRepository->getAll();
     }
     public function store($request)
     {
-
         return $this->brandRepository->store($request);
     }
     public function update($request, $id)
     {
         return $this->brandRepository->update($request, $id);
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return $this->brandRepository->edit($id);
     }
     public function destroy($id)

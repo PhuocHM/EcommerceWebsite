@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
-
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,5 +49,7 @@ Route::group(['prefix'=>'admin'],function() {
     Route::resource('/productAttributes',ProductAttributesController::class);
     Route::resource('/products',ProductsController::class);
     Route::resource('/productImages',ProductImagesController::class);
+    Route::resource('/users',UsersController::class);
+    
 });
 Route::get('/search', [ProductsController::class,'search']);
