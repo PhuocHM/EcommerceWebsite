@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Products;
 use App\Models\Admin\ProductImages;
@@ -21,7 +21,7 @@ class ProductImagesRepository implements ProductImagesInterface
     {
         $productImage             = new ProductImages();
         $productImage->product_id = $request->product_id;
-        $productImage->type    = $request->type;
+        $productImage->type       = $request->type;
 
         if ($request->hasFile('image')) {
             $get_image = $request->file('image');
@@ -60,12 +60,12 @@ class ProductImagesRepository implements ProductImagesInterface
                 $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
                 $get_image->move($path, $new_image);
                 $productImage->image = $new_image;
-                $data['brand_image'] = $new_image;
-            }
-            $productImage->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
-
-            $productImage->save();
+                $data['productImage_image'] = $new_image;
+            }    
         }
+        $productImage->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
+
+        $productImage->save();  
     }
     public function destroy($id)
     {
@@ -83,7 +83,5 @@ class ProductImagesRepository implements ProductImagesInterface
         $productImages = ProductImages::with('brand', 'category')->where('name', 'LIKE', '%' . $search . '%')->get();
         return $productImages;
     }
-    public function find($id){
-        return ProductImages::find($id);
-    }
+  
 }

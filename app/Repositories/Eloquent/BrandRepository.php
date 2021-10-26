@@ -18,7 +18,7 @@ class BrandRepository implements BrandInterface
     }
     public function store($request)
     {
-
+                
         $brand = new Brand();
         $brand->name    = $request->name;
         $brand->slug    = $request->slug;

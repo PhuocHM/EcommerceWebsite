@@ -5,7 +5,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Request;
 
-use App\Repositories\Eloquents\ProductImagesRepository;
+use App\Repositories\Eloquent\ProductImagesRepository;
 
 class ProductImagesService
 {
@@ -26,13 +26,13 @@ class ProductImagesService
     {
         return $this->productImagesRepository->store($request);
     }
-    public function update($request, $id)
-    {
-        return $this->productImagesRepository->update($request, $id);
-    }
     public function edit($id)
     {
         return $this->productImagesRepository->edit($id);
+    }
+    public function update($request, $id)
+    {
+        return $this->productImagesRepository->update($request, $id);
     }
     public function destroy($id)
     {
