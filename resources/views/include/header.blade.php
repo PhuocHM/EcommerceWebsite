@@ -62,7 +62,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
                                 style="min-width:75px !important">
-                                <a class="dropdown-item text-dark" style="color: black" href="#">Setting</a>
+                                <a class="dropdown-item text-dark" style="color: black" href="{{ route('setting.user') }}">Setting</a>
                                 <a class="dropdown-item text-dark" style="color: black"
                                     href="{{ route('logout.user') }}">Đăng xuất</a>
                             </div>
