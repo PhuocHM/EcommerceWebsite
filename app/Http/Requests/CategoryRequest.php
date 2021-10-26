@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:categories,name,'.$this->route('category'),
+            'name'=>'required|min:2|max:255|unique:categories,name,'.$this->route('category'),
             'slug'=>'required',    
             
             'description'=>'required',
@@ -38,6 +38,8 @@ class CategoryRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên danh mục',
             'name.unique' => 'Tên đã tồn tại',
+            'name.min'       => 'Tên không được thấp hơn 2 ký tự',   
+            'name.max'       => 'Tên không được quá 255 ký tự',   
             'slug.required' => 'Vui lòng nhập slug danh mục',
             'description.required' => 'vui lòng nhập mô tả',          
            

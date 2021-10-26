@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductAttributesRequest;
 use App\Services\ProductAttributesService;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,7 @@ class ProductAttributesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductAttributesRequest $request)
     {
         $this->productAttributesService->store($request);
         return redirect()->route('productAttributes.index')->with('status','Thêm thuộc tính sản phẩm thành công !');
@@ -94,7 +95,7 @@ class ProductAttributesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductAttributesRequest $request, $id)
     {
         $this->productAttributesService->update($request, $id);
         return redirect()->route('productAttributes.index')->with('status','Cập nhật thuộc tính sản phẩm thành công!');

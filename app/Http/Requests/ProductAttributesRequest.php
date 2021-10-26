@@ -23,23 +23,16 @@ class ProductAttributesRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'=>'required|unique:attributes,name,'.$this->route('attribute'),
-            'slug'=>'required',    
-            
-       
-            'category_id'=>'required',
-             
-              
+        return [   
+            'content'=>'required|min:2|max:255'    
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập thuộc tính',
-            'name.unique' => 'Tên đã tồn tại',
-            'slug.required' => 'Vui lòng nhập slug thuộc tính',   
-           
+            'content.required' => 'Vui lòng nhập nội dung',
+            'content.min'       => 'Tên không được thấp hơn 2 ký tự',   
+            'content.max'       => 'Tên không được quá 255 ký tự',       
         ];
     }
 }
