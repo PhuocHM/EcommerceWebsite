@@ -52,26 +52,5 @@
         checkCart();
     });
 
-    function deleteCartItem(product_id) {
-        var url = `{{ route('cart.deleteCart') }}`;
-        $.ajax({
-            url: url
-            , method: 'GET'
-            , data: {
-                product_id: product_id
-                , user_id: 1
-            }
-            , success: function(response) {
-                if (response.success) {
-                    $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
-                    checkCart();
-                    $("#noti-button").trigger("click");
-                } else {
-                    //
-                }
-            }
-        })
-    }
-
 </script>
 </html>

@@ -6,13 +6,13 @@
     <main class="site-main site-login">
         <div class="container">
             <ol class="breadcrumb-page">
-                <li><a href="index.html">Trang chủ </a></li>
-                <li class="active"><a href="#">Đăng kí</a></li>
+                <li><a href="{{route('index')}}">Trang chủ </a></li>
+                <li class="active"><a href="{{route('register')}}">Đăng kí</a></li>
             </ol>
         </div>
         <div class="customer-login">
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row col-sm-offset-4">
                     <div class="col-sm-6">
                         <div class="text-center">
                             <h5 class="title-login">Đăng nhập vào tài khoản</h5>

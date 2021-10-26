@@ -15,19 +15,24 @@
                     </a>
                     <ul class="submenu parent-megamenu">
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l1.jpg') }}" alt="flag">English</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l1.jpg') }}"
+                                    alt="flag">English</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l2.jpg') }}" alt="flag">Hungary</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l2.jpg') }}"
+                                    alt="flag">Hungary</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l3.jpg') }}" alt="flag">German</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l3.jpg') }}"
+                                    alt="flag">German</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l4.jpg') }}" alt="flag">French</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l4.jpg') }}"
+                                    alt="flag">French</a>
                         </li>
                         <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l5.jpg') }}" alt="flag">Canada</a>
+                            <a href="#" class="flag"><img src="{{ asset('images/general/l5.jpg') }}"
+                                    alt="flag">Canada</a>
                         </li>
                     </ul>
                 </li>
@@ -50,19 +55,22 @@
                 </li>
                 <li>
                     @if (Auth::check())
-                    <div class="dropdown ">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="text-light">{{ Auth::user()->name }}</span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="min-width:75px !important">
-                            <a class="dropdown-item text-dark" style="color: black" href="#">Setting</a>
-                            <a class="dropdown-item text-dark" style="color: black" href="{{route('logout.user')}}">Đăng xuất</a>
+                        <div class="dropdown ">
+                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="text-light">{{ Auth::user()->name }}</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+                                style="min-width:75px !important">
+                                <a class="dropdown-item text-dark" style="color: black" href="#">Setting</a>
+                                <a class="dropdown-item text-dark" style="color: black"
+                                    href="{{ route('logout.user') }}">Đăng xuất</a>
+                            </div>
                         </div>
-                    </div>
                     @else
-                    <a href="{{ route('register') }}"><i class="flaticon-profile" aria-hidden="true"></i>Đăng kí
-                        /</a>
-                    <a href="{{ route('login') }}">Đăng nhập</a>
+                        <a href="{{ route('register') }}"><i class="flaticon-profile" aria-hidden="true"></i>Đăng kí
+                            /</a>
+                        <a href="{{ route('login') }}">Đăng nhập</a>
                     @endif
                 </li>
             </ul><!-- heder links -->
@@ -83,7 +91,8 @@
                     <div class="block-search">
                         <div class="block-content">
                             <div class="categori-search  ">
-                                <select title="categories" data-placeholder="All Categories" class="chosen-select categori-search-option">
+                                <select title="categories" data-placeholder="All Categories"
+                                    class="chosen-select categori-search-option">
                                     <option value="">All Categories</option>
                                     <optgroup label="LifeStyle">
                                         <option>Cell Phones</option>
@@ -111,7 +120,8 @@
                                 <form>
                                     <div class="box-group">
                                         <input type="text" class="form-control" placeholder="Search keyword here...">
-                                        <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
+                                        <button class="btn btn-search" type="button"><i
+                                                class="fas fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -136,10 +146,11 @@
 
                     </span>
                     <div class="block-minicart dropdown style2" id="mini-cart">
-                        {{-- --}}
+                        {{--  --}}
                     </div><!-- block mini cart -->
                     <a href="#" class="hidden-md search-hidden"><span class="flaticon-magnifying-glass"></span></a>
-                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o"
+                            aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -158,9 +169,11 @@
                             <li class="menu-item-has-children">
                                 <a href="index2.html">Đơn hàng</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="index2.html">Đăng nhập</a>
-                            </li>
+                            @if (!Auth::check())
+                                <li class="menu-item-has-children">
+                                    <a href="index2.html">Đăng nhập</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <a href="#" class="title-template transport hidden-sm"><i class="far fa-building"></i>Hệ thống

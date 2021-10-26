@@ -5,13 +5,13 @@
     <main class="site-main site-login">
         <div class="container">
             <ol class="breadcrumb-page">
-                <li><a href="index.html">Home </a></li>
-                <li class="active"><a href="#">Login</a></li>
+                <li><a href="{{ route('index') }}">Trang chủ </a></li>
+                <li class="active"><a href="{{ route('login') }}">Đăng nhập</a></li>
             </ol>
         </div>
         <div class="customer-login">
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row col-md-offset-4">
                     <div class="col-sm-6">
                         <div class="text-center">
                             <h5 class="title-login">Tạo tài khoản</h5>
@@ -23,8 +23,8 @@
                                 <div class="col-sm-6">
                                     <p class="form-row form-row-wide padding-left">
                                         <label>Nickname<span class="required">*</span></label>
-                                        <input type="text" value="{{ old('name') }}" name="name"
-                                            placeholder="Nickname" class="input-text">
+                                        <input type="text" value="{{ old('name') }}" name="name" placeholder="Nickname"
+                                            class="input-text">
                                         @error('name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -50,8 +50,8 @@
                                 <div class="col-sm-12">
                                     <p class="form-row form-row-wide">
                                         <label>Email<span class="required">*</span></label>
-                                        <input type="email" value="{{ old('email') }}" name="email"
-                                            placeholder="Email" class="input-text">
+                                        <input type="email" value="{{ old('email') }}" name="email" placeholder="Email"
+                                            class="input-text">
                                         @error('email')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $errors->first('email') }}</strong>
