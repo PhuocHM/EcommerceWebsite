@@ -46,25 +46,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    // protected function validator(array $data)
-    // {
-    //     dd($data);
-    //     return Validator::make($data, [
-    //         'user_name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //         'customer_name' => ['required', 'string', 'max:255'],
-    //         'phone' => ['required', 'string', 'max:10'],
-    //         'address' => ['required', 'string', 'max:255']
-    //     ]);
-    // }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -72,27 +53,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return [
-            User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]),
-            //chưa xxong
-            Customers::create([
-                'name' => $data['customer_name'],
-                'slug' => $data['slug'],
-                'phone' => $data['phone'],
-                'address' => $data['address'],
-                'user_id' => $data['user_id'],
-            ])
-        ];
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        Customers::create([
+            'name' => $data['customer_name'],
+            'slug' => $data['customer_name'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'user_id' => $user['id'],
+        ]);
+        return $user;
     }
 
     public function register(RegisterUserRequest $request)
     {
-        // $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
