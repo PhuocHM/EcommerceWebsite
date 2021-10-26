@@ -33,6 +33,10 @@ use App\Http\Controllers\Users\ProductDetailController;
 Auth::routes();
 Route::get('/logout-user', [LoginController::class, 'logout'])->name('logout.user');
 Route::get('/setting-user', [SettingController::class, 'setting'])->name('setting.user');
+Route::put('/setting-user/{id}', [SettingController::class, 'update'])->name('update.user');
+Route::get('/change-pass', [SettingController::class, 'settingPassword'])->name('setting.pass');
+Route::put('/change-pass', [SettingController::class, 'resetPassword'])->name('reset.pass');
+
 
 Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);

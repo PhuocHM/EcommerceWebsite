@@ -16,9 +16,16 @@
                             <h5 class="title-login">Chỉnh sửa thông tin</h5>
                             <p class="p-title-login">Thông tin người dùng</p>
                         </div>
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="/setting-user/{{ $user->customer->id }}">
                             @csrf
+
+                            @method('put')
+
                             <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="hidden" name="slug" id="convert_slug"
+                                        value="{{ $user->customer->slug }}">
+                                </div>
                                 <div class="col-sm-6">
                                     <p class="form-row form-row-wide padding-left">
                                         <label>Nickname<span class="required">*</span></label>
@@ -36,14 +43,14 @@
                                     <p class="form-row form-row-wide padding-right">
                                         <label>Họ và tên<span class="required">*</span></label>
                                         <input type="text" value="{{ $user->customer->name }}" name="customer_name"
-                                            placeholder="Họ và tên đầy đủ" class="input-text">
+                                            onkeyup="ChangeToSlug()" id="slug" placeholder="Họ và tên đầy đủ"
+                                            class="input-text">
                                         @error('customer_name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $errors->first('customer_name') }}</strong>
                                             </span>
                                         @enderror
                                     </p>
-
                                 </div>
 
                                 <div class="col-sm-12">
@@ -82,36 +89,6 @@
                                         @error('address')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $errors->first('address') }}</strong>
-                                            </span>
-                                        @enderror
-                                    </p>
-
-                                </div>
-
-                                <div class="col-sm-12">
-                                    <h5 class="title-login title-login-bottom">Login Information</h5>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="form-row form-row-wide padding-left">
-                                        <label>Mật khẩu<span class="required">*</span></label>
-                                        <input type="password" name="password" class="input-text">
-                                        @error('password')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span>
-                                        @enderror
-                                    </p>
-
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="form-row form-row-wide padding-right">
-                                        <label>Nhập lại mật khẩu<span class="required">*</span></label>
-                                        <input type="password" name="password_confirmation" class="input-text">
-                                        @error('password_confirmation')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $errors->first('password_confirmation') }}</strong>
                                             </span>
                                         @enderror
                                     </p>

@@ -5,7 +5,7 @@ namespace App\Http\Requests\Users;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class RegisterUserRequest extends FormRequest
+class SettingUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,8 @@ class RegisterUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255|unique:users,name',
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:4|confirmed',
+            'name' => 'required|string|max:255|unique:users,name,' . Auth::id(),
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
             'customer_name' => 'required|string|max:255',
             'phone' => 'required|numeric',
             'address' => 'required|string|max:255'
@@ -46,11 +45,6 @@ class RegisterUserRequest extends FormRequest
             'email.email' => 'Vui lòng nhập đúng định dạng email',
             'email.max' => 'Vui lòng nhập không quá 255 kí tự',
             'email.unique' => 'Email đã tồn tại',
-
-            'password.required' => 'Vui lòng nhập password',
-            'password.min' => 'Vui lòng nhập tối thiểu 4 kí tự',
-            'password.string' => 'Chỉ được nhập chữ hoặc số',
-            'password.confirmed' => 'Nhập lại mật khẩu không đúng',
 
             'customer_name.required' => 'Vui lòng nhập họ và tên',
             'customer_name.string' => 'Vui lòng nhập đúng định dạng',

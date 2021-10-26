@@ -60,11 +60,16 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="text-light">{{ Auth::user()->name }}</span>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
-                                style="min-width:75px !important">
-                                <a class="dropdown-item text-dark" style="color: black" href="{{ route('setting.user') }}">Setting</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style=" text-align:center">
                                 <a class="dropdown-item text-dark" style="color: black"
                                     href="{{ route('logout.user') }}">Đăng xuất</a>
+                                <br>
+                                <a class="dropdown-item text-dark" style="color: black"
+                                    href="{{ route('setting.pass') }}">Đổi mật khẩu</a>
+                                <br>
+                                <a class="dropdown-item text-dark" style="color: black"
+                                    href="{{ route('setting.user') }}">Chỉnh sửa thông tin</a>
+
                             </div>
                         </div>
                     @else

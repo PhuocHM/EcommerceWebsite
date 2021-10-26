@@ -20,6 +20,10 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="hidden" name="slug" id="convert_slug">
+                                </div>
+
                                 <div class="col-sm-6">
                                     <p class="form-row form-row-wide padding-left">
                                         <label>Nickname<span class="required">*</span></label>
@@ -37,7 +41,8 @@
                                     <p class="form-row form-row-wide padding-right">
                                         <label>Họ và tên<span class="required">*</span></label>
                                         <input type="text" value="{{ old('customer_name') }}" name="customer_name"
-                                            placeholder="Họ và tên đầy đủ" class="input-text">
+                                            onkeyup="ChangeToSlug()" id="slug" placeholder="Họ và tên đầy đủ"
+                                            class="input-text">
                                         @error('customer_name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $errors->first('customer_name') }}</strong>
