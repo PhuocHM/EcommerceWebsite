@@ -3,23 +3,29 @@
 @section('main')
 
 <body class="index-opt-5">
-    {{-- --}}
-    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Bootstrap</strong>
-                <small>11 mins ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Hello, world! This is a toast message.
+    <div style="display:none;">
+        <button id="noti-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="noti-main">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Tiếp tục mua hàng</button>
+                </div>
             </div>
         </div>
     </div>
-    {{-- --}}
     <div class="wrapper">
         <form id="block-search-mobile" method="get" class="block-search-mobile">
             <div class="form-content">
@@ -230,7 +236,7 @@
                             <div class="block-daily-deals style2">
                                 <div class="title-of-section">
                                     Flash Sales
-                                    <div class="product-count-down">
+                                    <div id="product-count-down" class="product-count-down">
                                         <div class="kt-countdown is-countdown" data-y="2020" data-m="6" data-d="1" data-h="10" data-i="0" data-s="0">
                                             <span class="box-count day"><span class="number">01</span>
                                                 <span class="text">Ngày</span></span><span class="dot">:</span>
@@ -243,7 +249,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="block-daily-deals-content">
+                                <div class="block-daily-deals-content" id="flash-sale-main">
                                     <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"992":{"items":2}}'>
                                         @foreach ($sales_items as $sales_item)
                                         @if (isset($sales_item['discount'][0]['amounts']))
@@ -525,7 +531,8 @@
             }
             , success: function(response) {
                 if (response.success) {
-                    alert('Đã thêm vào giỏ hàng')
+                    $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
+                    $("#noti-button").trigger("click");
                 } else {
                     //
                 }
@@ -541,7 +548,6 @@
             , success: function(response) {
                 if (response.success) {
                     $.each(response.success, function(key, value) {
-
                         console.log(value)
                     });
                 } else {
@@ -550,8 +556,53 @@
             }
         })
     }
+
+    function getFlashSales() {
+        var url = `{{ route('discounts.getFlashSale') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , success: function(response) {
+                if (response.success) {
+
+                    var x = setInterval(function() {
+                        var now = new Date().getTime();
+                        var countDownDate = new Date(response.success.expired_date).getTime();
+                        var distance = countDownDate - now;
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        $("#product-count-down").html(`
+                            <div class="kt-countdown is-countdown" data-y="2020" data-m="6" data-d="1" data-h="10" data-i="0" data-s="0">
+                                            <span class="box-count day"><span class="number">` + days + `</span>
+                                                <span class="text">Ngày</span></span><span class="dot">:</span>
+                                            <span class="box-count hrs"><span class="number">` + hours + `</span>
+                                                <span class="text">Giờ</span></span><span class="dot">:</span>
+                                            <span class="box-count min"><span class="number">` + minutes + `</span>
+                                                <span class="text">Phút</span></span><span class="dot">:</span>
+                                            <span class="box-count secs"><span class="number">` + seconds + `</span>
+                                                <span class="text">Giây</span></span>
+                                        </div>
+
+                            `);
+                        if (distance < 0) {
+                            clearInterval(x);
+                            $("#product-count-down").html("<p>Không có chương trình khuyến mãi nào</p>");
+                            $("#flash-sale-main").html('')
+                        }
+                    }, 1000);
+
+                } else {
+                    $("#product-count-down").html("<p>Không có chương trình khuyến mãi nào</p>");
+                    $("#flash-sale-main").html('')
+                }
+            }
+        })
+    }
+
     $(document).ready(function() {
-        checkCart();
+        getFlashSales();
     });
 
 </script>

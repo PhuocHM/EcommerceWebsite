@@ -2,6 +2,30 @@
 @section('title', 'Chi tiết')
 @section('main')
 <body class="page-product detail-product">
+    <div style="display:none;">
+        <button id="noti-button-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="noti-main-2">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Tiếp tục mua hàng</button>
+                    <button type="button" class="btn btn-success">Xem giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="wrapper">
         <form id="block-search-mobile" method="get" class="block-search-mobile">
             <div class="form-content">
@@ -442,7 +466,8 @@
             , data: $('#cart-form').serialize()
             , success: function(response) {
                 if (response.success) {
-                    alert('Đã thêm vào giỏ hàng thành công !')
+                    $("#noti-main-2").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
+                    $("#noti-button-2").trigger("click");
                 } else {
                     console.log('Errror !')
                 }

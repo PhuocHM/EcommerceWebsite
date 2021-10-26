@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
+use App\Http\Controllers\Users\CategoriesProductController;
 use App\Http\Controllers\Users\ProductDetailController;
 
 
@@ -41,8 +42,9 @@ Route::resource('category', CategoriesProductController::class);
 Route::resource('product-detail', ProductDetailController::class);
 
 Route::resource('cart', CartController::class);
-Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
-Route::GET('check-cart', [HomeController::class, 'checkCart'])->name('cart.checkCart');
+Route::GET('api/carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
+Route::GET('api/check-cart', [HomeController::class, 'checkCart'])->name('cart.checkCart');
+Route::GET('api/getFlashSale', [HomeController::class, 'getFlashSale'])->name('discounts.getFlashSale');
 
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');

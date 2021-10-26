@@ -69,8 +69,23 @@
                         <div class="col-sidebar">
                             <div class="filter-options">
                                 <div class="block-title">Shop by</div>
+                                @foreach($attributes as $key => $attribute)
                                 <div class="block-content">
                                     <div class="filter-options-item filter-categori">
+                                        <div class="filter-options-title">{{ $attribute->name }}</div>
+                                        <div class="filter-options-content">
+                                            <ul>
+                                                @foreach($attribute->product as $key => $value)
+                                                <li><label class="inline"><input type="checkbox"><span class="input"></span>{{ $value->pivot->content }}
+                                                    </label></li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                {{-- <div class="filter-options-item filter-categori">
                                         <div class="filter-options-title">Categories</div>
                                         <div class="filter-options-content">
                                             <ul>
@@ -156,8 +171,8 @@
                                                 <li><label class="inline"><input type="checkbox"><span class="input"></span>Green<span class="value">(205)</span></label></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> --}}
+                                {{-- </div> --}}
                             </div>
                             <div class="block-banner-sidebar">
                                 <a href="#"><img src="{{asset('images/product/banner-sidebar.jpg')}}" alt="banner-sidebar"></a>

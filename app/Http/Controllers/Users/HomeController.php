@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Users\Carts;
 use App\Models\Users\CartItems;
+use App\Models\Users\Discounts;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Hiện tại mối quan hệ đang bị lỗi ... Không xuất hình được ở rated product và comments
         $products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
         $new_products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
         $categories = Categories::all();
@@ -77,6 +78,14 @@ class HomeController extends Controller
             "sales_items" => $data,
         ];
 
+        // Cart Item
+        // $user_id = 1;
+        // $cart_items = CartItems::join('carts', 'carts.id', 'cart_items.cart_id')
+        //     ->join('discount_product', 'discount_product.id', 'cart_items.product_id')
+        //     ->join('products', 'products.id', 'cart_items.product_id')
+        //     ->where('user_id', $user_id)
+        //     ->get();
+        // dd($cart_items);
 
         return view('Website.index', $params);
     }
@@ -101,7 +110,12 @@ class HomeController extends Controller
             ->get();
         return response()->json(['success' => $cart_items]);
     }
-
+    public function getFlashSale()
+    {
+        $now = date("Y-m-d H:i:s");
+        $flash_sale = Discounts::where('expired_date', '>=', $now)->first();
+        return response()->json(['success' => $flash_sale]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -132,7 +146,8 @@ class HomeController extends Controller
     }
     public function addToCart(Request $request)
     {
-        $user_id = 1;
+        $user_id = Auth::id();
+        $product_info = Products::find($request->product_id);
         if (!isset($request->product_quantity)) {
             $check_cart = Carts::where('user_id', '=', $user_id)->first();
             if ($check_cart == null) {
@@ -185,9 +200,9 @@ class HomeController extends Controller
                     $product->save();
                 }
             }
-            return response()->json(['success' => 'Đã thêm thành công']);
+            return response()->json(['success' => $product_info]);
         }
-        return response()->json(['success' => 'Oke']);
+        return response()->json(['success' => $product_info]);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Users\ProductImage;
+use App\Models\Users\Attributes;
 
 class Products extends Model
 {
@@ -36,7 +37,7 @@ class Products extends Model
 
     public function attribute()
     {
-        return $this->belongsToMany(Attributes::class, 'product_attributes', 'attribute_id', 'product_id');
+        return $this->belongsToMany(Attributes::class, 'product_attribute', 'attribute_id', 'product_id')->withPivot('content');
     }
 
     public function user()

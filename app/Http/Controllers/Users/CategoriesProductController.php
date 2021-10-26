@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\Attributes;
 use App\Models\Users\ProductAttribute;
 use App\Models\Users\Products;
 use Illuminate\Http\Request;
@@ -51,10 +52,10 @@ class CategoriesProductController extends Controller
         $category_products = Products::with('cover2Image')
             ->where('category_id', '=', $id)
             ->orderBy('products.created_at')->paginate(6);
-
-
+        $attributes = Attributes::with('product')->where('category_id', '=', $id)->get();
         $params = [
-            'category_products' => $category_products
+            'category_products' => $category_products,
+            "attributes" => $attributes
         ];
         return view('Website.category-product', $params);
     }
