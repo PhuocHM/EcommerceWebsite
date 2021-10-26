@@ -22,12 +22,12 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <p class="form-row form-row-wide padding-left">
-                                        <label>Tên đăng nhập<span class="required">*</span></label>
-                                        <input type="text" value="{{ old('user_name') }}" name="user_name"
-                                            placeholder="Tên đăng nhập" class="input-text">
-                                        @error('user')
+                                        <label>Nickname<span class="required">*</span></label>
+                                        <input type="text" value="{{ old('name') }}" name="name"
+                                            placeholder="Nickname" class="input-text">
+                                        @error('name')
                                             <span class="text-danger" role="alert">
-                                                <strong>{{ $errors->first('user_name') }}</strong>
+                                                <strong>{{ $errors->first('name') }}</strong>
                                             </span>
                                         @enderror
                                     </p>
@@ -36,7 +36,7 @@
                                 <div class="col-sm-6">
                                     <p class="form-row form-row-wide padding-right">
                                         <label>Họ và tên<span class="required">*</span></label>
-                                        <input type="text" value="{{ old('user_name') }}" name="customer_name"
+                                        <input type="text" value="{{ old('customer_name') }}" name="customer_name"
                                             placeholder="Tên đầy đủ người dùng" class="input-text">
                                         @error('customer_name')
                                             <span class="text-danger" role="alert">
@@ -50,7 +50,7 @@
                                 <div class="col-sm-12">
                                     <p class="form-row form-row-wide">
                                         <label>Email<span class="required">*</span></label>
-                                        <input type="email" value="{{ old('user_name') }}" name="email"
+                                        <input type="email" value="{{ old('email') }}" name="email"
                                             placeholder="Email" class="input-text">
                                         @error('email')
                                             <span class="text-danger" role="alert">
