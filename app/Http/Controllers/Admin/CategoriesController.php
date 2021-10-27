@@ -21,7 +21,7 @@ class CategoriesController extends Controller
     {
         $categories = $this->categoryService->getAll();
         $categories_arr = $this->categoryService->categories_arr();
-
+        
         $params = [
             'categories'        => $categories,
             'categories_arr'    => $categories_arr,

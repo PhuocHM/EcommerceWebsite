@@ -5,26 +5,28 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class Attributes extends Model
+
+class ProductAttributes extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
     protected $dates = [
         'created_at',
         'updated_at',
-        // your other new column
+        
     ];
     protected $fillable = [
-        'name', 'slug', 'category_id'
+        'product_id', 'attribute_id', 'content'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'attributes';
+    protected $table = 'product_attribute';
     public $timestamps = true;
-
-    public function category(){
-        return $this->belongsTo(Category::class,'category_id','id');
+    public function product()
+    {
+        return $this->belongsTo(Products::class);
     }
-    public function product(){
-        return $this->belongsToMany(Products::class,'product_attribute');
+    public function attribute()
+    {
+        return $this->belongsTo(Attributes::class);
     }
 }

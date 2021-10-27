@@ -10,13 +10,13 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
+                            <li class="breadcrumb-item active" aria-current="page">Thuộc tính Sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm thương hiệu</a>
+                        <a href="{{ route('productAttributes.create') }}" class="btn btn-primary">Thêm mới</a>
                     </div>
                 </div>
             </div>
@@ -37,28 +37,27 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Tên</th>
-                                                    <th>Slug</th>
-                                                    <th>Hình ảnh</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Thuộc tính</th>
+                                                    <th>Nội dung</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($brands as $brand)
+                                                @foreach ($productAttributes as $productAttribute)
                                                     <tr>
-                                                        <td>{{ $brand->id }}</td>
-                                                        <td>{{ $brand->name }}</td>
-                                                        <td>{{ $brand->slug }}</td>
-                                                        <td>
-                                                            <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
-                                                                style="width: 150px">
+                                                        <td>{{ $productAttribute->id }}</td>
+                                                        <td>{{ $productAttribute->product->name }}</td>
+                                                        <td>{{ $productAttribute->attribute->name }}</td>
+                                                        <td>{{ $productAttribute->content }}</td>
+
+                                                        <td>{{ date('d-m-Y', strtotime($productAttribute->created_at)) }}
                                                         </td>
-                                                        <td>{{ date('d-m-Y', strtotime($brand->created_at)) }}</td>
                                                         <td>
-                                                            @if ($brand->updated_at != '')
-                                                                {{ date('d-m-Y', strtotime($brand->updated_at)) }}
+                                                            @if ($productAttribute->updated_at != '')
+                                                                {{ date('d-m-Y', strtotime($productAttribute->updated_at)) }}
                                                             @endif
                                                         </td>
                                                         <td>
@@ -67,18 +66,19 @@
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('brands.edit', $brand->id) }}"
+                                                                <a href="{{ route('productAttributes.edit', $productAttribute->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form action="{{ route('brands.destroy', [$brand->id]) }}"
+                                                                <form
+                                                                    action="{{ route('productAttributes.destroy', [$productAttribute->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleteBrand({{ $brand->id }})"
+                                                                    <a href="#" onclick="deleteProductAtrribute({{ $productAttribute->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteBrand"> <i
+                                                                        data-bs-target="#deleteProductAtrribute"> <i
                                                                             class="bi bi-trash-fill"></i></a>
                                                                 </form>
                                                             </div>
@@ -90,7 +90,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteBrand" tabindex="-1"
+                                    <div class="modal fade" id="deleteProductAtrribute" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -132,8 +132,8 @@
 @endsection
 @section('scripts')
     <script>
-        function deleteBrand(id) {
-            var url = '{{ route('brands.index') }}' + '/' + id;
+        function deleteProductAtrribute(id) {
+            var url = '{{ route('productAttributes.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>

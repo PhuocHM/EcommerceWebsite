@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Thêm Mới Thương Hiệu</h6>
+                <h6 class="mb-0">Thêm Thuộc Tính Sản Phẩm</h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -14,26 +14,30 @@
                 <div class="col-12 col-lg-8 mx-auto d-flex">
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
-                            <form class="row g-3" method="POST" action="{{ route('brands.store') }}"
-                                enctype="multipart/form-data">
-                                {{ csrf_field() }}
+                            <form class="row g-3" method="POST" action="{{ route('productAttributes.store') }}">
+                                @csrf
+
                                 <div class="col-12">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                        onkeyup="ChangeToSlug();" id="slug" placeholder="Tên thương hiệu">
-                                    <span style="color:red;">@error('name'){{ $message }} @enderror</span>
+                                    <label class="form-label">Sản phẩm</label>
+                                    <select name="category_id" class="form-select" id="inputGroupSelect02">
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Slug</label>
-                                    <input type="text" name="slug" class="form-control" value="{{ old('slug') }}"
-                                        id="convert_slug" placeholder="Slug thương hiệu">
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
+                                    <label class="form-label">Thuộc tính</label>
+                                    <select name="category_id" class="form-select" id="inputGroupSelect02">
+                                        @foreach ($attributes as $attribute)
+                                            <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Hình ảnh</label>
-                                    <input type="file" name="image" class="form-control-file" id="image"
-                                        value="{{ old('image') }}"> <br>
-                                    <span style="color:red;">@error('image'){{ $message }} @enderror</span>
+                                    <label class="form-label">Nội dung</label>
+                                    <input type="text" name="content" value="{{ old('content') }}" class="form-control"
+                                        placeholder="Nội dung">
+                                    <span style="color:red;">@error('content'){{ $message }} @enderror</span>
                                     <br>
                                 </div>
                                 <div class="row">
@@ -44,7 +48,7 @@
                                     </div>
                                     <div class="col-2">
                                         <div class="d-grid">
-                                            <a href="{{ route('brands.index') }}" class="btn btn-danger">Trở
+                                            <a href="{{ route('productAttributes.index') }}" class="btn btn-danger">Trở
                                                 về</a>
                                         </div>
                                     </div>
