@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\CartItems;
 use App\Models\Users\Carts;
+use App\Models\Users\OrderItems;
+use App\Models\Users\Orders;
 use App\Models\Users\Products;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -17,25 +21,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $items = Carts::join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-            ->join('products', 'cart_items.product_id', '=', 'products.id')
-            ->join('product_image', 'product_image.product_id', '=', 'products.id')
-            ->where('user_id', 1)
-            ->where('type', 1)
-            ->get();
-
-        $cate_ids = $items->pluck('category_id')->toArray();
-
-        $related_items = Products::join('product_image', 'product_image.product_id', '=', 'products.id')
-            ->whereIn('category_id', $cate_ids)
-            ->where('type', 1)
-            ->get();
-
-        $param = [
-            'items' => $items,
-            'related_items' => $related_items,
-        ];
-        return view('Website.shopping-cart', $param);
+        return view('Website.shopping-cart');
     }
 
     /**
@@ -56,7 +42,31 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        $user_id = Auth::id();
+        $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
+        $cart_id = Carts::where('user_id', $user_id)->get();
+        $items = Products::with('cover2Image', 'discount', 'cartItem')->whereIn('id', $product_ids)->get();
+        // Place New Orders
+        $order = new Orders;
+        $order->code = $cart_id->first()->code;
+        $order->customer_id = $user_id;
+        $order->total_price = $request->total_money;
+        $order->save();
+        // Place Order Item
+        foreach ($items as $key => $item) {
+            $order_item = new OrderItems;
+            $order_item->product_id = $item->cartItem->first()->product_id;
+            $order_item->price = $item->price;
+            $order_item->quantity = $request->total_money;
+            $order_item->order_id = $order->id;
+            $order_item->save();
+            // Delete Carts
+            $old_cart_item = CartItems::find($item->cartItem->first()->id);
+            $old_cart_item->delete();
+        }
+        $old_cart = Carts::find($cart_id->first()->id);
+        $old_cart->delete();
+        return redirect()->route('order.index');
     }
 
     /**

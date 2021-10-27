@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Models\Users\Products;
+use App\Models\Users\Stocks;
 use Illuminate\Http\Request;
 
 class ProductDetailController extends Controller
@@ -51,11 +52,12 @@ class ProductDetailController extends Controller
         $related_items = Products::with('cover2Image', 'discount')
             ->where('category_id', $category_id)
             ->get();
-        // dd($related_items[0]->discount->first());
+        $availability = Stocks::where('product_id', $id)->first();
         $detail_products = Products::with('cover2Image', 'discount')->find($id);
         $params = [
             "detail_products" => $detail_products,
-            "related_items" => $related_items
+            "related_items" => $related_items,
+            "availability" => $availability
         ];
         return view('Website.detail-product', $params);
     }

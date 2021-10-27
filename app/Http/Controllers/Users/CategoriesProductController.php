@@ -47,16 +47,24 @@ class CategoriesProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $filter_attributes = $request->attribute_content;
         $category_products = Products::with('cover2Image')
-            ->where('category_id', '=', $id)
-            ->orderBy('products.created_at')->paginate(6);
+            ->where('category_id', '=', $id);
+        if ($filter_attributes != null) {
+            $category_products->join('product_attribute', 'product_attribute.product_id', 'products.id');
+            $category_products->whereIn('product_attribute.content', $filter_attributes);
+            $category_products->select('products.*');
+        }
+
+        $category_products = $category_products->orderBy('products.created_at')->paginate(6);
         $attributes = Attributes::with('product')->where('category_id', '=', $id)->get();
-        // dd($attributes->toArray());
+
         $params = [
             'category_products' => $category_products,
-            "attributes" => $attributes
+            "attributes" => $attributes,
+            "filter_attributes" => $filter_attributes,
         ];
         return view('Website.category-product', $params);
     }

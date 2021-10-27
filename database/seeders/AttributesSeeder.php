@@ -25,8 +25,8 @@ class AttributesSeeder extends Seeder
 
         $item = new Attributes;
         $item->id = 2;
-        $item->name = "Điện áp";
-        $item->slug = "dien-ap";
+        $item->name = "Công suất tiêu thụ";
+        $item->slug = "cong-suat-tieu-thu";
         $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
@@ -34,6 +34,15 @@ class AttributesSeeder extends Seeder
 
         $item = new Attributes;
         $item->id = 3;
+        $item->name = "Pin";
+        $item->slug = "pin";
+        $item->category_id = 7;
+        $item->created_at = "2021-09-25 23:19:08";
+        $item->updated_at  = "2021-09-25 23:19:08";
+        $item->save();
+
+        $item = new Attributes;
+        $item->id = 4;
         $item->name = "Chức năng";
         $item->slug = "chuc-nang";
         $item->category_id = 7;
@@ -42,18 +51,9 @@ class AttributesSeeder extends Seeder
         $item->save();
 
         $item = new Attributes;
-        $item->id = 4;
-        $item->name = "CPU";
-        $item->slug = "cpu";
-        $item->category_id = 7;
-        $item->created_at = "2021-09-25 23:19:08";
-        $item->updated_at  = "2021-09-25 23:19:08";
-        $item->save();
-
-        $item = new Attributes;
         $item->id = 5;
-        $item->name = "Màn hình";
-        $item->slug = "man-hinh";
+        $item->name = "Thời gian làm việc";
+        $item->slug = "thoi-gian-lam-viec";
         $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
@@ -63,7 +63,7 @@ class AttributesSeeder extends Seeder
         $item->id = 6;
         $item->name = "RAM";
         $item->slug = "ram";
-        $item->category_id = 7;
+        $item->category_id = 2;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();

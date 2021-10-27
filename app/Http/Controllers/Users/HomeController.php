@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Users\Attributes;
 use App\Models\Users\Categories;
 use App\Models\Users\Products;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Users\Carts;
 use App\Models\Users\CartItems;
+use App\Models\Users\Coupons;
 use App\Models\Users\Discounts;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(3)->get();
-        $new_products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->limit(6)->get();
+        $new_products = ProductImage::join('products', 'products.id', 'product_image.product_id')->where('type', '=', 1)->orderBy('products.created_at', 'DESC')->offset(3)->limit(6)->get();
         $categories = Categories::all();
         $tree = [];
         foreach ($categories as $key => $category) {
@@ -91,10 +93,21 @@ class HomeController extends Controller
     {
         //
     }
-    public function deleteCart()
+    public function deleteCartItem(Request $request)
     {
-        // 
+        $item_cart = CartItems::find($request->product_id);
+        $item_cart->delete();
+        return response()->json(['success' => 'Da xoa thanh cong']);
     }
+
+    public function syncCart(Request $request)
+    {
+        $item = CartItems::find($request->product_id);
+        $item->quantity = $request->quantity;
+        $item->save();
+        return response()->json(['success' => 'Oke']);
+    }
+
     public function checkCart()
     {
         $user_id = Auth::id();
@@ -103,16 +116,62 @@ class HomeController extends Controller
         }
         $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
         $cart_items = Products::with('cover2Image', 'discount')->whereIn('id', $product_ids)->get();
+        $total = 0;
+        foreach ($cart_items as $item) {
+            if ($item->discount->first() != null) {
+                $total += ($item->price - $item->discount->first()->amounts) * $item->cartItem->first()->quantity;
+            } else {
+                $total += $item->price * $item->cartItem->first()->quantity;
+            }
+        }
         $params = [
-            "cart_items" => $cart_items
+            "cart_items" => $cart_items,
+            "total" => $total
         ];
         return view('include.cart', $params)->render();
     }
+
+    public function showCart()
+    {
+        $user_id = Auth::id();
+        $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
+        $items = Products::with('cover2Image', 'discount', 'cartItem')->whereIn('id', $product_ids)->get();
+        $total = 0;
+        foreach ($items as $item) {
+            if ($item->discount->first() != null) {
+                $total += ($item->price - $item->discount->first()->amounts) * $item->cartItem->first()->quantity;
+            } else {
+                $total += $item->price * $item->cartItem->first()->quantity;
+            }
+        }
+        $cate_ids = $items->pluck('category_id')->toArray();
+        $related_items = Products::with('cover2Image', 'discount')->whereIn('category_id', $cate_ids)->get();
+        $params = [
+            'items' => $items,
+            'related_items' => $related_items,
+            "total" => $total,
+        ];
+        return view('include.shopping-cart', $params)->render();
+    }
+
     public function getFlashSale()
     {
         $now = date("Y-m-d H:i:s");
         $flash_sale = Discounts::where('expired_date', '>=', $now)->first();
         return response()->json(['success' => $flash_sale]);
+    }
+
+    public function addComment(Request $request)
+    {
+        $user_id = Auth::id();
+        $comment = new Comments;
+        $comment->product_id = $request->id_product;
+        $comment->user_id = $user_id;
+        $comment->content = $request->comment_input;
+        $comment->star_value = $request->star_input;
+        $comment->save();
+
+        return response()->json(['success' => 'Đã thêm nhận xét thành công !']);
     }
     /**
      * Store a newly created resource in storage.
@@ -120,6 +179,15 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function checkCoupon(Request $request)
+    {
+        $coupon = Coupons::where('code', $request->coupon_code)->get();
+
+        if ($coupon->first() != null) {
+            return response()->json(['success' => $coupon->first()->amounts]);
+        }
+        return response()->json(['error' => 'Mã giảm giá không hợp lệ']);
+    }
     public function store(Request $request)
     {
         // 

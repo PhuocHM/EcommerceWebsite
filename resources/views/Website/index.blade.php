@@ -56,7 +56,7 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <span class="review">5 Review(s)</span>
                         </span>
-                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Add to Wishlist</a>
+                        {{-- <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Add to Wishlist</a> --}}
                         <div class="product-infomation">
                             Description Our new HPB12 / A12 battery is rated at 2000mAh and designed to power up Black
                             and
@@ -140,7 +140,7 @@
                                         <li class="menu-item-has-children arrow item-megamenu">
                                             <a href="#">{{ $category['name'] }}</a>
                                             <span class="toggle-submenu hidden-md"></span>
-                                            <div class="submenu parent-megamenu megamenu">
+                                            <div class="submenu parent-megamenu " style="min-height: 250px">
                                                 <div class="row">
                                                     <div class="submenu-banner submenu-banner-menu-1">
                                                         <div class="col-md-4">
@@ -229,10 +229,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="block-up-to">
-                                <div class="up-to-content">Save up to 40%<span> all online store items.</span></div>
-                                <a href="grid-product.html" class="shop-all">Shop all deals Now</a>
-                            </div>
+
                             <div class="block-daily-deals style2">
                                 <div class="title-of-section">
                                     Flash Sales
@@ -281,7 +278,7 @@
                                 </div>
                             </div>
                             <div class="block-feature-product small">
-                                <div class="title-of-section">Rated Products</div>
+                                <div class="title-of-section">Sản phẩm có đánh giá cao</div>
                                 <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":2},"992":{"items":3},"1200":{"items":3}}'>
                                     @foreach ($highest_star_products as $key => $list_products)
                                     <div class="owl-one-row">
@@ -292,14 +289,13 @@
                                                     <div class="thumb-inner">
                                                         <a href="{{ route('product-detail.show',$product->product_id) }}"><img src="{{ asset($product->coverImage->first()->image) }}" alt="f1"></a>
                                                     </div>
-                                                    <a href="#" class="quick-view">Quick View</a>
                                                 </div>
                                                 <div class="product-innfo">
                                                     <div class="product-name"><a href="{{ route('product-detail.show',$product->product_id) }}">{{ $product->name }}
                                                         </a></div>
                                                     <span class="price price-dark">
 
-                                                        <ins>{{ $product->price }}</ins>
+                                                        <ins style="color:red">{{ number_format($product->price)}}&ensp;<u>đ</u></ins>
 
                                                     </span>
                                                     <span class="star-rating">
@@ -311,10 +307,10 @@
                                                     </span>
                                                     <div class="group-btn-hover">
                                                         <div class="inner">
-                                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a>
+                                                            {{-- <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a> --}}
                                                             <button type="button" class="add-to-cart" onclick="addToCart({{ $product->product_id }});">Add
                                                                 to cart</button>
-                                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                            {{-- <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -330,7 +326,7 @@
                             </div>
 
                             <div class="block-bestseller-product bestseller-opt-5">
-                                <div class="title-of-section style2">Maybe you like</div>
+                                <div class="title-of-section style2">Có thể bạn sẽ thích</div>
                                 <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":2}}'>
                                     @foreach ($random_products as $key => $list_products)
                                     <div class="owl-one-row">
@@ -383,136 +379,7 @@
             </div>
         </main><!-- end MAIN -->
         <!-- FOOTER -->
-        <footer class="site-footer footer-opt-2">
-            <div class="footer-top full-width">
-                <div class="owl-carousel instagram" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":2},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":5}}'>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{ asset('images/item-instagram-1.jpg') }}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{ asset('images/item-instagram-2.jpg') }}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{ asset('images/item-instagram-3.jpg') }}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{ asset('images/item-instagram-4.jpg') }}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="item-instagram">
-                        <a href="#">
-                            <img src="{{ asset('images/item-instagram-5.jpg') }}" alt="img">
-                        </a>
-                        <span class="text">
-                            <i class="icon fa fa-instagram" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-column equal-container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6 equal-elem">
-                            <div class="logo-footer"><img src="{{ asset('images/logo-light.png') }}" alt="logo">
-                            </div>
-                            <div class="contacts">
-                                <p class="contacts-info">Nullam tristique tortor nibh, in viverra libero sollicitudin
-                                    ac.
-                                    Suspendisse quis lacinia ipsum. Etiam scelerisque sit amet lectus quis lacinia. Sed.
-                                </p>
-                                <span class="contacts-info info-address ">218 Fifth Avenue, HeavenTower NewYork
-                                    City</span>
-                                <span class="contacts-info info-phone">(+68) 123 456 7890</span>
-                                <span class="contacts-info info-support">Hot-Support@Dagon.com</span>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-6 equal-elem">
-                            <div class="links">
-                                <h3 class="title-of-section">My account</h3>
-                                <ul>
-                                    <li><a href="#">Sign In</a></li>
-                                    <li><a href="#">View Cart</a></li>
-                                    <li><a href="#">My Wishlist</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Track My Order</a></li>
-                                    <li><a href="#">Help</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-6 equal-elem">
-                            <div class="links">
-                                <h3 class="title-of-section">Information</h3>
-                                <ul>
-                                    <li><a href="#">Specials</a></li>
-                                    <li><a href="#">New products</a></li>
-                                    <li><a href="#">Best sellers</a></li>
-                                    <li><a href="#">Our stores</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 equal-elem">
-                            <div class="links">
-                                <h3 class="title-of-section">Newsletter</h3>
-                                <span class="span-newsletter">Get notified of new products, limited releases, and
-                                    more.</span>
-                                <div class="newsletter-form">
-                                    <form id="newsletter-validate-detail" class="form subscribe">
-                                        <div class="control">
-                                            <input type="email" placeholder="Enter your email" id="newsletter" name="email" class="input-subscribe">
-                                            <button type="submit" title="Subscribe" class="btn subscribe">
-                                                <span>Sign Up</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="socials">
-                                    <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#" class="social"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                    <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright full-width">
-                <div class="container">
-                    <div class="copyright-right">
-                        © Copyright 2020<span> Dagon</span>. All Rights Reserved.
-                    </div>
-                    <div class="pay-men">
-                        <a href="#"><img src="{{ asset('images/general/pay1.jpg') }}" alt="pay1"></a>
-                        <a href="#"><img src="{{ asset('images/general/pay2.jpg') }}" alt="pay2"></a>
-                        <a href="#"><img src="{{ asset('images/general/pay3.jpg') }}" alt="pay3"></a>
-                        <a href="#"><img src="{{ asset('images/general/pay4.jpg') }}" alt="pay4"></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('include.footer')
         <!-- end FOOTER -->
     </div>
     <a href="#" id="scrollup" title="Scroll to Top">Scroll</a>
@@ -520,27 +387,6 @@
 @endsection
 @section('script')
 <script>
-    function addToCart(product_id) {
-        var url = `{{ route('cart.addToCart') }}`;
-        $.ajax({
-            url: url
-            , method: 'GET'
-            , data: {
-                product_id: product_id
-                , user_id: 1
-            }
-            , success: function(response) {
-                if (response.success) {
-                    $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
-                    checkCart();
-                    $("#noti-button").trigger("click");
-                } else {
-                    //
-                }
-            }
-        })
-    }
-
     function getFlashSales() {
         var url = `{{ route('discounts.getFlashSale') }}`;
         $.ajax({

@@ -14,11 +14,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.bxslider.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/function.js')}}"></script>
 
 </head>
 @include('include.header')
 @yield('main')
-<script type="text/javascript" src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/owl.carousel.min.js')}}"></script>
@@ -32,12 +34,51 @@
 <script src="{{asset('js/fancybox/source/helpers/jquery.fancybox-media.js')}}"></script>
 <script src="{{asset('js/fancybox/source/helpers/jquery.fancybox-thumbs.js')}}"></script>
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
-<script type="text/javascript" src="{{asset('js/function.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('js/Modernizr.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.plugin.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.countdown.js')}}"></script>
 @yield('script')
 <script>
+    function checkCoupon() {
+        var url = `{{ route('coupon.checkCoupon') }}`;
+        var coupon_code = $("#coupon_code_input").val();
+        var total = $("#total_money").val();
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: {
+                coupon_code: coupon_code
+            }
+            , success: function(response) {
+                if (response.success) {
+                    total = total - response.success;
+                    $("#total_money").val(total);
+                    $("#display_total_money").html(total.toFixed(3) + `&ensp;<u>đ</u>`);
+                    $("#success_coupon").html('<p>Đã sử dụng mã giảm giá : Giảm ' + response.success + '&ensp;<u>đ</u></p>')
+                    $("#success_coupon").show();
+                    setTimeout(function() {
+                        $("#success_coupon").hide();
+                    }, 1500)
+                } else {
+                    $("#message_coupon").html('<p>' + response.error + '</p>')
+                    $("#message_coupon").show();
+                    setTimeout(function() {
+                        $("#message_coupon").hide();
+                    }, 1500)
+                }
+            }
+        })
+    }
+
+    function hasCoupon() {
+
+        if ($('#checkbox_coupon').is(":checked"))
+            $("#coupon_main").show();
+        else
+            $("#coupon_main").hide();
+    }
+
     function checkCart() {
         var url = `{{ route('cart.checkCart') }}`;
         $.ajax({
@@ -48,6 +89,41 @@
             }
         })
     }
+
+    function deleteCartItem(product_id) {
+        var url = `{{ route('cart.deleteCartItem') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: {
+                product_id: product_id
+            }
+            , success: function(response) {
+                checkCart();
+            }
+        })
+    }
+
+    function addToCart(product_id) {
+        var url = `{{ route('cart.addToCart') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , data: {
+                product_id: product_id
+            }
+            , success: function(response) {
+                if (response.success) {
+                    $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
+                    checkCart();
+                    $("#noti-button").trigger("click");
+                } else {
+                    //
+                }
+            }
+        })
+    }
+
     $(document).ready(function() {
         checkCart();
     });

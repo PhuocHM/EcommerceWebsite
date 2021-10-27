@@ -16,7 +16,9 @@ use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Auth\SettingController;
 use App\Http\Controllers\Users\CategoriesProductController;
+use App\Http\Controllers\Users\OrderController;
 use App\Http\Controllers\Users\ProductDetailController;
+use App\Http\Controllers\Users\CouponController;
 
 
 /*
@@ -46,11 +48,19 @@ Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
 Route::resource('category', CategoriesProductController::class);
 Route::resource('product-detail', ProductDetailController::class);
+Route::resource('order', OrderController::class);
+Route::resource('coupon', CouponController::class);
 
 Route::resource('cart', CartController::class);
+Route::GET('order-detail', [OrderController::class, 'orderDetail'])->name('order.orderDetail');
 Route::GET('api/carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 Route::GET('api/check-cart', [HomeController::class, 'checkCart'])->name('cart.checkCart');
+Route::GET('api/deleteCartItem', [HomeController::class, 'deleteCartItem'])->name('cart.deleteCartItem');
+Route::GET('api/syncCart', [HomeController::class, 'syncCart'])->name('cart.syncCart');
+Route::GET('api/showCart', [HomeController::class, 'showCart'])->name('cart.showCart');
+Route::GET('api/checkCoupon', [HomeController::class, 'checkCoupon'])->name('coupon.checkCoupon');
 Route::GET('api/getFlashSale', [HomeController::class, 'getFlashSale'])->name('discounts.getFlashSale');
+Route::GET('api/addComment', [HomeController::class, 'addComment'])->name('home.addComment');
 
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');

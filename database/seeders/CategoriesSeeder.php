@@ -82,7 +82,7 @@ class CategoriesSeeder extends Seeder
 
         $item = new Categories;
         $item->id = 7;
-        $item->name = "Điều hòa - máy lạnh";
+        $item->name = "Máy lọc khí ";
         $item->slug = "dieu-hoa-may-lanh";
         $item->description = "Đây là điều hòa";
         $item->parent_id = 1;
@@ -126,8 +126,8 @@ class CategoriesSeeder extends Seeder
 
         $item = new Categories;
         $item->id = 11;
-        $item->name = "Laptop theo thương hiệu";
-        $item->slug = "laptop-theo-thuong-hieu";
+        $item->name = "Laptop Window";
+        $item->slug = "laptop-window";
         $item->description = "Đây là điều hòa";
         $item->parent_id = 2;
         $item->status = 0;
@@ -137,8 +137,8 @@ class CategoriesSeeder extends Seeder
 
         $item = new Categories;
         $item->id = 12;
-        $item->name = "Laptop theo giá";
-        $item->slug = "laptop-theo-gia";
+        $item->name = "Macbook";
+        $item->slug = "macbook";
         $item->description = "Đây là điều hòa";
         $item->parent_id = 2;
         $item->status = 0;
