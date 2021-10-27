@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SearchController;
-
+use App\Http\Controllers\Admin\SuppliersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,22 +45,17 @@ Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/home', AdminController::class);
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
     Route::resource('/brands', BrandsController::class);
+    Route::resource('/productAttributes', ProductAttributesController::class);
+    Route::resource('/products', ProductsController::class);
+    Route::resource('/productImages', ProductImagesController::class);
+    Route::resource('/users', UsersController::class);
+    Route::resource('/suppliers', SuppliersController::class);
 });
-Route::group(['prefix'=>'admin'],function() {
-    Route::get('/home',AdminController::class);
-    Route::resource('/categories',CategoriesController::class);
-    Route::resource('/attributes',AttributesController::class);
-    Route::resource('/brands',BrandsController::class);
-    Route::resource('/productAttributes',ProductAttributesController::class);
-    Route::resource('/products',ProductsController::class);
-    Route::resource('/productImages',ProductImagesController::class);
-    Route::resource('/users',UsersController::class);
-    
-});
-Route::get('/search-product', [SearchController::class,'search'])->name('web.search');
+Route::get('/search-product', [SearchController::class, 'search'])->name('web.search');
 // Route::get('/search-category', [SearchController::class,'search'])->name('category.search');
 // Route::get('/search-attribute', [SearchController::class,'search'])->name('attribute.search');
 // Route::get('/search-brand', [SearchController::class,'search'])->name('brand.search');

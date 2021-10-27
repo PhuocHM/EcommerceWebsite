@@ -2,7 +2,7 @@
  <aside class="sidebar-wrapper" data-simplebar="true">
      <div class="sidebar-header">
          <div>
-             <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+             <img src="{{ asset('Admin/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
          </div>
          <div>
              <h4 class="logo-text">EcommerceWebsite</h4>
@@ -40,7 +40,9 @@
                  <li> <a style="text-decoration: none" href="{{ route('users.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Tài khoản khách hàng</a>
                  </li>
-
+                 <li> <a style="text-decoration: none" href="{{ route('suppliers.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Nhà cung cấp sản phẩm</a>
+                 </li>
              </ul>
          </li>
 

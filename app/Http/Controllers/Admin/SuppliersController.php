@@ -3,33 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BrandRequest;
-use App\Services\BrandService;
+use App\Http\Requests\SuppliersRequest;
+use App\Services\SuppliersService;
 use Illuminate\Http\Request;
 
-
-
-// use App\Http\Requests\BrandRequest;
-
-class BrandsController extends Controller
+class SuppliersController extends Controller
 {
-    private $brandService;
-    public function __construct(BrandService $brandService)
+    private $supplierService;
+    public function __construct(SuppliersService $supplierService)
     {
-        $this->brandService = $brandService;
+        $this->supplierService = $supplierService;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands = $this->brandService->getAll();
+        $suppliers = $this->supplierService->getAll($request);
         $params = [
-            'brands' => $brands,
+            'suppliers' => $suppliers,
         ];
-        return view('admin.brands.index', $params);
+        return view('admin.suppliers.index', $params);
     }
 
     /**
@@ -39,8 +35,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-
-        return view('admin.brands.create');
+        return view('admin.suppliers.create');
     }
 
     /**
@@ -49,10 +44,10 @@ class BrandsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandRequest $request)
+    public function store(SuppliersRequest $request)
     {
-        $this->brandService->store($request);
-        return redirect()->route('brands.index')->with('status', 'Thêm thương hiệu thành công !');
+        $this->supplierService->store($request);
+        return redirect()->route('suppliers.index')->with('status', 'Thêm nhà cung cấp thành công !');
     }
 
     /**
@@ -74,13 +69,11 @@ class BrandsController extends Controller
      */
     public function edit($id)
     {
-        $brands = $this->brandService->getAll();
-        $brand = $this->brandService->edit($id);
+        $supplier = $this->supplierService->find($id);
         $params = [
-            'brands' => $brands,
-            'brand' => $brand
+            'supplier' => $supplier
         ];
-        return view('admin.brands.edit', $params);
+        return view('admin.suppliers.edit', $params);
     }
 
     /**
@@ -90,10 +83,10 @@ class BrandsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BrandRequest $request, $id)
+    public function update(SuppliersRequest $request, $id)
     {
-        $this->brandService->update($request, $id);
-        return redirect()->route('brands.index')->with('status','Cập nhật thương hiệu thành công!');
+        $this->supplierService->update($request, $id);
+        return redirect()->route('suppliers.index')->with('status', 'Cập nhật nhà cung cấp thành công !');
     }
 
     /**
@@ -104,7 +97,7 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        $this->brandService->destroy($id);
-        return redirect()->route('brands.index')->with('status', 'Xóa thương hiệu thành công !');
+        $this->supplierService->destroy($id);
+        return redirect()->route('suppliers.index')->with('status', 'Xóa nhà cung cấp thành công !');
     }
 }
