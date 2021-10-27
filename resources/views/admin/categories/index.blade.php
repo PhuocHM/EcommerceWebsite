@@ -49,8 +49,10 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
+                                    @if(isset($categories))
                                         <table  class="table ">
                                             <thead class="table-light">
+                                                
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
@@ -64,7 +66,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @if(count($categories)>0)
                                                 @foreach ($categories as $category)
+                                               
                                                     <tr>
                                                         <td>{{ $category->id }}</td>
                                                         <td>{{ $category->name }}</td>
@@ -109,9 +113,13 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                    @endforeach
+                                              @else
+                                              <h3>Danh Mục sản phẩm cần tìm không có</h3>    
+                                              @endif
                                             </tbody>
                                         </table>
+                                        @endif
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->

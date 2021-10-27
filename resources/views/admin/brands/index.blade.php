@@ -47,6 +47,7 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
+                                    @if(isset($brands))
                                         <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
@@ -60,6 +61,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @if(count($brands)>0)
                                                 @foreach ($brands as $brand)
                                                     <tr>
                                                         <td>{{ $brand->id }}</td>
@@ -98,9 +100,13 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                    @endforeach
+                                              @else
+                                              <h3>Thương hiệu cần tìm không có</h3>    
+                                              @endif
                                             </tbody>
                                         </table>
+                                        @endif
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
