@@ -13,4 +13,5 @@ Interface CategoryInterface {
     public function categories_arr(); 
     public function create(); 
     public function edit($id); 
+    public function create_category();
 }

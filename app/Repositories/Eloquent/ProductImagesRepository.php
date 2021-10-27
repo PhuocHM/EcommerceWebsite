@@ -9,9 +9,19 @@ use Carbon\Carbon;
 
 class ProductImagesRepository implements ProductImagesInterface
 {
-    public function getAll()
+    public function getAll($request)
     {
         return ProductImages::with('product')->orderBy('id', 'DESC')->get();
+
+        $query = ProductImages::with('product');
+        if ($request->productImages) {
+            $search = $request->productImages;
+
+            $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%') ;
+        }
+        $query->orderBy('id', 'DESC');
+
+        return $query->paginate(10);
     }
     public function create_product()
     {
@@ -76,12 +86,9 @@ class ProductImagesRepository implements ProductImagesInterface
         }
         $productImage->delete();
     }
+    public function search(){
 
-    public function search()
-    {
-        $search = $_GET['tukhoa'];
-        $productImages = ProductImages::with('brand', 'category')->where('name', 'LIKE', '%' . $search . '%')->get();
-        return $productImages;
     }
-  
+
+    
 }

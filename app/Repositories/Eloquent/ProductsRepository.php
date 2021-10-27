@@ -18,11 +18,11 @@ class ProductsRepository implements ProductsInterface
         if($request->product){
             $search=$request->product;
         
-            $query->where('name','LIKE','%'.$search.'%');
+            $query->where('name','LIKE','%'.$search.'%')->orWhere('slug','LIKE','%'.$search.'%');
         }
         $query->orderBy('id','DESC');
 
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function getOne()
     {

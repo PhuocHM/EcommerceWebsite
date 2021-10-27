@@ -18,9 +18,9 @@ class ProductAttributesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productAttributes = $this->productAttributesService->getAll(); 
+        $productAttributes = $this->productAttributesService->getAll($request); 
         // dd($productAttributes->toArray());
         $params = [
             'productAttributes' => $productAttributes,

@@ -62,4 +62,8 @@ class CategoryRepository implements CategoryInterface {
     {
         return Category::find($id);
     }
+    public function create_category()
+    {
+        return Category::orderBy('id','DESC')->get();
+    }
 }

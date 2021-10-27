@@ -70,9 +70,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id )
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->create_category();
         $category = $this->categoryService->edit($id);
         $params=[
             'categories' => $categories,
