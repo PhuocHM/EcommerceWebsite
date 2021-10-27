@@ -16,7 +16,7 @@ class ProductAttributesRepository implements ProductAttributesInterface
         if ($request->productAttribute) {
             $search = $request->productAttribute;
 
-            $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%') ;
+            $query->where('content', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%') ;
         }
         $query->orderBy('id', 'DESC');
 

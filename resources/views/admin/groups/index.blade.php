@@ -10,13 +10,13 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Tài khoản khách hàng</li>
+                            <li class="breadcrumb-item active" aria-current="page">Nhóm chức vụ quản lý</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('groups.create') }}" class="btn btn-primary">Thêm mới</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('users.index') }}" method="GET" name="user" type="text"
+                            action="{{ route('groups.index') }}" method="GET" name="group" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
 
                         </select>
@@ -55,25 +55,23 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Email</th>
-                                                    <th>Mật khẩu</th>
+                                                    <th>Slug</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($users as $user)
+                                                @foreach ($groups as $group)
                                                     <tr>
-                                                        <td>{{ $user->id }}</td>
-                                                        <td>{{ $user->name }}</td>
-                                                        <td>{{ $user->email }}</td>
-                                                        <td>{{ $user->password }}</td>
+                                                        <td>{{ $group->id }}</td>
+                                                        <td>{{ $group->name }}</td>
+                                                        <td>{{ $group->slug }}</td>
 
-                                                        <td>{{ date('d-m-Y', strtotime($user->created_at)) }}</td>
+                                                        <td>{{ date('d-m-Y', strtotime($group->created_at)) }}</td>
                                                         <td>
-                                                            @if ($user->updated_at != '')
-                                                                {{ date('d-m-Y', strtotime($user->updated_at)) }}
+                                                            @if ($group->updated_at != '')
+                                                                {{ date('d-m-Y', strtotime($group->updated_at)) }}
                                                             @endif
                                                         </td>
                                                         <td>
@@ -82,18 +80,18 @@
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('users.edit', $user->id) }}"
+                                                                <a href="{{ route('groups.edit', $group->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form action="{{ route('users.destroy', [$user->id]) }}"
+                                                                <form action="{{ route('groups.destroy', [$group->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleteUser({{ $user->id }})"
+                                                                    <a href="#" onclick="deleteGroup({{ $group->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteuser"> <i
+                                                                        data-bs-target="#deletegroup"> <i
                                                                             class="bi bi-trash-fill"></i></a>
                                                                 </form>
                                                             </div>
@@ -105,7 +103,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteuser" tabindex="-1"
+                                    <div class="modal fade" id="deletegroup" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -132,7 +130,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $users->links() }}
+                                        {{ $groups->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -147,8 +145,8 @@
 @endsection
 @section('scripts')
     <script>
-        function deleteUser(id) {
-            var url = '{{ route('users.index') }}' + '/' + id;
+        function deleteGroup(id) {
+            var url = '{{ route('groups.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>

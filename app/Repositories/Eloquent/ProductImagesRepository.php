@@ -11,13 +11,11 @@ class ProductImagesRepository implements ProductImagesInterface
 {
     public function getAll($request)
     {
-        return ProductImages::with('product')->orderBy('id', 'DESC')->get();
-
         $query = ProductImages::with('product');
         if ($request->productImages) {
             $search = $request->productImages;
 
-            $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%') ;
+            $query->where('product_id', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
 
@@ -71,11 +69,11 @@ class ProductImagesRepository implements ProductImagesInterface
                 $get_image->move($path, $new_image);
                 $productImage->image = $new_image;
                 $data['productImage_image'] = $new_image;
-            }    
+            }
         }
         $productImage->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
-        $productImage->save();  
+        $productImage->save();
     }
     public function destroy($id)
     {
@@ -86,9 +84,4 @@ class ProductImagesRepository implements ProductImagesInterface
         }
         $productImage->delete();
     }
-    public function search(){
-
-    }
-
-    
 }

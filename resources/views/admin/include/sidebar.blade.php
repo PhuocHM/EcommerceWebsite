@@ -40,6 +40,12 @@
                  <li> <a style="text-decoration: none" href="{{ route('users.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Tài khoản khách hàng</a>
                  </li>
+                 <li> <a style="text-decoration: none" href="{{ route('groups.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Nhóm chức vụ quản lý</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('employees.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Quản lý nhân sự</a>
+                 </li>
 
              </ul>
          </li>

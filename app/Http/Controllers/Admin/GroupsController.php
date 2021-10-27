@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UsersRequest;
-use App\Services\UsersService;
+use App\Http\Requests\GroupsRequest;
+use App\Services\GroupsService;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class GroupsController extends Controller
 {
-    private $usersService;
-    public function __construct(UsersService $usersService)
+    private $groupsService;
+    public function __construct(GroupsService $groupsService)
     {
-        $this->usersService = $usersService;
+        $this->groupsService = $groupsService;
     }
     /**
      * Display a listing of the resource.
@@ -21,11 +21,11 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $users = $this->usersService->getAll($request);
+        $groups = $this->groupsService->getAll($request);
         $params = [
-            'users' => $users,
+            'groups' => $groups,
         ];
-        return view('admin.users.index', $params);
+        return view('admin.groups.index', $params);
     }
 
     /**
@@ -35,7 +35,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.groups.create');
     }
 
     /**
@@ -44,10 +44,10 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersRequest $request)
+    public function store(GroupsRequest $request)
     {
-        $this->usersService->store($request);
-        return redirect()->route('users.index')->with('status', 'Thêm tài khoản khách hàng thành công !');
+        $this->groupsService->store($request);
+        return redirect()->route('groups.index')->with('status', 'Thêm chức vụ quản lý thành công !');
     }
 
     /**
@@ -69,11 +69,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->usersService->edit($id);
+        $group = $this->groupsService->edit($id);
         $params = [
-            'user' => $user
+            'group' => $group
         ];
-        return view('admin.users.edit', $params);    
+        return view('admin.groups.edit', $params);   
     }
 
     /**
@@ -83,10 +83,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersRequest $request, $id)
+    public function update(GroupsRequest $request, $id)
     {
-        $this->usersService->update($request, $id);
-        return redirect()->route('users.index')->with('status','Cập nhật tài khoản khách hàng thành công!');   
+        $this->groupsService->update($request, $id);
+        return redirect()->route('groups.index')->with('status','Cập nhật chức vụ quản lý thành công!'); 
     }
 
     /**
@@ -98,11 +98,11 @@ class UsersController extends Controller
     public function destroy($id)
     {
         try{
-            $this->usersService->destroy($id);
-            return redirect()->route('users.index')->with('status', 'Xóa tài khoản khách hàng thành công !');
+            $this->groupsService->destroy($id);
+            return redirect()->route('groups.index')->with('status', 'Xóa tài khoản khách hàng thành công !');
         }
         catch(\Exception $e){
-            return redirect()->route('users.index')->with('status', 'Xóa không thành công! '.$e);
+            return redirect()->route('groups.index')->with('status', 'Xóa không thành công! '.$e);
 
         } 
     }

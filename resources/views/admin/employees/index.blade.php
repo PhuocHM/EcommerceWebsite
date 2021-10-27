@@ -10,13 +10,13 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Tài khoản khách hàng</li>
+                            <li class="breadcrumb-item active" aria-current="page">Quản lý nhân sự</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('employees.create') }}" class="btn btn-primary">Thêm nhân sự</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('users.index') }}" method="GET" name="user" type="text"
+                            action="{{ route('employees.index') }}" method="GET" name="employee" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
 
                         </select>
@@ -54,26 +54,38 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Tên</th>
-                                                    <th>Email</th>
-                                                    <th>Mật khẩu</th>
+                                                    <th>Tên</th>                                           
+                                                    <th>Email</th>                                       
+                                                    <th>Ngày sinh</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Căn cước công dân </th>
+                                                    <th>Hình ảnh</th>
+                                                    <th>Thuộc chức vụ</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($users as $user)
+                                                @foreach ($employees as $employee)
                                                     <tr>
-                                                        <td>{{ $user->id }}</td>
-                                                        <td>{{ $user->name }}</td>
-                                                        <td>{{ $user->email }}</td>
-                                                        <td>{{ $user->password }}</td>
-
-                                                        <td>{{ date('d-m-Y', strtotime($user->created_at)) }}</td>
+                                                        <td>{{ $employee->id }}</td>
+                                                        <td>{{ $employee->name }}</td>
+                                                        <td>{{ $employee->mail }}</td>                                                   
+                                                        <td>{{ $employee->birthday }}</td>
+                                                        <td>{{ $employee->address }}</td>
+                                                        <td>{{ $employee->identification }}</td>
                                                         <td>
-                                                            @if ($user->updated_at != '')
-                                                                {{ date('d-m-Y', strtotime($user->updated_at)) }}
+                                                            <img src="{{ asset('images/employee/' . $employee->image) }}"
+                                                                alt="" style="width: 150px">
+                                                        </td>
+                                                        <td>{{ $employee->group->name }}</td>
+
+
+                                                        <td>{{ date('d-m-Y', strtotime($employee->created_at)) }}</td>
+                                                        <td>
+                                                            @if ($employee->updated_at != '')
+                                                                {{ date('d-m-Y', strtotime($employee->updated_at)) }}
                                                             @endif
                                                         </td>
                                                         <td>
@@ -82,18 +94,20 @@
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('users.edit', $user->id) }}"
+                                                                <a href="{{ route('employees.edit', $employee->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form action="{{ route('users.destroy', [$user->id]) }}"
+                                                                <form
+                                                                    action="{{ route('employees.destroy', [$employee->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleteUser({{ $user->id }})"
+                                                                    <a href="#"
+                                                                        onclick="deleteEmployee({{ $employee->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteuser"> <i
+                                                                        data-bs-target="#deleteemployee"> <i
                                                                             class="bi bi-trash-fill"></i></a>
                                                                 </form>
                                                             </div>
@@ -105,7 +119,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteuser" tabindex="-1"
+                                    <div class="modal fade" id="deleteemployee" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -132,7 +146,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $users->links() }}
+                                        {{ $employees->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -147,8 +161,8 @@
 @endsection
 @section('scripts')
     <script>
-        function deleteUser(id) {
-            var url = '{{ route('users.index') }}' + '/' + id;
+        function deleteEmployee(id) {
+            var url = '{{ route('employees.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>

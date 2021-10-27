@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Thêm Mới Thương Hiệu</h6>
+                <h6 class="mb-0">Thêm Nhóm Chức Vụ</h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -14,26 +14,20 @@
                 <div class="col-12 col-lg-8 mx-auto d-flex">
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
-                            <form class="row g-3" method="POST" action="{{ route('brands.store') }}"
+                            <form class="row g-3" method="POST" action="{{ route('groups.store') }}"
                                 enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="col-12">
-                                    <label class="form-label">Tên</label>
+                                    <label class="form-label">Tên chức vụ</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                        onkeyup="ChangeToSlug();" id="slug" placeholder="Tên thương hiệu">
+                                        onkeyup="ChangeToSlug();" id="slug" placeholder="Tên chức vụ">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Slug</label>
                                     <input type="text" name="slug" class="form-control" value="{{ old('slug') }}"
-                                        id="convert_slug" placeholder="Slug thương hiệu">
+                                        id="convert_slug" placeholder="Slug">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Hình ảnh</label>
-                                    <input type="file" name="image" class="form-control-file" id="image"
-                                        value="{{ old('image') }}"> <br>
-                                    <span style="color:red;">@error('image'){{ $message }} @enderror</span>
                                     <br>
                                 </div>
                                 <div class="row">
@@ -44,7 +38,7 @@
                                     </div>
                                     <div class="col-2">
                                         <div class="d-grid">
-                                            <a href="{{ route('brands.index') }}" class="btn btn-danger">Trở
+                                            <a href="{{ route('groups.index') }}" class="btn btn-danger">Trở
                                                 về</a>
                                         </div>
                                     </div>
