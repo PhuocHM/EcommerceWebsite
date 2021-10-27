@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Category;
 use App\Repositories\Interfaces\CategoryInterface;
@@ -37,7 +37,6 @@ class CategoryRepository implements CategoryInterface {
     public function destroy($id)
     {
         $category = Category::find($id);
-
         $category->delete();
     }
     

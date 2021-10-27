@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquents\BrandRepository;
+use App\Repositories\Eloquent\BrandRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\BrandRequest;
 

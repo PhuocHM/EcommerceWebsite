@@ -26,6 +26,6 @@ class UpdateAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('soft_delete');
+        Schema::dropIfExists('attributes');
     }
 }
