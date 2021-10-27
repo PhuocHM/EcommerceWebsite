@@ -48,6 +48,7 @@
                   <div class="card border shadow-none w-100">
                      <div class="card-body">
                         <div class="table-responsive">
+                        @if(isset($attributes))
                            <table  class="table ">
                               <thead class="table-light">
                                  <tr>
@@ -61,6 +62,7 @@
                                  </tr>
                               </thead>
                               <tbody>
+                              @if(count($attributes)>0)
                                  @foreach ($attributes as $attribute)
                                  <tr>
                                     <td>{{ $attribute->id }}</td>
@@ -103,8 +105,12 @@
                                     </td>
                                  </tr>
                                  @endforeach
-                              </tbody>
-                           </table>
+                                              @else
+                                              <h3>Thuộc tính cần tìm không có</h3>    
+                                              @endif
+                                            </tbody>
+                                        </table>
+                                        @endif
                         </div>
                         {{-- Test Modal Delete --}}
                         <!-- Modal -->
