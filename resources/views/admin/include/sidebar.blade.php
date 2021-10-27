@@ -46,6 +46,9 @@
                  <li> <a style="text-decoration: none" href="{{ route('employees.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Quản lý nhân sự</a>
                  </li>
+                 <li> <a style="text-decoration: none" href="{{ route('roles.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Vai trò quản lý</a>
+                 </li>
 
              </ul>
          </li>

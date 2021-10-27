@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\GroupsController;
 use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 
 /*
@@ -54,4 +55,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/users', UsersController::class);
     Route::resource('/employees', EmployeesController::class);
     Route::resource('/groups', GroupsController::class);
+    Route::resource('/roles', RolesController::class);
 });
