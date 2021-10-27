@@ -17,9 +17,9 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->getAll($request);
         $categories_arr = $this->categoryService->categories_arr();
         
         $params = [
@@ -70,9 +70,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id )
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->create_category();
         $category = $this->categoryService->edit($id);
         $params=[
             'categories' => $categories,

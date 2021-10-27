@@ -20,6 +20,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+              <div class="col-md-12">
+                
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <!-- <div class="addthis_inline_share_toolbox"></div> -->
+             
+                <form  class="form-inline my-2 my-lg-0" >
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('categories.index') }}" method="GET" name="category" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                     
+                    </select>
+                </form>
+              </div>
+            </div>
             <!--end breadcrumb-->
             <div class="card">
 
@@ -35,8 +49,10 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table id="dataTable" class="table ">
+                                    @if(isset($categories))
+                                        <table  class="table ">
                                             <thead class="table-light">
+                                                
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
@@ -50,7 +66,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @if(count($categories)>0)
                                                 @foreach ($categories as $category)
+                                               
                                                     <tr>
                                                         <td>{{ $category->id }}</td>
                                                         <td>{{ $category->name }}</td>
@@ -95,9 +113,13 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                    @endforeach
+                                              @else
+                                              <h3>Danh Mục sản phẩm cần tìm không có</h3>    
+                                              @endif
                                             </tbody>
                                         </table>
+                                        @endif
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
@@ -128,7 +150,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $categories->links() }} 
                                     </div>
                                 </div>
                             </div>

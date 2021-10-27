@@ -18,7 +18,7 @@
                                 enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="col-12">
-                                    <label class="form-label">Name</label>
+                                    <label class="form-label">Tên</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
                                         onkeyup="ChangeToSlug();" id="slug" placeholder="Tên thương hiệu">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>

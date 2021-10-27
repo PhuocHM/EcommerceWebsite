@@ -23,16 +23,18 @@ class ProductImagesRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'image' => 'required|unique:product_image,image,'.$this->route('product_image')
+        $roles = [       
+            'image' => 'required',        
         ];
+        if ($this->route('productImage')) {
+            unset($roles['image']);
+        }
+        return $roles;
     }
     public function messages()
     {
         return [
             'image.required' => 'Vui lòng nhập hình ảnh',
-            'image.unique' => 'Hình ảnh đã tồn tại'
-           
         ];
     }
 }

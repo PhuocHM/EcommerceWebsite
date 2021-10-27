@@ -20,6 +20,23 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('attributes.index') }}" method="GET" name="attribute" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
+
+                        </select>
+                    </form>
+                </div>
+            </div>
             <!--end breadcrumb-->
             <div class="card">
                 <div class="card-body">
@@ -120,7 +137,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $attributes->links() }} --}}
+                                        {{ $attributes->links() }}
                                     </div>
                                 </div>
                             </div>

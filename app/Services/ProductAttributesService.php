@@ -12,9 +12,9 @@ class ProductAttributesService
     public function __construct(ProductAttributesRepository $productAttributesRepository){
         $this->productAttributesRepository = $productAttributesRepository;
     }
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->productAttributesRepository->getAll();
+        return $this->productAttributesRepository->getAll($request);
     }
     public function create_product(){
         return $this->productAttributesRepository->create_product();

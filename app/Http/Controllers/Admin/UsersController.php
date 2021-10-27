@@ -19,9 +19,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->usersService->getAll();
+        $users = $this->usersService->getAll($request);
         $params = [
             'users' => $users,
         ];
@@ -69,10 +69,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $users = $this->usersService->getAll();
         $user = $this->usersService->edit($id);
         $params = [
-            'users' => $users,
             'user' => $user
         ];
         return view('admin.users.edit', $params);    
@@ -88,7 +86,8 @@ class UsersController extends Controller
     public function update(UsersRequest $request, $id)
     {
         $this->usersService->update($request, $id);
-        return redirect()->route('users.index')->with('status','Cập nhật tài khoản khách hàng thành công!');    }
+        return redirect()->route('users.index')->with('status','Cập nhật tài khoản khách hàng thành công!');   
+    }
 
     /**
      * Remove the specified resource from storage.

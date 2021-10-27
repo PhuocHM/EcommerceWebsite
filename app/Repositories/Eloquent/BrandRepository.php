@@ -9,16 +9,24 @@ use Carbon\Carbon;
 class BrandRepository implements BrandInterface
 {
 
-    public function getAll()
+    public function getAll($request)
     {
-        return Brand::all();
+        $query = Brand::orderBy('id', 'DESC');
+        if ($request->brand) {
+            $search = $request->brand;
+
+            $query->where('name', 'LIKE', '%' . $search . '%');
+        }
+
+        return $query->paginate(10);
+        // return Brand::all();
     }
     public function getOne()
     {
     }
     public function store($request)
     {
-                
+
         $brand = new Brand();
         $brand->name    = $request->name;
         $brand->slug    = $request->slug;
@@ -44,7 +52,6 @@ class BrandRepository implements BrandInterface
         $brand->name  = $request->name;
         $brand->slug    = $request->slug;
 
-        if ($request->hasFile('image')) {
             $get_image = $request->file('image');
             if ($get_image) {
                 $path = 'images/brand/' . $brand->image;
@@ -59,14 +66,15 @@ class BrandRepository implements BrandInterface
                 $brand->image = $new_image;
                 $data['brand_image'] = $new_image;
             }
-        }
+        
         $brand->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
         $brand->save();
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return Brand::find($id);
-     }
+    }
     public function destroy($id)
     {
         $brand = Brand::find($id);

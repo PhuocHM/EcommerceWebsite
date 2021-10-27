@@ -14,9 +14,9 @@ class ProductImagesService
     {
         $this->productImagesRepository = $productImagesRepository;
     }
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->productImagesRepository->getAll();
+        return $this->productImagesRepository->getAll($request);
     }
     public function create_product()
     {
@@ -38,8 +38,5 @@ class ProductImagesService
     {
         return $this->productImagesRepository->destroy($id);
     }
-    public function search()
-    {
-        return $this->productImagesRepository->search();
-    }
+   
 }

@@ -11,9 +11,9 @@ class CategoryService
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->categoryRepository->getAll();
+        return $this->categoryRepository->getAll($request);
     }
     public function update($request, $id)
     {
@@ -38,5 +38,9 @@ class CategoryService
     public function edit($id)
     {
         return $this->categoryRepository->edit($id);
+    }
+    public function create_category()
+    {
+        return $this->categoryRepository->create_category();
     }
 }
