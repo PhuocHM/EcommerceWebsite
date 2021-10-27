@@ -48,10 +48,18 @@
 
                                 </div>
                                 <div class="col-12">
+                                    <label class="form-label">Số lượng</label>
+                                    <input type="text" name="quantity" class="form-control" placeholder="Số lượng"
+                                        value="{{ old('quantity') }}">
+                                    <span style="color:red;">@error('quantity'){{ $message }} @enderror</span>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="col-12">
                                     <label class="form-label">Giá nhập</label>
-                                    <input type="text" name="cost_price" class="form-control" placeholder="Số lượng"
-                                        value="{{ old('phone') }}">
-                                    <span style="color:red;">@error('phone'){{ $message }} @enderror</span>
+                                    <input type="text" name="cost_price" class="form-control" placeholder="Giá nhập"
+                                        value="{{ old('cost_price') }}">
+                                    <span style="color:red;">@error('cost_price'){{ $message }} @enderror</span>
                                     <br>
                                     <br>
                                 </div>

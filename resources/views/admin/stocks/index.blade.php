@@ -54,7 +54,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($Stocks as $stock)
+                                                @foreach ($stocks as $stock)
                                                     <tr>
                                                         <td>{{ $stock->product->name }}</td>
                                                         <td>{{ $stock->employee->name }}</td>
@@ -82,8 +82,7 @@
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteStock({{ $stock->id }})"
+                                                                    <a href="#" onclick="deleteStock({{ $stock->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteStock"> <i
                                                                             class="bi bi-trash-fill"></i></a>
@@ -124,7 +123,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $stocks->links() }}
                                     </div>
                                 </div>
                             </div>

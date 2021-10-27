@@ -123,7 +123,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $suppliers->links() }}
                                     </div>
                                 </div>
                             </div>
