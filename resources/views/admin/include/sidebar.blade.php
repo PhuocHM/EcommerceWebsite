@@ -25,6 +25,8 @@
                 </li>  
                 <li> <a href="{{ route('brands.index') }}"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
                 </li>
+                <li> <a href="{{ route('customers.index') }}"><i class="bi bi-arrow-right-short"></i>Khách hàng</a>
+                </li>
                 
             </ul>
         </li>

@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
-
+use App\Http\Controllers\Admin\CustomersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +42,5 @@ Route::group(['prefix'=>'admin'],function() {
     Route::resource('/categories',CategoriesController::class);
     Route::resource('/attributes',AttributesController::class);
     Route::resource('/brands',BrandsController::class);
+    Route::resource('/customers',CustomersController::class);
 });
