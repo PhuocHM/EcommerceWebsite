@@ -6,7 +6,7 @@ use App\Http\Requests\AttributesRequest;
 
 Interface AttributesInterface {
 
-    public function getAll();
+    public function getAll($request);
     public function getOne();
     public function store($request);
     public function update($request, $id); 

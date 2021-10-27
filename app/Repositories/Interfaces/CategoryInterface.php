@@ -6,7 +6,7 @@ use App\Http\Requests\CategoryRequest;
 
 Interface CategoryInterface {
 
-    public function getAll();
+    public function getAll($request);
     public function store($request);
     public function update(CategoryRequest $request, $id);
     public function destroy($id);

@@ -9,9 +9,17 @@ use Carbon\Carbon;
 class BrandRepository implements BrandInterface
 {
 
-    public function getAll()
+    public function getAll($request)
     {
-        return Brand::all();
+        $query = Brand::orderBy('id','DESC');
+        if($request->brand){
+            $search=$request->brand;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+
+        return $query->paginate(2);
+        // return Brand::all();
     }
     public function getOne()
     {

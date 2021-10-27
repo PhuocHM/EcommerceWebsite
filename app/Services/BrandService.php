@@ -14,9 +14,9 @@ class BrandService
         $this->brandRepository = $brandRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->brandRepository->getAll();
+        return $this->brandRepository->getAll($request);
     }
     public function store($request)
     {
