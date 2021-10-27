@@ -27,9 +27,9 @@
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 <!-- <div class="addthis_inline_share_toolbox"></div> -->
              
-              <form  class="form-inline my-2 my-lg-0" action="{{url('search')}}" method="GET">
-                @csrf
-                  <input class="form-control mr-sm-2 name="tukhoa" type="search" placeholder="Tìm kiếm...." aria-label="Search">
+              <form  class="form-inline my-2 my-lg-0" >
+               
+                <input class="form-control" action="{{route('web.search')}}" method="GET" name="product" type="text" placeholder="Type here to search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>            
                     </select>
                 </form>
@@ -48,7 +48,8 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table id="dataTable" class="table ">
+                                    @if(isset($products))
+                                        <table  class="table ">
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
@@ -67,6 +68,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @if(count($products)>0)
                                                 @foreach ($products as $product)
                                                     <tr>
                                                         <td>{{ $product->id }}</td>
@@ -116,9 +118,13 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                    @endforeach
+                                              @else
+                                              <h3>Sản phẩm cần tìm không có</h3>    
+                                              @endif
                                             </tbody>
                                         </table>
+                                        @endif
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
@@ -148,9 +154,8 @@
                                         </div>
                                     </div>
                                     {{--  --}}
-                                    <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $products->links() }} --}}
-                                    </div>
+                                    <div class="pagination-block" style="float:right">
+                                    {{$products->links() }} 
                                 </div>
                             </div>
                         </div>

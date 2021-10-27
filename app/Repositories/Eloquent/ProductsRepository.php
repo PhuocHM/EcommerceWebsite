@@ -1,19 +1,28 @@
 <?php
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Brand;
 use App\Models\Admin\Products;
 use App\Models\Admin\Category;
 use App\Repositories\Interfaces\ProductsInterface;
+
 use Carbon\Carbon;
 
 class ProductsRepository implements ProductsInterface
 {
 
-    public function getAll()
+    public function getAll($request)
     {
-        return Products::with('category','brand')->orderBy('id','DESC')->get();
+        $query = Products::with('category','brand');
+        if($request->product){
+            $search=$request->product;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+        $query->orderBy('id','DESC');
+
+        return $query->paginate(2);
     }
     public function getOne()
     {
@@ -67,10 +76,7 @@ class ProductsRepository implements ProductsInterface
     {
         return Brand::orderBy('id','DESC')->get();
     }
-    public function search()
-    {
-        $search = $_GET['tukhoa'];
-        $products =Product::with('brand','category')->where('name','LIKE','%'.$search.'%')->get();
-        return $products;
+    public function search(){
+
     }
 }

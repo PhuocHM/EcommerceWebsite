@@ -6,7 +6,7 @@ use App\Http\Requests\ProductsRequest;
 
 Interface ProductsInterface {
 
-    public function getAll();
+    public function getAll($request);
     public function store($request);
     public function update($request, $id);
     public function edit($id); 

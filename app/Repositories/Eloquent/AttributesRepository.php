@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Attributes;
 use App\Models\Admin\Category;

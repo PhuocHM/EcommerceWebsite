@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquents\ProductsRepository;
+use App\Repositories\Eloquent\ProductsRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\ProductsRequest;
 
@@ -14,9 +14,9 @@ class ProductsService
     }
 
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->productsRepository->getAll();
+        return $this->productsRepository->getAll($request);
     }
     public function store($request)
     {

@@ -21,9 +21,9 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->productsService->getAll(); 
+        $products = $this->productsService->getAll($request); 
         $params = [
             'products' => $products,
         ];
@@ -52,7 +52,7 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
         $products =$this->productsService->store($request);
         return redirect()->route('products.index')->with('status','Thêm sản phẩm thành công !');
@@ -95,7 +95,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductsRequest $request, $id)
     {
         $this->productsService->update($request, $id);
         return redirect()->route('products.index')->with('status','Cập nhật sản phẩm thành công!');    
@@ -112,14 +112,14 @@ class ProductsController extends Controller
         $this->productsService->destroy($id);
         return redirect()->route('products.index')->with('status', 'Xóa sản phẩm thành công !');
     }
-    public function search()
-    {
-     $products = $this->productsService->getAll(); 
-     $search = $this->productsService->search();
-    $params = [
-        'products'     => $products,
-        'search'       =>  $search,
-    ];
-    return view('admin.products.search', $params);
-    }
+    // public function search()
+    // {
+    //  $products = $this->productsService->getAll(); 
+    //  $search = $this->productsService->search();
+    // $params = [
+    //     'products'     => $products,
+    //     'search'       =>  $search,
+    // ];
+    // return view('admin.products.search', $params);
+    // }
 }
