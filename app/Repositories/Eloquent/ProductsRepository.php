@@ -14,13 +14,13 @@ class ProductsRepository implements ProductsInterface
 
     public function getAll($request)
     {
-        $query = Products::with('category','brand');
-        if($request->product){
-            $search=$request->product;
-        
-            $query->where('name','LIKE','%'.$search.'%')->orWhere('slug','LIKE','%'.$search.'%');
+        $query = Products::with('category', 'brand');
+        if ($request->product) {
+            $search = $request->product;
+
+            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('', 'LIKE', '%' . $search . '%');
         }
-        $query->orderBy('id','DESC');
+        $query->orderBy('id', 'DESC');
 
         return $query->paginate(5);
     }
@@ -37,7 +37,7 @@ class ProductsRepository implements ProductsInterface
         $product->price          = $request->price;
         $product->description    = $request->description;
         $product->status         = $request->status;
-        $product->brand_id	     = $request->brand_id;
+        $product->brand_id         = $request->brand_id;
         $product->category_id    = $request->category_id;
         $product->created_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
@@ -52,31 +52,32 @@ class ProductsRepository implements ProductsInterface
         $product->price          = $request->price;
         $product->description    = $request->description;
         $product->status         = $request->status;
-        $product->brand_id	     = $request->brand_id	;
-        $product->category_id    = $request->category_id;  
-        $product->code           = $request->code;  
+        $product->brand_id         = $request->brand_id;
+        $product->category_id    = $request->category_id;
+        $product->code           = $request->code;
         $product->updated_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
         $product->save();
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return Products::find($id);
-     }
+    }
     public function destroy($id)
     {
         $product = Products::find($id);
         $product->delete();
     }
-   
+
     public function create_category()
     {
-        return Category::orderBy('id','DESC')->get();
+        return Category::orderBy('id', 'DESC')->get();
     }
     public function create_brand()
     {
-        return Brand::orderBy('id','DESC')->get();
+        return Brand::orderBy('id', 'DESC')->get();
     }
-    public function search(){
-
+    public function search()
+    {
     }
 }

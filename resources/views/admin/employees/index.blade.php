@@ -31,7 +31,7 @@
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
                             action="{{ route('employees.index') }}" method="GET" name="employee" type="text"
-                            placeholder="Tìm kiếm theo tên sản phẩm">
+                            placeholder="Tìm kiếm theo tên">
 
                         </select>
                     </form>

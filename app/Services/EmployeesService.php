@@ -17,7 +17,6 @@ class EmployeesService
     {
         return $this->employeesRepository->getAll($request);
     }
-
     public function store($request)
     {
         return $this->employeesRepository->store($request);

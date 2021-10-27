@@ -31,7 +31,7 @@
                                     <span style="color:red;">@error('email'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Password</label>
+                                    <label class="form-label">Mật khẩu</label>
                                     <input type="text" class="form-control" placeholder="Password" name="password"
                                         value="{{ $user->password }}">
                                     <span style="color:red;">@error('password'){{ $message }} @enderror</span>

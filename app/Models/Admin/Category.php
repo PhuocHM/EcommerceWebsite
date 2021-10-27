@@ -19,10 +19,14 @@ class Category extends Model
     protected $primaryKey = 'id';
     protected $table = 'categories';
     public $timestamps = true;
-    public function attributes(){
+
+    public function attributes()
+    {
         return $this->hasMany(Attributes::class);
     }
-    public function product(){
+    
+    public function product()
+    {
         return $this->hasMany(Products::class);
     }
 }

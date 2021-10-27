@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeesRequest;
 use App\Services\EmployeesService;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeesRequest $request)
     {
         $this->employeesService->store($request);
         return redirect()->route('employees.index')->with('status', 'Thêm nhân sự thành công !');
@@ -73,10 +74,10 @@ class EmployeesController extends Controller
     public function edit($id)
     {
         $groups = $this->employeesService->create_group();
-        $employees = $this->employeesService->edit($id);
+        $employee = $this->employeesService->edit($id);
         $params = [
             'groups'    => $groups,
-            'employees' =>  $employees
+            'employee' =>  $employee
         ];
         return view('admin.employees.edit', $params);
     }
@@ -88,7 +89,7 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeesRequest $request, $id)
     {
         $this->employeesService->update($request, $id);
         return redirect()->route('employees.index')->with('status', 'Cập nhật nhân sự thành công!');

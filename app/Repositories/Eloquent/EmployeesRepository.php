@@ -15,7 +15,7 @@ class EmployeesRepository implements EmployeesInterface
         if ($request->employee) {
             $search = $request->employee;
 
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('mail', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
         return $query->paginate(2);
@@ -26,38 +26,43 @@ class EmployeesRepository implements EmployeesInterface
     }
     public function store($request)
     {
-        $data = $request->only('name','slug','mail','password','birthday','address','identification','group_id');
-        if ($request->hasFile('image')) {
-            $get_image = $request->file('image');
-            $path = 'images/product/';
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move($path, $new_image);
-          
-            $data['image'] = $new_image;
-        } 
+        $data = $request->only('name', 'slug', 'mail', 'password', 'birthday', 'address', 'identification', 'group_id');
+        $file = $request->image;
+        if (!$request->hasFile('image')) {
+            $data['image'] = $file;
+        } else {
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = time() + 2;
+            $newFileName = "$fileName.$fileExtension";
+            $request->file('image')->move(public_path('images/employee'), $newFileName);
+            $data['image'] = $newFileName;
+        }
         Employees::create($data);
-    }
-    public function update($request, $id)
-    {
-        $employee             = Employees::find($id);
-        $employee->name       = $request->name;
-        $employee->slug      = $request->slug;
-        $employee->created_at = Carbon::now('Asia/Ho_Chi_Minh');
-
-        $employee->save();
     }
     public function edit($id)
     {
         return Employees::find($id);
     }
+
+    public function update($request, $id)
+    {
+        $data = $request->only('name', 'slug', 'mail', 'password', 'birthday', 'address', 'identification', 'group_id');
+        $file = $request->image;
+        if (!$request->hasFile('image')) {
+            $data['image'] = $file;
+        } else {
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = time() + 2;
+            $newFileName = "$fileName.$fileExtension";
+            $request->file('image')->move(public_path('images/employee'), $newFileName);
+            $data['image'] = $newFileName;
+        }
+        Employees::find($id)->update($data);
+    }
+
     public function destroy($id)
     {
         $employee = Employees::find($id);
         $employee->delete();
-    }
-    public function search()
-    {
     }
 }
