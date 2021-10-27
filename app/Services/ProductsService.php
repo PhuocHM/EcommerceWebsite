@@ -14,9 +14,9 @@ class ProductsService
     }
 
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->productsRepository->getAll();
+        return $this->productsRepository->getAll($request);
     }
     public function store($request)
     {

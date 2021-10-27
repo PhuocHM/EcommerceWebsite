@@ -16,7 +16,8 @@ use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\SearchController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,8 @@ Route::group(['prefix'=>'admin'],function() {
     Route::resource('/users',UsersController::class);
     
 });
-Route::get('/search', [ProductsController::class,'search']);
+Route::get('/search-product', [SearchController::class,'search'])->name('web.search');
+// Route::get('/search-category', [SearchController::class,'search'])->name('category.search');
+// Route::get('/search-attribute', [SearchController::class,'search'])->name('attribute.search');
+// Route::get('/search-brand', [SearchController::class,'search'])->name('brand.search');
+// Route::get('/search-product-attribute', [SearchController::class,'search'])->name('product_attribute.search');
