@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SuppliersController;
+use App\Http\Controllers\Admin\StocksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/productImages', ProductImagesController::class);
     Route::resource('/users', UsersController::class);
     Route::resource('/suppliers', SuppliersController::class);
+    Route::resource('/stocks', StocksController::class);
 });
 Route::get('/search-product', [SearchController::class, 'search'])->name('web.search');
 // Route::get('/search-category', [SearchController::class,'search'])->name('category.search');

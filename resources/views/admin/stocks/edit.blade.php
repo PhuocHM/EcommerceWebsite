@@ -15,13 +15,13 @@
                     <div class="card border shadow-none w-100">
                         <div class="card-body">
                             <form method="POST" class="row g-3"
-                                action="{{ route('suppliers.update', $supplier->id) }}" enctype="multipart/form-data">
+                                action="{{ route('suppliers.update', $stock->id) }}" enctype="multipart/form-data">
                                 @method('PUT')
                                 {{ csrf_field() }}
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" class="form-control" placeholder="Tên danh mục" name="name"
-                                        value="{{ $supplier->name }}">
+                                        value="{{ $stock->name }}">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">

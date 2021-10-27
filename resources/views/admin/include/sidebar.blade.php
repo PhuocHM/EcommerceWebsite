@@ -43,6 +43,9 @@
                  <li> <a style="text-decoration: none" href="{{ route('suppliers.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Nhà cung cấp sản phẩm</a>
                  </li>
+                 <li> <a style="text-decoration: none" href="{{ route('stocks.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Kho</a>
+                 </li>
              </ul>
          </li>
 
