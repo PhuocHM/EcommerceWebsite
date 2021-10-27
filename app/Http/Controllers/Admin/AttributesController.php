@@ -20,9 +20,9 @@ class AttributesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $attributes = $this->attributesService->getAll(); 
+        $attributes = $this->attributesService->getAll($request); 
         $params = [
             'attributes' => $attributes,
         ];

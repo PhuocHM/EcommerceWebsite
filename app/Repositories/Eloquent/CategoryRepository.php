@@ -7,9 +7,16 @@ use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class CategoryRepository implements CategoryInterface {
 
-    public function getAll()
+    public function getAll($request)
     {
-        return Category::all();
+        $query = Category::orderBy('id','DESC');
+        if($request->category){
+            $search=$request->category;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+
+        return $query->paginate(5);
     }
     public function store( $request)
     {

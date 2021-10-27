@@ -12,9 +12,9 @@ class AttributesService
         $this->attributesRepository = $attributesRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->attributesRepository->getAll();
+        return $this->attributesRepository->getAll($request);
     }
     public function update($request, $id)
     {

@@ -6,7 +6,7 @@ use App\Http\Requests\BrandRequest;
 
 Interface BrandInterface {
 
-    public function getAll();
+    public function getAll($request);
     public function store($request);
     public function update(BrandRequest $request, $id);
     public function edit($id); 

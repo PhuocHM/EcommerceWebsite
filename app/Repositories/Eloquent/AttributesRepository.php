@@ -9,9 +9,18 @@ use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class AttributesRepository implements AttributesInterface {
 
-    public function getAll(){
+    public function getAll($request){
 
-        return Attributes::with('category')->orderBy('id','DESC')->get();
+        // return Attributes::with('category')->orderBy('id','DESC')->get();
+        $query = Attributes::with('category');
+        if($request->attribute){
+            $search=$request->attribute;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+        $query->orderBy('id','DESC');
+
+        return $query->paginate(2);
     }
     public function getOne(){
 

@@ -28,9 +28,9 @@
                 <!-- <div class="addthis_inline_share_toolbox"></div> -->
              
               <form  class="form-inline my-2 my-lg-0" >
-               
-                <input class="form-control" action="{{route('web.search')}}" method="GET" name="product" type="text" placeholder="Type here to search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>            
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('products.index') }}" method="GET" name="product" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                     
                     </select>
                 </form>
               </div>
