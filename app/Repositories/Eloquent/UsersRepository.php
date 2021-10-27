@@ -8,9 +8,18 @@ use Carbon\Carbon;
 
 class UsersRepository implements UsersInterface
 {
-    public function getAll()
+    public function getAll($request)
     {
-        return Users::all();
+       
+        $query = Users::all();
+        if($request->product){
+            $search=$request->product;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+        $query->orderBy('id','DESC');
+
+        return $query->paginate(2);
     }
     public function store($request)
     {         

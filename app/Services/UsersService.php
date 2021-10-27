@@ -14,9 +14,9 @@ class UsersService
         $this->usersRepository = $usersRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->usersRepository->getAll();
+        return $this->usersRepository->getAll($request);
     }
     public function store($request)
     {
