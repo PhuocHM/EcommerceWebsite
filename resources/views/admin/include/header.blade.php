@@ -26,7 +26,7 @@
         <div class="search-toggle-icon d-xl-none ms-auto">
             <i class="bi bi-search"></i>
         </div>
-       
+
         <div class="top-navbar-right ms-3">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
