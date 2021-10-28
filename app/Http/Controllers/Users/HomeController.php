@@ -80,7 +80,6 @@ class HomeController extends Controller
             "highest_star_products" => $highest_star_products,
             "latest_comments" => $latest_comments,
             "sales_items" => $data,
-            // "cart_items" => $cart_items,
         ];
         return view('Website.index', $params);
     }

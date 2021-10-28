@@ -24,7 +24,7 @@ class StocksRequest extends FormRequest
     public function rules()
     {
         return [
-            'produce_id' => 'required',
+            'product_id' => 'required',
             'employee_id' => 'required',
             'supplier_id' => 'required',
             'quantity' => 'required',

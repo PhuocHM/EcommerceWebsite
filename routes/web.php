@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
+use App\Http\Controllers\Admin\CommentsController;
+use App\Http\Controllers\Admin\CouponsController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\Admin\GroupsController;
 use App\Http\Controllers\Admin\ProductAttributesController;
@@ -60,4 +62,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/stocks', StocksController::class);
     Route::resource('/employees', EmployeesController::class);
     Route::resource('/groups', GroupsController::class);
+    Route::resource('/coupons', CouponsController::class);
+    Route::resource('/comments', CommentsController::class);
 });

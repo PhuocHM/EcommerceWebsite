@@ -52,7 +52,12 @@
                  <li> <a style="text-decoration: none" href="{{ route('employees.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Quản lý nhân sự</a>
                  </li>
-
+                 <li> <a style="text-decoration: none" href="{{ route('coupons.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Thẻ giảm giá</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('comments.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Bình luận của khách hàng</a>
+                 </li>
              </ul>
          </li>
 

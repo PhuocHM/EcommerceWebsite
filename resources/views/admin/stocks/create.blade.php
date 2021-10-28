@@ -52,8 +52,7 @@
                                     <input type="text" name="quantity" class="form-control" placeholder="Số lượng"
                                         value="{{ old('quantity') }}">
                                     <span style="color:red;">@error('quantity'){{ $message }} @enderror</span>
-                                    <br>
-                                    <br>
+
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Giá nhập</label>
@@ -71,7 +70,7 @@
                                     </div>
                                     <div class="col-2">
                                         <div class="d-grid">
-                                            <a href="{{ route('suppliers.index') }}" class="btn btn-danger">Trở
+                                            <a href="{{ route('stocks.index') }}" class="btn btn-danger">Trở
                                                 về</a>
                                         </div>
                                     </div>

@@ -10,19 +10,14 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Kho</li>
+                            <li class="breadcrumb-item active" aria-current="page">Bình luận của khách hàng</li>
                         </ol>
                     </nav>
-                </div>
-                <div class="ms-auto">
-                    <div class="btn-group">
-                        <a href="{{ route('stocks.create') }}" class="btn btn-primary">Nhập kho</a>
-                    </div>
                 </div>
                 <form class="form-inline my-2 my-lg-0">
                     <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
                     <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                        action="{{ route('stocks.index') }}" method="GET" name="stock" type="text"
+                        action="{{ route('suppliers.index') }}" method="GET" name="comment" type="text"
                         placeholder="Tìm kiếm theo tên nhà cung cấp">
                     </select>
                 </form>
@@ -44,51 +39,30 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Sản phẩm</th>
-                                                    <th>Nhân viên nhập kho</th>
-                                                    <th>Số lượng</th>
-                                                    <th>Nhà cung cấp</th>
-                                                    <th>Giá nhập</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Khách hàng</th>
+                                                    <th>Nội dung</th>
+                                                    <th>Đánh giá</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($stocks as $key => $stock)
+                                                @foreach ($comments as $key => $comment)
                                                     <tr>
                                                         <td>{{ ++$key }}</td>
-                                                        <td>{{ $stock->product->name }}</td>
-                                                        <td>{{ $stock->employee->name }}</td>
-                                                        <td>{{ $stock->quantity }}</td>
+                                                        <td>{{ $comment->product_name }}</td>
+                                                        <td>{{ $comment->user_name }}</td>
                                                         <td>
-                                                            {{ $stock->supplier->name }}
+                                                            {{ $comment->content }}
                                                         </td>
-                                                        <td>{{ number_format($stock->cost_price) . ' VND' }}</td>
+                                                        <td>{{ $comment->star_value }}</td>
+                                                        <td>{{ $comment->updated_at }}</td>
                                                         <td>
-                                                            {{ $stock->updated_at }}
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center gap-3 fs-6">
-                                                                {{-- <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a> --}}
-                                                                <a href="{{ route('stocks.edit', $stock->id) }}"
-                                                                    class="text-warning" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="bottom" title=""
-                                                                    data-bs-original-title="Edit info" aria-label="Edit"><i
-                                                                        class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('stocks.destroy', [$stock->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <a href="#" onclick="deleteStock({{ $stock->id }})"
-                                                                        class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteStock"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
-                                                                </form>
-                                                            </div>
+                                                            <a href="#" onclick="deleteComment({{ $comment->id }})"
+                                                                class="text-danger" data-bs-toggle="modal"
+                                                                data-bs-target="#deleteComment"> <i
+                                                                    class="bi bi-trash-fill"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -97,7 +71,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteStock" tabindex="-1"
+                                    <div class="modal fade" id="deleteComment" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -124,7 +98,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $stocks->links() }}
+                                        {{ $comments->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -139,8 +113,8 @@
 @endsection
 @section('scripts')
     <script>
-        function deleteStock(id) {
-            var url = '{{ route('stocks.index') }}' + '/' + id;
+        function deleteComment(id) {
+            var url = '{{ route('comments.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>

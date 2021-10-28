@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     use HasFactory;
- 
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -41,6 +41,11 @@ class Products extends Model
 
     public function supplier()
     {
-        return $this->belongsToMany(Supplier::class, 'stock', 'product_id', 'supplier_id')->withPivot('employee_id', 'quantity', 'cost_price','created_at', 'updated_at');
+        return $this->belongsToMany(Supplier::class, 'stock', 'product_id', 'supplier_id')->withPivot('employee_id', 'quantity', 'cost_price', 'created_at', 'updated_at');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comments::class, 'product_id');
     }
 }

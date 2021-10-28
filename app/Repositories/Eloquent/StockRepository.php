@@ -16,8 +16,8 @@ class StockRepository implements StockRepositoryInterface
     {
         $query = Stocks::with('product', 'supplier')->orderBy('id', 'DESC');
 
-        if ($request->product) {
-            $search = $request->product;
+        if ($request->stock) {
+            $search = $request->stock;
             $query->product->where('name', 'LIKE', '%' . $search . '%');
         }
         return $query->paginate(2);
