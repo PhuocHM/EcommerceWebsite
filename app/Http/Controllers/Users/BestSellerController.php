@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\Attributes;
+use App\Models\Users\Products;
 use Illuminate\Http\Request;
 
 class BestSellerController extends Controller
@@ -14,7 +16,11 @@ class BestSellerController extends Controller
      */
     public function index()
     {
-        return view('Website.best-seller');
+        $best_seller_product = Products::where('sold', '>', 0)->with('cover2Image', 'discount')->orderBy('sold', 'DESC')->paginate(6);
+        $params = [
+            'best_seller_product' => $best_seller_product,
+        ];
+        return view('Website.best-seller', $params);
     }
 
     /**

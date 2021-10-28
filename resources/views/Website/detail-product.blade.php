@@ -196,16 +196,8 @@
                                         </div>
                                         <div class="single-add-to-cart">
                                             <button onclick="addToCart2()" id="submit-button" type="button" class="btn-add-to-cart">Thêm vào giỏ hàng</button>
-                                            <a href="compare.html" class="compare"><i class="fa fa-exchange"></i>Compare</a>
-                                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="group-btn-share">
-                                    <a href="#"><img src="{{asset('images/detail/btn1.png')}}" alt="btn1"></a>
-                                    <a href="#"><img src="{{asset('images/detail/btn2.png')}}" alt="btn1"></a>
-                                    <a href="#"><img src="{{asset('images/detail/btn3.png')}}" alt="btn1"></a>
-                                    <a href="#"><img src="{{asset('images/detail/btn4.png')}}" alt="btn1"></a>
                                 </div>
                             </div>
                         </div>
@@ -223,32 +215,12 @@
                     <div class="tab-container">
                         <div id="tab-1" class="tab-panel active">
                             <div class="box-content">
-                                <p>Lorem ipsum dolor sit amet, an munere tibique consequat mel, congue albucius no qui,
-                                    at
-                                    everti meliore erroribus sea. Vero graeco cotidieque ea duo, in eirmod insolens
-                                    interpretaris nam. Pro at nostrud percipit definitiones, eu tale porro cum. Sea ne
-                                    accusata voluptatibus. Ne cum falli dolor voluptua, duo ei sonet choro facilisis,
-                                    labores officiis torquatos cum ei.</p>
-                                <p>Cum altera mandamus in, mea verear disputationi et. Vel regione discere ut, legere
-                                    expetenda ut eos. In nam nibh invenire similique. Atqui mollis ea his, ius graecis
-                                    accommodare te. No eam tota nostrum cotidieque. Est cu nibh clita. Sed an nominavi,
-                                    et
-                                    duo corrumpit constituto, duo id rebum lucilius. Te eam iisque deseruisse, ipsum
-                                    euismod
-                                    his at. Eu putent habemus voluptua sit, sit cu rationibus scripserit, modus
-                                    voluptaria
-                                    ex per. Aeque dicam consulatu eu his, probatus neglegentur disputationi sit et. Ei
-                                    nec
-                                    ludus epicuri petentium, vis appetere maluisset ad. Et hinc exerci utinam cum. Sonet
-                                    saperet nominavi est at, vel eu sumo tritani. Cum ex minim legere.</p>
-                                <p>Eos cu utroque inermis invenire, eu pri alterum antiopam. Nisl erroribus definitiones
-                                    nec
-                                    an, ne mutat scripserit est. Eros veri ad pri. An soleat maluisset per. Has eu idque
-                                    similique, et blandit scriptorem necessitatibus mea. Vis quaeque ocurreret ea.cu bus
-                                    scripserit, modus voluptaria ex per. Aeque dicam consulatu eu his, probatus neentur
-                                    disputationi sit et. Ei nec ludus epicuri petentium, vis appetere maluisset ad. Et
-                                    hinc
-                                    exerci utinam cum. Sonet saperet nominavi est at, vel eu sumo tritani.</p>
+                                @if($detail_products->attribute != null)
+                                @foreach($detail_products->attribute as $key => $attribute)
+                                <span>{{ $attribute->name }}:{{ $attribute->pivot->content }}</span>
+                                <br>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                         <div id="tab-3" class="tab-panel">
@@ -280,6 +252,11 @@
                                         <button id="comment_button" type="button" class="btn btn-danger">Lưu</button>
                                     </div>
                                 </form>
+                            </div>
+                            <div style="margin-top: 20px" id="comment_area">
+                                @foreach($detail_products->comment as $key => $value)
+                                <span><b>{{ $value->user->name }}</b> đã đánh giá {{ $value->star_value }}&ensp;<i class="fas fa-star" style="color:orange"></i>: {{ $value->content }} </span><br>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -378,6 +355,11 @@
                 if (response.success) {
                     $("#noti-main-3").html('Cám ơn bạn đã nhận xét về sản phẩm này !')
                     $("#noti-button-3").trigger("click");
+                    $("#comment_area").append(
+                        `
+                        <span><b>You</b> đã đánh giá ` + $('input[name="star_input"]').val() + `&ensp;<i class="fas fa-star" style="color:orange"></i>: ` + $("#comment_input").val() + ` </span><br>
+                        `
+                    )
                 } else {
                     console.log('Errror !')
                 }

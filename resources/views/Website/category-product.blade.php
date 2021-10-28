@@ -82,7 +82,7 @@
         <main class="site-main product-list product-grid">
             <div class="container">
                 <ol class="breadcrumb-page">
-                    <li><a href="index.html">Home </a></li>
+                    <li><a href="{{ route('index') }}">Home </a></li>
                     <li class="active"><a href="#">Danh sách sản phẩm </a></li>
                 </ol>
             </div>
@@ -91,7 +91,7 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="col-sidebar">
                             <div class="filter-options">
-                                <div class="block-title">Shop by</div>
+                                <div class="block-title">Bộ lọc</div>
                                 <form action="#" id="form_attribute" method="GET">
                                     @foreach($attributes as $key => $attribute)
                                     <div class="block-content">
@@ -99,13 +99,13 @@
                                             <div class="filter-options-title">{{ $attribute->name }}</div>
                                             <div class="filter-options-content">
                                                 <ul>
-                                                    @foreach($attribute->product as $key => $value)
+                                                    @foreach($attribute->attribute_values as $key => $value)
                                                     <li><label class="inline">
-                                                            <input @if( $filter_attributes !=null) @if(in_array($value->pivot->content,$filter_attributes))
+                                                            <input @if( $filter_attributes !=null) @if(in_array($value->content,$filter_attributes))
                                                             checked
                                                             @endif
                                                             @endif
-                                                            type="checkbox" class="checkBox" name="attribute_content[]" value="{{ $value->pivot->content }}"><span class="input"></span>{{ $value->pivot->content }}
+                                                            type="checkbox" class="checkBox" name="attribute_content[]" value="{{ $value->content }}"><span class="input"></span>{{ $value->content }}
                                                         </label></li>
                                                     @endforeach
                                                 </ul>
@@ -131,28 +131,13 @@
                             <div class="promotion-banner style-3">
                                 <a href="#" class="banner-img"><img src="{{asset('images/product/banner-product.jpg')}}" alt="banner-product"></a>
                                 <div class="promotion-banner-inner">
-                                    <h4>Top Staff Pick</h4>
-                                    <h3>Best Watches Collection</h3>
-                                    <a class="banner-link" href="grid-product.html">Shop now</a>
+                                    <h3>Danh mục sản phẩm</h3>
                                 </div>
                             </div>
                             <div class="toolbar-products">
-                                <h4 class="title-product">Grid Category</h4>
+                                <h4 class="title-product">Danh sách sản phẩm</h4>
                                 <div class="toolbar-option">
-                                    <div class="toolbar-sort">
-                                        <select title="sort" class="chosen-select sorter-options form-control">
-                                            <option selected="selected" value="position">Sort by popularity</option>
-                                            <option value="name">Name</option>
-                                            <option value="price">Price</option>
-                                        </select>
-                                    </div>
-                                    <div class="toolbar-per">
-                                        <select title="limit" class="chosen-select limiter-options form-control">
-                                            <option selected="selected" value="6">20 per page</option>
-                                            <option value="15">15</option>
-                                            <option value="30">30</option>
-                                        </select>
-                                    </div>
+
 
                                 </div>
                             </div>

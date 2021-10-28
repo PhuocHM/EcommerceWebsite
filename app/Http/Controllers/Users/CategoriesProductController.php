@@ -60,7 +60,6 @@ class CategoriesProductController extends Controller
 
         $category_products = $category_products->orderBy('products.created_at')->paginate(6);
         $attributes = Attributes::with('product')->where('category_id', '=', $id)->get();
-
         $params = [
             'category_products' => $category_products,
             "attributes" => $attributes,

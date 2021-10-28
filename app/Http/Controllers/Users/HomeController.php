@@ -81,6 +81,7 @@ class HomeController extends Controller
             "sales_items" => $data,
         ];
 
+
         return view('Website.index', $params);
     }
 
@@ -114,19 +115,28 @@ class HomeController extends Controller
         if (!$user_id) {
             return false;
         }
-        $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
-        $cart_items = Products::with('cover2Image', 'discount')->whereIn('id', $product_ids)->get();
-        $total = 0;
-        foreach ($cart_items as $item) {
-            if ($item->discount->first() != null) {
-                $total += ($item->price - $item->discount->first()->amounts) * $item->cartItem->first()->quantity;
-            } else {
-                $total += $item->price * $item->cartItem->first()->quantity;
+        $check_user_cart = Carts::where('user_id', $user_id)->get();
+        if ($check_user_cart->first() != null) {
+            $product_ids = Carts::where('user_id', $user_id)->first()->cart_item->pluck('product_id')->toArray();
+            $cart_items = Products::with('cover2Image', 'discount')->whereIn('id', $product_ids)->get();
+            $total = 0;
+            foreach ($cart_items as $item) {
+                if ($item->discount->first() != null) {
+                    $total += ($item->price - $item->discount->first()->amounts) * $item->cartItem->first()->quantity;
+                } else {
+                    $total += $item->price * $item->cartItem->first()->quantity;
+                }
             }
+        } else {
+            $product_ids = [];
+            $cart_items = [];
+            $total = 0;
         }
+
         $params = [
             "cart_items" => $cart_items,
-            "total" => $total
+            "total" => $total,
+            "check_user_cart" => $check_user_cart,
         ];
         return view('include.cart', $params)->render();
     }
@@ -181,6 +191,7 @@ class HomeController extends Controller
      */
     public function checkCoupon(Request $request)
     {
+
         $coupon = Coupons::where('code', $request->coupon_code)->get();
 
         if ($coupon->first() != null) {
@@ -251,6 +262,12 @@ class HomeController extends Controller
             return response()->json(['success' => $product_info]);
         }
         return response()->json(['success' => $product_info]);
+    }
+
+    public function seach(Request $request)
+    {
+        $products = Products::where('name', 'LIKE', '%' . $request->term . '%')->limit(3)->get();
+        return response()->json($products);
     }
 
     /**

@@ -11,17 +11,18 @@
             <ul class="nav-top-right dagon-nav">
                 <li>
                     @if (Auth::check())
-                    <div class="dropdown ">
+                    <div class="dropdown">
+                        <img src="{{ asset('images/avatar2.png') }}" alt="" class="avatar">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="text-light">{{ Auth::user()->name }}&ensp;<i class="fas fa-angle-down"></i></span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style=" text-align:center">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style=" text-align:center;border-radius: 5%;border:1px solid #fff">
 
-                            <a class="dropdown-item text-dark" style="color: black" href="{{ route('setting.pass') }}">Đổi mật khẩu</a>
+                            <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.pass') }}">Đổi mật khẩu</a>
                             <br>
-                            <a class="dropdown-item text-dark" style="color: black" href="{{ route('setting.user') }}">Chỉnh sửa thông tin</a>
+                            <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.user') }}">Chỉnh sửa thông tin</a>
                             <br>
-                            <a class="dropdown-item text-dark" style="color: black" href="{{ route('logout.user') }}">Đăng xuất</a>
+                            <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('logout.user') }}">Đăng xuất</a>
                         </div>
                     </div>
                     @else
@@ -48,34 +49,13 @@
                     <div class="block-search">
                         <div class="block-content">
                             <div class="categori-search  ">
-                                <select title="categories" data-placeholder="All Categories" class="chosen-select categori-search-option">
-                                    <option value="">All Categories</option>
-                                    <optgroup label="LifeStyle">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
-                                    <optgroup label="Smartphone">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
-                                    <optgroup label="LifeStyle">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
-                                    <optgroup label="Smartphone">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
+                                <select title="categories" data-placeholder="Từ khóa" class="chosen-select ">
                                 </select>
                             </div>
                             <div class="form-search">
                                 <form>
                                     <div class="box-group">
-                                        <input type="text" class="form-control" placeholder="Search keyword here...">
+                                        <input type="text" id="seach_input" class="form-control" placeholder="Search keyword here...">
                                         <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>

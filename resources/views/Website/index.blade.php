@@ -76,7 +76,7 @@
                                 <a href="#" class="sign minus"><i class="fa fa-minus"></i></a>
                             </div>
                         </div>
-                        <a href="#" class="btn-add-to-cart">Add to cart</a>
+                        <a href="#" class="btn-add-to-cart">Thêm vào giỏ</a>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                                         <div class="p-primary">{{ $product->name }}
                                         </div>
                                         <p>{{ number_format($product->price) }}&ensp;VND</p>
-                                        <a href="{{ route('product-detail.show',$product->id) }}" class="btn-shop-now">Shop Now</a>
+                                        <a href="{{ route('product-detail.show',$product->id) }}" class="btn-shop-now">Mua ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -105,17 +105,17 @@
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
                         <a href="#" class="banner-img"><img src="{{ asset('images/home3/banner1.jpg') }}" alt="banner1"></a>
                         <div class="promotion-banner-inner">
-                            <h4>Trending Products</h4>
-                            <h3>Smart Phone Collection</h3>
-                            <a class="banner-link" href="{{ route('trending.index') }}">Shop now</a>
+                            <h4>Xu hướng sản phẩm</h4>
+                            <h3>Sản phẩm nhiều đánh giá nhất</h3>
+                            <a class="banner-link" href="{{ route('trending.index') }}">Mua ngay</a>
                         </div>
                     </div>
                     <div class="promotion-banner banner-slide style-4 hidden-sm hidden-xs">
                         <a href="#" class="banner-img"><img src="{{ asset('images/home3/banner2-1.jpg') }}" alt="banner2"></a>
                         <div class="promotion-banner-inner">
-                            <h4>Best Seller</h4>
-                            <h3>Get Rewards Watches</h3>
-                            <a class="banner-link" href="{{ route('bestseller.index') }}">Shop now</a>
+                            <h4>Sản phẩm bán chạy</h4>
+                            <h3>Tháng 10</h3>
+                            <a class="banner-link" href="{{ route('bestseller.index') }}">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                                                             @endfor
                                                     </span>
                                                 </div>
-                                                <button onclick="addToCart({{ $sales_item['id'] }})" class="btn-add-to-cart">Add to cart</a>
+                                                <button onclick="addToCart({{ $sales_item['id'] }})" class="btn-add-to-cart">Thêm vào giỏ</a>
                                             </div>
                                         </div>
                                         @endif
@@ -308,8 +308,7 @@
                                                     <div class="group-btn-hover">
                                                         <div class="inner">
                                                             {{-- <a href="compare.html" class="compare"><i class="fa fa-exchange"></i></a> --}}
-                                                            <button type="button" class="add-to-cart" onclick="addToCart({{ $product->product_id }});">Add
-                                                                to cart</button>
+                                                            <button type="button" class="add-to-cart" onclick="addToCart({{ $product->product_id }});">Thêm vào giỏ</button>
                                                             {{-- <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a> --}}
                                                         </div>
                                                     </div>
@@ -364,7 +363,7 @@
                                                         <span class="review">5 Review(s)</span>
 
                                                     </span>
-                                                    <button type="button" onclick="addToCart({{ $product->product_id }})" class="btn-add-to-cart">Add to cart</button>
+                                                    <button type="button" onclick="addToCart({{ $product->product_id }})" class="btn-add-to-cart">Thêm vào giỏ</button>
                                                 </div>
                                             </div>
                                         </div>

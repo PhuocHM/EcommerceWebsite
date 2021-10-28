@@ -57,9 +57,13 @@ class CartController extends Controller
             $order_item = new OrderItems;
             $order_item->product_id = $item->cartItem->first()->product_id;
             $order_item->price = $item->price;
-            $order_item->quantity = $request->total_money;
+            $order_item->quantity = $item->cartItem->first()->quantity;
             $order_item->order_id = $order->id;
             $order_item->save();
+            // Update sold 
+            $sold = Products::find($item->cartItem->first()->product_id);
+            $sold->sold = $item->cartItem->first()->quantity;
+            $sold->save();
             // Delete Carts
             $old_cart_item = CartItems::find($item->cartItem->first()->id);
             $old_cart_item->delete();
