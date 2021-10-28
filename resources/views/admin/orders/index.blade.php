@@ -14,12 +14,9 @@
                         </ol>
                     </nav>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -65,8 +62,8 @@
                                                         <td>{{ $order->customer->name }}</td>
                                                         <td>{{ $order->payment_method }}</td>
                                                         <td>{{ $order->total_price }}</td>
-                                                        <td>
-                                                            @if ($order->status == 0)
+                                                        {{-- <td> --}}
+                                                            {{-- @if ($order->status == 0)
                                                                 <form>
                                                                     @csrf
                                                                     <select name="status"
@@ -99,9 +96,17 @@
                                                                         <option selected value="2">Vận chyển xong</option>
                                                                     </select>
                                                                 </form>
+                                                            @endif --}}
+                                                        {{-- </td> --}}
+                                                        <td>
+                                                            @if ($order->status == 0)
+                                                                <span class='text text-success'>Đang chờ</span>
+                                                            @elseif ($order->status == 1)
+                                                                <span class='text text-success'>Đang vận chuyển</span>
+                                                            @else    
+                                                                 <span class='text text-success'>Đã hoàn thành</span>
                                                             @endif
                                                         </td>
-
                                                         <td>{{ date('d-m-Y', strtotime($order->created_at)) }}</td>
                                                         <td>
                                                             @if ($order->updated_at != '')
@@ -110,7 +115,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
+                                                                <a href="{{ route('orders.show', $order->id) }}" class="text-primary"
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>

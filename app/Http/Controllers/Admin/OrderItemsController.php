@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OrdersRequest;
-use App\Services\OrdersService;
+use App\Http\Requests\OrderItemsRequest;
+use App\Services\OrderItemsService;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class OrderItemsController extends Controller
 {
-    private $ordersService;
-    public function __construct(OrdersService $ordersService)
+    private $orderItemsService;
+    public function __construct(OrderItemsService $orderItemsService)
     {
-        $this->ordersService = $ordersService;
+        $this->orderItemsService = $orderItemsService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +22,11 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = $this->ordersService->getAll($request);
+        $orderItems = $this->orderItemsService->getAll($request);
         $params = [
-            'orders' => $orders,
+            'orderItems' => $orderItems,
         ];
-        return view('admin.orders.index', $params);
+        return view('admin.orderItems.index', $params);
     }
 
     /**
@@ -55,12 +56,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $orderItems  = $this->ordersService->orderItem($id);
-       
-        $params = [
-            'orderItems ' => $orderItems ,      
-        ];
-        return view('admin.orders.show', $params);
+        //
     }
 
     /**
@@ -71,13 +67,14 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        $customers = $this->ordersService->findbyCustomer();
-        $order = $this->ordersService->find($id);
+
+        $customers = $this->orderItemsService->findbyCustomer();
+        $orderItem = $this->orderItemsService->find($id);
         $params = [
             'customers' => $customers,
-            'order'     => $order
+            'orderItem'     => $orderItem
         ];
-        return view('admin.orders.edit', $params);
+        return view('admin.orderitems.edit', $params);
     }
 
     /**
@@ -87,11 +84,11 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OrdersRequest $request, $id)
+    public function update(OrderItemsRequest $request, $id)
     {
-       
-        $this->ordersService->update($request, $id);
-        return redirect()->route('orders.index')->with('status', 'Cập nhật đơn hàng thành công!');
+
+        $this->orderItemsService->update($request, $id);
+        return redirect()->route('orderItems.index')->with('status', 'Cập nhật đơn hàng thành công!');
     }
 
     /**
@@ -103,10 +100,10 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         try {
-            $this->ordersService->destroy($id);
-            return redirect()->route('orders.index')->with('status', 'Xóa đơn hàng thành công !');
+            $this->orderItemsService->destroy($id);
+            return redirect()->route('orderItems.index')->with('status', 'Xóa đơn hàng thành công !');
         } catch (\Exception $e) {
-            return redirect()->route('orders.index')->with('status', 'Xóa không thành công! ' . $e);
+            return redirect()->route('orderItems.index')->with('status', 'Xóa không thành công! ' . $e);
         }
     }
 }

@@ -3,12 +3,11 @@
 namespace App\Repositories\Interfaces;
 
 
-Interface OrdersInterface {
+Interface OrderItemsInterface {
 
     public function getAll($request);
     public function findbyCustomer();
-    public function orderItem($id);
-    public function findbyItem();
+    public function findbyProduct();
     public function update($request, $id);
     public function find($id); 
     public function destroy($id);

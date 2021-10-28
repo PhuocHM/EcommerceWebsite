@@ -16,4 +16,8 @@ class Orders extends Model
     {
         return $this->belongsTo(Customers::class, 'customer_id', 'id');
     }
+    public function oderItem()
+    {
+        return $this->hasMany(OrderItems::class);
+    }
 }

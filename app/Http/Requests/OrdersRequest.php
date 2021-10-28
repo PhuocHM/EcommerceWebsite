@@ -24,7 +24,17 @@ class OrdersRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code'=>'required',
+            'payment_method'=>'required',
+            'total_price'=>'required'    
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'code.required' => 'Vui lòng nhập mã đơn hàng',
+            'payment_method.required' => 'Vui lòng nhập phương thức thanh toán',
+            'total_price.required' => 'Vui lòng nhập tổng giá đơn hàng'        
         ];
     }
 }
