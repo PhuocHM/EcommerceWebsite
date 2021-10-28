@@ -46,7 +46,5 @@ class GroupsRepository implements GroupsInterface
         $group = Groups::find($id);
         $group->delete();
     }
-    public function search()
-    {
-    }
+   
 }
