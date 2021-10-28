@@ -64,9 +64,7 @@
                     <button type="button" class="btn-continue">
                         <a href="{{ route('index') }}" style="color:white">Tiếp tục mua sắm</a>
                     </button>
-                    <button type="submit" class="btn-update">
-                        <span>Xóa giỏ hàng</span>
-                    </button>
+
                 </div>
             </form>
         </div>
