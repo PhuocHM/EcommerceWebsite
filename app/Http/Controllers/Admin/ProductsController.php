@@ -23,7 +23,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->productsService->getAll($request); 
+        $products = $this->productsService->getAll($request);
         $params = [
             'products' => $products,
         ];
@@ -54,8 +54,8 @@ class ProductsController extends Controller
      */
     public function store(ProductsRequest $request)
     {
-        $products =$this->productsService->store($request);
-        return redirect()->route('products.index')->with('status','Thêm sản phẩm thành công !');
+        $products = $this->productsService->store($request);
+        return redirect()->route('products.index')->with('status', 'Thêm sản phẩm thành công !');
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductsController extends Controller
     public function update(ProductsRequest $request, $id)
     {
         $this->productsService->update($request, $id);
-        return redirect()->route('products.index')->with('status','Cập nhật sản phẩm thành công!');    
+        return redirect()->route('products.index')->with('status', 'Cập nhật sản phẩm thành công!');
     }
 
     /**
@@ -109,17 +109,11 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $this->productsService->destroy($id);
-        return redirect()->route('products.index')->with('status', 'Xóa sản phẩm thành công !');
+        try {
+            $this->productsService->destroy($id);
+            return redirect()->route('products.index')->with('status', 'Xóa sản phẩm thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('products.index')->with('status', 'Xóa không thành công! ' . $e);
+        }
     }
-    // public function search()
-    // {
-    //  $products = $this->productsService->getAll(); 
-    //  $search = $this->productsService->search();
-    // $params = [
-    //     'products'     => $products,
-    //     'search'       =>  $search,
-    // ];
-    // return view('admin.products.search', $params);
-    // }
 }

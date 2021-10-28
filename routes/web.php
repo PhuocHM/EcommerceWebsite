@@ -13,9 +13,14 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
+use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\Admin\GroupPermisionsController;
+use App\Http\Controllers\Admin\GroupsController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
@@ -46,19 +51,24 @@ Route::resource('category', CategoriesProductController::class);
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Route::group(['prefix'=>'admin'],function() {
-    Route::get('/home',AdminController::class);
-    Route::resource('/categories',CategoriesController::class);
-    Route::resource('/attributes',AttributesController::class);
-    Route::resource('/brands',BrandsController::class);
-    Route::resource('/customers',CustomersController::class);
-    Route::resource('/productAttributes',ProductAttributesController::class);
-    Route::resource('/products',ProductsController::class);
-    Route::resource('/productImages',ProductImagesController::class);
-    Route::resource('/users',UsersController::class);
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/home', AdminController::class);
+    Route::resource('/categories', CategoriesController::class);
+    Route::resource('/attributes', AttributesController::class);
+    Route::resource('/brands', BrandsController::class);
+    Route::resource('/productAttributes', ProductAttributesController::class);
+    Route::resource('/products', ProductsController::class);
+    Route::resource('/productImages', ProductImagesController::class);
+    Route::resource('/users', UsersController::class);
+    Route::resource('/employees', EmployeesController::class);
+    Route::resource('/groups', GroupsController::class);
+    Route::resource('/roles', RolesController::class);
+    Route::resource('/groupPermisions', GroupPermisionsController::class);
+    Route::resource('/orders', OrdersController::class);
     Route::resource('/customers',CustomersController::class);
     Route::resource('/discounts',DiscountController::class);
     Route::resource('/discountProduct',DiscountProductController::class);
 });
+
 
 

@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Chỉnh Sửa Thương Hiệu </h6>
+                <h6 class="mb-0">Chỉnh Sửa Tài Khoản Khách Hàng </h6>
             </div>
             <div class="card-body">
                 @if (session('status'))
@@ -31,7 +31,7 @@
                                     <span style="color:red;">@error('email'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Password</label>
+                                    <label class="form-label">Mật khẩu</label>
                                     <input type="text" class="form-control" placeholder="Password" name="password"
                                         value="{{ $user->password }}">
                                     <span style="color:red;">@error('password'){{ $message }} @enderror</span>

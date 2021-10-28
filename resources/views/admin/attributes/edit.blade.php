@@ -30,16 +30,18 @@
                                         value="{{ $attributes->slug }}">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>
-                              
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Thuộc danh mục</label>
-                                    <select name="category_id" value="{{$attributes->category->name}}"  class="form-select" id="inputGroupSelect02">
-                      
-                      @foreach($categories as $category)
-                     <option {{$category->id==$attributes->category_id ?'selected' :''}} value="{{$category->id}}">{{$category->name}}</option>
-                      @endforeach
-              
-                                         </select>
+                                    <select name="category_id" value="{{ $attributes->category->name }}"
+                                        class="form-select" id="inputGroupSelect02">
+
+                                        @foreach ($categories as $category)
+                                            <option {{ $category->id == $attributes->category_id ? 'selected' : '' }}
+                                                value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <div class="d-grid">

@@ -86,7 +86,8 @@ class UsersController extends Controller
     public function update(UsersRequest $request, $id)
     {
         $this->usersService->update($request, $id);
-        return redirect()->route('users.index')->with('status','Cập nhật tài khoản khách hàng thành công!');    }
+        return redirect()->route('users.index')->with('status','Cập nhật tài khoản khách hàng thành công!');   
+    }
 
     /**
      * Remove the specified resource from storage.

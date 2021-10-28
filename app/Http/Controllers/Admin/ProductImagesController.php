@@ -19,9 +19,9 @@ class ProductImagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productImages = $this->productImagesService->getAll();
+        $productImages = $this->productImagesService->getAll($request);
         $params = [
             'productImages' => $productImages,
         ];
@@ -73,7 +73,7 @@ class ProductImagesController extends Controller
      */
     public function edit($id)
     {
-        $products         = $this->productImagesService->create_product();
+        $products     = $this->productImagesService->create_product();
         $productImage = $this->productImagesService->edit($id);
         $params = [
             'products'   => $products,

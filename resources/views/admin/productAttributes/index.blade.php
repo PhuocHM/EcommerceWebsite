@@ -20,6 +20,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                  
+                  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                  <!-- <div class="addthis_inline_share_toolbox"></div> -->
+               
+                  <form  class="form-inline my-2 my-lg-0" >
+                <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+                  <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('productAttributes.index') }}" method="GET" name="productAttribute" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                       
+                      </select>
+                  </form>
+                </div>
+            </div>
             <!--end breadcrumb-->
             <div class="card">
                 <div class="card-body">
@@ -41,7 +55,7 @@
                                                     <th>Thuộc tính</th>
                                                     <th>Nội dung</th>
                                                     <th>Ngày tạo</th>
-                                                    <th>Ngày cập nhật</th>
+                                                      <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
@@ -117,7 +131,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $productAttributes->links() }}
                                     </div>
                                 </div>
                             </div>

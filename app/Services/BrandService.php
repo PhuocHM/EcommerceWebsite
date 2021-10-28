@@ -34,4 +34,5 @@ class BrandService
     {
         return $this->brandRepository->destroy($id);
     }
+    
 }

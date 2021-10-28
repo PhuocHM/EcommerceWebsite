@@ -39,4 +39,8 @@ class CategoryService
     {
         return $this->categoryRepository->edit($id);
     }
+    public function create_category()
+    {
+        return $this->categoryRepository->create_category();
+    }
 }

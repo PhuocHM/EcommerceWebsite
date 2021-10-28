@@ -73,11 +73,10 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $brands = $this->brandService->getAll();
+    {  
         $brand = $this->brandService->edit($id);
         $params = [
-            'brands' => $brands,
+           
             'brand' => $brand
         ];
         return view('admin.brands.edit', $params);
