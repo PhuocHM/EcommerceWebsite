@@ -18,12 +18,12 @@ class DiscountProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discountProduct = $this->discountProductService->getAll(); 
+        $discountProducts = $this->discountProductService->getAll($request); 
         // dd($discountProduct->toArray());
         $params = [
-            'discountProduct' => $discountProduct,
+            'discountProducts' => $discountProducts,
         ];
         return view('admin.discountProduct.index', $params);
     }
@@ -35,11 +35,11 @@ class DiscountProductController extends Controller
      */
     public function create()
     {
-        $products = $this->discountProductService->create_product();
-        $attributes     = $this->discountProductService->create_attribute();
+        $products       = $this->discountProductService->create_product();
+        $discounts      = $this->discountProductService->create_discount();
         $params = [
             'products' => $products,
-            'attributes' => $attributes
+            'discounts' => $discounts
         ];
         return view('admin.discountProduct.create', $params);
     }
@@ -53,7 +53,7 @@ class DiscountProductController extends Controller
     public function store(Request $request)
     {
         $this->discountProductService->store($request);
-        return redirect()->route('discountProduct.index')->with('status','Thêm thuộc tính sản phẩm thành công !');
+        return redirect()->route('discountProduct.index')->with('status','Thêm chiết khấu sản phẩm thành công !');
     }
 
     /**
@@ -76,12 +76,12 @@ class DiscountProductController extends Controller
     public function edit($id)
     {
         $products         = $this->discountProductService->create_product();
-        $attributes       = $this->discountProductService->create_attribute();
-        $productAttribute = $this->discountProductService->edit($id);
+        $discounts       = $this->discountProductService->create_discount();
+        $discountProduct = $this->discountProductService->edit($id);
         $params = [
             'products'         => $products,
-            'attributes'       => $attributes,
-            'productAttribute' => $productAttribute
+            'discounts'       => $discounts,
+            'discountProduct' => $discountProduct
         ];
     
         return view('admin.discountProduct.edit', $params);
@@ -97,7 +97,7 @@ class DiscountProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->discountProductService->update($request, $id);
-        return redirect()->route('discountProduct.index')->with('status','Cập nhật thuộc tính sản phẩm thành công!');
+        return redirect()->route('discountProduct.index')->with('status','Cập nhật chiết khấu sản phẩm thành công!');
     }
 
     /**

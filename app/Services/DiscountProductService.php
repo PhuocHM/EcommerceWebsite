@@ -11,15 +11,15 @@ class DiscountProductService
     public function __construct(DiscountProductRepository $discountProductRepository){
         $this->discountProductRepository = $discountProductRepository;
     }
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->discountProductRepository->getAll();
+        return $this->discountProductRepository->getAll($request);
     }
     public function create_product(){
         return $this->discountProductRepository->create_product();
     }
-    public function create_attribute(){
-        return $this->discountProductRepository->create_attribute();
+    public function create_discount(){
+        return $this->discountProductRepository->create_discount();
     }
     public function store($request)
     {

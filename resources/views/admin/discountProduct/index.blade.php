@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thuộc tính Sản phẩm</li>
+                            <li class="breadcrumb-item active" aria-current="page">Thuộc chiết khấu sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
@@ -19,6 +19,20 @@
                         <a href="{{ route('discountProduct.create') }}" class="btn btn-primary">Thêm mới</a>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <!-- <div class="addthis_inline_share_toolbox"></div> -->
+             
+                <form  class="form-inline my-2 my-lg-0" >
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('discountProduct.index') }}" method="GET" name="discountProduct" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                     
+                    </select>
+                </form>
+              </div>
             </div>
             <!--end breadcrumb-->
             <div class="card">
@@ -38,8 +52,8 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th> Thuộc Sản phẩm</th>
-                                                    <th>Thuộc Thuộc Tính</th>
-                                                   
+                                                    <th>Thuộc Chiết khấu</th>
+                                                    <th>Số tiền được chiết khấu</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
@@ -50,7 +64,8 @@
                                                     <tr>
                                                         <td>{{ $discountProduct->id }}</td>
                                                         <td>{{ $discountProduct->product->name }}</td>
-                                                        <td>{{ $discountProduct->attribute->name }}</td>
+                                                        <td>{{ $discountProduct->discount->name }}</td>
+                                                        <td>{{ $discountProduct->discount->amounts }}</td>
                                                       
 
                                                         <td>{{ date('d-m-Y', strtotime($discountProduct->created_at)) }}
@@ -66,7 +81,7 @@
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('discountProducts.edit', $discountProduct->id) }}"
+                                                                <a href="{{ route('discountProduct.edit', $discountProduct->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
@@ -117,7 +132,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $discountProducts->links() }} 
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +148,7 @@
 @section('scripts')
     <script>
         function deleteProductAtrribute(id) {
-            var url = '{{ route('discountProducts.index') }}' + '/' + id;
+            var url = '{{ route('discountProduct.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>

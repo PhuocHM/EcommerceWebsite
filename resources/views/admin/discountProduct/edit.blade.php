@@ -19,22 +19,32 @@
                                 @method('PUT')
                                 @csrf  
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Sản phẩm</label>
-                                    <select name="product_id" value="{{ $productAttribute }}"
+                                    <label for="exampleInputPassword1">Thuộc sản phẩm</label>
+                                    <select name="product_id" value="{{ $discountProduct }}"
                                         class="form-select" id="inputGroupSelect02">
                                         @foreach ($products as $product)
-                                            <option {{ $product->id == $productAttribute->product_id ? 'selected' : '' }}
+                                            <option {{ $product->id == $discountProduct->product_id ? 'selected' : '' }}
                                                 value="{{ $product->id }}">{{ $product->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1"></label>
-                                    <select name="attribute_id"
+                                    <label for="exampleInputPassword1">Thuộc chiết khấu</label>
+                                    <select name="discount_id"
                                         class="form-select" id="inputGroupSelect02">
-                                        @foreach ($attributes as $attribute)
-                                            <option {{ $attribute->id == $product->attribute_id ? 'selected' : '' }}
-                                                value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                        @foreach ($discounts as $discount)
+                                            <option {{ $discount->id == $product->discount_id ? 'selected' : '' }}
+                                                value="{{ $discount->id }}">{{ $discount->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Số tiền chiết khấu</label>
+                                    <select name="discount_id"
+                                        class="form-select" id="inputGroupSelect02">
+                                        @foreach ($discounts as $discount)
+                                            <option {{ $discount->id == $product->discount_id ? 'selected' : '' }}
+                                                value="{{ $discount->id }}">{{ $discount->amounts }}</option>
                                         @endforeach
                                     </select>
                                 </div>

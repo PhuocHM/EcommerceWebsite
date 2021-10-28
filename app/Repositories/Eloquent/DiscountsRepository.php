@@ -15,10 +15,10 @@ class DiscountsRepository implements DiscountsInterface
         if($request->discount){
             $search=$request->discount;
         
-            $query->where('description','LIKE','%'.$search.'%');
+            $query->where('name','LIKE','%'.$search.'%');
         }
 
-        return $query->paginate(2);
+        return $query->paginate(1);
         // return discount::all();
     }
     public function getOne()
@@ -28,7 +28,7 @@ class DiscountsRepository implements DiscountsInterface
     {
                 
         $discount                    = new Discounts();
-        $discount->name           = $request->name;
+        $discount->name              = $request->name;
         $discount->amounts           = $request->amounts;
         $discount->start_day         = $request->start_day;
         $discount->start_day         = $request->start_day;

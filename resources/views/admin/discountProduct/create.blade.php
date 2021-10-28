@@ -19,7 +19,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Thuộc Sản phẩm</label>
-                                    <select name="category_id" class="form-select" id="inputGroupSelect02">
+                                    <select name="product_id" class="form-select" id="inputGroupSelect02">
                                         @foreach ($products as $product)
                                             <option value="{{ $product->id }}">{{ $product->name }}</option>
                                         @endforeach
@@ -27,9 +27,17 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Thuộc chiết khấu</label>
-                                    <select name="category_id" class="form-select" id="inputGroupSelect02">
+                                    <select name="discount_id" class="form-select" id="inputGroupSelect02">
                                         @foreach ($discounts as $discount)
                                             <option value="{{ $discount->id }}">{{ $discount->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Số tiền được chiết khấu</label>
+                                    <select name="discount_id" class="form-select" id="inputGroupSelect02">
+                                        @foreach ($discounts as $discount)
+                                            <option value="{{ $discount->id }}">{{ $discount->amounts }}</option>
                                         @endforeach
                                     </select>
                                 </div>

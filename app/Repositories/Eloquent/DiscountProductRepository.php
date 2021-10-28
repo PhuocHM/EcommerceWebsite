@@ -9,23 +9,31 @@ use App\Repositories\Interfaces\DiscountProductInterface;
 use Carbon\Carbon;
 class DiscountProductRepository implements DiscountProductInterface 
 {
-    public function getAll()
+    public function getAll($request)
     {
-        return DiscountProduct::with('product','attribute')->orderBy('id','DESC')->get();
+         // return Attributes::with('category')->orderBy('id','DESC')->get();
+         $query = DiscountProduct::orderBy('id','DESC');
+         if($request->discountProduct){
+             $search=$request->discountProduct;
+         
+             $query->where('product_id','LIKE','%'.$search.'%');
+         }
+ 
+         return $query->paginate(2);
+ 
     }
     public function create_product()
     {
         return Products::orderBy('id','DESC')->get();
     }
-    public function create_attribute()
+    public function create_discount()
     {
-        return Attributes::orderBy('id','DESC')->get();
+        return Discounts::orderBy('id','DESC')->get();
     }
     public function store( $request){
         $discountProduct                = new DiscountProduct();
         $discountProduct->product_id    = $request->product_id;
-        $discountProduct->attribute_id  = $request->attribute_id;
-        $discountProduct->content       = $request->content;
+        $discountProduct->discount_id    = $request->discount_id;
         $discountProduct->created_at    = Carbon::now('Asia/Ho_Chi_Minh');
     
         $discountProduct->save();
@@ -36,8 +44,8 @@ class DiscountProductRepository implements DiscountProductInterface
     public function update($request, $id){
         $discountProduct                = DiscountProduct::find($id);
         $discountProduct->product_id    = $request->product_id;
-        $discountProduct->attribute_id  = $request->attribute_id;
-        $discountProduct->content       = $request->content;
+        $discountProduct->discount_id  = $request->discount_id;
+    
         $discountProduct->updated_at    = Carbon::now('Asia/Ho_Chi_Minh');
 
         $discountProduct->save();  
