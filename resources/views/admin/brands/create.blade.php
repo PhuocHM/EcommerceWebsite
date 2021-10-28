@@ -29,12 +29,12 @@
                                         id="convert_slug" placeholder="Slug thương hiệu">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>
-
                                 <div class="col-12">
                                     <label class="form-label">Hình ảnh</label>
                                     <input type="file" name="image" class="form-control-file" id="image"
-                                        value="{{ old('image') }}"> <br>                       
+                                        value="{{ old('image') }}"> <br>
                                     <span style="color:red;">@error('image'){{ $message }} @enderror</span>
+                                    <br>
                                 </div>
                                 <div class="row">
                                     <div class="col-3">

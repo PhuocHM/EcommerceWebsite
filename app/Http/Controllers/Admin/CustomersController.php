@@ -3,18 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomersRequest;
+use App\Services\CustomersService;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
+    private $customersService;
+    public function __construct(CustomersService $customersService)
+    {
+        $this->customersService = $customersService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $customers = $this->customersService->getAll($request); 
+        $params = [
+            'customers' => $customers,
+        ];
+        return view('admin.customers.index', $params);
     }
 
     /**
@@ -24,7 +35,11 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        //
+        $users = $this->customersService->create();
+        $params = [
+            'users' => $users,
+        ];
+        return view('admin.customers.create', $params);
     }
 
     /**
@@ -33,9 +48,11 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomersRequest $request)
     {
-        //
+        
+        $customers =$this->customersService->store($request);
+        return redirect()->route('customers.index')->with('status','Thêm khách hàng thành công !');
     }
 
     /**
@@ -57,7 +74,13 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = $this->customersService->create_user();
+        $customers = $this->customersService->edit($id);
+        $params = [
+            'users'    => $users,
+            'customers'    =>  $customers
+        ];
+        return view('admin.customers.edit', $params);
     }
 
     /**
@@ -67,9 +90,10 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CustomersRequest $request, $id)
     {
-        //
+        $this->customersService->update($request, $id);
+        return redirect()->route('customers.index')->with('status','Cập nhật khách hàng thành công!'); 
     }
 
     /**
@@ -80,6 +104,13 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $this->customersService->destroy($id);
+            return redirect()->route('customers.index')->with('status', 'Xóa khách hàng thành công !');
+        }
+        catch(\Exception $e){
+            return redirect()->route('customers.index')->with('status', 'Xóa không thành công! '.$e);
+
+        } 
     }
 }

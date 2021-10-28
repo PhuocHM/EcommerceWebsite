@@ -1,15 +1,22 @@
 <?php 
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Category;
 use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class CategoryRepository implements CategoryInterface {
 
-    public function getAll()
+    public function getAll($request)
     {
-        return Category::all();
+        $query = Category::orderBy('id','DESC');
+        if($request->category){
+            $search=$request->category;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+
+        return $query->paginate(5);
     }
     public function store( $request)
     {
@@ -37,7 +44,6 @@ class CategoryRepository implements CategoryInterface {
     public function destroy($id)
     {
         $category = Category::find($id);
-
         $category->delete();
     }
     

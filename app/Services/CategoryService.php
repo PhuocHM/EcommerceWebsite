@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\Repositories\Eloquents\CategoryRepository;
+use App\Repositories\Eloquent\CategoryRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\CategoryRequest;
 
@@ -11,9 +11,9 @@ class CategoryService
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->categoryRepository->getAll();
+        return $this->categoryRepository->getAll($request);
     }
     public function update($request, $id)
     {

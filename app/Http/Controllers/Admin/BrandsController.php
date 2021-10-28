@@ -23,9 +23,9 @@ class BrandsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands = $this->brandService->getAll();
+        $brands = $this->brandService->getAll($request);
         $params = [
             'brands' => $brands,
         ];

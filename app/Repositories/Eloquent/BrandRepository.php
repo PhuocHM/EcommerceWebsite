@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Brand;
 use App\Repositories\Interfaces\BrandInterface;
@@ -9,16 +9,24 @@ use Carbon\Carbon;
 class BrandRepository implements BrandInterface
 {
 
-    public function getAll()
+    public function getAll($request)
     {
-        return Brand::all();
+        $query = Brand::orderBy('id','DESC');
+        if($request->brand){
+            $search=$request->brand;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+
+        return $query->paginate(2);
+        // return Brand::all();
     }
     public function getOne()
     {
     }
     public function store($request)
     {
-
+                
         $brand = new Brand();
         $brand->name    = $request->name;
         $brand->slug    = $request->slug;

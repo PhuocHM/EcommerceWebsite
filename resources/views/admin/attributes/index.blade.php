@@ -1,25 +1,42 @@
 @extends('admin.include.layout')
 @section('main')
-<div class="wrapper">
-   <main class="page-content">
-      <!--breadcrumb-->
-      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-         <div class="breadcrumb-title pe-3">eCommerce</div>
-         <div class="ps-3">
-            <nav aria-label="breadcrumb">
-               <ol class="breadcrumb mb-0 p-0">
-                  <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">Attributes</li>
-               </ol>
-            </nav>
-         </div>
-         <div class="ms-auto">
-            <div class="btn-group">
-               <a href="{{ route('attributes.create') }}" class="btn btn-primary">Thêm thuộc tính</a>
+    <div class="wrapper">
+        <main class="page-content">
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                <div class="breadcrumb-title pe-3">eCommerce</div>
+                <div class="ps-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Thuộc Tính</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="ms-auto">
+                    <div class="btn-group">
+                        <a href="{{ route('attributes.create') }}" class="btn btn-primary">Thêm thuộc tính</a>
+                    </div>
+                </div>
             </div>
          </div>
+        
       </div>
+      <div class="row">
+              <div class="col-md-12">
+                
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <!-- <div class="addthis_inline_share_toolbox"></div> -->
+             
+                <form  class="form-inline my-2 my-lg-0" >
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('attributes.index') }}" method="GET" name="attribute" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                     
+                    </select>
+                </form>
+              </div>
+            </div>
       <!--end breadcrumb-->
       <div class="card">
          <div class="card-body">
@@ -33,7 +50,7 @@
                   <div class="card border shadow-none w-100">
                      <div class="card-body">
                         <div class="table-responsive">
-                           <table id="dataTable" class="table ">
+                           <table  class="table ">
                               <thead class="table-light">
                                  <tr>
                                     <th>#</th>
@@ -79,9 +96,9 @@
                                              @method('DELETE')
                                              @csrf
                                              <a href="#"
-                                                onclick="deleteCategory({{ $attribute->id }})"
+                                                onclick="deleteAttributes({{ $attribute->id }})"
                                                 class="text-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deleteCategory"> <i
+                                                data-bs-target="#deleteAttributes"> <i
                                                 class="bi bi-trash-fill"></i></a>
                                           </form>
                                        </div>
@@ -93,7 +110,7 @@
                         </div>
                         {{-- Test Modal Delete --}}
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteCategory" tabindex="-1"
+                        <div class="modal fade" id="deleteAttributes" tabindex="-1"
                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog">
                               <div class="modal-content">
@@ -120,23 +137,20 @@
                         </div>
                         {{--  --}}
                         <div class=" box-footer clearfix" style="float:right">
-                           {{-- {{ $attributes->links() }} --}}
+                           {{ $attributes->links() }} 
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                    <!--end row-->
+                </div>
             </div>
-            <!--end row-->
-         </div>
-      </div>
-   </main>
-</div>
+        </main>
+    </div>
 @endsection
 @section('scripts')
-<script>
-   function deleteCategory(id) {
-       var url = '{{ route('categories.index') }}' + '/' + id;
-       $('#deleteForm').attr('action', url)
-   }
-</script>
+    <script>
+        function deleteAttributes(id) {
+            var url = '{{ route('attributes.index') }}' + '/' + id;
+            $('#deleteForm').attr('action', url)
+        }
+    </script>
 @endsection

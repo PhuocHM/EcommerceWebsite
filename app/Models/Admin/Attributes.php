@@ -5,7 +5,6 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 class Attributes extends Model
 {
     use HasFactory;
@@ -23,6 +22,9 @@ class Attributes extends Model
     public $timestamps = true;
 
     public function category(){
-        return $this->belongsTo('App\Models\Admin\Category','category_id','id');
+        return $this->belongsTo(Category::class,'category_id','id');
+    }
+    public function product(){
+        return $this->belongsToMany(Products::class,'product_attribute');
     }
 }

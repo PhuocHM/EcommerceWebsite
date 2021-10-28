@@ -10,15 +10,29 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Brands</li>
+                            <li class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm thương hiệu</a>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <!-- <div class="addthis_inline_share_toolbox"></div> -->
+             
+                <form  class="form-inline my-2 my-lg-0" >
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('brands.index') }}" method="GET" name="brand" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                     
+                    </select>
+                </form>
+              </div>
             </div>
             <!--end breadcrumb-->
             <div class="card">
@@ -39,7 +53,7 @@
                                                     <th>#</th>
                                                     <th>Tên</th>
                                                     <th>Slug</th>
-                                                    <th>Hình ảnh</th>                           
+                                                    <th>Hình ảnh</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
@@ -54,7 +68,7 @@
                                                         <td>
                                                             <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
                                                                 style="width: 150px">
-                                                        </td>        
+                                                        </td>
                                                         <td>{{ date('d-m-Y', strtotime($brand->created_at)) }}</td>
                                                         <td>
                                                             @if ($brand->updated_at != '')
@@ -72,13 +86,11 @@
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('brands.destroy', [$brand->id]) }}"
+                                                                <form action="{{ route('brands.destroy', [$brand->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteBrand({{ $brand->id }})"
+                                                                    <a href="#" onclick="deleteBrand({{ $brand->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteBrand"> <i
                                                                             class="bi bi-trash-fill"></i></a>
@@ -119,7 +131,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $brands->links() }} 
                                     </div>
                                 </div>
                             </div>

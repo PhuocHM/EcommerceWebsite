@@ -28,12 +28,30 @@
                                     <input type="text" name="slug" class="form-control" value="{{ old('slug') }}"
                                         id="convert_slug" placeholder="Slug danh mục">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                    
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Số điện thoại</label>
+                                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}"
+                                       >
+                                    <span style="color:red;">@error('phone'){{ $message }} @enderror</span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" name="address" class="form-control" value="{{ old('address') }}"
+                                       >
+                                    <span style="color:red;">@error('address'){{ $message }} @enderror</span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Điểm thưởng</label>
+                                    <input type="text" name="bonus_points" class="form-control" value="{{ old('bonus_points') }}"
+                                       >
+                                    <span style="color:red;">@error('bonus_points'){{ $message }} @enderror</span>
+                                </div>
                                     <div class="col-12">
-                                        <label class="form-label">Thuộc danh mục</label>
-                                        <select name="category_id"  class="form-select" id="inputGroupSelect02">
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <label class="form-label">Thuộc người dùng</label>
+                                        <select name="user_id"  class="form-select" id="inputGroupSelect02">
+                                            @foreach($users as $user)
+                                                <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endforeach
                                      </select>
                                     </div>

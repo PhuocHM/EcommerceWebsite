@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Eloquents\BrandRepository;
+use App\Repositories\Eloquent\BrandRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\BrandRequest;
 
@@ -14,20 +14,20 @@ class BrandService
         $this->brandRepository = $brandRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->brandRepository->getAll();
+        return $this->brandRepository->getAll($request);
     }
     public function store($request)
     {
-
         return $this->brandRepository->store($request);
     }
     public function update($request, $id)
     {
         return $this->brandRepository->update($request, $id);
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return $this->brandRepository->edit($id);
     }
     public function destroy($id)

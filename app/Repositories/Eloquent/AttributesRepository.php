@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Repositories\Eloquents;
+namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Attributes;
 use App\Models\Admin\Category;
@@ -9,9 +9,19 @@ use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 class AttributesRepository implements AttributesInterface {
 
-    public function getAll(){
+    public function getAll($request){
 
-        return Attributes::with('category')->orderBy('id','DESC')->get();
+        // return Attributes::with('category')->orderBy('id','DESC')->get();
+        $query = Attributes::with('category');
+        if($request->attribute){
+            $search=$request->attribute;
+        
+            $query->where('name','LIKE','%'.$search.'%');
+        }
+        
+        $query->orderBy('id','DESC');
+
+        return $query->paginate(2);
     }
     public function getOne(){
 
@@ -35,6 +45,10 @@ class AttributesRepository implements AttributesInterface {
         $attributes->save();  
         
     }
+    public function destroy($id){
+        $attributes = Attributes::find($id);
+         return $attributes->delete();
+    }
     public function search(){
 
     }
@@ -42,11 +56,7 @@ class AttributesRepository implements AttributesInterface {
         return Category::orderBy('id','DESC')->get();
     }
     public function edit($id){
-       return Attributes::find($id);
+        Attributes::find($id);
     }
-    public function destroy($id){
-        $attribute= Attributes::find($id);
-        return $attribute->delete();
-   }
   
 }

@@ -1,8 +1,8 @@
 <?php
 namespace App\Services;
 
-use App\Repositories\Eloquents\AttributesRepository;
-use App\Repositories\Eloquents\CategoryRepository;
+use App\Repositories\Eloquent\AttributesRepository;
+use App\Repositories\Eloquent\CategoryRepository;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\AttributesRequest;
 
@@ -12,9 +12,9 @@ class AttributesService
         $this->attributesRepository = $attributesRepository;
     }
 
-    public function getAll()
+    public function getAll($request)
     {
-        return $this->attributesRepository->getAll();
+        return $this->attributesRepository->getAll($request);
     }
     public function update($request, $id)
     {
