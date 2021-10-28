@@ -48,7 +48,5 @@ class RolesRepository implements RolesInterface
         $role = roles::find($id);
         $role->delete();
     }
-    public function search()
-    {
-    }
+   
 }

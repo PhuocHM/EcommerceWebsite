@@ -10,19 +10,18 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Vai trò quản lý</li>
+                            <li class="breadcrumb-item active" aria-current="page">Phân quyền quản lý</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('roles.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('groupPermisions.create') }}" class="btn btn-primary">Thêm mới</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
                     <!-- <div class="addthis_inline_share_toolbox"></div> -->
 
@@ -30,9 +29,8 @@
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('roles.index') }}" method="GET" name="role" type="text"
-                            placeholder="Tìm kiếm theo tên sản phẩm">
-
+                            action="{{ route('groupPermisions.index') }}" method="GET" name="groupPermision" type="text"
+                            placeholder="Tìm kiếm theo tên ">
                         </select>
                     </form>
                 </div>
@@ -55,24 +53,24 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Tên</th>
-                                                    <th>Thông tin</th>
+                                                    <th>Chức vụ</th>
+                                                    <th>Vai trò</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($roles as $role)
+                                                @foreach ($groupPermisions as $groupPermision)
                                                     <tr>
-                                                        <td>{{ $role->id }}</td>
-                                                        <td>{{ $role->name }}</td>
-                                                        <td>{{ $role->info }}</td>
-
-                                                        <td>{{ date('d-m-Y', strtotime($role->created_at)) }}</td>
+                                                        <td>{{ $groupPermision->id }}</td>
+                                                        <td>{{ $groupPermision->group->name }}</td>
+                                                        <td>{{ $groupPermision->role->name }}</td>
+                                                        <td>{{ date('d-m-Y', strtotime($groupPermision->created_at)) }}
+                                                        </td>
                                                         <td>
-                                                            @if ($role->updated_at != '')
-                                                                {{ date('d-m-Y', strtotime($role->updated_at)) }}
+                                                            @if ($groupPermision->updated_at != '')
+                                                                {{ date('d-m-Y', strtotime($groupPermision->updated_at)) }}
                                                             @endif
                                                         </td>
                                                         <td>
@@ -81,18 +79,20 @@
                                                                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                                     title="" data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('roles.edit', $role->id) }}"
+                                                                <a href="{{ route('groupPermisions.edit', $groupPermision->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form action="{{ route('roles.destroy', [$role->id]) }}"
+                                                                <form
+                                                                    action="{{ route('groupPermisions.destroy', [$groupPermision->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleterole({{ $role->id }})"
+                                                                    <a href="#"
+                                                                        onclick="deleteGroupPermision({{ $groupPermision->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleterole"> <i
+                                                                        data-bs-target="#deleteProductAtrribute"> <i
                                                                             class="bi bi-trash-fill"></i></a>
                                                                 </form>
                                                             </div>
@@ -104,7 +104,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleterole" tabindex="-1"
+                                    <div class="modal fade" id="deleteProductAtrribute" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -131,7 +131,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $roles->links() }}
+                                        {{ $groupPermisions->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -146,8 +146,8 @@
 @endsection
 @section('scripts')
     <script>
-        function deleterole(id) {
-            var url = '{{ route('roles.index') }}' + '/' + id;
+        function deleteGroupPermision(id) {
+            var url = '{{ route('groupPermisions.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
         }
     </script>

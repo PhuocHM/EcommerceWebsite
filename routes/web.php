@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\Admin\GroupPermisionsController;
 use App\Http\Controllers\Admin\GroupsController;
 use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
@@ -56,4 +57,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/employees', EmployeesController::class);
     Route::resource('/groups', GroupsController::class);
     Route::resource('/roles', RolesController::class);
+    Route::resource('/groupPermisions', GroupPermisionsController::class);
 });

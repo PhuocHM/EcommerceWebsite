@@ -16,11 +16,7 @@
                         <div class="card-body">
                             <form class="row g-3" method="POST" action="{{ route('products.store') }}">
                                 @csrf
-                                <div class="col-12">
-                                    <label class="form-label">Mã</label>
-                                    <input type="text" name="code" class="form-control"                                         placeholder="Mã sản phẩm">
-                                    <span style="color:red;">@error('code'){{ $message }} @enderror</span>
-                                </div>
+                            
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"

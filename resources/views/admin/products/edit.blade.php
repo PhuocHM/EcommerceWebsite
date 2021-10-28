@@ -18,12 +18,7 @@
                                 action="{{ route('products.update', $products->id) }}">
                                 @method('PUT')
                                 @csrf
-                                <div class="col-12">
-                                    <label class="form-label">Mã</label>
-                                    <input type="text" class="form-control" placeholder="Mã sản phẩm" name="code"
-                                        value="{{ $products->code }}">
-                                    <span style="color:red;">@error('code'){{ $message }} @enderror</span>
-                                </div>
+                            
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" class="form-control" placeholder="Tên sản phẩm" name="name"
@@ -39,20 +34,22 @@
                                 <div class="col-12">
                                     <label class="form-label">Danh mục sản phẩm</label>
                                     <select name="category_id" class="form-control input-sm m-bot15">
-                                    @foreach($categories as $category)
-                        <option {{$category->id==$products->category_id ?'selected' :''}} value="{{$category->id}}">{{$category->name}}</option>
-                                     @endforeach
+                                        @foreach ($categories as $category)
+                                            <option {{ $category->id == $products->category_id ? 'selected' : '' }}
+                                                value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Thương hiệu sản phẩm</label>
                                     <select name="brand_id" class="form-control input-sm m-bot15">
-                                    @foreach($brands as $brand)
-                        <option {{$brand->id==$products->brand_id ?'selected' :''}} value="{{$brand->id}}">{{$brand->name}}</option>
-                                     @endforeach
+                                        @foreach ($brands as $brand)
+                                            <option {{ $brand->id == $products->brand_id ? 'selected' : '' }}
+                                                value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                             
+
                                 <div class="col-12">
                                     <label class="form-label">Đã bán</label>
                                     <input type="text" class="form-control" placeholder="Đã bán" name="sold"
@@ -67,8 +64,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Mô tả</label>
-                                    <textarea class="form-control" rows="3" name="description"
-                                        id="ckeditor_category"
+                                    <textarea class="form-control" rows="3" name="description" id="ckeditor_category"
                                         style="resize: none"> {!! $products->description !!}</textarea>
                                     <span style="color:red;">@error('description'){{ $message }} @enderror</span>
                                 </div>

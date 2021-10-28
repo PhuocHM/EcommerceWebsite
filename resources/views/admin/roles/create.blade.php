@@ -3,7 +3,7 @@
     <div class="wrapper">
         <main class="page-content">
             <div class="card-header py-3">
-                <h6 class="mb-0">Thêm Mới Tài Khoản Khách Hàng</h6>
+                <h6 class="mb-0">Thêm Mới Vai Trò Quản Lý</h6>
             </div>
             <div class="card-body">
                 @if (session('status'))

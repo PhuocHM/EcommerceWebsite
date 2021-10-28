@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-
 Interface RolesInterface {
 
     public function getAll($request);

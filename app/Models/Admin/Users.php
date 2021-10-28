@@ -12,8 +12,4 @@ class Users extends Model
     protected $table = 'users';
     public $timestamps = true;
 
-    // public function customer(){
-    //     return $this->hasMany(Customers::class);
-    // }
-
 }

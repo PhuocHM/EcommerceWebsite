@@ -5,19 +5,19 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Groups extends Model
+class GroupPermisions extends Model
 {
     use HasFactory;
 
-    protected $table = 'groups';
+    protected $table = 'group_permision';
     public $timestamps = true;
-
-    public function employee()
+    
+    public function group()
     {
-        return $this->hasMany(Employees::class);
+        return $this->belongsTo(Groups::class);
     }
     public function role()
     {
-        return $this->belongsToMany(Roles::class,'group_permision','group_id','role_id');
+        return $this->belongsTo(Roles::class);
     }
 }

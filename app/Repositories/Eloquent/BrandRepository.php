@@ -21,9 +21,6 @@ class BrandRepository implements BrandInterface
         return $query->paginate(10);
         // return Brand::all();
     }
-    public function getOne()
-    {
-    }
     public function store($request)
     {
 
@@ -84,7 +81,5 @@ class BrandRepository implements BrandInterface
         }
         $brand->delete();
     }
-    public function search()
-    {
-    }
+   
 }
