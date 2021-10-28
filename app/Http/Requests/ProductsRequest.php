@@ -24,16 +24,14 @@ class ProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:products,name,' . $this->route('product'),
-            'slug' => 'required',
-            'code' => 'required',
-            'sold' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-
-
-
+            'name'=>'required|unique:products,name,'.$this->route('product'),
+            'slug'=>'required',    
+            'code'=>'required',   
+            'sold'=>'required',   
+            'price'=>'required',   
+            'description'=>'required',   
+            'status'=>'required',   
+          
         ];
     }
     public function messages()

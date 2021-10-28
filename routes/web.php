@@ -22,6 +22,11 @@ use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\CustomersController;
+use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\DiscountProductController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +65,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/roles', RolesController::class);
     Route::resource('/groupPermisions', GroupPermisionsController::class);
     Route::resource('/orders', OrdersController::class);
+    Route::resource('/customers',CustomersController::class);
+    Route::resource('/discounts',DiscountController::class);
+    Route::resource('/discountProduct',DiscountProductController::class);
 });
+
+
+

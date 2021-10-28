@@ -54,6 +54,14 @@
                  </li>
                  <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Đơn hàng</a>
+                 <li> <a style="text-decoration: none" href="{{ route('customers.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Khách hàng</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('discounts.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Chiết Khấu</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('discountProduct.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Chiết Khấu sản phẩm</a>
                  </li>
 
              </ul>
