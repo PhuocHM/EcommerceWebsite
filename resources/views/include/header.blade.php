@@ -80,9 +80,11 @@
                         <span class="title-menu-mobile">Main menu</span>
 
                     </span>
+                    @if(Auth::check())
                     <div class="block-minicart dropdown style2" id="mini-cart">
                         {{-- --}}
                     </div><!-- block mini cart -->
+                    @endif
                     <a href="#" class="hidden-md search-hidden"><span class="flaticon-magnifying-glass"></span></a>
                     {{-- <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a> --}}
                 </div>
