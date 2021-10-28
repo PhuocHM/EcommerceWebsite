@@ -5,19 +5,22 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductImages extends Model
+class Customers extends Model
 {
     use HasFactory;
+  
     protected $dates = [
         'created_at',
         'updated_at',
+        
     ];
     protected $fillable = [
-        'amounts', 'start_day', 'expired_day','description','image'
+        'name', 'slug', 'phone','address','bonus_points','user_id'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'discounts';
+    protected $table = 'customers';
     public $timestamps = true;
-    
-   
+    public function user(){
+        return $this->belongsTo(Users::class,'user_id','id');
+    }
 }

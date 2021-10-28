@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Admin\Users;
+use App\Models\User;
 use App\Repositories\Interfaces\UsersInterface;
 use Carbon\Carbon;
 
@@ -10,7 +10,7 @@ class UsersRepository implements UsersInterface
 {
     public function getAll($request)
     {
-        $query = Users::orderBy('id', 'DESC');
+        $query = User::orderBy('id', 'DESC');
         if ($request->user) {
             $search = $request->user;
 
@@ -21,7 +21,7 @@ class UsersRepository implements UsersInterface
     }
     public function store($request)
     {
-        $user = new Users();
+        $user = new User();
         $user->name       = $request->name;
         $user->email      = $request->email;
         $user->password   = $request->password;
@@ -31,7 +31,7 @@ class UsersRepository implements UsersInterface
     }
     public function update($request, $id)
     {
-        $user             = Users::find($id);
+        $user             = User::find($id);
         $user->name       = $request->name;
         $user->email      = $request->email;
         $user->password   = $request->password;
@@ -41,12 +41,12 @@ class UsersRepository implements UsersInterface
     }
     public function edit($id)
     {
-        return Users::find($id);
+        return User::find($id);
     }
     public function destroy($id)
     {
-        $user = Users::find($id);
+        $user = User::find($id);
         $user->delete();
     }
-   
+
 }

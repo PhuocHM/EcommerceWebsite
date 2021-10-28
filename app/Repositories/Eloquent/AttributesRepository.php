@@ -22,7 +22,7 @@ class AttributesRepository implements AttributesInterface
 
         return $query->paginate(10);
     }
-  
+
     public function store($request)
     {
         $attributes = new Attributes();
@@ -48,7 +48,7 @@ class AttributesRepository implements AttributesInterface
         $attributes = Attributes::find($id);
         return $attributes->delete();
     }
-  
+
     public function create()
     {
         return Category::orderBy('id', 'DESC')->get();

@@ -57,6 +57,15 @@
                  <li> <a style="text-decoration: none" href="{{ route('users.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Tài khoản khách hàng</a>
                  </li>
+                 <li> <a style="text-decoration: none" href="{{ route('customers.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Khách hàng</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('discounts.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Chiết Khấu</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('discountProduct.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Chiết Khấu sản phẩm</a>
+                 </li>
 
                  <li> <a style="text-decoration: none" href="{{ route('comments.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Bình luận của khách hàng</a>
