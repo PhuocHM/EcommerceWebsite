@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thuộc Tính</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Thuộc tính</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -63,9 +63,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($attributes as $attribute)
+                                                @foreach ($attributes as $key => $attribute)
                                                     <tr>
-                                                        <td>{{ $attribute->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $attribute->name }}</td>
                                                         <td>{{ $attribute->slug }}</td>
                                                         @if ($attribute->category)
@@ -81,10 +81,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('attributes.edit', $attribute->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""

@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Hình Ảnh Sản Phẩm</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Hình ảnh sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,20 +22,23 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                  
-                  <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                  <!-- <div class="addthis_inline_share_toolbox"></div> -->
-               
-                  <form  class="form-inline my-2 my-lg-0" >
-                <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
-                  <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('productImages.index') }}" method="GET" name="productImages" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-                       
-                      </select>
-                  </form>
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('productImages.index') }}" method="GET" name="productImages" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
+
+                        </select>
+                    </form>
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -60,9 +63,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($productImages as $productImage)
+                                                @foreach ($productImages as $key => $productImage)
                                                     <tr>
-                                                        <td>{{ $productImage->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $productImage->product->name }}</td>
                                                         <td>
                                                             <img src="{{ asset('images/product/' . $productImage->image) }}"
@@ -82,11 +85,7 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                                            <div class="d-flex justify-content-center gap-3 fs-6">
                                                                 <a href="{{ route('productImages.edit', $productImage->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""

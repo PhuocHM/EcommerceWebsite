@@ -27,7 +27,6 @@ use App\Http\Controllers\Admin\SuppliersController;
 use App\Http\Controllers\Admin\StocksController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DiscountProductController;
@@ -59,7 +58,7 @@ Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/home', AdminController::class);
+    Route::get('/home', AdminController::class)->name('home');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
     Route::resource('/brands', BrandsController::class);

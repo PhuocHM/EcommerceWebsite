@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Kho</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Kho</li>
                         </ol>
                     </nav>
                 </div>
@@ -19,16 +19,21 @@
                         <a href="{{ route('stocks.create') }}" class="btn btn-primary">Nhập kho</a>
                     </div>
                 </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                        action="{{ route('stocks.index') }}" method="GET" name="stock" type="text"
-                        placeholder="Tìm kiếm theo tên nhà cung cấp">
-                    </select>
-                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('stocks.index') }}" method="GET" name="stock" type="text"
+                            placeholder="Tìm kiếm theo tên nhà cung cấp">
+                        </select>
+                    </form>
+                </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -69,10 +74,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                {{-- <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a> --}}
+
                                                                 <a href="{{ route('stocks.edit', $stock->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""

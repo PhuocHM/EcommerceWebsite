@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Admin\Users;
+use App\Models\User;
 use App\Models\Admin\Customers;
 use App\Repositories\Interfaces\CustomersInterface;
 
@@ -16,7 +16,7 @@ class CustomersRepository implements CustomersInterface
         $query = Customers::with('user');
         if($request->customer){
             $search=$request->customer;
-    
+
             $query->where('name','LIKE','%'.$search.'%');
         }
         $query->orderBy('id','DESC');
@@ -60,14 +60,14 @@ class CustomersRepository implements CustomersInterface
         $customers = Customers::find($id);
         $customers->delete();
     }
-   
+
     public function create_user()
     {
-        return Users::orderBy('id','DESC')->get();
+        return User::orderBy('id','DESC')->get();
     }
     public function create()
     {
-        return Users::orderBy('id','DESC')->get();
+        return User::orderBy('id','DESC')->get();
     }
-   
+
 }

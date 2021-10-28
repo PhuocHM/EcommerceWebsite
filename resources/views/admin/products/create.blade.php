@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <form class="row g-3" method="POST" action="{{ route('products.store') }}">
                                 @csrf
-                            
+
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Danh mục sản phẩm</label>
-                                    <select name="category_id" class="form-select" id="inputGroupSelect02">                                  
+                                    <select name="category_id" class="form-select" id="inputGroupSelect02">
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -44,12 +44,6 @@
                                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Đã bán</label>
-                                    <input type="text" name="sold" class="form-control" value="{{ old('sold') }}"
-                                        id="convert_slug" placeholder="Đã bán">
-                                    <span style="color:red;">@error('sold'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Giá</label>

@@ -18,7 +18,7 @@
                                 action="{{ route('products.update', $products->id) }}">
                                 @method('PUT')
                                 @csrf
-                            
+
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" class="form-control" placeholder="Tên sản phẩm" name="name"
@@ -48,13 +48,6 @@
                                                 value="{{ $brand->id }}">{{ $brand->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
-
-                                <div class="col-12">
-                                    <label class="form-label">Đã bán</label>
-                                    <input type="text" class="form-control" placeholder="Đã bán" name="sold"
-                                        value="{{ $products->sold }}">
-                                    <span style="color:red;">@error('sold'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Giá</label>

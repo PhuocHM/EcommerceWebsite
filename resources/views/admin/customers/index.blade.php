@@ -10,32 +10,32 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Thông tin khách hàng</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('customers.create') }}" class="btn btn-primary">Thêm danh mục</a>
+                        <a href="{{ route('customers.create') }}" class="btn btn-primary">Thêm thông tin</a>
                     </div>
                 </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
-                
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <!-- <div class="addthis_inline_share_toolbox"></div> -->
-             
-                <form  class="form-inline my-2 my-lg-0" >
-              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
-                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('customers.index') }}" method="GET" name="customer" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-                     
-                    </select>
-                </form>
-              </div>
+                <div class="col-md-12">
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('customers.index') }}" method="GET" name="customer" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
+
+                        </select>
+                    </form>
+                </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
 
                 <div class="card-body">
 
@@ -65,20 +65,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($customers as $customer)
+                                                @foreach ($customers as $key => $customer)
                                                     <tr>
-                                                        <td>{{ $customer->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $customer->name }}</td>
                                                         <td>{{ $customer->slug }}</td>
                                                         <td>{{ $customer->phone }}</td>
                                                         <td>{{ $customer->address }}</td>
                                                         <td>{{ $customer->bonus_points }}</td>
                                                         @if ($customer->user)
-                                                        <td>{{$customer->user->name}}</td>
-                                                          @else
-                                                        <td></td>       
-                                                         @endif
-                                                        
+                                                            <td>{{ $customer->user->name }}</td>
+                                                        @else
+                                                            <td></td>
+                                                        @endif
+
                                                         <td>{{ date('d-m-Y', strtotime($customer->created_at)) }}</td>
                                                         <td>
                                                             @if ($customer->updated_at != '')
@@ -87,10 +87,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('customers.edit', $customer->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
@@ -143,7 +140,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $customers->links() }} 
+                                        {{ $customers->links() }}
                                     </div>
                                 </div>
                             </div>

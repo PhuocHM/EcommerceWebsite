@@ -7,27 +7,11 @@
         <div class="top-navbar d-none d-xl-block">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="app-emailbox.html">Email</a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="javascript:;">Projects</a>
-                </li> --}}
-                <li class="nav-item d-none d-xxl-block">
-                    <a class="nav-link" href="javascript:;">Events</a>
-                </li>
-                <li class="nav-item d-none d-xxl-block">
-                    <a class="nav-link" href="app-to-do.html">Todo</a>
+                    <a class="nav-link" href="{{ route('home') }}">Trang chủ</a>
                 </li>
             </ul>
         </div>
-        <div class="search-toggle-icon d-xl-none ms-auto">
-            <i class="bi bi-search"></i>
-        </div>
-
-        <div class="top-navbar-right ms-3">
+        <div class="ms-3 float-right  d-none d-xl-block">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link  dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">

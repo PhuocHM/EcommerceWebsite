@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Quản lý nhân sự</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Quản lý nhân sự</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,10 +22,6 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -38,7 +34,7 @@
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -54,8 +50,8 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Tên</th>                                           
-                                                    <th>Email</th>                                       
+                                                    <th>Tên</th>
+                                                    <th>Email</th>
                                                     <th>Ngày sinh</th>
                                                     <th>Địa chỉ</th>
                                                     <th>Căn cước công dân </th>
@@ -69,9 +65,9 @@
                                             <tbody>
                                                 @foreach ($employees as $employee)
                                                     <tr>
-                                                        <td>{{ $employee->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $employee->name }}</td>
-                                                        <td>{{ $employee->mail }}</td>                                                   
+                                                        <td>{{ $employee->mail }}</td>
                                                         <td>{{ $employee->birthday }}</td>
                                                         <td>{{ $employee->address }}</td>
                                                         <td>{{ $employee->identification }}</td>
@@ -90,10 +86,6 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
                                                                 <a href="{{ route('employees.edit', $employee->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""

@@ -14,7 +14,7 @@
      <ul class="metismenu" id="menu">
          <li>
              <a href="javascript:;" class="has-arrow">
-                 <div class="parent-icon"><i class="bi bi-house-door"></i>
+                 <div class="parent-icon"><i class="fas fa-cubes"></i>
                  </div>
                  <div class="menu-title">Quản lí sản phẩm</div>
              </a>
@@ -49,7 +49,26 @@
 
          <li>
              <a href="javascript:;" class="has-arrow">
-                 <div class="parent-icon"><i class="bi bi-house-door"></i>
+                 <div class="parent-icon"><i class="fas fa-money-bill-wave"></i>
+                 </div>
+                 <div class="menu-title">Quản lí khuyến mãi</div>
+             </a>
+             <ul>
+                 <li> <a style="text-decoration: none" href="{{ route('discounts.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Chiết Khấu</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('discountProduct.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Chiết Khấu sản phẩm</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('coupons.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Thẻ giảm giá</a>
+                 </li>
+             </ul>
+         </li>
+
+         <li>
+             <a href="javascript:;" class="has-arrow">
+                 <div class="parent-icon"><i class="fas fa-users"></i>
                  </div>
                  <div class="menu-title">Quản lí khách hàng</div>
              </a>
@@ -68,7 +87,7 @@
                  </li>
 
                  <li> <a style="text-decoration: none" href="{{ route('comments.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Bình luận của khách hàng</a>
+                             class="bi bi-arrow-right-short"></i>Khách hàng Review SP</a>
                  </li>
                  <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Đơn hàng</a>
@@ -81,7 +100,7 @@
 
          <li>
              <a href="javascript:;" class="has-arrow">
-                 <div class="parent-icon"><i class="bi bi-house-door"></i>
+                 <div class="parent-icon"><i class="fas fa-user-shield"></i>
                  </div>
                  <div class="menu-title">Quản lí nhân sự</div>
              </a>

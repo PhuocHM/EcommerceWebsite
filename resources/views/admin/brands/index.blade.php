@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Thương hiệu</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,20 +22,17 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <!-- <div class="addthis_inline_share_toolbox"></div> -->
-             
+
                 <form  class="form-inline my-2 my-lg-0" >
-              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
                 <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('brands.index') }}" method="GET" name="brand" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-                     
+
                     </select>
                 </form>
               </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -53,7 +50,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Slug</th>
+
                                                     <th>Hình ảnh</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
@@ -62,11 +59,11 @@
                                             </thead>
                                             <tbody>
                                             @if(count($brands)>0)
-                                                @foreach ($brands as $brand)
+                                                @foreach ($brands as $key => $brand)
                                                     <tr>
-                                                        <td>{{ $brand->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $brand->name }}</td>
-                                                        <td>{{ $brand->slug }}</td>
+
                                                         <td>
                                                             <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
                                                                 style="width: 150px">
@@ -79,10 +76,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('brands.edit', $brand->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
@@ -102,7 +96,7 @@
                                                     </tr>
                                                     @endforeach
                                               @else
-                                              <h3>Thương hiệu cần tìm không có</h3>    
+                                              <h3>Thương hiệu cần tìm không có</h3>
                                               @endif
                                             </tbody>
                                         </table>
@@ -137,7 +131,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $brands->links() }} 
+                                        {{ $brands->links() }}
                                     </div>
                                 </div>
                             </div>

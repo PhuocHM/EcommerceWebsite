@@ -22,6 +22,7 @@ class ProductImagesController extends Controller
     public function index(Request $request)
     {
         $productImages = $this->productImagesService->getAll($request);
+
         $params = [
             'productImages' => $productImages,
         ];
@@ -109,6 +110,6 @@ class ProductImagesController extends Controller
         }
         catch(\Exception $e){
             return redirect()->route('productImages.index')->with('status', 'Xóa không thành công! '.$e);
-        }    
+        }
     }
 }

@@ -48,7 +48,7 @@ class Products extends Model
     {
         return $this->hasMany(Comments::class, 'product_id');
     }
-    
+
     public function discount()
     {
         return  $this->belongsToMany(Discounts::class, 'discount_product', 'product_id', 'discount_id');

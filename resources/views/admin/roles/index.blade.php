@@ -10,13 +10,13 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Vai trò quản lý</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Vai trò quản lý</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('roles.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('roles.create') }}" class="btn btn-primary">Thêm vai trò</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             </div>
             <br>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -63,9 +63,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($roles as $role)
+                                                @foreach ($roles as $key => $role)
                                                     <tr>
-                                                        <td>{{ $role->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $role->name }}</td>
                                                         <td>{{ $role->info }}</td>
 

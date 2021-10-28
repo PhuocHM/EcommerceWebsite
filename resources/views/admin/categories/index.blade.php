@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Danh mục sản phẩm</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Danh mục sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
@@ -21,21 +21,24 @@
                 </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
-                
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <!-- <div class="addthis_inline_share_toolbox"></div> -->
-             
-                <form  class="form-inline my-2 my-lg-0" >
-              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
-                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('categories.index') }}" method="GET" name="category" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-                     
-                    </select>
-                </form>
-              </div>
+                <div class="col-md-12">
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
+
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('categories.index') }}" method="GET" name="category" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
+
+                        </select>
+                    </form>
+                </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
 
                 <div class="card-body">
 
@@ -49,76 +52,73 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                    @if(isset($categories))
-                                        <table  class="table ">
-                                            <thead class="table-light">
-                                                
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Tên</th>
-                                                    <th>Slug</th>
-                                                    <th>Mô tả</th>
-                                                    <th>Thuộc danh mục</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Ngày tạo</th>
-                                                    <th>Ngày cập nhật</th>
-                                                    <th>Hành động</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if(count($categories)>0)
-                                                @foreach ($categories as $category)
-                                               
+                                        @if (isset($categories))
+                                            <table class="table ">
+                                                <thead class="table-light">
+
                                                     <tr>
-                                                        <td>{{ $category->id }}</td>
-                                                        <td>{{ $category->name }}</td>
-                                                        <td>{{ $category->slug }}</td>
-                                                        <td>{{ $category->description }}</td>
-                                                        <td>{{ $categories_arr[$category->parent_id] }}</td>
-                                                        <td>
-                                                            @if ($category->status == 0)
-                                                                <span class='text text-success'>Hiển thị</span>
-                                                            @else
-                                                                <span class='text text-success'>Ẩn</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>{{ date('d-m-Y', strtotime($category->created_at)) }}</td>
-                                                        <td>
-                                                            @if ($category->updated_at != '')
-                                                                {{ date('d-m-Y', strtotime($category->updated_at)) }}
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('categories.edit', $category->id) }}"
-                                                                    class="text-warning" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="bottom" title=""
-                                                                    data-bs-original-title="Edit info" aria-label="Edit"><i
-                                                                        class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('categories.destroy', [$category->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteCategory({{ $category->id }})"
-                                                                        class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteCategory"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
-                                                                </form>
-                                                            </div>
-                                                        </td>
+                                                        <th>#</th>
+                                                        <th>Tên</th>
+
+                                                        <th>Mô tả</th>
+                                                        <th>Thuộc danh mục</th>
+                                                        <th>Trạng thái</th>
+                                                        <th>Ngày tạo</th>
+                                                        <th>Ngày cập nhật</th>
+                                                        <th>Hành động</th>
                                                     </tr>
-                                                    @endforeach
-                                              @else
-                                              <h3>Danh Mục sản phẩm cần tìm không có</h3>    
-                                              @endif
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    @if (count($categories) > 0)
+                                                        @foreach ($categories as $key => $category)
+                                                            <tr>
+                                                                <td>{{ ++$key }}</td>
+                                                                <td>{{ $category->name }}</td>
+                                                                <td>{{ $category->description }}</td>
+                                                                <td>{{ $categories_arr[$category->parent_id] }}</td>
+                                                                <td>
+                                                                    @if ($category->status == 0)
+                                                                        <span class='text text-success'>Hiển thị</span>
+                                                                    @else
+                                                                        <span class='text text-success'>Ẩn</span>
+                                                                    @endif
+                                                                </td>
+                                                                <td>{{ date('d-m-Y', strtotime($category->created_at)) }}
+                                                                </td>
+                                                                <td>
+                                                                    @if ($category->updated_at != '')
+                                                                        {{ date('d-m-Y', strtotime($category->updated_at)) }}
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex justify-content-center gap-3 fs-6">
+                                                                        <a href="{{ route('categories.edit', $category->id) }}"
+                                                                            class="text-warning" data-bs-toggle="tooltip"
+                                                                            data-bs-placement="bottom" title=""
+                                                                            data-bs-original-title="Edit info"
+                                                                            aria-label="Edit"><i
+                                                                                class="bi bi-pencil-fill"></i></a>
+                                                                        <form
+                                                                            action="{{ route('categories.destroy', [$category->id]) }}"
+                                                                            method="POST">
+                                                                            @method('DELETE')
+                                                                            @csrf
+                                                                            <a href="#"
+                                                                                onclick="deleteCategory({{ $category->id }})"
+                                                                                class="text-danger"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#deleteCategory"> <i
+                                                                                    class="bi bi-trash-fill"></i></a>
+                                                                        </form>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @else
+                                                        <h3>Danh Mục sản phẩm cần tìm không có</h3>
+                                                    @endif
+                                                </tbody>
+                                            </table>
                                         @endif
                                     </div>
                                     {{-- Test Modal Delete --}}
@@ -150,7 +150,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{ $categories->links() }} 
+                                        {{ $categories->links() }}
                                     </div>
                                 </div>
                             </div>
