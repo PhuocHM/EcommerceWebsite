@@ -264,7 +264,7 @@
             </div>
             <div class="block-recent-view single">
                 <div class="container">
-                    <div class="title-of-section">You may be also interested</div>
+                    <div class="title-of-section">Đề xuất</div>
                     <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":4}}'>
                         @foreach($related_items as $key => $product)
                         <div class="product-item style1">
@@ -276,7 +276,6 @@
                                     @if ($product->discount && $product->discount->first())
                                     <span class="onsale">-{{number_format($product->discount->first()->amounts ) }}&ensp;VND</span>
                                     @endif
-                                    <a href="#" class="quick-view">Quick View</a>
                                 </div>
                                 <div class="product-innfo">
                                     <div class="product-name"><a href="#">Modern Watches</a></div>
