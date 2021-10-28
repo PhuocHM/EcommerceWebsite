@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-
 Interface ProductImagesInterface {
 
     public function getAll($request);

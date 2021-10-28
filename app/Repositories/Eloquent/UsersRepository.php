@@ -48,7 +48,5 @@ class UsersRepository implements UsersInterface
         $user = Users::find($id);
         $user->delete();
     }
-    public function search()
-    {
-    }
+   
 }

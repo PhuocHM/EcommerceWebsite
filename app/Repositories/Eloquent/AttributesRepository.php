@@ -5,7 +5,6 @@ namespace App\Repositories\Eloquent;
 use App\Models\Admin\Attributes;
 use App\Models\Admin\Category;
 use App\Repositories\Interfaces\AttributesInterface;
-use App\Repositories\Interfaces\CategoryInterface;
 use Carbon\Carbon;
 
 class AttributesRepository implements AttributesInterface
@@ -13,7 +12,6 @@ class AttributesRepository implements AttributesInterface
 
     public function getAll($request)
     {
-
         $query = Attributes::with('category');
         if ($request->attribute) {
             $search = $request->attribute;
@@ -24,9 +22,7 @@ class AttributesRepository implements AttributesInterface
 
         return $query->paginate(10);
     }
-    public function getOne()
-    {
-    }
+  
     public function store($request)
     {
         $attributes = new Attributes();
@@ -52,9 +48,7 @@ class AttributesRepository implements AttributesInterface
         $attributes = Attributes::find($id);
         return $attributes->delete();
     }
-    public function search()
-    {
-    }
+  
     public function create()
     {
         return Category::orderBy('id', 'DESC')->get();

@@ -24,20 +24,18 @@ class ProductsRepository implements ProductsInterface
 
         return $query->paginate(5);
     }
-    public function getOne()
-    {
-    }
+    
     public function store($request)
     {
         $product                 = new Products();
         $product->name           = $request->name;
-        $product->code           = $request->code;
+        $product->code           = '#ECMW' . time();
         $product->slug           = $request->slug;
         $product->sold           = $request->sold;
         $product->price          = $request->price;
         $product->description    = $request->description;
         $product->status         = $request->status;
-        $product->brand_id         = $request->brand_id;
+        $product->brand_id       = $request->brand_id;
         $product->category_id    = $request->category_id;
         $product->created_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
@@ -52,7 +50,7 @@ class ProductsRepository implements ProductsInterface
         $product->price          = $request->price;
         $product->description    = $request->description;
         $product->status         = $request->status;
-        $product->brand_id         = $request->brand_id;
+        $product->brand_id       = $request->brand_id;
         $product->category_id    = $request->category_id;
         $product->code           = $request->code;
         $product->updated_at     = Carbon::now('Asia/Ho_Chi_Minh');
@@ -77,7 +75,5 @@ class ProductsRepository implements ProductsInterface
     {
         return Brand::orderBy('id', 'DESC')->get();
     }
-    public function search()
-    {
-    }
+   
 }

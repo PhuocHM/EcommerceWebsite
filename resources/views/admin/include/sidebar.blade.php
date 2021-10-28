@@ -2,10 +2,10 @@
  <aside class="sidebar-wrapper" data-simplebar="true">
      <div class="sidebar-header">
          <div>
-             <img src="{{ asset('Admin/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+             <img src="{{ asset('admin/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
          </div>
          <div>
-             <h4 class="logo-text">EcommerceWebsite</h4>
+             <h4 class="logo-text">Ecommerce</h4>
          </div>
          <div class="toggle-icon ms-auto"><i class="bi bi-chevron-double-left"></i>
          </div>
@@ -58,6 +58,16 @@
                  <li> <a style="text-decoration: none" href="{{ route('comments.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Bình luận của khách hàng</a>
                  </li>
+                 <li> <a style="text-decoration: none" href="{{ route('roles.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Vai trò quản lý</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('groupPermisions.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Phân quyền quản lý</a>
+                 </li>
+                 <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Đơn hàng</a>
+                 </li>
+
              </ul>
          </li>
 

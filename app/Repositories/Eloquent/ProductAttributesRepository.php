@@ -59,7 +59,5 @@ class ProductAttributesRepository implements ProductAttributesInterface
         $productAttribute = ProductAttributes::find($id);
         return $productAttribute->delete();
     }
-    public function search()
-    {
-    }
+   
 }

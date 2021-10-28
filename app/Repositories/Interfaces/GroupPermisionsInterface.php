@@ -2,16 +2,16 @@
 
 namespace App\Repositories\Interfaces;
 
-use App\Http\Requests\ProductAttributesRequest;
+use App\Http\Requests\groupPermisionsRequest;
 
-Interface ProductAttributesInterface {
+Interface GroupPermisionsInterface {
 
     public function getAll($request);
-    public function create_product();
-    public function create_attribute();
+    public function findbyGroup();
+    public function findbyRole();
     public function store($request);
     public function update($request, $id); 
-    public function edit($id);
+    public function find($id);
     public function destroy($id);
   
 }

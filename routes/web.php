@@ -17,12 +17,15 @@ use App\Http\Controllers\Admin\BrandsController;
 use App\Http\Controllers\Admin\CommentsController;
 use App\Http\Controllers\Admin\CouponsController;
 use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\Admin\GroupPermisionsController;
 use App\Http\Controllers\Admin\GroupsController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductAttributesController;
 use App\Http\Controllers\Admin\ProductImagesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SuppliersController;
 use App\Http\Controllers\Admin\StocksController;
+use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UsersController;
 
 /*
@@ -64,4 +67,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/groups', GroupsController::class);
     Route::resource('/coupons', CouponsController::class);
     Route::resource('/comments', CommentsController::class);
+    Route::resource('/roles', RolesController::class);
+    Route::resource('/groupPermisions', GroupPermisionsController::class);
+    Route::resource('/orders', OrdersController::class);
 });

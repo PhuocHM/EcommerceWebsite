@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-
 Interface UsersInterface {
 
     public function getAll($request);
