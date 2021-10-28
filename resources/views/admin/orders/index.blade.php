@@ -92,7 +92,7 @@
                                                                 <form>
                                                                     @csrf
                                                                     <select name="status"
-                                                                        data-truyen_id="{{ $order->id }}"
+                                                                        data-order_id="{{ $order->id }}"
                                                                         class="custom-select status">
                                                                         <option value="0">Đang chờ</option>
                                                                         <option value="1">Đang vận chuyển</option>

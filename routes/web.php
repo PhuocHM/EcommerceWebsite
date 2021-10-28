@@ -68,7 +68,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/customers',CustomersController::class);
     Route::resource('/discounts',DiscountController::class);
     Route::resource('/discountProduct',DiscountProductController::class);
+  
 });
-
+Route::post('/status', [OrdersController::class,'status']);
 
 

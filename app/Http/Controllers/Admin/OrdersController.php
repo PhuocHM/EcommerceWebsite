@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\OrdersService;
 use Illuminate\Http\Request;
+use App\Models\Admin\Orders;
 
 class OrdersController extends Controller
 {
@@ -103,5 +104,12 @@ class OrdersController extends Controller
             return redirect()->route('orders.index')->with('status', 'Xóa không thành công! '.$e);
 
         } 
+    }
+    public function status(Request $request){
+        $data = $request->all();
+        $order = Orders::find($request->order_id);
+        $order->status = $request->status;
+        $order->save();
+
     }
 }

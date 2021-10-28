@@ -107,6 +107,7 @@
             document.getElementById('convert_slug').value = slug;
         }
     </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">  </script>
     <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
     <script type="text/javascript">
         CKEDITOR.replace('ckeditor_category');
@@ -119,8 +120,10 @@
     </script>
     <script type="text/javascript">
         $('.status').change(function() {
+           
             const status = $(this).val();
             const order_id = $(this).data('order_id');
+            console.log(order_id);
             var _token = $('input[name="_token"]').val();
             if (status == 0) {
                 var thongbao = 'Thay đổi đang chờ  thành công';
@@ -130,12 +133,12 @@
                 var thongbao = 'Thay đổi vận chuyển xong thành công';
             }
             $.ajax({
-                url: "{{ url('/orders') }}",
+                url: "{{ url('/status') }}",
                 method: "POST",
                 data: {
-                    status: status,
-                    order_id: order_id,
-                    _token: _token
+                    status:status,
+                    order_id:order_id,
+                    _token:_token
                 },
                 success: function(data) {
                     // $('#thongbao').html('<span class="text text-alert">'+thongbao+'</span>');
