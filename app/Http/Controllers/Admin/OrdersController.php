@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Services\OrdersService;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -32,7 +34,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('admin.orders.create'); 
+       
     }
 
     /**
@@ -43,8 +45,7 @@ class OrdersController extends Controller
      */
     public function store(OrdersRequest $request)
     {
-        $this->ordersService->store($request);
-        return redirect()->route('orders.index')->with('status', 'Thêm chức vụ quản lý thành công !');
+        
     }
 
     /**

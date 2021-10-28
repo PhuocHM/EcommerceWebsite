@@ -20,7 +20,13 @@ class Customers extends Model
     protected $primaryKey = 'id';
     protected $table = 'customers';
     public $timestamps = true;
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsTo(Users::class,'user_id','id');
+    }
+    public function order()
+    {
+        return $this->hasMany(Orders::class);
     }
 }

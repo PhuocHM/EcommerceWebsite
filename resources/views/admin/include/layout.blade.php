@@ -117,6 +117,33 @@
             $('#dataTab le').DataTable();
         });
     </script>
+    <script type="text/javascript">
+        $('.status').change(function() {
+            const status = $(this).val();
+            const order_id = $(this).data('order_id');
+            var _token = $('input[name="_token"]').val();
+            if (status == 0) {
+                var thongbao = 'Thay đổi đang chờ  thành công';
+            } else if (status == 1) {
+                var thongbao = 'Thay đổi đang vận chuyển thành công';
+            } else {
+                var thongbao = 'Thay đổi vận chuyển xong thành công';
+            }
+            $.ajax({
+                url: "{{ url('/orders') }}",
+                method: "POST",
+                data: {
+                    status: status,
+                    order_id: order_id,
+                    _token: _token
+                },
+                success: function(data) {
+                    // $('#thongbao').html('<span class="text text-alert">'+thongbao+'</span>');
+                    alert(thongbao);
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>
