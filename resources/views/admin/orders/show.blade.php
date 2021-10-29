@@ -10,13 +10,13 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thông Tin Đơn Hàng</li>
+                            <li class="breadcrumb-item active" aria-current="page">Chi tiết đơn hàng</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('orders.create') }}" class="btn btn-primary">Thêm đơn hàng</a>
+                        <a href="{{ route('create.item', $order_id) }}" class="btn btn-primary">Thêm chi tiết đơn hàng</a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('orders.index') }}" method="GET" name="order" type="text"
+                            action="{{ route('orderItems.index') }}" method="GET" name="orderItem" type="text"
                             placeholder="Tìm kiếm theo tên">
                         </select>
                     </form>
@@ -49,72 +49,44 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Mã</th>
-                                                    <th>Tên khách hàng</th>
-                                                    <th>Phương thức thanh toán</th>
-                                                    <th>Tổng giá đơn hàng</th>
-                                                    <th>Trạng thái</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Giá mỗi sản phẩm</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Mã đơn hàng</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($orders as $key => $order)
+                                                @foreach ($orderItems as $key => $orderItem)
                                                     <tr>
                                                         <td>{{ ++$key }}</td>
-                                                        <td>{{ $order->code }}</td>
-                                                        <td>{{ $order->customer->name }}</td>
-                                                        <td>{{ $order->payment_method }}</td>
-                                                        <td>{{ $order->total_price }}</td>
+                                                        <td>{{ $orderItem->product->name }}</td>
+                                                        <td>{{ $orderItem->price }}</td>
+                                                        <td>{{ $orderItem->quantity }}</td>
+                                                        <td>{{ $orderItem->order->code }}</td>
 
+                                                        <td>{{ date('d-m-Y', strtotime($orderItem->created_at)) }}</td>
                                                         <td>
-                                                            @if ($order->status == 0)
-                                                                <span class='text text-success'>Đang chờ</span>
-                                                            @elseif ($order->status == 1)
-                                                                <span class='text text-success'>Đang vận chuyển</span>
-                                                            @else
-                                                                <form>
-                                                                    @csrf
-                                                                    <select name="status"
-                                                                        data-order_id="{{ $order->id }}"
-                                                                        class="custom-select status">
-                                                                        <option value="0">Đang chờ</option>
-                                                                        <option value="1">Đang vận chuyển</option>
-                                                                        <option selected value="2">Vận chyển xong</option>
-                                                                    </select>
-                                                                </form>
-                                                                <span class='text text-success'>Đã hoàn thành</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>{{ date('d-m-Y', strtotime($order->created_at)) }}</td>
-                                                        <td>
-                                                            @if ($order->updated_at != '')
-                                                                {{ date('d-m-Y', strtotime($order->updated_at)) }}
+                                                            @if ($orderItem->updated_at != '')
+                                                                {{ date('d-m-Y', strtotime($orderItem->updated_at)) }}
                                                             @endif
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="{{ route('orders.show', $order->id) }}"
-                                                                    class="text-primary" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="bottom" title=""
-                                                                    data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
-                                                                <a href="{{ route('orders.edit', $order->id) }}"
+                                                                <a href="{{ route('orderItems.edit', $orderItem->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('orders.destroy', [$order->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <a href="#" onclick="deleteOrder({{ $order->id }})"
-                                                                        class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteorder"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
-                                                                </form>
+
+                                                                <a href="#"
+                                                                    onclick="deleteOrderItems({{ $orderItem->id }})"
+                                                                    class="text-danger" data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteorderItems">
+                                                                    <i class="bi bi-trash-fill"></i></a>
+
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -124,7 +96,7 @@
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteorder" tabindex="-1"
+                                    <div class="modal fade" id="deleteorderItems" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -143,6 +115,7 @@
                                                     <form id="deleteForm" action="#" method="POST">
                                                         @method('DELETE')
                                                         @csrf
+                                                        <input type="hidden" id="order_id_delete">
                                                         <button type="submit" class="btn btn-danger">Xóa</button>
                                                     </form>
                                                 </div>
@@ -150,25 +123,34 @@
                                         </div>
                                     </div>
                                     {{--  --}}
-                                    <div class=" box-footer clearfix" style="float:right">
-                                        {{ $orders->links() }}
-                                    </div>
+                                    {{-- <div class=" box-footer clearfix" style="float:right"> --}}
+                                    {{-- {{ $orderItems->links() }} --}}
                                 </div>
                             </div>
+
+                        </div>
+                        <div class="col">
+                            <a href="{{ route('orders.index') }}" style="float:right" class="btn btn-danger">Trở về </a>
                         </div>
                     </div>
-                    <!--end row-->
                 </div>
+                <!--end row-->
             </div>
+    </div>
 
-        </main>
+    </main>
     </div>
 @endsection
 @section('scripts')
     <script>
-        function deleteOrder(id) {
-            var url = '{{ route('orders.index') }}' + '/' + id;
+        // console.log(window.location.hef)
+        function deleteOrderItems(id) {
+            var url = '{{ route('orderItems.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
+            let path = window.location.pathname
+            let order_id = path[path.length - 1]
+            $('#order_id_delete').val(order_id)
+
         }
     </script>
-@endsection
+@endsection --}}

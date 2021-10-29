@@ -2,7 +2,10 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Models\Admin\Customers;
+use App\Models\Admin\OrderItems;
 use App\Models\Admin\Orders;
+use App\Models\Admin\Products;
 use App\Repositories\Interfaces\OrdersInterface;
 use Carbon\Carbon;
 
@@ -14,26 +17,34 @@ class OrdersRepository implements OrdersInterface
         if ($request->order) {
             $search = $request->order;
 
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('customer_id', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function store($request)
     {
-        $order = new Orders();
-        $order->name       = $request->name;
-        $order->slug      = $request->slug;
-        $order->created_at = Carbon::now('Asia/Ho_Chi_Minh');
+        $order                  = new Orders();
+        $order->code            = '#ORDEW' . time();
+        $order->customer_id     = $request->customer_id;
+        $order->payment_method  = $request->payment_method;
+        $order->total_price     = $request->total_price;
+        $order->status          = $request->status;
+        $order->created_at      = Carbon::now('Asia/Ho_Chi_Minh');
 
         $order->save();
     }
+
     public function update($request, $id)
     {
-        $order             = Orders::find($id);
-        $order->name       = $request->name;
-        $order->slug      = $request->slug;
-        $order->created_at = Carbon::now('Asia/Ho_Chi_Minh');
+        $order                  = Orders::find($id);
+        $order->code            = '#ORDEW' . time();
+        $order->customer_id     = $request->customer_id;
+        $order->payment_method  = $request->payment_method;
+        $order->total_price     = $request->total_price;
+        $order->status          = $request->status;
+        $order->updated_at      = Carbon::now('Asia/Ho_Chi_Minh');
+       
 
         $order->save();
     }
@@ -46,5 +57,16 @@ class OrdersRepository implements OrdersInterface
         $order = Orders::find($id);
         $order->delete();
     }
-   
+    public function findbyCustomer()
+    {
+        return Customers::orderBy('id', 'DESC')->get();
+    }
+    public function findbyItem()
+    {
+        return OrderItems::orderBy('id', 'DESC')->get();
+    }
+    public function orderItem($id)
+    {
+        return OrderItems::with('product')->where('order_id', $id)->get();
+    }
 }

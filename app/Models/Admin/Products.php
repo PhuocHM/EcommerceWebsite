@@ -53,4 +53,8 @@ class Products extends Model
     {
         return  $this->belongsToMany(Discounts::class, 'discount_product', 'product_id', 'discount_id');
     }
+    public function orderItem()
+    {
+        return $this->belongsTo(Order::class,'brand_id','id');
+    }
 }

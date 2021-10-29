@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrdersRequest extends FormRequest
+class OrderItemsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,19 +23,16 @@ class OrdersRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            //'code' => 'required',
-            'payment_method' => 'required',
-            'total_price' => 'required'
+            'price' => 'required',
+            'quantity' => 'required',
         ];
     }
     public function messages()
     {
         return [
-            'code.required' => 'Vui lòng nhập mã đơn hàng',
-            'payment_method.required' => 'Vui lòng nhập phương thức thanh toán',
-            'total_price.required' => 'Vui lòng nhập tổng giá đơn hàng'
+            'price.required' => 'Vui lòng nhập giá sản phẩm ',
+            'quantity.required' => 'Vui lòng nhập số lượng đặt hàng'
         ];
     }
 }

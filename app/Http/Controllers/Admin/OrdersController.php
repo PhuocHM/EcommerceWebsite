@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrdersRequest;
 use App\Services\OrdersService;
 use Illuminate\Http\Request;
 use App\Models\Admin\Orders;
@@ -35,7 +36,11 @@ class OrdersController extends Controller
      */
     public function create()
     {
-       
+        $customers = $this->ordersService->findbyCustomer();
+        $params = [
+            'customers' => $customers,
+        ];
+        return view('admin.orders.create', $params);
     }
 
     /**
@@ -44,9 +49,10 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OrdersRequest $request)
+    public function store(Request $request)
     {
-        
+        $this->ordersService->store($request);
+        return redirect()->route('orders.index')->with('status', 'Thêm đơn hàng thành công');
     }
 
     /**
@@ -57,7 +63,14 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderItems  = $this->ordersService->orderItem($id);
+        $order_id = $id;
+     
+        $params = [
+            'orderItems' => $orderItems,
+            'order_id' => $order_id
+        ];
+        return view('admin.orders.show', $params);
     }
 
     /**
@@ -68,11 +81,13 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        $order = $this->ordersService->edit($id);
+        $customers = $this->ordersService->findbyCustomer();
+        $order = $this->ordersService->find($id);
         $params = [
-            'order' => $order
+            'customers' => $customers,
+            'order'     => $order
         ];
-        return view('admin.orders.edit', $params);   
+        return view('admin.orders.edit', $params);
     }
 
     /**
@@ -84,8 +99,9 @@ class OrdersController extends Controller
      */
     public function update(OrdersRequest $request, $id)
     {
+
         $this->ordersService->update($request, $id);
-        return redirect()->route('orders.index')->with('status','Cập nhật chức vụ quản lý thành công!'); 
+        return redirect()->route('orders.index')->with('status', 'Cập nhật đơn hàng thành công!');
     }
 
     /**
@@ -96,14 +112,12 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->ordersService->destroy($id);
-            return redirect()->route('orders.index')->with('status', 'Xóa tài khoản khách hàng thành công !');
+            return redirect()->route('orders.index')->with('status', 'Xóa đơn hàng thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('orders.index')->with('status', 'Xóa không thành công! ' . $e);
         }
-        catch(\Exception $e){
-            return redirect()->route('orders.index')->with('status', 'Xóa không thành công! '.$e);
-
-        } 
     }
     public function status(Request $request){
         $data = $request->all();
