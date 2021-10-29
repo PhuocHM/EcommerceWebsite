@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Users\Attributes;
 use App\Models\Users\Categories;
 use App\Models\Users\Products;
 use App\Models\Users\ProductImage;

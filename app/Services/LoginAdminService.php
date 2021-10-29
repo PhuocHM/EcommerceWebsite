@@ -17,10 +17,9 @@ class LoginAdminService
         $login = $this->loginAdminRepository->loginAction($request);
 
         if ($login) {
-
-            // $request->session()->push('loginAdmin', true);
+  
             $request->session()->regenerate();
-           
+
             return redirect()->route('home');
         } else {
 
@@ -37,7 +36,7 @@ class LoginAdminService
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-        // $request->session()->forget('loginAdmin');
+
         return redirect()->route('login.admin');
     }
 }
