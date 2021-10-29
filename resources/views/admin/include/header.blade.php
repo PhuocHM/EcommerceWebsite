@@ -36,10 +36,10 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="pages-user-profile.html">
+                            <a class="dropdown-item" href="{{ route('reset.pass.admin') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="setting-icon"><i class="bi bi-person-fill"></i></div>
-                                    <div class="setting-text ms-3"><span>Profile</span></div>
+                                    <div class="setting-text ms-3"><span>Đổi mật khẩu</span></div>
                                 </div>
                             </a>
                         </li>
@@ -48,7 +48,7 @@
                             <a class="dropdown-item" href="{{ route('logout.admin.action') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="setting-icon"><i class="bi bi-lock-fill"></i></div>
-                                    <div class="setting-text ms-3"><span>Logout</span></div>
+                                    <div class="setting-text ms-3"><span>Đăng xuất</span></div>
                                 </div>
                             </a>
                         </li>

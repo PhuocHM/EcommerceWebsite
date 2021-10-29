@@ -1,86 +1,61 @@
 @extends('admin.include.layout')
-@section('main')
-    <div class="wrapper">
-        <main class="page-content">
-            <div class="card-header py-3">
-                <h6 class="mb-0">Chỉnh Sửa Thông Tin</h6>
-            </div>
-            <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                <div class="col-12 col-lg-8 mx-auto d-flex">
-                    <div class="card border shadow-none w-100">
-                        <div class="card-body">
-                            <form method="POST" class="row g-3"
-                                action="{{ route('employees.update', $employee->id) }}" enctype="multipart/form-data">
-                                @method('PUT')
-                                {{ csrf_field() }}
-                                <div class="col-12">
-                                    <label class="form-label">Tên</label>
-                                    <input type="text" class="form-control" placeholder="Tên nhân sự" name="name"
-                                        value="{{ $employee->name }}">
-                                    <span style="color:red;">@error('name'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Slug</label>
-                                    <input type="text" class="form-control" placeholder="Slug " name="slug"
-                                        value="{{ $employee->slug }}">
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Email</label>
-                                    <input type="email" class="form-control" placeholder="Email" name="email"
-                                        value="{{ $employee->email }}">
-                                    <span style="color:red;">@error('email'){{ $message }} @enderror</span>
-                                </div>
+@section('title', ' Đổi mật khẩu')
 
-                                <div class="col-12">
-                                    <label class="form-label">Ngày sinh</label>
-                                    <input type="date" class="form-control" placeholder="Ngày sinh" name="birthday"
-                                        value="{{ $employee->birthday }}">
-                                    <span style="color:red;">@error('birthday'){{ $message }} @enderror</span>
+@section('main')
+    <main class="page-content">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="border p-4 rounded">
+                            <div class="card-title d-flex align-items-center">
+                                <h5 class="mb-0">Đổi mật khẩu</h5>
+                            </div>
+                            <hr>
+                            <form method="POST" action="{{ route('reset.pass.admin') }}">
+                                @csrf
+
+                                @method('put')
+                                <div class="row mb-3">
+                                    <label for="inputEnterYourName" class="col-sm-3 col-form-label">Mật khẩu cũ</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="password" class="form-control">
+                                        @error('password')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" placeholder="Địa chỉ" name="address"
-                                        value="{{ $employee->address }}">
-                                    <span style="color:red;">@error('address'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Thẻ căn cước</label>
-                                    <input type="text" class="form-control" placeholder="CCCD" name="identification"
-                                        value="{{ $employee->identification }}">
-                                    <span style="color:red;">@error('identification'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label">Hình ảnh</label>
-                                    <input type="hidden" name="image" value="{{ $employee->image }}">
-                                    <input type="file" name="image" class="form-control-file" id="image"
-                                        value="{{ $employee->image }}"> <br>
-                                    <img src="{{ asset('/images/employee/' . $employee->image) }}" alt=""
-                                        style="width: 150px">
-                                    <span style="color:red;">@error('image'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Thuộc chức vụ</label>
-                                    <select name="group_id" class="form-select" id="inputGroupSelect02">
-                                        @foreach ($groups as $group)
-                                            <option {{ $group->id == $employee->group_id ? 'selected' : '' }}
-                                                value="{{ $group->id }}">{{ $group->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <div class="d-grid">
-                                        <button class="btn btn-primary">Cập nhật</button>
+                                <div class="row mb-3">
+                                    <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Mật khẩu mới</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="new_password" class="form-control">
+                                        @error('new_password')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('new_password') }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="d-grid">
-                                        <a href="{{ route('employees.index') }}" class="btn btn-danger">Trở về </a>
+                                <div class="row mb-3">
+                                    <label for="inputEmailAddress2" class="col-sm-3 col-form-label">Nhập lại mật khẩu
+                                        mới</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" name="new_password_confirmation" class="form-control">
+                                        @error('new_password_confirmation')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $errors->first('new_password_confirmation') }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
+
+                                        <button type="submit" class="btn btn-primary px-5">Xác nhận</button>
                                     </div>
                                 </div>
                             </form>
@@ -88,6 +63,6 @@
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 @endsection

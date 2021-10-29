@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Admin\Employees;
 use App\Repositories\Eloquent\LoginAdminRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginAdminService
 {
@@ -17,7 +19,7 @@ class LoginAdminService
         $login = $this->loginAdminRepository->loginAction($request);
 
         if ($login) {
-  
+
             $request->session()->regenerate();
 
             return redirect()->route('home');
@@ -38,5 +40,14 @@ class LoginAdminService
         $request->session()->regenerateToken();
 
         return redirect()->route('login.admin');
+    }
+
+    public function resetPassAction($request)
+    {
+        $admin = Employees::findOrFail(Auth::id());
+        $admin->password = Hash::make($request->new_password);
+        $admin->save();
+
+        return redirect()->route('home')->with('status', 'Đổi mật khẩu thành công');
     }
 }

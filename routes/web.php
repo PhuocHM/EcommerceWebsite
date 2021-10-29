@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::resource('/customers', CustomersController::class);
     Route::resource('/discounts', DiscountController::class);
     Route::resource('/discountProduct', DiscountProductController::class);
+    Route::get('/reset-password', [LoginAdminController::class, 'resetPass'])->name('reset.pass.admin');
+    Route::put('/reset-password', [LoginAdminController::class, 'resetPassAction']);
 });
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
 Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');
