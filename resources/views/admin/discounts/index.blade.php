@@ -55,6 +55,7 @@
                                                     <th>Số tiền giảm</th>
                                                     <th>Ngày bắt đầu</th>
                                                     <th>Ngày kết thúc</th>
+                                                    <th>Chương trình khuyến mãi</th>
                                                     <th>Mô tả</th>
                                                     <th>Hình ảnh</th>
 
@@ -69,6 +70,17 @@
                                                         <td>{{ $discount->amounts }}</td>
                                                         <td>{{ $discount->start_day }}</td>
                                                         <td>{{ $discount->expired_day }}</td>
+                                                        <td>
+
+                                                        @if($discount->expired_day>=$today)
+                                                        <span style="color:green">Còn hạn</span>
+                                                        @else 
+                                                        <span style="color:red">Đã hết hạn</span>
+                                                        @endif
+
+
+                                                        </td>
+                                                      
                                                         <td>{{ $discount->description }}</td>
                                                         <td>
                                                             <img src="{{ asset('images/discount/' . $discount->image) }}" alt=""

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Services\OrdersService;
 use Illuminate\Http\Request;
+use App\Models\Admin\Orders;
 
 class OrdersController extends Controller
 {
@@ -32,7 +35,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('admin.orders.create'); 
+       
     }
 
     /**
@@ -43,8 +46,7 @@ class OrdersController extends Controller
      */
     public function store(OrdersRequest $request)
     {
-        $this->ordersService->store($request);
-        return redirect()->route('orders.index')->with('status', 'Thêm chức vụ quản lý thành công !');
+        
     }
 
     /**
@@ -102,5 +104,12 @@ class OrdersController extends Controller
             return redirect()->route('orders.index')->with('status', 'Xóa không thành công! '.$e);
 
         } 
+    }
+    public function status(Request $request){
+        $data = $request->all();
+        $order = Orders::find($request->order_id);
+        $order->status = $request->status;
+        $order->save();
+
     }
 }

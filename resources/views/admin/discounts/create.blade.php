@@ -29,18 +29,15 @@
                                         >
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label">Ngày bắt đầu</label>
-                                    <input type="text" name="start_day" class="form-control" value="{{ old('start_day') }}"
-                                      >
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Ngày bắt đầu</label>
+                                    <input type="text"  name="start_day" class="form-control" id="start_day" >
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label">Ngày kết thúc</label>
-                                    <input type="text" name="expired_day" class="form-control" value="{{ old('expired_day') }}"
->
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Ngày kết thúc</label>
+                                    <input type="text" name="expired_day" class="form-control" id="expired_day" >
                                 </div>
+                                
                                 <div class="col-12">
                                 <label class="form-label">Mô tả</label>
                                     <textarea name="description" value="" id="ckeditor_category" class="form-control"

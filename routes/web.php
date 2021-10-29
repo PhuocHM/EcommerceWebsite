@@ -89,3 +89,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
 Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');
 Route::get('admin/logout', [LoginAdminController::class, 'logoutAction'])->name('logout.admin.action');
+
+Route::post('/status', [OrdersController::class, 'status']);
