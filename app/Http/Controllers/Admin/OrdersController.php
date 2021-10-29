@@ -49,7 +49,7 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrdersRequest $request)
     {
         $this->ordersService->store($request);
         return redirect()->route('orders.index')->with('status', 'Thêm đơn hàng thành công');
@@ -65,7 +65,7 @@ class OrdersController extends Controller
     {
         $orderItems  = $this->ordersService->orderItem($id);
         $order_id = $id;
-     
+
         $params = [
             'orderItems' => $orderItems,
             'order_id' => $order_id
@@ -119,11 +119,11 @@ class OrdersController extends Controller
             return redirect()->route('orders.index')->with('status', 'Xóa không thành công! ' . $e);
         }
     }
-    public function status(Request $request){
+    public function status(Request $request)
+    {
         $data = $request->all();
         $order = Orders::find($request->order_id);
         $order->status = $request->status;
         $order->save();
-
     }
 }

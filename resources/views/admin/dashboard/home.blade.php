@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="">
-                                <p class="mb-1">Tổng số đơn đặt hàng trong tháng</p>
+                                <p class="mb-1">Tổng đơn đặt hàng trong tháng</p>
                                 <h4 class="mb-0 text-primary">{{ $current_orders }}</h4>
                             </div>
                             <div class="ms-auto fs-2 text-primary">

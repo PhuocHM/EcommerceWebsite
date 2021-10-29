@@ -74,16 +74,6 @@
                                                             @elseif ($order->status == 1)
                                                                 <span class='text text-success'>Đang vận chuyển</span>
                                                             @else
-                                                                <form>
-                                                                    @csrf
-                                                                    <select name="status"
-                                                                        data-order_id="{{ $order->id }}"
-                                                                        class="custom-select status">
-                                                                        <option value="0">Đang chờ</option>
-                                                                        <option value="1">Đang vận chuyển</option>
-                                                                        <option selected value="2">Vận chyển xong</option>
-                                                                    </select>
-                                                                </form>
                                                                 <span class='text text-success'>Đã hoàn thành</span>
                                                             @endif
                                                         </td>
