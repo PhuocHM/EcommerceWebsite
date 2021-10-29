@@ -27,4 +27,10 @@ class LoginAdminService
             return redirect()->route('login.admin')->with('login-fail', $message);
         }
     }
+
+    public function logoutAction($request)
+    {
+        $request->session()->forget('loginAdmin');
+        return redirect()->route('login.admin');
+    }
 }

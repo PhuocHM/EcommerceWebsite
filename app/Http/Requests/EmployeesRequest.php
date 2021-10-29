@@ -23,6 +23,7 @@ class EmployeesRequest extends FormRequest
      */
     public function rules()
     {
+
         $roles = [
             'name' => 'required|min:2|max:255|unique:employees,name,' . $this->route('employee'),
             'slug' => 'required',

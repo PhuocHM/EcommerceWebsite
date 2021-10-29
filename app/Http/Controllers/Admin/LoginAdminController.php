@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginAdminRequest;
 use App\Services\LoginAdminService;
-
+use Illuminate\Http\Request;
 
 class LoginAdminController extends Controller
 {
@@ -25,8 +25,8 @@ class LoginAdminController extends Controller
         return  $this->loginAdminService->loginAction($request);
     }
 
-    public function logoutAction()
+    public function logoutAction(Request $request)
     {
-        
+        return $this->loginAdminService->logoutAction($request);
     }
 }
