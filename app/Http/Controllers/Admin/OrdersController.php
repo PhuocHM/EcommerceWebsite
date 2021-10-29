@@ -35,6 +35,11 @@ class OrdersController extends Controller
      */
     public function create()
     {
+        $customers = $this->ordersService->findbyCustomer();
+        $params = [
+            'customers' => $customers,
+        ];
+        return view('admin.orders.create', $params);
     }
 
     /**
@@ -45,6 +50,8 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->ordersService->store($request);
+        return redirect()->route('orders.index')->with('status', 'Thêm đơn hàng thành công');
     }
 
     /**
@@ -56,9 +63,11 @@ class OrdersController extends Controller
     public function show($id)
     {
         $orderItems  = $this->ordersService->orderItem($id);
-       
+        $order_id = $id;
+     
         $params = [
-            'orderItems ' => $orderItems ,      
+            'orderItems' => $orderItems,
+            'order_id' => $order_id
         ];
         return view('admin.orders.show', $params);
     }
@@ -89,7 +98,7 @@ class OrdersController extends Controller
      */
     public function update(OrdersRequest $request, $id)
     {
-       
+
         $this->ordersService->update($request, $id);
         return redirect()->route('orders.index')->with('status', 'Cập nhật đơn hàng thành công!');
     }

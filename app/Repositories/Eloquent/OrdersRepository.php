@@ -17,22 +17,34 @@ class OrdersRepository implements OrdersInterface
         if ($request->order) {
             $search = $request->order;
 
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('customer_id', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
+    }
+    public function store($request)
+    {
+        $order                  = new Orders();
+        $order->code            = '#ORDEW' . time();
+        $order->customer_id     = $request->customer_id;
+        $order->payment_method  = $request->payment_method;
+        $order->total_price     = $request->total_price;
+        $order->status          = $request->status;
+        $order->created_at      = Carbon::now('Asia/Ho_Chi_Minh');
+
+        $order->save();
     }
 
     public function update($request, $id)
     {
         $order                  = Orders::find($id);
-        $order->code            = $request->code;
+        $order->code            = '#ORDEW' . time();
         $order->customer_id     = $request->customer_id;
         $order->payment_method  = $request->payment_method;
         $order->total_price     = $request->total_price;
         $order->status          = $request->status;
-
         $order->updated_at      = Carbon::now('Asia/Ho_Chi_Minh');
+       
 
         $order->save();
     }

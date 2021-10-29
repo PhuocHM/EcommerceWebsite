@@ -24,7 +24,15 @@ class OrderItemsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'price' => 'required',
+            'quantity' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'price.required' => 'Vui lòng nhập giá sản phẩm ',
+            'quantity.required' => 'Vui lòng nhập số lượng đặt hàng'
         ];
     }
 }

@@ -9,6 +9,9 @@ class Orders extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id', 'code', 'customer_id', 'payment_method', 'total_price', 'status'
+    ];
     protected $table = 'orders';
     public $timestamps = true;
 

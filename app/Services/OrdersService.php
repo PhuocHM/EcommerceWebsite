@@ -21,6 +21,10 @@ class OrdersService
     {
         return $this->ordersRepository->update($request, $id);
     }
+    public function store($request)
+    {
+        return $this->ordersRepository->store($request);
+    }
     public function find($id)
     {
         return $this->ordersRepository->find($id);

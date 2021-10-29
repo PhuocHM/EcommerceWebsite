@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderItemsRequest;
 use App\Services\OrderItemsService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrderItemsController extends Controller
 {
@@ -34,8 +35,16 @@ class OrderItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createItem($id)
     {
+        $products = $this->orderItemsService->findbyProduct();
+        $order_id = $id;
+
+        $params = [
+            'products' => $products,
+            'order_id' => $order_id,
+        ];
+        return view('admin.orders.create-orderItems', $params);
     }
 
     /**
@@ -44,8 +53,12 @@ class OrderItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderItemsRequest $request)
     {
+
+        $order_id = $request->order_id;
+        $this->orderItemsService->store($request);
+        return redirect()->route('orders.show', $order_id)->with('status', 'Thêm chi tiết đơn hàng thành công');
     }
 
     /**
@@ -56,7 +69,6 @@ class OrderItemsController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -67,14 +79,13 @@ class OrderItemsController extends Controller
      */
     public function edit($id)
     {
-
-        $customers = $this->orderItemsService->findbyCustomer();
+        $products = $this->orderItemsService->findbyProduct();
         $orderItem = $this->orderItemsService->find($id);
         $params = [
-            'customers' => $customers,
-            'orderItem'     => $orderItem
+            'products'  => $products,
+            'orderItem' => $orderItem
         ];
-        return view('admin.orderitems.edit', $params);
+        return view('admin.orders.edit-orderItems', $params);
     }
 
     /**
@@ -88,7 +99,8 @@ class OrderItemsController extends Controller
     {
 
         $this->orderItemsService->update($request, $id);
-        return redirect()->route('orderItems.index')->with('status', 'Cập nhật đơn hàng thành công!');
+        $order = $this->orderItemsService->find($id);
+        return redirect()->route('orders.show', $order->order_id)->with('status', 'Cập nhật chi tiết đơn hàng thành công!');
     }
 
     /**
@@ -97,13 +109,17 @@ class OrderItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
+        // Log::info($id,$request->all());
         try {
             $this->orderItemsService->destroy($id);
-            return redirect()->route('orderItems.index')->with('status', 'Xóa đơn hàng thành công !');
+            return back()->with('status', 'Xóa chi tiết đơn hàng thành công !');
+            // return redirect()->route('orders.show', $request->order_id)->with('status', 'Xóa chi tiết đơn hàng thành công !');
         } catch (\Exception $e) {
-            return redirect()->route('orderItems.index')->with('status', 'Xóa không thành công! ' . $e);
+            Log::info($e->getMessage());
+            return back()->with('status', 'Xóa không thành công! ' . $e);
+            // return redirect()->route('orders.show',  $request->order_id)->with('status', 'Xóa không thành công! ' . $e);
         }
     }
 }

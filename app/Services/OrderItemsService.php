@@ -17,6 +17,10 @@ class OrderItemsService
     {
         return $this->orderItemsRepository->getAll($request);
     }
+    public function store($request)
+    {
+        return $this->orderItemsRepository->store($request);
+    }
     public function update($request, $id)
     {
         return $this->orderItemsRepository->update($request, $id);
@@ -25,14 +29,11 @@ class OrderItemsService
     {
         return $this->orderItemsRepository->find($id);
     }
-    public function findbyProduct($id)
+    public function findbyProduct()
     {
-        return $this->orderItemsRepository->findbyProduct($id);
+        return $this->orderItemsRepository->findbyProduct();
     }
-    public function findbyCustomer()
-    {
-        return $this->orderItemsRepository->findbyCustomer();
-    }
+ 
     public function destroy($id)
     {
         return $this->orderItemsRepository->destroy($id);

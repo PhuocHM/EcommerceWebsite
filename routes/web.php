@@ -25,8 +25,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DiscountProductController;
-
-
+use App\Http\Controllers\Admin\OrderItemsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +65,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/groupPermisions', GroupPermisionsController::class);
     Route::resource('/orders', OrdersController::class);
     Route::resource('/orderItems', OrderItemsController::class);
+    Route::get('/createOrderItems/{id}', [OrderItemsController::class,'createItem'])->name('create.item');
     Route::resource('/customers', CustomersController::class);
     Route::resource('/discounts', DiscountController::class);
     Route::resource('/discountProduct', DiscountProductController::class);

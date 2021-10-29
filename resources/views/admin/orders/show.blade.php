@@ -14,6 +14,11 @@
                         </ol>
                     </nav>
                 </div>
+                <div class="ms-auto">
+                    <div class="btn-group">
+                        <a href="{{ route('create.item', $order_id) }}" class="btn btn-primary">Thêm chi tiết đơn hàng</a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -44,24 +49,23 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Mã</th>
-                                                    <th>Tên khách hàng</th>
-                                                    <th>Phương thức thanh toán</th>
-                                                    <th>Tổng giá đơn hàng</th> 
-                                                    <th>Trạng thái</th>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Giá mỗi sản phẩm</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Mã đơn hàng</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($orderItems as $orderItem)
+                                                @foreach ($orderItems as $key => $orderItem)
                                                     <tr>
-                                                        <td>{{ $orderItem->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $orderItem->product->name }}</td>
                                                         <td>{{ $orderItem->price }}</td>
                                                         <td>{{ $orderItem->quantity }}</td>
-                                                        <td>{{ $orderItem->order->name }}</td>
+                                                        <td>{{ $orderItem->order->code }}</td>
 
                                                         <td>{{ date('d-m-Y', strtotime($orderItem->created_at)) }}</td>
                                                         <td>
@@ -71,22 +75,18 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                             
                                                                 <a href="{{ route('orderItems.edit', $orderItem->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('orderItems.destroy', [$orderItem->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <a href="#" onclick="deleteOrderItems({{ $orderItem->id }})"
-                                                                        class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteorderItems"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
-                                                                </form>
+
+                                                                <a href="#"
+                                                                    onclick="deleteOrderItems({{ $orderItem->id }})"
+                                                                    class="text-danger" data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteorderItems">
+                                                                    <i class="bi bi-trash-fill"></i></a>
+
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -115,6 +115,7 @@
                                                     <form id="deleteForm" action="#" method="POST">
                                                         @method('DELETE')
                                                         @csrf
+                                                        <input type="hidden" id="order_id_delete">
                                                         <button type="submit" class="btn btn-danger">Xóa</button>
                                                     </form>
                                                 </div>
@@ -122,25 +123,34 @@
                                         </div>
                                     </div>
                                     {{--  --}}
-                                    <div class=" box-footer clearfix" style="float:right">
-                                        {{ $orderItems->links() }}
-                                    </div>
+                                    {{-- <div class=" box-footer clearfix" style="float:right"> --}}
+                                    {{-- {{ $orderItems->links() }} --}}
                                 </div>
                             </div>
+
+                        </div>
+                        <div class="col">
+                            <a href="{{ route('orders.index') }}" style="float:right" class="btn btn-danger">Trở về </a>
                         </div>
                     </div>
-                    <!--end row-->
                 </div>
+                <!--end row-->
             </div>
+    </div>
 
-        </main>
+    </main>
     </div>
 @endsection
 @section('scripts')
     <script>
+        // console.log(window.location.hef)
         function deleteOrderItems(id) {
             var url = '{{ route('orderItems.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
+            let path = window.location.pathname
+            let order_id = path[path.length - 1]
+            $('#order_id_delete').val(order_id)
+
         }
     </script>
-@endsection
+@endsection --}}

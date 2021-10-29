@@ -18,12 +18,6 @@
                                 @method('PUT')
                                 {{ csrf_field() }}
                                 <div class="col-12">
-                                    <label class="form-label">Mã đơn hàng</label>
-                                    <input type="text" class="form-control" placeholder="Mã đơn hàng" name="code"
-                                        value="{{ $order->code }}">
-                                    <span style="color:red;">@error('code'){{ $message }} @enderror</span>
-                                </div>
-                                <div class="col-12">
                                     <label class="form-label">Tên khách hàng</label>
                                     <select name="customer_id" class="form-control input-sm m-bot15">
                                         @foreach ($customers as $customer)
@@ -38,6 +32,7 @@
                                         name="payment_method" value="{{ $order->payment_method }}">
                                     <span style="color:red;">@error('payment_method'){{ $message }} @enderror</span>
                                 </div>
+                                
                                 <div class="col-12">
                                     <label class="form-label">Tổng giá đơn hàng</label>
                                     <input type="text" class="form-control" placeholder="Phương thức thanh toán"
@@ -48,22 +43,17 @@
                                     <label class="form-label">Trạng thái</label>
                                     <select name="status" class="form-select" id="inputGroupSelect02">
                                         @if ($order->status == 0)
-                                            <option selected value="0">Đang chờ
-                                            </option>
+                                            <option selected value="0">Đang chờ</option>
                                             <option value="1">Đang vận chuyển</option>
                                             <option value="2">Đã hoàn thành</option>
                                         @elseif ($order->status == 1)
-                                            <option value="0">Đang chờ<table></table>
-                                            </option>
+                                            <option value="0">Đang chờ</option>
                                             <option selected value="1">Đang vận chuyển</option>
-                                            <option value="2">Đã hoàn thành
-                                            </option>
+                                            <option value="2">Đã hoàn thành </option>
                                         @else
-                                            <option value="0">Đang chờ
-                                            </option>
+                                            <option value="0">Đang chờ</option>
                                             <option value="1">Đang vận chuyển</option>
-                                            <option selected value="2">Đã hoàn thành<table></table>
-                                            </option>
+                                            <option selected value="2">Đã hoàn thành</option>
                                         @endif
                                     </select>
                                 </div>
