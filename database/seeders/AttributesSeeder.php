@@ -18,43 +18,43 @@ class AttributesSeeder extends Seeder
         $item->id = 1;
         $item->name = "Công suất";
         $item->slug = "cong-suat";
-        $item->category_id = 1;
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
         $item = new Attributes;
         $item->id = 2;
-        $item->name = "Điện áp";
-        $item->slug = "dien-ap";
-        $item->category_id = 1;
+        $item->name = "Công suất tiêu thụ";
+        $item->slug = "cong-suat-tieu-thu";
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
         $item = new Attributes;
         $item->id = 3;
-        $item->name = "Chức năng";
-        $item->slug = "chuc-nang";
-        $item->category_id = 1;
+        $item->name = "Pin";
+        $item->slug = "pin";
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
         $item = new Attributes;
         $item->id = 4;
-        $item->name = "CPU";
-        $item->slug = "cpu";
-        $item->category_id = 2;
+        $item->name = "Chức năng";
+        $item->slug = "chuc-nang";
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();
 
         $item = new Attributes;
         $item->id = 5;
-        $item->name = "Màn hình";
-        $item->slug = "man-hinh";
-        $item->category_id = 2;
+        $item->name = "Thời gian làm việc";
+        $item->slug = "thoi-gian-lam-viec";
+        $item->category_id = 7;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
         $item->save();

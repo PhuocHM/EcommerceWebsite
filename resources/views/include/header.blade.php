@@ -5,54 +5,32 @@
         <div class="container">
             <!-- hotline -->
             <ul class="nav-top-left">
-                <li><a href="#">Welcome to Dagon Shop</a></li>
+                <li><a href="#">Chào mừng đến với Horizon</a></li>
             </ul><!-- hotline -->
             <!-- heder links -->
             <ul class="nav-top-right dagon-nav">
-                <li class="menu-item-has-children">
-                    <a href="#" class="dropdown-toggle">
-                        <img src="{{ asset('images/general/l1.jpg') }}" alt="flag">English
-                    </a>
-                    <ul class="submenu parent-megamenu">
-                        <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l1.jpg') }}"
-                                    alt="flag">English</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l2.jpg') }}"
-                                    alt="flag">Hungary</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l3.jpg') }}"
-                                    alt="flag">German</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l4.jpg') }}"
-                                    alt="flag">French</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="flag"><img src="{{ asset('images/general/l5.jpg') }}"
-                                    alt="flag">Canada</a>
-                        </li>
-                    </ul>
+                <li>
+                    @if (Auth::check())
+                    <div class="dropdown">
+                        <img src="{{ asset('images/avatar2.png') }}" alt="" class="avatar">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="text-light">{{ Auth::user()->name }}&ensp;<i class="fas fa-angle-down"></i></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style=" text-align:center;border-radius: 5%;border:1px solid #fff">
+
+                            <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.pass') }}">Đổi mật khẩu</a>
+                            <br>
+                            <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.user') }}">Chỉnh sửa thông tin</a>
+                            <br>
+                            <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('logout.user') }}">Đăng xuất</a>
+                        </div>
+                    </div>
+                    @else
+                    <a href="{{ route('register') }}"><i class="flaticon-profile" aria-hidden="true"></i>Đăng kí
+                        /</a>
+                    <a href="{{ route('login') }}">Đăng nhập</a>
+                    @endif
                 </li>
-                <li class="menu-item-has-children">
-                    <a href="#" class="dropdown-toggle">
-                        <span>Dollar (US)</span>
-                    </a>
-                    <ul class="submenu parent-megamenu">
-                        <li class="switcher-option">
-                            <a href="#" class="switcher-flag icon">Pound (GBP)</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="switcher-flag icon">Euro (EUR)</a>
-                        </li>
-                        <li class="switcher-option">
-                            <a href="#" class="switcher-flag icon">Dollar (USD)</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="flaticon-profile" aria-hidden="true"></i>Register / Sign in</a></li>
             </ul><!-- heder links -->
         </div>
     </div> <!-- header-top -->
@@ -63,7 +41,7 @@
                 <div class="col-md-2 nav-left">
                     <!-- logo -->
                     <strong class="logo">
-                        <a href="{{route('index')}}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+                        <a href="{{ route('index') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
                     </strong><!-- logo -->
                 </div>
                 <div class="col-md-8 nav-mind">
@@ -71,37 +49,14 @@
                     <div class="block-search">
                         <div class="block-content">
                             <div class="categori-search  ">
-                                <select title="categories" data-placeholder="All Categories"
-                                    class="chosen-select categori-search-option">
-                                    <option value="">All Categories</option>
-                                    <optgroup label="LifeStyle">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
-                                    <optgroup label="Smartphone">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
-                                    <optgroup label="LifeStyle">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
-                                    <optgroup label="Smartphone">
-                                        <option>Cell Phones</option>
-                                        <option>Game & Consoles</option>
-                                        <option>Smart Watchs</option>
-                                    </optgroup>
+                                <select title="categories" data-placeholder="Từ khóa" class="chosen-select ">
                                 </select>
                             </div>
                             <div class="form-search">
                                 <form>
                                     <div class="box-group">
-                                        <input type="text" class="form-control" placeholder="Search keyword here...">
-                                        <button class="btn btn-search" type="button"><i
-                                                class="fas fa-search"></i></button>
+                                        <input type="text" id="seach_input" class="form-control" placeholder="Search keyword here...">
+                                        <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -125,77 +80,13 @@
                         <span class="title-menu-mobile">Main menu</span>
 
                     </span>
-                    <div class="block-minicart dropdown style2">
-                        <a class="minicart" href="#">
-
-                            <span class="counter qty">
-
-                                <span class="cart-icon"><img src="{{ asset('images/cart.png') }}" alt="#"></span>
-
-                                <span class="counter-number">5</span>
-
-                            </span>
-                            <span class="counter-your-cart">
-
-                                <span class="counter-label">Your Cart:</span>
-
-                                <span class="counter-price">$00.00</span>
-
-                            </span>
-                        </a>
-                        <div class="parent-megamenu">
-                            <form>
-                                <div class="minicart-content-wrapper">
-                                    <div class="subtitle">
-                                        You have <span>2</span> item(s) in your cart
-                                    </div>
-                                    <div class="minicart-items-wrapper">
-                                        <ol class="minicart-items">
-                                            {{-- @foreach ($cart_items as $item)
-                                                <li class="product-inner">
-                                                    <div class="product-thumb style1">
-                                                        <div class="thumb-inner">
-                                                            <a href="#"><img src="{{ asset($item->image) }}"
-                                                                    alt="c1"></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-innfo">
-                                                        <div class="product-name"><a href="#">{{$item->name}}
-                                                            </a></div>
-                                                        <a href="#" class="remove"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a>
-                                                        <span class="price price-dark">
-
-                                                            <ins>{{$item->price}}</ins>
-
-                                                        </span>
-                                                    </div>
-                                                </li>
-                                            @endforeach --}}
-                                        </ol>
-                                    </div>
-                                    <div class="subtotal">
-                                        <span class="label">Total :</span>
-                                        <span class="price">$480.00</span>
-                                    </div>
-                                    <div class="actions">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <a class="btn btn-viewcart" href="{{ route('cart.index') }}">View
-                                                    cart</a>
-                                            </div>
-                                            <div class="col-6">
-                                                <a class="btn btn-checkout" href="checkout.html">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    @if(Auth::check())
+                    <div class="block-minicart dropdown style2" id="mini-cart">
+                        {{-- --}}
                     </div><!-- block mini cart -->
+                    @endif
                     <a href="#" class="hidden-md search-hidden"><span class="flaticon-magnifying-glass"></span></a>
-                    <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o"
-                            aria-hidden="true"></i></a>
+                    {{-- <a class="wishlist-minicart" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a> --}}
                 </div>
             </div>
         </div>
@@ -209,18 +100,22 @@
                         <ul class="header-nav dagon-nav">
                             <li class="btn-close hidden-md"><i class="flaticon-close" aria-hidden="true"></i></li>
                             <li class="menu-item-has-children">
-                                <a href="index2.html">Khuyến mãi</a>
+                                <a href="{{ route('coupon.index') }}">Khuyến mãi</a>
                             </li>
+
+                            @if (Auth::check())
                             <li class="menu-item-has-children">
-                                <a href="index2.html">Đơn hàng</a>
+                                <a href="{{ route('order.orderDetail') }}">Đơn hàng</a>
                             </li>
+                            @endif
+                            @if (!Auth::check())
                             <li class="menu-item-has-children">
-                                <a href="index2.html">Đăng nhập</a>
+                                <a href="{{ route('login') }}">Đăng nhập</a>
                             </li>
+                            @endif
                         </ul>
                     </div>
-                    <a href="#" class="title-template transport hidden-sm"><i class="far fa-building"></i>Hệ thống
-                        showroom</a>
+
                 </div>
             </div>
         </div>

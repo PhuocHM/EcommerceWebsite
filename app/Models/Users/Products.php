@@ -5,6 +5,7 @@ namespace App\Models\Users;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Users\ProductImage;
+use App\Models\Users\Attributes;
 
 class Products extends Model
 {
@@ -14,12 +15,12 @@ class Products extends Model
 
     public function coverImage()
     {
-        return $this->hasMany(ProductImage::class,'id' ,'product_id')->where('type', '=', 1);
+        return $this->hasMany(ProductImage::class, 'id', 'product_id')->where('type', '=', 1);
     }
 
     public function cover2Image()
     {
-        return $this->hasMany(ProductImage::class ,'product_id')->where('type', '=', 1);
+        return $this->hasMany(ProductImage::class, 'product_id')->where('type', '=', 1);
     }
 
     public function image()
@@ -36,7 +37,7 @@ class Products extends Model
 
     public function attribute()
     {
-        return $this->belongsToMany(Attributes::class, 'product_attributes', 'attribute_id', 'product_id');
+        return $this->belongsToMany(Attributes::class, 'product_attribute', 'product_id', 'attribute_id')->withPivot('content');
     }
 
     public function user()
@@ -51,7 +52,7 @@ class Products extends Model
 
     public function cartItem()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(CartItems::class, 'product_id');
     }
 
     public function discount()

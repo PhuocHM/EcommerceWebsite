@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users\Comments;
+use App\Models\Users\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TrendingProductController extends Controller
 {
@@ -14,7 +17,13 @@ class TrendingProductController extends Controller
      */
     public function index()
     {
-        return view('Website.trending-product');
+        $trends = Products::with('discount', 'cover2Image')->select(DB::raw('count(comments.id) as total_comment,products.*,product_id'))
+            ->join('comments', 'products.id', 'comments.product_id')
+            ->groupBy('product_id')->orderBy('total_comment', 'DESC')->paginate(6);
+        $params = [
+            "trends" => $trends
+        ];
+        return view('Website.trending-product', $params);
     }
 
     /**

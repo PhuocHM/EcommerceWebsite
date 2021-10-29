@@ -4283,7 +4283,7 @@ input[type=password] {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	width: 82.5%;
+	width: 100%;
 	background-color: #e6e6e6;
 	content: '';
 	display: inline-block;
@@ -4997,8 +4997,15 @@ button.btn-searchform {
 .pagination .nav-links li a:hover,
 .pagination .nav-links li.active a {
 	color: #fff;
-	background-color: #e03737;
+	background-color: #e03737 !important;
 	border: 1px solid #e03737;
+}
+.pagination .page-item a{
+	color:black !important;
+}
+.pagination .page-item.active span{
+	background-color: #e03737 !important;
+	border: 1px solid #e03737 !important;
 }
 /********blog-grid*******/
 
@@ -7192,4 +7199,84 @@ label.inline {
 	.shopping-cart .order-summary {
 		padding: 20px;
 	}
+}
+.wrapper-1{
+	width:100%;
+	height:30vh;
+	display: flex;
+  flex-direction: column;
+  }
+  .wrapper-2{
+	padding :30px;
+	text-align:center;
+  }
+  h1{
+	  font-family: 'Kaushan Script', cursive;
+	font-size:4em;
+	letter-spacing:3px;
+	color:#E03737 ;
+	margin:0;
+	margin-bottom:20px;
+  }
+  .wrapper-2 p{
+	margin:0;
+	font-size:1.3em;
+	color:#aaa;
+	font-family: 'Source Sans Pro', sans-serif;
+	letter-spacing:1px;
+  }
+  .go-home{
+	color:#fff;
+	background:#E03737;
+	border:none;
+	padding:10px 50px;
+	margin:30px 0;
+	border-radius:30px;
+	text-transform:capitalize;
+	/* box-shadow: 0 10px 16px 1px #E03737; */
+  }
+  #rating{border:none;float:left;}
+#rating>input{display:none;}/*ẩn input radio - vì chúng ta đã có label là GUI*/
+#rating>label:before{margin:5px;font-size:1.25em;font-family:FontAwesome;display:inline-block;content:"\f005";}/*1 ngôi sao*/
+#rating>.half:before{content:"\f089";position:absolute;}/*0.5 ngôi sao*/
+#rating>label{color:#ddd;float:right;}/*float:right để lật ngược các ngôi sao lại đúng theo thứ tự trong thực tế*/
+/*thêm màu cho sao đã chọn và các ngôi sao phía trước*/
+#rating>input:checked~label,
+#rating:not(:checked)>label:hover, 
+#rating:not(:checked)>label:hover~label{color:#FFD700;}
+/* Hover vào các sao phía trước ngôi sao đã chọn*/
+#rating>input:checked+label:hover,
+#rating>input:checked~label:hover,
+#rating>label:hover~input:checked~label,
+#rating>input:checked~label:hover~label{color:#FFED85;}
+.avatar {
+	vertical-align: middle;
+	width: 35px;
+	height: 35px;
+	margin-right: 10px;
+	border-radius: 50%;
+  }
+
+  .ui-menu-item {
+    list-style-type: none !important;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.ui-menu-item a {
+	color:#888888;
+}
+
+.ui-menu-item a:hover{
+	color: red;
+}
+
+#ui-id-1{
+	width: 522px !important;
+	height:183px;
+	border: 1px solid rgb(235, 235, 235) !important;
+	background-color: white;
+	z-index: 2 ;
+	border-radius: 2%;
 }

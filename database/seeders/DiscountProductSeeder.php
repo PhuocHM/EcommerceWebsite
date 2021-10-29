@@ -24,7 +24,7 @@ class DiscountProductSeeder extends Seeder
 
         $item = new DiscountProduct;
         $item->id = 2;
-        $item->discount_id = 2;
+        $item->discount_id = 1;
         $item->product_id = 2;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
@@ -32,7 +32,7 @@ class DiscountProductSeeder extends Seeder
 
         $item = new DiscountProduct;
         $item->id = 3;
-        $item->discount_id = 2;
+        $item->discount_id = 1;
         $item->product_id = 3;
         $item->created_at = "2021-09-25 23:19:08";
         $item->updated_at  = "2021-09-25 23:19:08";
