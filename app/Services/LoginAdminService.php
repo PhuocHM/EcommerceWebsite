@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Eloquent\LoginAdminRepository;
+use Illuminate\Support\Facades\Auth;
 
 class LoginAdminService
 {
@@ -17,8 +18,9 @@ class LoginAdminService
 
         if ($login) {
 
-            $request->session()->push('loginAdmin', true);
-
+            // $request->session()->push('loginAdmin', true);
+            $request->session()->regenerate();
+           
             return redirect()->route('home');
         } else {
 
@@ -30,7 +32,12 @@ class LoginAdminService
 
     public function logoutAction($request)
     {
-        $request->session()->forget('loginAdmin');
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        // $request->session()->forget('loginAdmin');
         return redirect()->route('login.admin');
     }
 }

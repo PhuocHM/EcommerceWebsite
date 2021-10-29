@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Users\Carts;
 use App\Models\Users\CartItems;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
