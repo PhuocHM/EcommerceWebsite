@@ -52,13 +52,14 @@
                             <form action="{{ route('login.admin.action') }}" class="signin-form" method="post">
                                 @csrf
                                 <div class="form-group mt-3">
-                                    <input type="text" class="form-control" name="email">
-                                    <label class="form-control-placeholder" for="email">Email</label>
+
+
+                                    <input type="text" class="form-control" name="email" placeholder="Email">
                                     <span style="color:red;">@error('email'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="form-group">
-                                    <input id="password-field" type="password" class="form-control" name="password">
-                                    <label class="form-control-placeholder" for="password">Mật khẩu</label>
+
+                                    <input id="password-field" type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                     <span toggle="#password-field"
                                         class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     <span style="color:red;">@error('password'){{ $message }} @enderror</span>

@@ -21,18 +21,21 @@
                 </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+                <div class="col-md-12">
 
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <!-- <div class="addthis_inline_share_toolbox"></div> -->
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
 
-                <form  class="form-inline my-2 my-lg-0" >
-              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('discounts.index') }}" method="GET" name="discount" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('discounts.index') }}" method="GET" name="discount" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
 
-                    </select>
-                </form>
-              </div>
+                        </select>
+                    </form>
+                </div>
             </div>
             <!--end breadcrumb-->
             <div class="card mt-3">
@@ -72,19 +75,19 @@
                                                         <td>{{ $discount->expired_day }}</td>
                                                         <td>
 
-                                                        @if($discount->expired_day>=$today)
-                                                        <span style="color:green">Còn hạn</span>
-                                                        @else 
-                                                        <span style="color:red">Đã hết hạn</span>
-                                                        @endif
+                                                            @if ($discount->expired_day >= $today)
+                                                                <span style="color:green">Còn hạn</span>
+                                                            @else
+                                                                <span style="color:red">Đã hết hạn</span>
+                                                            @endif
 
 
                                                         </td>
-                                                      
-                                                        <td>{{ $discount->description }}</td>
+
+                                                        <td>{!! $discount->description !!}</td>
                                                         <td>
-                                                            <img src="{{ asset('images/discount/' . $discount->image) }}" alt=""
-                                                                style="width: 150px">
+                                                            <img src="{{ asset('images/discount/' . $discount->image) }}"
+                                                                alt="" style="width: 150px">
                                                         </td>
 
                                                         <td>
@@ -94,11 +97,13 @@
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form action="{{ route('discounts.destroy', [$discount->id]) }}"
+                                                                <form
+                                                                    action="{{ route('discounts.destroy', [$discount->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleteDiscount({{ $discount->id }})"
+                                                                    <a href="#"
+                                                                        onclick="deleteDiscount({{ $discount->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteDiscount"> <i
                                                                             class="bi bi-trash-fill"></i></a>

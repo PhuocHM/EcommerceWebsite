@@ -48,13 +48,14 @@ class EmployeesRepository implements EmployeesInterface
 
     public function update($request, $id)
     {
-        $data = $request->only('name', 'slug', 'email', 'birthday', 'address', 'identification', 'group_id');
+        $data =  $request->only('name', 'slug', 'email', 'birthday', 'address', 'identification', 'group_id');
         $data['password'] = Hash::make($request->password);
-        $file = $request->image;
-        if (!$request->hasFile('image')) {
-            $data['image'] = $file;
-        } else {
-            $fileExtension = $file->getClientOriginalExtension();
+        if ($request->image) {
+            $data['image'] = $request->image;
+        }
+
+        if ($request->hasFile('image')) {
+            $fileExtension = $request->image->getClientOriginalExtension();
             $fileName = time() + 2;
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/employee'), $newFileName);

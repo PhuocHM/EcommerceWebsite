@@ -57,9 +57,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Hình ảnh</label>
-                                    <input type="hidden" name="image" value="{{ $employee->image }}">
-                                    <input type="file" name="image" class="form-control-file" id="image"
-                                        value="{{ $employee->image }}"> <br>
+                                    <input type="file" name="image" class="form-control-file" id="image"> <br>
                                     <img src="{{ asset('/images/employee/' . $employee->image) }}" alt=""
                                         style="width: 150px">
                                     <span style="color:red;">@error('image'){{ $message }} @enderror</span>
