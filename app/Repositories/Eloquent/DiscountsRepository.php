@@ -31,7 +31,7 @@ class DiscountsRepository implements DiscountsInterface
         $discount->name              = $request->name;
         $discount->amounts           = $request->amounts;
         $discount->start_day         = $request->start_day;
-        $discount->start_day         = $request->start_day;
+        $discount->expired_day         = $request->expired_day;
         $discount->description       = $request->description;
 
         if ($request->hasFile('image')) {

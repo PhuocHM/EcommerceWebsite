@@ -16,7 +16,7 @@ class ProductImages extends Model
         'amounts', 'start_day', 'expired_day','description','image'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'discounts';
+    protected $table = 'product_image';
     public $timestamps = true;
     
    

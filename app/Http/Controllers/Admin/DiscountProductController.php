@@ -21,9 +21,11 @@ class DiscountProductController extends Controller
     public function index(Request $request)
     {
         $discountProducts = $this->discountProductService->getAll($request); 
+     
         // dd($discountProduct->toArray());
         $params = [
             'discountProducts' => $discountProducts,
+           
         ];
         return view('admin.discountProduct.index', $params);
     }

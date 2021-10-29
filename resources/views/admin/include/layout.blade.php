@@ -41,6 +41,7 @@
     <link href="{{ asset('admin/assets/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/header-colors.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <title>Admin Ecommerce</title>
@@ -72,7 +73,7 @@
     <script src="{{ asset('admin/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
     <!--app-->
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
     <script src="{{ asset('admin/assets/js/index2.js') }}"></script>
     <script type="text/javascript">
@@ -107,12 +108,15 @@
             document.getElementById('convert_slug').value = slug;
         }
     </script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">  </script>
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js">  </script> -->
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">  </script> -->
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.min.js">  </script> -->
     <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
     <script type="text/javascript">
         CKEDITOR.replace('ckeditor_category');
     </script>
-
+<link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#dataTab le').DataTable();
@@ -147,6 +151,18 @@
             });
         })
     </script>
+    <script type="text/javascript">
+   jQuery.datetimepicker.setLocale('de');
+   
+   jQuery('#start_day').datetimepicker({
+    format:'Y-m-d H:i:s',
+   });
+   
+   jQuery('#expired_day').datetimepicker({
+    format:'Y-m-d H:i:s',
+   });
+
+ </script>
 </body>
 
 </html>

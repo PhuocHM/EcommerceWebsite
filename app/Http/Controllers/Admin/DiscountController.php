@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DiscountsRequest;
 use App\Services\DiscountsService;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 
 // use App\Http\Requests\BrandRequest;
@@ -26,8 +26,10 @@ class DiscountController extends Controller
     public function index(Request $request)
     {
         $discounts = $this->discountsService->getAll($request);
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         $params = [
             'discounts' => $discounts,
+            'today' => $today,
         ];
         return view('admin.discounts.index', $params);
     }
