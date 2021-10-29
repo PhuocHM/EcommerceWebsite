@@ -80,6 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::resource('/customers', CustomersController::class);
     Route::resource('/discounts', DiscountController::class);
     Route::resource('/discountProduct', DiscountProductController::class);
+    Route::resource('/excel', ExcelController::class);
     Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
 });
 

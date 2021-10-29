@@ -52,7 +52,7 @@ class ProductImagesController extends Controller
     public function store(ProductImagesRequest $request)
     {
         $this->productImagesService->store($request);
-        return redirect()->route('productImages.index')->with('status','Thêm hình ảnh sản phẩm thành công !');
+        return redirect()->route('productImages.index')->with('status', 'Thêm hình ảnh sản phẩm thành công !');
     }
 
     /**
@@ -93,7 +93,7 @@ class ProductImagesController extends Controller
     public function update(ProductImagesRequest $request, $id)
     {
         $this->productImagesService->update($request, $id);
-        return redirect()->route('productImages.index')->with('status','Cập nhật hình ảnh sản phẩm thành công!');
+        return redirect()->route('productImages.index')->with('status', 'Cập nhật hình ảnh sản phẩm thành công!');
     }
 
     /**
@@ -104,12 +104,11 @@ class ProductImagesController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->productImagesService->destroy($id);
             return redirect()->route('productImages.index')->with('status', 'Xóa hình ảnh sản phẩm thành công !');
-        }
-        catch(\Exception $e){
-            return redirect()->route('productImages.index')->with('status', 'Xóa không thành công! '.$e);
+        } catch (\Exception $e) {
+            return redirect()->route('productImages.index')->with('status', 'Xóa không thành công! ' . $e);
         }
     }
 }
