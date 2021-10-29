@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\DiscountProductController;
 use App\Http\Controllers\Admin\ExcelController;
 
 
+use App\Http\Controllers\Admin\LoginAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,7 @@ Route::resource('maybe-you-like', MaybeYouLikeController::class);
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::get('/home', AdminController::class)->name('home');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
@@ -81,3 +82,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/discountProduct', DiscountProductController::class);
     Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
 });
+
+Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
+Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');
+Route::get('admin/logout', [LoginAdminController::class, 'logoutAction'])->name('logout.admin.action');

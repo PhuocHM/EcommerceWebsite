@@ -12,7 +12,7 @@ class Employees extends Model
     protected $table = 'employees';
 
     protected $fillable = [
-        'id', 'name', 'slug', 'mail', 'password', 'birthday', 'address', 'identification', 'image', 'group_id'
+        'id', 'name', 'slug', 'email' , 'password', 'birthday', 'address', 'identification', 'image', 'group_id'
     ];
 
     public function stock()
