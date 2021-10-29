@@ -56,6 +56,7 @@
                                     <div class="col-sm-9">
 
                                         <button type="submit" class="btn btn-primary px-5">Xác nhận</button>
+                                        <a href="{{ route('home') }}" class="btn btn-secondary px-5">Quay lại</a>
                                     </div>
                                 </div>
                             </form>
