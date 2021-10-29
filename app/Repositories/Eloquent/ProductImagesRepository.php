@@ -27,23 +27,22 @@ class ProductImagesRepository implements ProductImagesInterface
     }
     public function store($request)
     {
-        $productImage             = new ProductImages();
-        $productImage->product_id = $request->product_id;
-        $productImage->type       = $request->type;
-
         if ($request->hasFile('image')) {
-            $get_image = $request->file('image');
-            $path = 'images/product/';
-            $get_name_image = $get_image->getClientOriginalName();
-            $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move($path, $new_image);
-            $productImage->image = $new_image;
-            $data['productImage_image'] = $new_image;
+            foreach ($request->image as $key => $value) {
+                $productImage             = new ProductImages();
+                $productImage->product_id = $request->product_id;
+                $productImage->type       = $request->type;
+                $get_image = $value;
+                $path = 'images/product/';
+                $get_name_image = $get_image->getClientOriginalName();
+                $name_image = current(explode('.', $get_name_image));
+                $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+                $get_image->move($path, $new_image);
+                $productImage->image = $new_image;
+                $data['productImage_image'] = $new_image;
+                $productImage->save();
+            }
         }
-        $productImage->created_at = Carbon::now('Asia/Ho_Chi_Minh');
-
-        $productImage->save();
     }
     public function edit($id)
     {

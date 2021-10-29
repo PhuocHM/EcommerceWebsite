@@ -30,6 +30,9 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DiscountProductController;
+use App\Http\Controllers\Admin\ExcelController;
+
+
 use App\Http\Controllers\Admin\LoginAdminController;
 
 /*
@@ -79,7 +82,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::resource('/discountProduct', DiscountProductController::class);
     Route::get('/reset-password', [LoginAdminController::class, 'resetPass'])->name('reset.pass.admin');
     Route::put('/reset-password', [LoginAdminController::class, 'resetPassAction']);
+    Route::resource('/excel', ExcelController::class);
+    Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
 });
+
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
 Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');
 Route::get('admin/logout', [LoginAdminController::class, 'logoutAction'])->name('logout.admin.action');

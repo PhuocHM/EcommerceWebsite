@@ -1,168 +1,176 @@
 @extends('admin.include.layout')
 @section('main')
-    <div class="wrapper">        
-        <!--start content-->
-        <main class="page-content">
+<div class="wrapper">
+    <!--start content-->
+    <main class="page-content">
 
-            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-4">
-                <div class="col">
-                    <div class="card radius-10">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="">
-                                    <p class="mb-1">Total Orders</p>
-                                    <h4 class="mb-0 text-primary">8245</h4>
-                                </div>
-                                <div class="ms-auto fs-2 text-primary">
-                                    <i class="bi bi-cart-check"></i>
-                                </div>
+        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-4">
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">Tổng số đơn đặt hàng trong tháng</p>
+                                <h4 class="mb-0 text-primary">{{ $current_orders }}</h4>
                             </div>
-                            <div class="border-top my-2"></div>
-                            <small class="mb-0"><span class="text-success">+2.5 <i
-                                        class="bi bi-arrow-up"></i></span> Compared to last month</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card radius-10">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="">
-                                    <p class="mb-1">Total Sales</p>
-                                    <h4 class="mb-0 text-success">$4,562</h4>
-                                </div>
-                                <div class="ms-auto fs-2 text-success">
-                                    <i class="bi bi-piggy-bank"></i>
-                                </div>
+                            <div class="ms-auto fs-2 text-primary">
+                                <i class="bi bi-cart-check"></i>
                             </div>
-                            <div class="border-top my-2"></div>
-                            <small class="mb-0"><span class="text-success">+3.6 <i
-                                        class="bi bi-arrow-up"></i></span> Compared to last month</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card radius-10">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="">
-                                    <p class="mb-1">Purchase</p>
-                                    <h4 class="mb-0 text-pink">$9,482</h4>
-                                </div>
-                                <div class="ms-auto fs-2 text-pink">
-                                    <i class="bi bi-bag-check"></i>
-                                </div>
-                            </div>
-                            <div class="border-top my-2"></div>
-                            <small class="mb-0"><span class="text-danger">-1.8 <i
-                                        class="bi bi-arrow-down"></i></span> Compared to last month</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card radius-10">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="">
-                                    <p class="mb-1">Return</p>
-                                    <h4 class="mb-0 text-orange">146</h4>
-                                </div>
-                                <div class="ms-auto fs-2 text-orange">
-                                    <i class="bi bi-recycle"></i>
-                                </div>
-                            </div>
-                            <div class="border-top my-2"></div>
-                            <small class="mb-0"><span class="text-success">+3.7 <i
-                                        class="bi bi-arrow-up"></i></span> Compared to last month</small>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--end row-->
-
-
-
-        </main>
-        <!--end page main-->
-
-        <!--start overlay-->
-        <div class="overlay nav-toggle-icon"></div>
-        <!--end overlay-->
-
-        <!--Start Back To Top Button-->
-        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-        <!--End Back To Top Button-->
-
-        <!--start switcher-->
-        <div class="switcher-body">
-            <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
-                    class="bi bi-paint-bucket me-0"></i></button>
-            <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
-                tabindex="-1" id="offcanvasScrolling">
-                <div class="offcanvas-header border-bottom">
-                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Theme Customizer</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <h6 class="mb-0">Theme Variation</h6>
-                    <hr>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme"
-                            value="option1" checked>
-                        <label class="form-check-label" for="LightTheme">Light</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme"
-                            value="option2">
-                        <label class="form-check-label" for="DarkTheme">Dark</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme"
-                            value="option3">
-                        <label class="form-check-label" for="SemiDarkTheme">Semi Dark</label>
-                    </div>
-                    <hr>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="MinimalTheme"
-                            value="option3">
-                        <label class="form-check-label" for="MinimalTheme">Minimal Theme</label>
-                    </div>
-                    <hr />
-                    <h6 class="mb-0">Header Colors</h6>
-                    <hr />
-                    <div class="header-colors-indigators">
-                        <div class="row row-cols-auto g-3">
-                            <div class="col">
-                                <div class="indigator headercolor1" id="headercolor1"></div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">Tổng doanh thu trong tháng</p>
+                                <h4 class="mb-0 text-success">{{ number_format($current_sales) }}&ensp;<u>đ</u></h4>
                             </div>
-                            <div class="col">
-                                <div class="indigator headercolor2" id="headercolor2"></div>
-                            </div>
-                            <div class="col">
-                                <div class="indigator headercolor3" id="headercolor3"></div>
-                            </div>
-                            <div class="col">
-                                <div class="indigator headercolor4" id="headercolor4"></div>
-                            </div>
-                            <div class="col">
-                                <div class="indigator headercolor5" id="headercolor5"></div>
-                            </div>
-                            <div class="col">
-                                <div class="indigator headercolor6" id="headercolor6"></div>
-                            </div>
-                            <div class="col">
-                                <div class="indigator headercolor7" id="headercolor7"></div>
-                            </div>
-                            <div class="col">
-                                <div class="indigator headercolor8" id="headercolor8"></div>
+                            <div class="ms-auto fs-2 text-success">
+                                <i class="bi bi-piggy-bank"></i>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+        </div>
+        <!--end row-->
+        <div class="container" style="background-color:#fff;max-witdh:1000px !important">
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 col-xl-6 d-flex" style="width:66.5%;height:500px">
+                <div class="card radius-10 w-100">
+                    <div class="card-body">
+                        <div class="row g-3 align-items-center">
+                            <div class="col">
+                                <h5 class="mb-0">Doanh thu</h5>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex">
+                                    <div class="dropdown ms-auto">
+                                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class="fas fa-caret-down"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <form action="{{ route('excel.export_latest_orders') }}" method="post">
+                                                    @csrf
+                                                    <input type="submit" value="Xuất ra Excel lịch sử order 5 tháng gần nhất" class="dropdown-item">
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">
+                            <canvas id="bar-chart" width="270" height="100"></canvas>
+                        </div>
+                        <div class="bg-light p-3 radius-10 mt-3">
+                            <p class="mb-0 text-center">Biểu đồ thể hiện doanh thu 5 tháng gần nhất</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 col-xl-4 d-flex">
+                <div class="card radius-10 w-100">
+                    <div class="card-header bg-transparent">
+                        <div class="row g-3 align-items-center">
+                            <div class="col">
+                                <h5 class="mb-0">Thống kê đơn hàng</h5>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex align-items-center justify-content-end gap-3 cursor-pointer">
+                                    {{-- <div class="dropdown">
+                                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-caret-down"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="javascript:;">Xuất file Excel</a>
+                                            </li>
+                                        </ul>
+                                    </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="position: relative;">
+                        <div id="chart2" style="min-height: 250.7px;">
+                            <div id="apexchartsl4v1scsm" class="apexcharts-canvas apexchartsl4v1scsm apexcharts-theme-light" style="width: 487px; height: 250.7px;">
+                                <div id="apexchartstkj3glt1" class="apexcharts-canvas apexchartstkj3glt1 apexcharts-theme-light" style="width: 350px; height: 250.7px;">
+                                    <canvas id="pie-chart" width="300" height="150"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resize-triggers">
+                            <div class="expand-trigger">
+                                <div style="width: 520px; height: 284px;"></div>
+                            </div>
+                            <div class="contract-trigger"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <!--end switcher-->
 
-    </div>
+
+    </main>
+    <!--end page main-->
+
+    <!--start overlay-->
+    <div class="overlay nav-toggle-icon"></div>
+    <!--end overlay-->
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+    <!--End Back To Top Button-->
+
+</div>
+@endsection
+@section('scripts')
+<script>
+    let labels = '<?= $labels ?>';
+    let data = '<?= $data ?>';
+    const myChart = new Chart(document.getElementById("bar-chart"), {
+        type: 'bar'
+        , data: {
+            labels: JSON.parse(labels)
+            , datasets: [{
+                label: "Doanh thu ( VND )"
+                , backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
+                , data: JSON.parse(data)
+            }]
+        }
+        , options: {
+            legend: {
+                display: false
+            }
+            , title: {
+                display: true
+                , text: '5 month'
+            }
+        }
+    });
+    let statics = '<?= $statics ?>';
+    const pipeChart = new Chart(document.getElementById("pie-chart"), {
+        type: 'pie'
+        , data: {
+            labels: ["Đang chờ", "Đang vận chuyển", "Thành công"]
+            , datasets: [{
+                label: "( Đơn )"
+                , backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"]
+                , data: JSON.parse(statics)
+            }]
+        }
+        , options: {
+            title: {
+                display: true
+                , text: '5 month'
+            }
+        }
+    });
+
+</script>
 @endsection
