@@ -31,9 +31,9 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email</label>
-                                    <input type="email" name="mail" class="form-control" value="{{ old('mail') }}"
+                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}"
                                         id="convert_slug" placeholder="Email">
-                                    <span style="color:red;">@error('mail'){{ $message }} @enderror</span>
+                                    <span style="color:red;">@error('email'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Mật khẩu</label>

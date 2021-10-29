@@ -32,14 +32,13 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email</label>
-                                    <input type="email" class="form-control" placeholder="Email" name="mail"
-                                        value="{{ $employee->mail }}">
-                                    <span style="color:red;">@error('mail'){{ $message }} @enderror</span>
+                                    <input type="email" class="form-control" placeholder="Email" name="email"
+                                        value="{{ $employee->email }}">
+                                    <span style="color:red;">@error('email'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Mật khẩu</label>
-                                    <input type="text" class="form-control" placeholder="Password" name="password"
-                                        value="{{ $employee->password }}">
+                                    <input type="text" class="form-control" placeholder="Password" name="password">
                                     <span style="color:red;">@error('password'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">

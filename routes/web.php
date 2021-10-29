@@ -30,8 +30,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DiscountProductController;
-
-
+use App\Http\Controllers\Admin\LoginAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +56,7 @@ Route::resource('maybe-you-like', MaybeYouLikeController::class);
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::get('/home', AdminController::class)->name('home');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
@@ -75,9 +74,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/roles', RolesController::class);
     Route::resource('/groupPermisions', GroupPermisionsController::class);
     Route::resource('/orders', OrdersController::class);
-    Route::resource('/customers',CustomersController::class);
-    Route::resource('/discounts',DiscountController::class);
-    Route::resource('/discountProduct',DiscountProductController::class);
+    Route::resource('/customers', CustomersController::class);
+    Route::resource('/discounts', DiscountController::class);
+    Route::resource('/discountProduct', DiscountProductController::class);
 });
-
-
+Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
+Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');
+Route::get('admin/logout', [LoginAdminController::class, 'logoutAction'])->name('logout.admin.action');

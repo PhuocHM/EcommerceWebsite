@@ -63,11 +63,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($employees as $employee)
+                                                @foreach ($employees as $key => $employee)
                                                     <tr>
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $employee->name }}</td>
-                                                        <td>{{ $employee->mail }}</td>
+                                                        <td>{{ $employee->email }}</td>
                                                         <td>{{ $employee->birthday }}</td>
                                                         <td>{{ $employee->address }}</td>
                                                         <td>{{ $employee->identification }}</td>
