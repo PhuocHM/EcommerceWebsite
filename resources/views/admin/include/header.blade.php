@@ -1,11 +1,11 @@
 <!--start top header-->
 <header class="top-header">
-    <nav class="navbar navbar-expand">
+    <nav class="navbar">
         <div class="mobile-toggle-icon d-xl-none">
             <i class="bi bi-list"></i>
         </div>
         <div class="top-navbar d-none d-xl-block">
-            <ul class="navbar-nav align-items-center">
+            <ul class=" navbar-nav align-items-center">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Trang chủ</a>
                 </li>
@@ -14,10 +14,9 @@
         <div class="ms-3 float-right  d-none d-xl-block">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
-                    <a class="nav-link  dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" class="user-img"
-                                alt="">
+                            <img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" class="user-img" alt="">
                             <div class="user-name d-none d-sm-block">Jhon Deo</div>
                         </div>
                     </a>
@@ -25,8 +24,7 @@
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" alt=""
-                                        class="rounded-circle" width="60" height="60">
+                                    <img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" alt="" class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
                                         <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
                                         {{-- <small class="mb-0 dropdown-user-designation text-secondary">HR
@@ -365,10 +363,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-basket2-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Orders <span
-                                                class="msg-time float-end text-secondary">1 m</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You
+                                        <h6 class="mb-0 dropdown-msg-user">New Orders <span class="msg-time float-end text-secondary">1 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You
                                             have recived new orders</small>
                                     </div>
                                 </div>
@@ -377,10 +373,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-people-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Customers <span
-                                                class="msg-time float-end text-secondary">7 m</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5
+                                        <h6 class="mb-0 dropdown-msg-user">New Customers <span class="msg-time float-end text-secondary">7 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5
                                             new user registered</small>
                                     </div>
                                 </div>
@@ -390,10 +384,8 @@
                                     <div class="notification-box"><i class="bi bi-file-earmark-bar-graph-fill"></i>
                                     </div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">24 PDF File <span
-                                                class="msg-time float-end text-secondary">2 h</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The
+                                        <h6 class="mb-0 dropdown-msg-user">24 PDF File <span class="msg-time float-end text-secondary">2 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">The
                                             pdf files generated</small>
                                     </div>
                                 </div>
@@ -402,10 +394,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-collection-play-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Time Response <span
-                                                class="msg-time float-end text-secondary">3 h</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5.1
+                                        <h6 class="mb-0 dropdown-msg-user">Time Response <span class="msg-time float-end text-secondary">3 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">5.1
                                             min avarage time response</small>
                                     </div>
                                 </div>
@@ -414,10 +404,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-cursor-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Product Approved <span
-                                                class="msg-time float-end text-secondary">1 d</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Your
+                                        <h6 class="mb-0 dropdown-msg-user">New Product Approved <span class="msg-time float-end text-secondary">1 d</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Your
                                             new product has approved</small>
                                     </div>
                                 </div>
@@ -426,10 +414,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-gift-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New Comments <span
-                                                class="msg-time float-end text-secondary">2 w</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New
+                                        <h6 class="mb-0 dropdown-msg-user">New Comments <span class="msg-time float-end text-secondary">2 w</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New
                                             customer comments recived</small>
                                     </div>
                                 </div>
@@ -438,10 +424,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-droplet-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">New 24 authors<span
-                                                class="msg-time float-end text-secondary">1 m</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">24
+                                        <h6 class="mb-0 dropdown-msg-user">New 24 authors<span class="msg-time float-end text-secondary">1 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">24
                                             new authors joined last week</small>
                                     </div>
                                 </div>
@@ -450,10 +434,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-mic-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Your item is shipped <span
-                                                class="msg-time float-end text-secondary">7 m</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Successfully
+                                        <h6 class="mb-0 dropdown-msg-user">Your item is shipped <span class="msg-time float-end text-secondary">7 m</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Successfully
                                             shipped your item</small>
                                     </div>
                                 </div>
@@ -462,10 +444,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-lightbulb-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">Defense Alerts <span
-                                                class="msg-time float-end text-secondary">2 h</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">45%
+                                        <h6 class="mb-0 dropdown-msg-user">Defense Alerts <span class="msg-time float-end text-secondary">2 h</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">45%
                                             less alerts last 4 weeks</small>
                                     </div>
                                 </div>
@@ -474,10 +454,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-bookmark-heart-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">4 New Sign Up <span
-                                                class="msg-time float-end text-secondary">2 w</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New
+                                        <h6 class="mb-0 dropdown-msg-user">4 New Sign Up <span class="msg-time float-end text-secondary">2 w</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">New
                                             4 user registartions</small>
                                     </div>
                                 </div>
@@ -486,10 +464,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="notification-box"><i class="bi bi-briefcase-fill"></i></div>
                                     <div class="ms-3 flex-grow-1">
-                                        <h6 class="mb-0 dropdown-msg-user">All Documents Uploaded <span
-                                                class="msg-time float-end text-secondary">1 mo</span></h6>
-                                        <small
-                                            class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Sussessfully
+                                        <h6 class="mb-0 dropdown-msg-user">All Documents Uploaded <span class="msg-time float-end text-secondary">1 mo</span></h6>
+                                        <small class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">Sussessfully
                                             uploaded all files</small>
                                     </div>
                                 </div>

@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DiscountProductController;
+use App\Http\Controllers\Admin\ExcelController;
 
 
 
@@ -75,9 +76,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/roles', RolesController::class);
     Route::resource('/groupPermisions', GroupPermisionsController::class);
     Route::resource('/orders', OrdersController::class);
-    Route::resource('/customers',CustomersController::class);
-    Route::resource('/discounts',DiscountController::class);
-    Route::resource('/discountProduct',DiscountProductController::class);
+    Route::resource('/customers', CustomersController::class);
+    Route::resource('/discounts', DiscountController::class);
+    Route::resource('/discountProduct', DiscountProductController::class);
+    Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
 });
-
-
