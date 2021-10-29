@@ -5,7 +5,9 @@
              <img src="{{ asset('admin/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
          </div>
          <div>
-             <h4 class="logo-text">Ecommerce</h4>
+             <a href="{{ route('home') }}">
+                 <h4 class="logo-text">Ecommerce</h4>
+             </a>
          </div>
          <div class="toggle-icon ms-auto"><i class="bi bi-chevron-double-left"></i>
          </div>
@@ -65,7 +67,18 @@
                  </li>
              </ul>
          </li>
-
+         <li>
+             <a href="javascript:;" class="has-arrow">
+                 <div class="parent-icon"><i class="fas fa-file-invoice-dollar"></i>
+                 </div>
+                 <div class="menu-title">Quản lí đơn hàng</div>
+             </a>
+             <ul>
+                 <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i
+                             class="bi bi-arrow-right-short"></i>Thông tin đơn hàng</a>
+                 </li>
+             </ul>
+         </li>
          <li>
              <a href="javascript:;" class="has-arrow">
                  <div class="parent-icon"><i class="fas fa-users"></i>

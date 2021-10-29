@@ -5,11 +5,6 @@
             <i class="bi bi-list"></i>
         </div>
         <div class="top-navbar d-none d-xl-block">
-            <ul class=" navbar-nav align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Trang chủ</a>
-                </li>
-            </ul>
         </div>
         <div class="ms-3 float-right  d-none d-xl-block">
             <ul class="navbar-nav align-items-center">
