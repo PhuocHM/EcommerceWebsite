@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Hình ảnh</label>
-                                    <input type="file" name="image[]" class="form-control-file" id="image"
+                                    <input type="file" name="image" class="form-control-file" id="image"
                                         value="{{ $productImage->image }}"> <br>
                                     <img src="{{ asset('/images/product/' . $productImage->image) }}" alt=""
                                         style="width: 150px">

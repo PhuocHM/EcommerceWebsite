@@ -54,21 +54,15 @@ class ProductImagesRepository implements ProductImagesInterface
         $productImage->product_id = $request->product_id;
         $productImage->type       = $request->type;
 
-        if ($request->hasFile('image')) {
-            $get_image = $request->file('image');
-            if ($get_image) {
-                $path = 'images/product/' . $productImage->image;
-                if (file_exists($path)) {
-                    unlink($path);
-                }
-                $path = 'images/product/';
-                $get_name_image = $get_image->getClientOriginalName();
-                $name_image = current(explode('.', $get_name_image));
-                $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-                $get_image->move($path, $new_image);
-                $productImage->image = $new_image;
-                $data['productImage_image'] = $new_image;
-            }
+        $file = $request->image;
+        if (!$request->hasFile('image')) {
+            $productImage->image = $file;
+        } else {
+            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = time() + 2;
+            $newFileName = "$fileName.$fileExtension";
+            $request->file('image')->move(public_path('images'), $newFileName);
+            $productImage->image = $newFileName;
         }
         $productImage->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
