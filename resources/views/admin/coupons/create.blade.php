@@ -35,7 +35,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Ngày hết hạn</label>
-                                    <input type="date" name="expired_day" class="form-control" id="expired_day"> <br>
+                                    <input type="date" name="expired_day" class="form-control"> <br>
                                     <span style="color:red;">@error('expired_day'){{ $message }} @enderror</span>
                                 </div>
 

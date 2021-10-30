@@ -31,11 +31,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ngày bắt đầu</label>
-                                    <input type="text"  name="start_day" class="form-control" id="start_day" >
+                                    <input type="text"  name="start_date" class="form-control" id="start_date" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Ngày kết thúc</label>
-                                    <input type="text" name="expired_day" class="form-control" id="expired_day" >
+                                    <input type="text" name="expired_date" class="form-control" id="expired_date" >
                                 </div>
                                 
                                 <div class="col-12">

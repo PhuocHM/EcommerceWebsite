@@ -18,7 +18,7 @@ class CreateDiscountsTable extends Migration
             $table->string('name');
             $table->double('amounts');
             $table->dateTime('start_date');
-            $table->dateTime('expired_date');
+            $table->string('expired_date');
             $table->string('description');
             $table->string('image');
             $table->timestamps();

@@ -19,7 +19,7 @@ class ProductImagesRepository implements ProductImagesInterface
         }
         $query->orderBy('id', 'DESC');
 
-        return $query->paginate(10);
+        return $query->paginate(5);
     }
     public function create_product()
     {

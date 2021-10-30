@@ -50,7 +50,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Slug</th>
+
                                                     <th>Địa chỉ</th>
                                                     <th>Phone</th>
                                                     <th>Ngày cập nhật</th>
@@ -62,7 +62,7 @@
                                                     <tr>
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $supplier->name }}</td>
-                                                        <td>{{ $supplier->slug }}</td>
+                                                    
                                                         <td>
                                                             {{ $supplier->address }}
                                                         </td>

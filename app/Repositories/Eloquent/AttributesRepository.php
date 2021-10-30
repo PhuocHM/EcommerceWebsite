@@ -20,7 +20,7 @@ class AttributesRepository implements AttributesInterface
         }
         $query->orderBy('id', 'DESC');
 
-        return $query->paginate(10);
+        return $query->paginate(5);
     }
 
     public function store($request)
@@ -55,6 +55,6 @@ class AttributesRepository implements AttributesInterface
     }
     public function edit($id)
     {
-        Attributes::find($id);
+        return Attributes::find($id);
     }
 }

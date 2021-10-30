@@ -21,7 +21,7 @@ class CustomersRepository implements CustomersInterface
         }
         $query->orderBy('id', 'DESC');
 
-        return $query->paginate(3);
+        return $query->paginate(5);
     }
     public function getOne()
     {

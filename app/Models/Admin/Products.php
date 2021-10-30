@@ -16,7 +16,7 @@ class Products extends Model
         // your other new column
     ];
     protected $fillable = [
-        'code', 'name', 'slug', 'sold', 'price', 'description', 'status', 'brand_id', 'category_id'
+        'code', 'name', 'slug', 'price', 'description', 'status', 'brand_id', 'category_id'
     ];
     protected $primaryKey = 'id';
     protected $table = 'products';

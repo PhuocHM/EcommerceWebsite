@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Repositories\Eloquent;
 
@@ -7,7 +7,7 @@ use App\Models\Admin\Products;
 use App\Models\Admin\Discounts;
 use App\Repositories\Interfaces\DiscountProductInterface;
 use Carbon\Carbon;
-class DiscountProductRepository implements DiscountProductInterface 
+class DiscountProductRepository implements DiscountProductInterface
 {
     public function getAll($request)
     {
@@ -15,12 +15,12 @@ class DiscountProductRepository implements DiscountProductInterface
          $query = DiscountProduct::orderBy('id','DESC');
          if($request->discountProduct){
              $search=$request->discountProduct;
-         
+
              $query->where('product_id','LIKE','%'.$search.'%');
          }
- 
-         return $query->paginate(2);
- 
+
+         return $query->paginate(5);
+
     }
     public function create_product()
     {
@@ -35,7 +35,7 @@ class DiscountProductRepository implements DiscountProductInterface
         $discountProduct->product_id    = $request->product_id;
         $discountProduct->discount_id    = $request->discount_id;
         $discountProduct->created_at    = Carbon::now('Asia/Ho_Chi_Minh');
-    
+
         $discountProduct->save();
     }
     public function edit($id){
@@ -45,11 +45,11 @@ class DiscountProductRepository implements DiscountProductInterface
         $discountProduct                = DiscountProduct::find($id);
         $discountProduct->product_id    = $request->product_id;
         $discountProduct->discount_id  = $request->discount_id;
-    
+
         $discountProduct->updated_at    = Carbon::now('Asia/Ho_Chi_Minh');
 
-        $discountProduct->save();  
-        
+        $discountProduct->save();
+
     }
     public function destroy($id){
         $discountProduct = DiscountProduct::find($id);

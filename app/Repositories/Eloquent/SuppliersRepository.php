@@ -15,7 +15,7 @@ class SuppliersRepository implements SupplierRepositoryInterface
             $search = $request->supplier;
             $query->where('name','LIKE','%'.$search.'%');
         }
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
 
     public function find($id)

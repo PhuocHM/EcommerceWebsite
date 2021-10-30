@@ -23,6 +23,10 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
+
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -53,14 +57,13 @@
                                                         <th>#</th>
                                                         <th>Mã</th>
                                                         <th>Tên</th>
-
                                                         <th>Danh mục</th>
                                                         <th>Thương hiệu</th>
                                                         <th>Đã bán</th>
-                                                        <th>Giá</th>
+                                                        <th>Giá (VNĐ)</th>
                                                         <th>Mô tả</th>
                                                         <th>Trạng thái</th>
-                                                        <th>Ngày tạo</th>
+
                                                         <th>Ngày cập nhật</th>
                                                         <th>Hành động</th>
                                                     </tr>
@@ -76,16 +79,14 @@
                                                                 <td>{{ $product->category->name }}</td>
                                                                 <td>{{ $product->brand->name }}</td>
                                                                 <td>{{ $product->sold }}</td>
-                                                                <td>{{ $product->price }}</td>
-                                                                <td>{{ $product->description }}</td>
+                                                                <td>{{ number_format($product->price) }}</td>
+                                                                <td>{!! $product->description !!}</td>
                                                                 <td>
                                                                     @if ($product->status == 0)
                                                                         <span class='text text-success'>Hiển thị</span>
                                                                     @else
                                                                         <span class='text text-success'>Ẩn</span>
                                                                     @endif
-                                                                </td>
-                                                                <td>{{ date('d-m-Y', strtotime($product->created_at)) }}
                                                                 </td>
                                                                 <td>
                                                                     @if ($product->updated_at != '')
@@ -100,18 +101,11 @@
                                                                             data-bs-original-title="Edit info"
                                                                             aria-label="Edit"><i
                                                                                 class="bi bi-pencil-fill"></i></a>
-                                                                        <form
-                                                                            action="{{ route('products.destroy', [$product->id]) }}"
-                                                                            method="POST">
-                                                                            @method('DELETE')
-                                                                            @csrf
-                                                                            <a href="#"
-                                                                                onclick="deleteProduct({{ $product->id }})"
-                                                                                class="text-danger"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#deleteProduct"> <i
-                                                                                    class="bi bi-trash-fill"></i></a>
-                                                                        </form>
+                                                                        <a href="#"
+                                                                            onclick="deleteProduct({{ $product->id }})"
+                                                                            class="text-danger" data-bs-toggle="modal"
+                                                                            data-bs-target="#deleteProduct"> <i
+                                                                                class="bi bi-trash-fill"></i></a>
                                                                     </div>
                                                                 </td>
                                                             </tr>

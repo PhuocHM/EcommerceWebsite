@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Discounts;
+use App\Models\Admin\DiscountProduct;
 use App\Repositories\Interfaces\DiscountsInterface;
 use Carbon\Carbon;
 
@@ -14,24 +15,24 @@ class DiscountsRepository implements DiscountsInterface
         $query = Discounts::orderBy('id','DESC');
         if($request->discount){
             $search=$request->discount;
-        
+
             $query->where('name','LIKE','%'.$search.'%');
         }
 
-        return $query->paginate(1);
-        // return discount::all();
+        return $query->paginate(5);
+
     }
     public function getOne()
     {
     }
     public function store($request)
     {
-                
+
         $discount                    = new Discounts();
         $discount->name              = $request->name;
         $discount->amounts           = $request->amounts;
-        $discount->start_day         = $request->start_day;
-        $discount->expired_day         = $request->expired_day;
+        $discount->start_date         = $request->start_date;
+        $discount->expired_date       = $request->expired_date;
         $discount->description       = $request->description;
 
         if ($request->hasFile('image')) {
@@ -54,8 +55,8 @@ class DiscountsRepository implements DiscountsInterface
         $discount = Discounts::find($id);
         $discount->name           = $request->name;
         $discount->amounts  = $request->amounts;
-        $discount->start_day    = $request->slug;
-        $discount->expired_day    = $request->expired_day;
+        $discount->start_date    = $request->start_date;
+        $discount->expired_date    = $request->expired_date;
         $discount->description    = $request->description;
 
         if ($request->hasFile('image')) {
@@ -88,6 +89,8 @@ class DiscountsRepository implements DiscountsInterface
         if (file_exists($path)) {
             unlink($path);
         }
+        $discountProduct = DiscountProduct::where('discount_id',$id);
+        $discountProduct->delete();
         $discount->delete();
     }
     public function create_discount()
