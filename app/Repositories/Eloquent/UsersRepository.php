@@ -17,7 +17,7 @@ class UsersRepository implements UsersInterface
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function store($request)
     {

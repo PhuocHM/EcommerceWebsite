@@ -7,12 +7,12 @@
         <div class="narbar d-none d-xl-block justufy-content-end">
             @if (session('status'))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {{ session('status-password') }}
                 </div>
             @endif
         </div>
         <div class="ms-3 float-right  d-none d-xl-block">
-            <ul class="navbar-nav align-items-center">
+            {{-- <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -55,7 +55,7 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </nav>
 </header>

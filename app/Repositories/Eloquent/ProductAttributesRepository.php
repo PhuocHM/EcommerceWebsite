@@ -15,12 +15,12 @@ class ProductAttributesRepository implements ProductAttributesInterface
         $query = ProductAttributes::with('product', 'attribute');
         if ($request->productAttribute) {
             $search = $request->productAttribute;
-            
+
             $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%') ;
         }
         $query->orderBy('id', 'DESC');
 
-        return $query->paginate(10);
+        return $query->paginate(5);
     }
     public function create_product()
     {
@@ -59,5 +59,5 @@ class ProductAttributesRepository implements ProductAttributesInterface
         $productAttribute = ProductAttributes::find($id);
         return $productAttribute->delete();
     }
-   
+
 }

@@ -55,9 +55,9 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Slug</th>
+
                                                     <th>Thuộc danh mục</th>
-                                                    <th>Ngày tạo</th>
+
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -67,13 +67,11 @@
                                                     <tr>
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $attribute->name }}</td>
-                                                        <td>{{ $attribute->slug }}</td>
                                                         @if ($attribute->category)
                                                             <td>{{ $attribute->category->name }}</td>
                                                         @else
                                                             <td></td>
                                                         @endif
-                                                        <td>{{ date('d-m-Y', strtotime($attribute->created_at)) }}</td>
                                                         <td>
                                                             @if ($attribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($attribute->updated_at)) }}
@@ -87,17 +85,13 @@
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('attributes.destroy', [$attribute->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteAttributes({{ $attribute->id }})"
-                                                                        class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteAttributes"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
-                                                                </form>
+
+                                                                <a href="#"
+                                                                    onclick="deleteAttributes({{ $attribute->id }})"
+                                                                    class="text-danger" data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteAttributes"> <i
+                                                                        class="bi bi-trash-fill"></i></a>
+
                                                             </div>
                                                         </td>
                                                     </tr>

@@ -25,7 +25,7 @@
                              class="bi bi-arrow-right-short"></i>Danh mục sản phẩm</a>
                  </li>
                  <li> <a style="text-decoration: none" href="{{ route('products.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Chi tiết sản phẩm</a>
+                             class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                  </li>
                  <li> <a style="text-decoration: none" href="{{ route('productImages.index') }}"><i
                              class="bi bi-arrow-right-short"></i>Hình ảnh sản phẩm</a>

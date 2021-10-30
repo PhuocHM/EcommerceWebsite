@@ -83,16 +83,12 @@
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('coupons.destroy', [$coupon->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
+
                                                                     <a href="#" onclick="deleteCoupon({{ $coupon->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteCoupon"> <i
                                                                             class="bi bi-trash-fill"></i></a>
-                                                                </form>
+                                                              
                                                             </div>
                                                         </td>
                                                     </tr>

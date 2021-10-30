@@ -57,7 +57,7 @@
                                                     <th>Sản phẩm</th>
                                                     <th>Hình Ảnh</th>
                                                     <th>Thể loại</th>
-                                                    <th>Ngày tạo</th>
+
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -78,7 +78,7 @@
                                                                 <span class='text text-success'>Ảnh thường</span>
                                                             @endif
                                                         </td>
-                                                        <td>{{ date('d-m-Y', strtotime($productImage->created_at)) }}</td>
+                                                      
                                                         <td>
                                                             @if ($productImage->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($productImage->updated_at)) }}

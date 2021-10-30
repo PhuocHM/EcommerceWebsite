@@ -18,7 +18,7 @@ class BrandRepository implements BrandInterface
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
 
-        return $query->paginate(10);
+        return $query->paginate(5);
         // return Brand::all();
     }
     public function store($request)
@@ -63,7 +63,7 @@ class BrandRepository implements BrandInterface
                 $brand->image = $new_image;
                 $data['brand_image'] = $new_image;
             }
-        
+
         $brand->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
         $brand->save();
@@ -81,5 +81,5 @@ class BrandRepository implements BrandInterface
         }
         $brand->delete();
     }
-   
+
 }

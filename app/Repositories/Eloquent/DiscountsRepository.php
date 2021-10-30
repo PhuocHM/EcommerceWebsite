@@ -14,19 +14,19 @@ class DiscountsRepository implements DiscountsInterface
         $query = Discounts::orderBy('id','DESC');
         if($request->discount){
             $search=$request->discount;
-        
+
             $query->where('name','LIKE','%'.$search.'%');
         }
 
-        return $query->paginate(1);
-        // return discount::all();
+        return $query->paginate(5);
+        
     }
     public function getOne()
     {
     }
     public function store($request)
     {
-                
+
         $discount                    = new Discounts();
         $discount->name              = $request->name;
         $discount->amounts           = $request->amounts;

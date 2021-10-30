@@ -20,7 +20,7 @@ class StockRepository implements StockRepositoryInterface
             $search = $request->stock;
             $query->product->where('name', 'LIKE', '%' . $search . '%');
         }
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
 
     public function find($id)

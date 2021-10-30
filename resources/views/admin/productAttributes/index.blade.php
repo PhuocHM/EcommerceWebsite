@@ -53,7 +53,7 @@
                                                     <th>Sản phẩm</th>
                                                     <th>Thuộc tính</th>
                                                     <th>Nội dung</th>
-                                                    <th>Ngày tạo</th>
+
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -66,8 +66,7 @@
                                                         <td>{{ $productAttribute->attribute->name }}</td>
                                                         <td>{{ $productAttribute->content }}</td>
 
-                                                        <td>{{ date('d-m-Y', strtotime($productAttribute->created_at)) }}
-                                                        </td>
+                                                    
                                                         <td>
                                                             @if ($productAttribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($productAttribute->updated_at)) }}

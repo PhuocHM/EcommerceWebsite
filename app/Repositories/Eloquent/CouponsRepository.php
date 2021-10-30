@@ -17,7 +17,7 @@ class CouponsRepository implements CouponRepositoryInterface
             $search = $request->coupon;
             $query->where('code', 'LIKE', '%' . $search . '%')->orWhere('amounts', 'LIKE', '%' . $search . '%');
         }
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
 
     public function find($id)

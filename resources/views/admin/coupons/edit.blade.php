@@ -35,8 +35,8 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Ngày hết hạn</label>
-                                    <input type="date" name="expired_day" class="form-control" id="expired_day"
-                                        value="{{ $coupon->expire_day }}"> <br>
+                                    <input type="date" name="expired_day" class="form-control"
+                                        value="{{ $coupon->expired_day }}"> <br>
                                     <span style="color:red;">@error('expired_day'){{ $message }} @enderror</span>
                                 </div>
 
