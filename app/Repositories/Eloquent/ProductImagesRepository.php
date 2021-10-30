@@ -61,7 +61,7 @@ class ProductImagesRepository implements ProductImagesInterface
             $fileExtension = $file->getClientOriginalExtension();
             $fileName = time() + 2;
             $newFileName = "$fileName.$fileExtension";
-            $request->file('image')->move(public_path('images'), $newFileName);
+            $request->file('image')->move(public_path('images/product'), $newFileName);
             $productImage->image = $newFileName;
         }
         $productImage->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
