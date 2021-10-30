@@ -23,14 +23,9 @@
     <link href="{{ asset('admin/assets/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/header-colors.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"
-        integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Admin Ecommerce</title>
 </head>
@@ -54,6 +49,9 @@
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
     {{-- <script src="{{asset('admin/assets/js/index4.js')}}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- Select2 --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- --}}
     <script type="text/javascript">
         function ChangeToSlug() {
             var slug;
@@ -84,32 +82,22 @@
             //In slug ra textbox có id “slug”
             document.getElementById('convert_slug').value = slug;
         }
+
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js">
-    </script> -->
-    <script
-             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
-    </script> -->
-    <script
-             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.min.js">
-    </script> -->
+
     <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
     <script type="text/javascript">
         CKEDITOR.replace('ckeditor_category');
+
     </script>
     @yield('scripts')
-    <link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
-        integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#dataTab le').DataTable();
+            $(".js-example-basic-single").select2();
+            // Thêm các tùy chọn của bạn vào đây.
         });
-    </script>
-    <script type="text/javascript">
         $('.status').change(function() {
-
             const status = $(this).val();
             const order_id = $(this).data('order_id');
             console.log(order_id);
@@ -122,30 +110,32 @@
                 var thongbao = 'Thay đổi vận chuyển xong thành công';
             }
             $.ajax({
-                url: "{{ url('/status') }}",
-                method: "POST",
-                data: {
-                    status: status,
-                    order_id: order_id,
-                    _token: _token
-                },
-                success: function(data) {
+                url: "{{ url('/status') }}"
+                , method: "POST"
+                , data: {
+                    status: status
+                    , order_id: order_id
+                    , _token: _token
+                }
+                , success: function(data) {
                     // $('#thongbao').html('<span class="text text-alert">'+thongbao+'</span>');
                     alert(thongbao);
                 }
             });
         })
+
     </script>
     <script type="text/javascript">
         jQuery.datetimepicker.setLocale('de');
 
         jQuery('#start_day').datetimepicker({
-            format: 'Y-m-d H:i:s',
-        });
+            format: 'Y-m-d H:i:s'
+        , });
 
         jQuery('#expired_day').datetimepicker({
-            format: 'Y-m-d H:i:s',
-        });
+            format: 'Y-m-d H:i:s'
+        , });
+
     </script>
 </body>
 

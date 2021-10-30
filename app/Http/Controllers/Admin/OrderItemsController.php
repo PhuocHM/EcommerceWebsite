@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderItemsRequest;
+use App\Models\Admin\Products;
 use App\Services\OrderItemsService;
+use App\Services\ProductsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class OrderItemsController extends Controller
 {
     private $orderItemsService;
-    public function __construct(OrderItemsService $orderItemsService)
+    private $productsService;
+    public function __construct(OrderItemsService $orderItemsService, ProductsService $productsService)
     {
         $this->orderItemsService = $orderItemsService;
+        $this->productsService = $productsService;
     }
 
     /**
@@ -71,6 +75,12 @@ class OrderItemsController extends Controller
     {
     }
 
+    public function ajaxFindProduct(Request $request)
+    {
+        $product_info = $this->productsService->getOne($request->product_id);
+        return response()->json(['success' => $product_info]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -109,7 +119,7 @@ class OrderItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,$id)
+    public function destroy(Request $request, $id)
     {
         // Log::info($id,$request->all());
         try {
