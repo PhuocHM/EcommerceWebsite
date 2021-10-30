@@ -115,6 +115,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::resource('/excel', ExcelController::class);
     Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
     Route::resource('/orderItems', OrderItemsController::class);
+    Route::get('/ajaxFindProduct', [OrderItemsController::class, 'ajaxFindProduct'])->name('ajax.ajaxFindProduct');
     Route::get('/createOrderItems/{id}', [OrderItemsController::class,'createItem'])->name('create.item');
     Route::resource('/customers', CustomersController::class);
 
