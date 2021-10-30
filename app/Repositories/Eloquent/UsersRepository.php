@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Models\Admin\Customers;
 use App\Models\User;
 use App\Repositories\Interfaces\UsersInterface;
 use Carbon\Carbon;
@@ -48,5 +49,4 @@ class UsersRepository implements UsersInterface
         $user = User::find($id);
         $user->delete();
     }
-
 }
