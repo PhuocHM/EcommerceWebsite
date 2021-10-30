@@ -23,9 +23,6 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -59,11 +56,9 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Tên</th>
-
                                                         <th>Mô tả</th>
                                                         <th>Thuộc danh mục</th>
                                                         <th>Trạng thái</th>
-                                                        <th>Ngày tạo</th>
                                                         <th>Ngày cập nhật</th>
                                                         <th>Hành động</th>
                                                     </tr>
@@ -74,7 +69,7 @@
                                                             <tr>
                                                                 <td>{{ ++$key }}</td>
                                                                 <td>{{ $category->name }}</td>
-                                                                <td>{{ $category->description }}</td>
+                                                                <td>{!! $category->description !!}</td>
                                                                 <td>{{ $categories_arr[$category->parent_id] }}</td>
                                                                 <td>
                                                                     @if ($category->status == 0)
@@ -82,8 +77,6 @@
                                                                     @else
                                                                         <span class='text text-success'>Ẩn</span>
                                                                     @endif
-                                                                </td>
-                                                                <td>{{ date('d-m-Y', strtotime($category->created_at)) }}
                                                                 </td>
                                                                 <td>
                                                                     @if ($category->updated_at != '')

@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Models\Admin\Brand;
 use App\Models\Admin\Products;
 use App\Models\Admin\Category;
+use App\Models\Users\ProductImage;
 use App\Repositories\Interfaces\ProductsInterface;
 
 use Carbon\Carbon;
@@ -24,6 +25,7 @@ class ProductsRepository implements ProductsInterface
 
         return $query->paginate(5);
     }
+
     public function getOne($id)
     {
         $item = Products::with('discount')->where('id', $id)->get();
@@ -35,7 +37,6 @@ class ProductsRepository implements ProductsInterface
         $product->name           = $request->name;
         $product->code           = '#ECMW' . time();
         $product->slug           = $request->slug;
-        $product->sold           = $request->sold;
         $product->price          = $request->price;
         $product->description    = $request->description;
         $product->status         = $request->status;
@@ -50,13 +51,11 @@ class ProductsRepository implements ProductsInterface
         $product                 = Products::find($id);
         $product->name           = $request->name;
         $product->slug           = $request->slug;
-        $product->sold           = $request->sold;
         $product->price          = $request->price;
         $product->description    = $request->description;
         $product->status         = $request->status;
         $product->brand_id       = $request->brand_id;
         $product->category_id    = $request->category_id;
-        $product->code           = $request->code;
         $product->updated_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
         $product->save();
@@ -68,6 +67,8 @@ class ProductsRepository implements ProductsInterface
     public function destroy($id)
     {
         $product = Products::find($id);
+        $product_image = ProductImage::where('product_id', $id)->get();
+        $product_image->delete();
         $product->delete();
     }
 

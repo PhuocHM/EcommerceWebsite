@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('slug');
             $table->string('email');
             $table->string('password');
-            $table->string('birthday');
+            $table->date('birthday');
             $table->string('address');
             $table->integer('identification');
             $table->string('image');

@@ -19,7 +19,7 @@ class EmployeesRepository implements EmployeesInterface
             $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('email', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function create_group()
     {

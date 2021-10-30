@@ -53,7 +53,7 @@
                                                     <th>Nhân viên nhập kho</th>
                                                     <th>Số lượng</th>
                                                     <th>Nhà cung cấp</th>
-                                                    <th>Giá nhập</th>
+                                                    <th>Giá nhập (VNĐ)</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -68,7 +68,7 @@
                                                         <td>
                                                             {{ $stock->supplier->name }}
                                                         </td>
-                                                        <td>{{ number_format($stock->cost_price) . ' VND' }}</td>
+                                                        <td>{{ number_format($stock->cost_price) }}</td>
                                                         <td>
                                                             {{ $stock->updated_at }}
                                                         </td>

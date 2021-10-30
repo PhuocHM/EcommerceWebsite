@@ -52,7 +52,7 @@
                                                     <th>Tên</th>
 
                                                     <th>Hình ảnh</th>
-                                                    <th>Ngày tạo</th>
+                                                  
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -68,7 +68,7 @@
                                                             <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
                                                                 style="width: 150px">
                                                         </td>
-                                                        <td>{{ date('d-m-Y', strtotime($brand->created_at)) }}</td>
+
                                                         <td>
                                                             @if ($brand->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($brand->updated_at)) }}

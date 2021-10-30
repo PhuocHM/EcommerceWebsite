@@ -20,7 +20,7 @@ class GroupPermisionsRepository implements GroupPermisionsInterface
         }
         $query->orderBy('id', 'DESC');
 
-        return $query->paginate(10);
+        return $query->paginate(5);
     }
     public function findbyGroup()
     {

@@ -6,9 +6,9 @@
         </div>
         <div class="narbar d-none d-xl-block justufy-content-end">
             @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
+                <div class="alert alert-success">
+                    {{ session('status-password') }}
+                </div>
             @endif
         </div>
         <div class="ms-3 float-right  d-none d-xl-block">
