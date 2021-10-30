@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -9,7 +10,7 @@ use App\Http\Requests\AttributesRequest;
 
 
 class AttributesController extends Controller
-{   
+{
     private $attributesService;
     public function __construct(AttributesService $attributesService)
     {
@@ -22,7 +23,7 @@ class AttributesController extends Controller
      */
     public function index(Request $request)
     {
-        $attributes = $this->attributesService->getAll($request); 
+        $attributes = $this->attributesService->getAll($request);
         $params = [
             'attributes' => $attributes,
         ];
@@ -51,8 +52,8 @@ class AttributesController extends Controller
      */
     public function store(AttributesRequest $request)
     {
-        $attributes =$this->attributesService->store($request);
-        return redirect()->route('attributes.index')->with('status','Thêm thuộc tính thành công !');
+        $attributes = $this->attributesService->store($request);
+        return redirect()->route('attributes.index')->with('status', 'Thêm thuộc tính thành công !');
     }
 
     /**
@@ -81,7 +82,6 @@ class AttributesController extends Controller
             'attributes'    =>  $attributes
         ];
         return view('admin.attributes.edit', $params);
-    
     }
     /**
      * Update the specified resource in storage.
@@ -92,9 +92,9 @@ class AttributesController extends Controller
      */
     public function update(AttributesRequest $request, $id)
     {
-        
+
         $this->attributesService->update($request, $id);
-        return redirect()->route('attributes.index')->with('status','Cập nhật thuộc tính thành công!');    
+        return redirect()->route('attributes.index')->with('status', 'Cập nhật thuộc tính thành công!');
     }
 
     /**
@@ -104,7 +104,7 @@ class AttributesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    { 
+    {
         $this->attributesService->destroy($id);
         return redirect()->route('attributes.index')->with('status', 'Xóa thuộc tính thành công !');
     }

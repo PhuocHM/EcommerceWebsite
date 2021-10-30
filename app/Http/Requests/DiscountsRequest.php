@@ -26,8 +26,8 @@ class DiscountsRequest extends FormRequest
         return [
             'name'                       => 'required',
             'amounts'                    => 'required',
-            'start_day'                  => 'required',    
-            'expired_day'                => 'required',
+            'start_date'                  => 'required',    
+            'expired_date'                => 'required',
             'description'                => 'required',
             'image'                      => 'required',         
         ];
@@ -39,6 +39,8 @@ class DiscountsRequest extends FormRequest
             'amounts.required'           =>'Nhập số tiền được giảm',
             'description.required'       => 'Vui lòng nhập mô tả',
             'image.required'             => 'Vui lòng nhập hình ảnh khuyến mại',   
+            'expired_day.required'             => 'Vui lòng nhập ngày kết thúc',   
+            'start_day.required'             => 'Vui lòng nhập ngày khuyến mại',   
            
         ];
     }

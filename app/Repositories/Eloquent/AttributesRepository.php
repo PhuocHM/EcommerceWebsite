@@ -55,6 +55,6 @@ class AttributesRepository implements AttributesInterface
     }
     public function edit($id)
     {
-        Attributes::find($id);
+        return Attributes::find($id);
     }
 }

@@ -32,13 +32,13 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Ngày bắt đầu</label>
-                                    <input type="text" name="start_day"  value="{{ $discount->start_day}}" class="form-control" value="{{ old('start_day') }}"
+                                    <input type="text" name="start_date" id="start_date" class="form-control" value="{{ old('start_date') }}"
                                       >
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Ngày kết thúc</label>
-                                    <input type="text" name="expired_day" class="form-control" value="{{ $discount->expired_day }}"
+                                    <input type="text" name="expired_date" id="expired_date" class="form-control" value="{{ $discount->expired_date }}"
 >
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>

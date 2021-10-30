@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Admin\Discounts;
+use App\Models\Admin\DiscountProduct;
 use App\Repositories\Interfaces\DiscountsInterface;
 use Carbon\Carbon;
 
@@ -19,7 +20,7 @@ class DiscountsRepository implements DiscountsInterface
         }
 
         return $query->paginate(5);
-        
+
     }
     public function getOne()
     {
@@ -30,8 +31,8 @@ class DiscountsRepository implements DiscountsInterface
         $discount                    = new Discounts();
         $discount->name              = $request->name;
         $discount->amounts           = $request->amounts;
-        $discount->start_day         = $request->start_day;
-        $discount->expired_day         = $request->expired_day;
+        $discount->start_date         = $request->start_date;
+        $discount->expired_date       = $request->expired_date;
         $discount->description       = $request->description;
 
         if ($request->hasFile('image')) {
@@ -54,8 +55,8 @@ class DiscountsRepository implements DiscountsInterface
         $discount = Discounts::find($id);
         $discount->name           = $request->name;
         $discount->amounts  = $request->amounts;
-        $discount->start_day    = $request->slug;
-        $discount->expired_day    = $request->expired_day;
+        $discount->start_date    = $request->start_date;
+        $discount->expired_date    = $request->expired_date;
         $discount->description    = $request->description;
 
         if ($request->hasFile('image')) {
@@ -88,6 +89,8 @@ class DiscountsRepository implements DiscountsInterface
         if (file_exists($path)) {
             unlink($path);
         }
+        $discountProduct = DiscountProduct::where('discount_id',$id);
+        $discountProduct->delete();
         $discount->delete();
     }
     public function create_discount()

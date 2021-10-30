@@ -26,6 +26,11 @@ class ProductsRepository implements ProductsInterface
         return $query->paginate(5);
     }
 
+    public function getOne($id)
+    {
+        $item = Products::with('discount')->where('id', $id)->get();
+        return $item;
+    }
     public function store($request)
     {
         $product                 = new Products();
