@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterUserRequest extends FormRequest
 {
@@ -23,10 +24,9 @@ class RegisterUserRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'name' => 'required|string|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:users,name',
+            'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:4|confirmed',
             'customer_name' => 'required|string|max:255',
             'phone' => 'required|numeric',

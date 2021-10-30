@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Users\Categories;
 use App\Models\Users\Products;
+use App\Models\Users\ProductAttribute;
 
 class Attributes extends Model
 {
@@ -19,6 +20,11 @@ class Attributes extends Model
 
     public function product()
     {
-        return $this->belongsToMany(Products::class, 'product_attribute', 'product_id', 'attribute_id')->withPivot('content');
+        return $this->belongsToMany(Products::class, 'product_attribute', 'attribute_id', 'product_id')->withPivot('content');
+    }
+
+    public function attribute_values()
+    {
+        return $this->hasMany(ProductAttribute::class, 'attribute_id', 'id')->groupBy('content');
     }
 }

@@ -17,8 +17,8 @@ class CreateOrderTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->unsignedInteger('customer_id');
-            $table->string('payment_method');
-            $table->decimal('total_price');
+            $table->string('payment_method')->default('Tiền mặt ( COD )');
+            $table->double('total_price');
             $table->integer('status')->default(0);
             $table->timestamps();
         });

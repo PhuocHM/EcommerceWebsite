@@ -31,6 +31,12 @@ use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DiscountProductController;
 use App\Http\Controllers\Admin\ExcelController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\Auth\SettingController;
+use App\Http\Controllers\Users\CategoriesProductController;
+use App\Http\Controllers\Users\OrderController;
+use App\Http\Controllers\Users\ProductDetailController;
+use App\Http\Controllers\Users\CouponController;
 
 
 use App\Http\Controllers\Admin\LoginAdminController;
@@ -49,6 +55,11 @@ use App\Http\Controllers\Admin\OrderItemsController;
 
 Auth::routes();
 Route::get('/logout-user', [LoginController::class, 'logout'])->name('logout.user');
+Route::get('/setting-user', [SettingController::class, 'setting'])->name('setting.user');
+Route::put('/setting-user/{id}', [SettingController::class, 'update'])->name('update.user');
+Route::get('/change-pass', [SettingController::class, 'settingPassword'])->name('setting.pass');
+Route::put('/change-pass', [SettingController::class, 'resetPassword'])->name('reset.pass');
+
 
 Route::resource('/', HomeController::class);
 Route::resource('bestseller', BestSellerController::class);
@@ -56,6 +67,24 @@ Route::resource('trending', TrendingProductController::class);
 Route::resource('flash-sales', FlashSalesController::class);
 Route::resource('rate-products', RateProductsController::class);
 Route::resource('maybe-you-like', MaybeYouLikeController::class);
+Route::resource('category', CategoriesProductController::class);
+Route::resource('product-detail', ProductDetailController::class);
+Route::resource('order', OrderController::class);
+Route::resource('coupon', CouponController::class);
+
+Route::resource('cart', CartController::class);
+Route::GET('order-detail', [OrderController::class, 'orderDetail'])->name('order.orderDetail');
+Route::GET('api/deleteDiscount', [FlashSalesController::class, 'deleteDiscount'])->name('discount.deleteDiscount');
+Route::GET('api/deleteSession', [HomeController::class, 'deleteSession'])->name('order.deleteSession');
+Route::GET('api/carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
+Route::GET('api/seach', [HomeController::class, 'seach'])->name('home.seach');
+Route::GET('api/check-cart', [HomeController::class, 'checkCart'])->name('cart.checkCart');
+Route::GET('api/deleteCartItem', [HomeController::class, 'deleteCartItem'])->name('cart.deleteCartItem');
+Route::GET('api/syncCart', [HomeController::class, 'syncCart'])->name('cart.syncCart');
+Route::GET('api/showCart', [HomeController::class, 'showCart'])->name('cart.showCart');
+Route::GET('api/checkCoupon', [HomeController::class, 'checkCoupon'])->name('coupon.checkCoupon');
+Route::GET('api/getFlashSale', [HomeController::class, 'getFlashSale'])->name('discounts.getFlashSale');
+Route::GET('api/addComment', [HomeController::class, 'addComment'])->name('home.addComment');
 
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');

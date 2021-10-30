@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('sold')->default(0);
-            $table->decimal('price');
+            $table->double('price');
             $table->longText('description');
             $table->integer('status')->default(0);
             $table->unsignedInteger('brand_id');
