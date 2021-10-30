@@ -147,6 +147,10 @@
         })
     }
 
+    function confirmDelete(product_id) {
+        $("#delete_button").attr("onclick", "deleteCartItem(" + product_id + ")");
+    }
+
     function addToCart(product_id) {
         var url = `{{ route('cart.addToCart') }}`;
         $.ajax({

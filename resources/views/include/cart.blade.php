@@ -1,4 +1,28 @@
 @if($check_user_cart->first() != null)
+<!-- Modal -->
+
+{{-- --}}
+<div class="modal fade" id="delete_item_cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa sản phẩm này không ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="delete_button">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- End Modal --}}
 <a class="minicart" href="#">
 
     <span class="counter qty">
@@ -35,7 +59,7 @@
                         <div class="product-innfo">
                             <div class="product-name"><a href="#">{{$item->name}}
                                 </a></div>
-                            <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true" onclick="deleteCartItem({{$item->cartItem->first()->id}})"></i></a>
+                            <a href="#" class="remove" data-toggle="modal" data-target="#delete_item_cart"><i class="fa fa-times" aria-hidden="true" onclick="confirmDelete({{$item->cartItem->first()->id}})"></i></a>
                             <span class="price price-dark">
                                 @if ($item->discount && $item->discount->first())
                                 <ins style="color: red">{{ number_format(($item->price - $item->discount->first()->amounts)*$item->cartItem->first()->quantity) }}&ensp;<u>đ</u></ins>
