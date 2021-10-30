@@ -71,11 +71,11 @@
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $discount->name }}</td>
                                                         <td>{{ $discount->amounts }}</td>
-                                                        <td>{{ $discount->start_day }}</td>
-                                                        <td>{{ $discount->expired_day }}</td>
+                                                        <td>{{ $discount->start_date }}</td>
+                                                        <td>{{ $discount->expired_date }}</td>
                                                         <td>
 
-                                                            @if ($discount->expired_day >= $today)
+                                                            @if ($discount->expired_date >= $today)
                                                                 <span style="color:green">Còn hạn</span>
                                                             @else
                                                                 <span style="color:red">Đã hết hạn</span>
