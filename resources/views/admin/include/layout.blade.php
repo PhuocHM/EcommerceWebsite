@@ -139,11 +139,11 @@
     <script type="text/javascript">
         jQuery.datetimepicker.setLocale('de');
 
-        jQuery('#start_day').datetimepicker({
+        jQuery('#start_date').datetimepicker({
             format: 'Y-m-d H:i:s',
         });
 
-        jQuery('#expired_day').datetimepicker({
+        jQuery('#expired_date').datetimepicker({
             format: 'Y-m-d H:i:s',
         });
     </script>
