@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Ngày bắt đầu</label>
-                                    <input type="text" name="start_date" id="start_date" class="form-control" value="{{ old('start_date') }}"
+                                    <input type="text" name="start_date" id="start_date" class="form-control" value="{{ $discount->start_date }}"
                                       >
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>
