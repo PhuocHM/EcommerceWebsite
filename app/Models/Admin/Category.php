@@ -4,11 +4,10 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Category extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     protected $dates = [
         'created_at',
         'updated_at',
@@ -20,7 +19,14 @@ class Category extends Model
     protected $primaryKey = 'id';
     protected $table = 'categories';
     public $timestamps = true;
-    public function attributes(){
-        return $this->hasMany('App\Models\Admin\Attributes');
+
+    public function attributes()
+    {
+        return $this->hasMany(Attributes::class);
+    }
+
+    public function product()
+    {
+        return $this->hasMany(Products::class);
     }
 }

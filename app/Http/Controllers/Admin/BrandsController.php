@@ -23,9 +23,9 @@ class BrandsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands = $this->brandService->getAll();
+        $brands = $this->brandService->getAll($request);
         $params = [
             'brands' => $brands,
         ];
@@ -39,7 +39,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        
+
         return view('admin.brands.create');
     }
 
@@ -55,7 +55,7 @@ class BrandsController extends Controller
         return redirect()->route('brands.index')->with('status', 'Thêm thương hiệu thành công !');
     }
 
-    /** 
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -73,11 +73,10 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $brands = $this->brandService->getAll();
+    {  
         $brand = $this->brandService->edit($id);
         $params = [
-            'brands' => $brands,
+           
             'brand' => $brand
         ];
         return view('admin.brands.edit', $params);
@@ -103,7 +102,7 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         $this->brandService->destroy($id);
         return redirect()->route('brands.index')->with('status', 'Xóa thương hiệu thành công !');
     }

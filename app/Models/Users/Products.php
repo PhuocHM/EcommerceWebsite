@@ -33,16 +33,9 @@ class Products extends Model
         return $this->hasMany(Comments::class, 'product_id');
     }
 
-
-
     public function attribute()
     {
         return $this->belongsToMany(Attributes::class, 'product_attribute', 'product_id', 'attribute_id')->withPivot('content');
-    }
-
-    public function user()
-    {
-        return  $this->belongsToMany(User::class, 'wishlist', 'product_id', 'supplier_id');
     }
 
     public function orderItem()

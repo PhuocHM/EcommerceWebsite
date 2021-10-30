@@ -17,11 +17,11 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->getAll($request);
         $categories_arr = $this->categoryService->categories_arr();
-
+        
         $params = [
             'categories'        => $categories,
             'categories_arr'    => $categories_arr,
@@ -70,9 +70,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id )
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryService->create_category();
         $category = $this->categoryService->edit($id);
         $params=[
             'categories' => $categories,
@@ -104,7 +104,14 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         // $check= Attributes::where('category_id','=',$id)->get();
-        $this->categoryService->destroy($id);
-        return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+        try{
+            $this->categoryService->destroy($id);
+            return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+        }
+       catch(\Exception $e){
+        return redirect()->route('categories.index')->with('status', 'Xóa không thành công! '.$e);
     }
+       }
+        // return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+    
 }

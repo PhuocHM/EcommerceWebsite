@@ -2,84 +2,62 @@
 <html lang="en" class="light-theme">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('admin/assets/images/favicon-32x32.png') }}" type="image/png" />
+    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
     <!--plugins-->
     <link href="{{ asset('admin/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet') }}" />
-    <link href="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/bootstrap-extended.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet" />
-    {{-- <link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
     <!-- loader-->
-    {{-- <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" /> --}}
-
+    <link href="{{ asset('admin/assets/css/pace.min.css') }}" rel="stylesheet" />
     <!--Theme Styles-->
     <link href="{{ asset('admin/assets/css/dark-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/header-colors.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"
+        integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <title>Admin Ecommerce</title>
 </head>
 
 <body>
-
     @include('admin.include.header')
     @include('admin.include.sidebar')
     <!--start wrapper-->
     @yield('main')
     <!--end wrapper-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    @yield('scripts')
-    <!-- Bootstrap bundle JS -->
     <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
-    {{-- <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    {{-- <script src="{{ asset('admin/assets/plugins/easyPieChart/jquery.easypiechart.js') }}"></script> --}}
-    {{-- <script src="{{ asset('admin/assets/plugins/peity/jquery.peity.min.js') }}"></script> --}}
-    <script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+    {{-- <script src="{{asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script> --}}
     <script src="{{ asset('admin/assets/js/pace.min.js') }}"></script>
-    {{-- <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script> --}}
-    {{-- <script src="{{ asset('admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script> --}}
-    <script src="{{ asset('admin/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
     <!--app-->
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/index2.js') }}"></script>
+    {{-- <script src="{{asset('admin/assets/js/index4.js')}}"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript">
         function ChangeToSlug() {
             var slug;
-
-            //Lấy text từ thẻ input title 
+            //Lấy text từ thẻ input title
             slug = document.getElementById("slug").value;
             slug = slug.toLowerCase();
             //Đổi ký tự có dấu thành không dấu
@@ -107,14 +85,66 @@
             document.getElementById('convert_slug').value = slug;
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js">
+    </script> -->
+    <script
+             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css">
+    </script> -->
+    <script
+             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.min.js">
+    </script> -->
     <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
     <script type="text/javascript">
         CKEDITOR.replace('ckeditor_category');
     </script>
-
+    @yield('scripts')
+    <link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+        integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#dataTable').DataTable();
+            $('#dataTab le').DataTable();
+        });
+    </script>
+    <script type="text/javascript">
+        $('.status').change(function() {
+
+            const status = $(this).val();
+            const order_id = $(this).data('order_id');
+            console.log(order_id);
+            var _token = $('input[name="_token"]').val();
+            if (status == 0) {
+                var thongbao = 'Thay đổi đang chờ  thành công';
+            } else if (status == 1) {
+                var thongbao = 'Thay đổi đang vận chuyển thành công';
+            } else {
+                var thongbao = 'Thay đổi vận chuyển xong thành công';
+            }
+            $.ajax({
+                url: "{{ url('/status') }}",
+                method: "POST",
+                data: {
+                    status: status,
+                    order_id: order_id,
+                    _token: _token
+                },
+                success: function(data) {
+                    // $('#thongbao').html('<span class="text text-alert">'+thongbao+'</span>');
+                    alert(thongbao);
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        jQuery.datetimepicker.setLocale('de');
+
+        jQuery('#start_day').datetimepicker({
+            format: 'Y-m-d H:i:s',
+        });
+
+        jQuery('#expired_day').datetimepicker({
+            format: 'Y-m-d H:i:s',
         });
     </script>
 </body>

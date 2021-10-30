@@ -19,7 +19,7 @@ class CreateStocksTable extends Migration
             $table->unsignedInteger('employee_id');
             $table->integer('quantity');
             $table->unsignedInteger('supplier_id');
-            $table->decimal('cost_price');
+            $table->double('cost_price');
 
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('employee_id')->references('id')->on('employees');

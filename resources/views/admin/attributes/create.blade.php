@@ -28,29 +28,30 @@
                                     <input type="text" name="slug" class="form-control" value="{{ old('slug') }}"
                                         id="convert_slug" placeholder="Slug danh mục">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-                    
-                                    <div class="col-12">
-                                        <label class="form-label">Thuộc danh mục</label>
-                                        <select name="category_id"  class="form-select" id="inputGroupSelect02">
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                     </select>
-                                    </div>
-                                 
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <div class="d-grid">
-                                                <button class="btn btn-primary">Thêm mới</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <div class="d-grid">
-                                                <a href="{{ route('attributes.index') }}" class="btn btn-danger">Trở
-                                                    về</a>
-                                            </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Thuộc danh mục</label>
+                                    <select name="category_id" class="form-select" id="inputGroupSelect02">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary">Thêm mới</button>
                                         </div>
                                     </div>
+                                    <div class="col-2">
+                                        <div class="d-grid">
+                                            <a href="{{ route('attributes.index') }}" class="btn btn-danger">Trở
+                                                về</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

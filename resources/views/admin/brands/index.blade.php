@@ -10,18 +10,29 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Brands</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Thương hiệu</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('brands.create') }}" class="btn btn-primary">Thêm thương hiệu</a>
                     </div>
                 </div>
             </div>
+            <div class="row">
+              <div class="col-md-12">
+
+                <form  class="form-inline my-2 my-lg-0" >
+              <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('brands.index') }}" method="GET" name="brand" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+
+                    </select>
+                </form>
+              </div>
+            </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -33,28 +44,30 @@
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
                                     <div class="table-responsive">
+                                    @if(isset($brands))
                                         <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Slug</th>
-                                                    <th>Hình ảnh</th>                           
+
+                                                    <th>Hình ảnh</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($brands as $brand)
+                                            @if(count($brands)>0)
+                                                @foreach ($brands as $key => $brand)
                                                     <tr>
-                                                        <td>{{ $brand->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $brand->name }}</td>
-                                                        <td>{{ $brand->slug }}</td>
+
                                                         <td>
                                                             <img src="{{ asset('images/brand/' . $brand->image) }}" alt=""
                                                                 style="width: 150px">
-                                                        </td>        
+                                                        </td>
                                                         <td>{{ date('d-m-Y', strtotime($brand->created_at)) }}</td>
                                                         <td>
                                                             @if ($brand->updated_at != '')
@@ -63,22 +76,17 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('brands.edit', $brand->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('brands.destroy', [$brand->id]) }}"
+                                                                <form action="{{ route('brands.destroy', [$brand->id]) }}"
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteBrand({{ $brand->id }})"
+                                                                    <a href="#" onclick="deleteBrand({{ $brand->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteBrand"> <i
                                                                             class="bi bi-trash-fill"></i></a>
@@ -86,9 +94,13 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                    @endforeach
+                                              @else
+                                              <h3>Thương hiệu cần tìm không có</h3>
+                                              @endif
                                             </tbody>
                                         </table>
+                                        @endif
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->
@@ -119,7 +131,7 @@
                                     </div>
                                     {{--  --}}
                                     <div class=" box-footer clearfix" style="float:right">
-                                        {{-- {{ $categories->links() }} --}}
+                                        {{ $brands->links() }}
                                     </div>
                                 </div>
                             </div>
