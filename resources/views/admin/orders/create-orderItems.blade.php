@@ -18,11 +18,6 @@
                             {{ csrf_field() }}
                             <div class="col-12">
                                 <label class="form-label">Tên sản phẩm</label>
-                                {{-- <select name="product_id" class="form-select" id="inputGroupSelect02">
-                                    @foreach ($products as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                @endforeach
-                                </select> --}}
                                 <select name="product_id" class="form-select js-example-basic-single form-product-attribute" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                     @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>

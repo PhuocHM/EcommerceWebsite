@@ -19,7 +19,8 @@
 
                             <div class="col-12">
                                 <label class="form-label">Sản phẩm</label>
-                                <select name="product_id" class="form-select" id="inputGroupSelect02">
+                                <select name="product_id" class="form-select js-example-basic-single form-product" data-select2-id="2" tabindex="-1" aria-hidden="true">
+                                    <option>Thêm sản phẩm</option>
                                     @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
                                     @endforeach
@@ -27,7 +28,8 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Thuộc tính</label>
-                                <select name="attribute_id" class="form-select" id="inputGroupSelect02">
+                                <select name="attribute_id" class="form-select js-example-basic-single form-attribute" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option>Thêm thuộc tính</option>
                                     @foreach ($attributes as $attribute)
                                     <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                     @endforeach

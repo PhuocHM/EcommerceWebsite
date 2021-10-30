@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Admin Ecommerce</title>
+    <title>Horizon</title>
 </head>
 
 <body>
@@ -129,12 +129,13 @@
         jQuery.datetimepicker.setLocale('de');
 
         jQuery('#start_date').datetimepicker({
-            format: 'Y-m-d H:i:s',
-        });
+            format: 'Y-m-d H:i:s'
+        , });
 
         jQuery('#expired_date').datetimepicker({
-            format: 'Y-m-d H:i:s',
-        });
+            format: 'Y-m-d H:i:s'
+        , });
+
     </script>
 </body>
 
