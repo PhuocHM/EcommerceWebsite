@@ -115,9 +115,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::resource('/excel', ExcelController::class);
     Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
     Route::resource('/orderItems', OrderItemsController::class);
-    Route::get('/createOrderItems/{id}', [OrderItemsController::class,'createItem'])->name('create.item');
+    Route::get('/ajaxFindProduct', [OrderItemsController::class, 'ajaxFindProduct'])->name('ajax.ajaxFindProduct');
+    Route::get('/createOrderItems/{id}', [OrderItemsController::class, 'createItem'])->name('create.item');
     Route::resource('/customers', CustomersController::class);
-
 });
 
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
@@ -125,5 +125,3 @@ Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('
 Route::get('admin/logout', [LoginAdminController::class, 'logoutAction'])->name('logout.admin.action');
 
 Route::post('/status', [OrdersController::class, 'status']);
-
-
