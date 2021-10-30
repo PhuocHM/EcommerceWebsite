@@ -58,7 +58,6 @@
             .appendTo(ul);
     };;
 
-
     function checkCoupon() {
         var url = `{{ route('coupon.checkCoupon') }}`;
         var coupon_code = $("#coupon_code_input").val();
@@ -72,8 +71,12 @@
             , success: function(response) {
                 if (response.success) {
                     total = total - response.success;
+
                     $("#total_money").val(total);
-                    $("#display_total_money").html(total.toFixed(3) + `&ensp;<u>đ</u>`);
+                    $("#display_total_money").html(new Intl.NumberFormat('vi-VN', {
+                        style: 'currency'
+                        , currency: 'VND'
+                    }).format(total));
                     $("#success_coupon").html('<p>Đã sử dụng mã giảm giá : Giảm ' + response.success + '&ensp;<u>đ</u></p>')
                     $("#success_coupon").show();
                     setTimeout(function() {
@@ -85,6 +88,27 @@
                     setTimeout(function() {
                         $("#message_coupon").hide();
                     }, 1500)
+                }
+            }
+        })
+    }
+
+    function deleteSessionCoupon() {
+        var url = `{{ route('order.deleteSession') }}`;
+        let before_total_money = $("#before_total_money").val();
+        $("#total_money").val(before_total_money);
+        $("#display_total_money").html(new Intl.NumberFormat('vi-VN', {
+            style: 'currency'
+            , currency: 'VND'
+        }).format(before_total_money));
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , success: function(response) {
+                if (response.success) {
+                    //   
+                } else {
+                    //   
                 }
             }
         })

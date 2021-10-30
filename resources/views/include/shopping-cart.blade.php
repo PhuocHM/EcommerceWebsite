@@ -87,7 +87,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Thông tin đơn hàng</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_order_button" onclick="deleteSessionCoupon()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -99,6 +99,7 @@
                             <div class="form-group ">
                                 <label class="title">Tổng thanh toán : </label>
                                 <input type="hidden" class="form-control" id="total_money" name="total_money" value="{{ $total }}">
+                                <input type="hidden" class="form-control" id="before_total_money" name="before_total_money" value="{{ $total }}">
                                 <span style="color:red" id="display_total_money">{{ number_format($total) }}&ensp;<u>đ</u></span>
                             </div>
                             <div>

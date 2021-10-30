@@ -45,23 +45,7 @@
                     </strong><!-- logo -->
                 </div>
                 <div class="col-md-8 nav-mind">
-                    <!-- block search -->
-                    <div class="block-search">
-                        <div class="block-content">
-                            <div class="categori-search  ">
-                                <select title="categories" data-placeholder="Từ khóa" class="chosen-select ">
-                                </select>
-                            </div>
-                            <div class="form-search">
-                                <form>
-                                    <div class="box-group">
-                                        <input type="text" id="seach_input" class="form-control" placeholder="Search keyword here...">
-                                        <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div><!-- block search -->
+                    <input style="witdh:100px" type="text" id="seach_input" class="form-control" placeholder="Nhập tên sản phẩm cần tìm">
                 </div>
                 <div class="col-md-2 nav-right">
                     <!-- block mini cart -->
@@ -100,7 +84,7 @@
                         <ul class="header-nav dagon-nav">
                             <li class="btn-close hidden-md"><i class="flaticon-close" aria-hidden="true"></i></li>
                             <li class="menu-item-has-children">
-                                <a href="{{ route('coupon.index') }}">Khuyến mãi</a>
+                                <a href="{{ route('coupon.index') }}">Mã của bạn</a>
                             </li>
 
                             @if (Auth::check())

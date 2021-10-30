@@ -87,7 +87,7 @@
                         showCart();
                     }
                 })
-            }, 1000);
+            }, 1500);
         }
 
         function showCart() {
@@ -184,6 +184,7 @@
                 v.owlCarousel(s)
             })
         }
+
 
         $(document).ready(function() {
             showCart();

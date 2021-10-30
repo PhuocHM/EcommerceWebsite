@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Users\Discounts;
+use App\Models\Users\DiscountProduct;
 
 class FlashSalesController extends Controller
 {
@@ -78,8 +80,10 @@ class FlashSalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteDiscount()
     {
-        //
+        DiscountProduct::truncate();
+        Discounts::whereNotNull('id')->delete();
+        return response()->json(['success' => 'Đã xóa thành công']);
     }
 }

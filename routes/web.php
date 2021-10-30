@@ -53,6 +53,8 @@ Route::resource('coupon', CouponController::class);
 
 Route::resource('cart', CartController::class);
 Route::GET('order-detail', [OrderController::class, 'orderDetail'])->name('order.orderDetail');
+Route::GET('api/deleteDiscount', [FlashSalesController::class, 'deleteDiscount'])->name('discount.deleteDiscount');
+Route::GET('api/deleteSession', [HomeController::class, 'deleteSession'])->name('order.deleteSession');
 Route::GET('api/carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 Route::GET('api/seach', [HomeController::class, 'seach'])->name('home.seach');
 Route::GET('api/check-cart', [HomeController::class, 'checkCart'])->name('cart.checkCart');

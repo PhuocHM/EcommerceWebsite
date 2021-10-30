@@ -386,6 +386,17 @@
 @endsection
 @section('script')
 <script>
+    function deleteDiscount() {
+        var url = `{{ route('discount.deleteDiscount') }}`;
+        $.ajax({
+            url: url
+            , method: 'GET'
+            , success: function(response) {
+                // 
+            }
+        })
+    }
+
     function getFlashSales() {
         var url = `{{ route('discounts.getFlashSale') }}`;
         $.ajax({
@@ -417,6 +428,10 @@
                             `);
                         if (distance < 0) {
                             clearInterval(x);
+                            deleteDiscount();
+                            $("#noti-main").html('Chương trình Flash Sales đã kết thúc, giá sản phẩm đã được cập nhật lại')
+                            checkCart();
+                            $("#noti-button").trigger("click");
                             $("#product-count-down").html("<p>Không có chương trình khuyến mãi nào</p>");
                             $("#flash-sale-main").html('')
                         }

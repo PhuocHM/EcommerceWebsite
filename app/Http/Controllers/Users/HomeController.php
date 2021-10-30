@@ -17,6 +17,7 @@ use App\Models\Users\Coupons;
 use App\Models\Users\Discounts;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -193,11 +194,25 @@ class HomeController extends Controller
     {
 
         $coupon = Coupons::where('code', $request->coupon_code)->get();
-
+        if (!Session::has('used_coupon')) {
+            $used_coupon = [];
+        } else {
+            $used_coupon = Session::get('used_coupon');
+        }
         if ($coupon->first() != null) {
-            return response()->json(['success' => $coupon->first()->amounts]);
+            if (in_array($coupon->first()->code, $used_coupon)) {
+                return response()->json(['error' => 'Mã giảm giá đã được sử dụng']);
+            } else {
+                array_push($used_coupon, $coupon->first()->code);
+                Session::put('used_coupon', $used_coupon);
+                return response()->json(['success' => $coupon->first()->amounts]);
+            }
         }
         return response()->json(['error' => 'Mã giảm giá không hợp lệ']);
+    }
+    public function deleteSession()
+    {
+        Session::forget('used_coupon');
     }
     public function store(Request $request)
     {

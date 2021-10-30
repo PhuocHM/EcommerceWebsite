@@ -20,7 +20,7 @@
     <form>
         <div class="minicart-content-wrapper">
             <div class="subtitle">
-                You have <span>{{ count($cart_items) }}</span> item(s) in your cart
+                Bạn có <span>{{ count($cart_items) }}</span> sản phẩm trong giỏ hàng
             </div>
             <div class="minicart-items-wrapper">
                 <ol class="minicart-items">
@@ -53,12 +53,12 @@
                 </ol>
             </div>
             <div class="subtotal">
-                <span class="label">Total :</span>
+                <span class="label">Tổng :</span>
                 <span class="price">{{ number_format($total) }}&ensp;<u>đ</u></span>
             </div>
             <div class="actions">
 
-                <a href="{{ route('cart.index') }}" class="btn btn-viewcart" href="shopping-cart.html">View cart</a>
+                <a href="{{ route('cart.index') }}" class="btn btn-viewcart" href="shopping-cart.html">Xem giỏ hàng</a>
             </div>
         </div>
     </form>
@@ -85,7 +85,7 @@
     <form>
         <div class="minicart-content-wrapper">
             <div class="subtitle">
-                You have <span>0</span> item(s) in your cart
+                Bạn có <span>0</span> sản phẩm trong giỏ hàng
             </div>
             <div class="minicart-items-wrapper">
                 <ol class="minicart-items">
@@ -93,11 +93,11 @@
                 </ol>
             </div>
             <div class="subtotal">
-                <span class="label">Total :</span>
+                <span class="label">Tổng :</span>
                 <span class="price">0&ensp;<u>đ</u></span>
             </div>
             <div class="actions">
-                <a href="{{ route('cart.index') }}" class="btn btn-viewcart" href="shopping-cart.html">View cart</a>
+                <a href="{{ route('cart.index') }}" class="btn btn-viewcart" href="shopping-cart.html">Xem giỏ hàng</a>
             </div>
         </div>
     </form>
