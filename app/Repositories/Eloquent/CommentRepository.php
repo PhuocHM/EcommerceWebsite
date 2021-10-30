@@ -29,5 +29,7 @@ class CommentRepository implements CommentRepositoryInterface
     {
         $query = Comments::find($id);
         $query->delete();
+
+        
     }
 }

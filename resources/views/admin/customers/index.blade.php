@@ -98,11 +98,11 @@
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#"
+                                                                    {{-- <a href="#"
                                                                         onclick="deleteCustomer({{ $customer->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteCustomer"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
+                                                                            class="bi bi-trash-fill"></i></a> --}}
                                                                 </form>
                                                             </div>
                                                         </td>

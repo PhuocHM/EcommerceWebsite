@@ -56,7 +56,6 @@
                                                     <th>#</th>
                                                     <th>Tên</th>
                                                     <th>Email</th>
-                                                    <th>Mật khẩu</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
@@ -68,8 +67,6 @@
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $user->name }}</td>
                                                         <td>{{ $user->email }}</td>
-                                                        <td>{{ $user->password }}</td>
-
                                                         <td>{{ date('d-m-Y', strtotime($user->created_at)) }}</td>
                                                         <td>
                                                             @if ($user->updated_at != '')
