@@ -90,7 +90,7 @@ Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
-    // 
+
     Route::get('/home', AdminController::class)->name('home');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/categories', CategoriesController::class);
