@@ -25,6 +25,7 @@ class DiscountController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('discount-show', 'discount-show');
         $discounts = $this->discountsService->getAll($request);
         $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         $params = [
@@ -41,7 +42,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-      
+
         return view('admin.discounts.create');
     }
 
@@ -95,7 +96,7 @@ class DiscountController extends Controller
     public function update(DiscountsRequest $request, $id)
     {
         $this->discountsService->update($request, $id);
-        return redirect()->route('discounts.index')->with('status','Cập nhật chiết giá thành công!');
+        return redirect()->route('discounts.index')->with('status', 'Cập nhật chiết giá thành công!');
     }
 
     /**
@@ -105,13 +106,12 @@ class DiscountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
-        try{
+    {
+        try {
             $this->discountsService->destroy($id);
             return redirect()->route('discounts.index')->with('status', 'Xóa chiết khấu thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('discounts.index')->with('status', 'Xóa không thành công! ' . $e);
         }
-       catch(\Exception $e){
-        return redirect()->route('discounts.index')->with('status', 'Xóa không thành công! '.$e);
-    }
     }
 }

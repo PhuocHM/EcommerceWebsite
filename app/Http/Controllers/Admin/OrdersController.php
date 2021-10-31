@@ -22,6 +22,7 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('order-show', 'order-show');
         $orders = $this->ordersService->getAll($request);
 
         $name_sort = '--Lọc theo--';
