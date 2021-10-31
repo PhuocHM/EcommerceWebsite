@@ -20,12 +20,12 @@ class DiscountProductController extends Controller
      */
     public function index(Request $request)
     {
-        $discountProducts = $this->discountProductService->getAll($request); 
-     
+        $discountProducts = $this->discountProductService->getAll($request);
+
         // dd($discountProduct->toArray());
         $params = [
             'discountProducts' => $discountProducts,
-           
+
         ];
         return view('admin.discountProduct.index', $params);
     }
@@ -55,7 +55,7 @@ class DiscountProductController extends Controller
     public function store(Request $request)
     {
         $this->discountProductService->store($request);
-        return redirect()->route('discountProduct.index')->with('status','Thêm chiết khấu sản phẩm thành công !');
+        return redirect()->route('discountProduct.index')->with('status', 'Thêm chiết khấu sản phẩm thành công !');
     }
 
     /**
@@ -85,7 +85,7 @@ class DiscountProductController extends Controller
             'discounts'       => $discounts,
             'discountProduct' => $discountProduct
         ];
-    
+
         return view('admin.discountProduct.edit', $params);
     }
 
@@ -99,7 +99,7 @@ class DiscountProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->discountProductService->update($request, $id);
-        return redirect()->route('discountProduct.index')->with('status','Cập nhật chiết khấu sản phẩm thành công!');
+        return redirect()->route('discountProduct.index')->with('status', 'Cập nhật chiết khấu sản phẩm thành công!');
     }
 
     /**
@@ -110,13 +110,11 @@ class DiscountProductController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->discountProductService->destroy($id);
             return redirect()->route('discountProduct.index')->with('status', 'Xóa thuộc tính sản phẩm thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('discountProduct.index')->with('status', 'Xóa không thành công! ' . $e);
         }
-        catch(\Exception $e){
-            return redirect()->route('discountProduct.index')->with('status', 'Xóa không thành công! '.$e);
-
-        } 
     }
 }
