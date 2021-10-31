@@ -114,7 +114,7 @@
                         <a href="#" class="banner-img"><img src="{{ asset('images/home3/banner2-1.jpg') }}" alt="banner2"></a>
                         <div class="promotion-banner-inner">
                             <h4>Sản phẩm bán chạy</h4>
-                            <h3>Tháng 10</h3>
+                            <h3>Tháng 11</h3>
                             <a class="banner-link" href="{{ route('bestseller.index') }}">Mua ngay</a>
                         </div>
                     </div>

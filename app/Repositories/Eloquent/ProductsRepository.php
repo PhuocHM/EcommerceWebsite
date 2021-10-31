@@ -17,18 +17,18 @@ class ProductsRepository implements ProductsInterface
     public function getAll(Request $request)
     {
         $query = Products::with('category', 'brand');
-        if ($request->category_id && $request->product =='') {
+        if ($request->category_id && $request->product == '') {
             $category_id = $request->category_id;
-            $query->where('category_id',$category_id);        
+            $query->where('category_id', $category_id);
         }
-        if ($request->product && $request->category_id =='') {
+        if ($request->product && $request->category_id == '') {
             $search = $request->product;
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
-        if($request->product && $request->category_id){ 
+        if ($request->product && $request->category_id) {
             $category_id = $request->category_id;
             $search = $request->product;
-            $query->where('category_id',$category_id)->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('category_id', $category_id)->where('name', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
 
@@ -77,7 +77,7 @@ class ProductsRepository implements ProductsInterface
 
     public function findDetail($id)
     {
-      
+
         return Products::with('category', 'brand', 'attribute', 'productImage', 'supplier', 'comment', 'discount')->find($id);
     }
 
@@ -85,8 +85,11 @@ class ProductsRepository implements ProductsInterface
     public function destroy($id)
     {
         $product = Products::find($id);
-        $product_image = ProductImage::where('product_id', $id)->get();
-        $product_image->delete();
+        $product_image = ProductImage::where('product_id', $id)->where('type', 1)->get();
+        foreach ($product_image as $key => $value) {
+            $image = ProductImage::find($value->id);
+            $image->delete();
+        }
         $product->delete();
     }
 
