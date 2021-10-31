@@ -14,12 +14,14 @@
                         </ol>
                     </nav>
                 </div>
-
+                <div class="ms-auto">
+                    <div class="btn-group">
+                        <a href="{{ route('orders.create') }}" class="btn btn-primary">Thêm đơn hàng</a>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -58,50 +60,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($orders as $order)
+                                                @foreach ($orders as $key => $order)
                                                     <tr>
-                                                        <td>{{ $order->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $order->code }}</td>
                                                         <td>{{ $order->customer->name }}</td>
                                                         <td>{{ $order->payment_method }}</td>
                                                         <td>{{ $order->total_price }}</td>
+
                                                         <td>
                                                             @if ($order->status == 0)
-                                                                <form>
-                                                                    @csrf
-                                                                    <select name="status"
-                                                                        data-order_id="{{ $order->id }}"
-                                                                        class="custom-select status">
-                                                                        <option selected value="0">Đang chờ</option>
-                                                                        <option value="1">Đang vận chuyển</option>
-                                                                        <option value="2">Vận chyển xong</option>
-                                                                    </select>
-                                                                </form>
-                                                            @elseif($order->status==1)
-                                                                <form>
-                                                                    @csrf
-                                                                    <select name="status"
-                                                                        data-order_id="{{ $order->id }}"
-                                                                        class="custom-select status">
-                                                                        <option value="0">Đang chờ</option>
-                                                                        <option selected value="1">Đang vận chuyển</option>
-                                                                        <option value="2">Vận chyển xong</option>
-                                                                    </select>
-                                                                </form>
+                                                                <span class='text text-success'>Đang chờ</span>
+                                                            @elseif ($order->status == 1)
+                                                                <span class='text text-success'>Đang vận chuyển</span>
                                                             @else
-                                                                <form>
-                                                                    @csrf
-                                                                    <select name="status"
-                                                                        data-order_id="{{ $order->id }}"
-                                                                        class="custom-select status">
-                                                                        <option value="0">Đang chờ</option>
-                                                                        <option value="1">Đang vận chuyển</option>
-                                                                        <option selected value="2">Vận chyển xong</option>
-                                                                    </select>
-                                                                </form>
+                                                                <span class='text text-success'>Đã hoàn thành</span>
                                                             @endif
                                                         </td>
-
                                                         <td>{{ date('d-m-Y', strtotime($order->created_at)) }}</td>
                                                         <td>
                                                             @if ($order->updated_at != '')
@@ -110,9 +85,10 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
+                                                                <a href="{{ route('orders.show', $order->id) }}"
+                                                                    class="text-primary" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="bottom" title=""
+                                                                    data-bs-original-title="View detail"
                                                                     aria-label="Views"><i class="bi bi-eye-fill"></i></a>
                                                                 <a href="{{ route('orders.edit', $order->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"

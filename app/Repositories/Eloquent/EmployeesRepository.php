@@ -6,6 +6,7 @@ use App\Models\Admin\Employees;
 use App\Models\Admin\Groups;
 use App\Repositories\Interfaces\EmployeesInterface;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeesRepository implements EmployeesInterface
 {
@@ -15,10 +16,10 @@ class EmployeesRepository implements EmployeesInterface
         if ($request->employee) {
             $search = $request->employee;
 
-            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('mail', 'LIKE', '%' . $search . '%');
+            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('email', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function create_group()
     {
@@ -26,13 +27,15 @@ class EmployeesRepository implements EmployeesInterface
     }
     public function store($request)
     {
-        $data = $request->only('name', 'slug', 'mail', 'password', 'birthday', 'address', 'identification', 'group_id');
+        $data = $request->only('name', 'slug', 'email', 'birthday', 'address', 'identification', 'group_id');
+        $data['password'] = Hash::make($request->password);
         $file = $request->image;
+        $path = "images/employee/";
         if (!$request->hasFile('image')) {
             $data['image'] = $file;
         } else {
             $fileExtension = $file->getClientOriginalExtension();
-            $fileName = time() + 2;
+            $fileName =  $path . time() + 2;
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/employee'), $newFileName);
             $data['image'] = $newFileName;
@@ -46,13 +49,16 @@ class EmployeesRepository implements EmployeesInterface
 
     public function update($request, $id)
     {
-        $data = $request->only('name', 'slug', 'mail', 'password', 'birthday', 'address', 'identification', 'group_id');
-        $file = $request->image;
-        if (!$request->hasFile('image')) {
-            $data['image'] = $file;
-        } else {
-            $fileExtension = $file->getClientOriginalExtension();
-            $fileName = time() + 2;
+        $data =  $request->only('name', 'slug', 'email', 'birthday', 'address', 'identification', 'group_id');
+        $data['password'] = Hash::make($request->password);
+        $path = "images/employee/";
+        if ($request->image) {
+            $data['image'] = $request->image;
+        }
+
+        if ($request->hasFile('image')) {
+            $fileExtension = $request->image->getClientOriginalExtension();
+            $fileName =  $path . time() + 2;
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/employee'), $newFileName);
             $data['image'] = $newFileName;

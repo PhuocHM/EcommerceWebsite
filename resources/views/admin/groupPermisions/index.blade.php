@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Phân quyền quản lý</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Phân quyền quản lý</li>
                         </ol>
                     </nav>
                 </div>
@@ -37,7 +37,7 @@
             </div>
             <br>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -61,9 +61,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($groupPermisions as $groupPermision)
+                                                @foreach ($groupPermisions as $key => $groupPermision)
                                                     <tr>
-                                                        <td>{{ $groupPermision->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $groupPermision->group->name }}</td>
                                                         <td>{{ $groupPermision->role->name }}</td>
                                                         <td>{{ date('d-m-Y', strtotime($groupPermision->created_at)) }}
@@ -75,10 +75,6 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
                                                                 <a href="{{ route('groupPermisions.edit', $groupPermision->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""

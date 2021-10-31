@@ -39,7 +39,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        
+
         return view('admin.brands.create');
     }
 
@@ -55,7 +55,7 @@ class BrandsController extends Controller
         return redirect()->route('brands.index')->with('status', 'Thêm thương hiệu thành công !');
     }
 
-    /** 
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -102,7 +102,7 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         $this->brandService->destroy($id);
         return redirect()->route('brands.index')->with('status', 'Xóa thương hiệu thành công !');
     }

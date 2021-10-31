@@ -18,17 +18,44 @@
                                 @method('PUT')
                                 {{ csrf_field() }}
                                 <div class="col-12">
-                                    <label class="form-label">Tên</label>
-                                    <input type="text" class="form-control" placeholder="Tên chức vụ" name="name"
-                                        value="{{ $order->name }}">
-                                    <span style="color:red;">@error('name'){{ $message }} @enderror</span>
+                                    <label class="form-label">Tên khách hàng</label>
+                                    <select name="customer_id" class="form-control input-sm m-bot15">
+                                        @foreach ($customers as $customer)
+                                            <option {{ $customer->id == $order->customer_id ? 'selected' : '' }}
+                                                value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Slug</label>
-                                    <input type="text" class="form-control" placeholder="Slug name" name="slug"
-                                        value="{{ $order->slug }}">
-                                    <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
-
+                                    <label class="form-label">Phương thức thanh toán</label>
+                                    <input type="text" class="form-control" placeholder="Phương thức thanh toán"
+                                        name="payment_method" value="{{ $order->payment_method }}">
+                                    <span style="color:red;">@error('payment_method'){{ $message }} @enderror</span>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label class="form-label">Tổng giá đơn hàng</label>
+                                    <input type="text" class="form-control" placeholder="Phương thức thanh toán"
+                                        name="total_price" value="{{ $order->total_price }}">
+                                    <span style="color:red;">@error('total_price'){{ $message }} @enderror</span>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Trạng thái</label>
+                                    <select name="status" class="form-select" id="inputGroupSelect02">
+                                        @if ($order->status == 0)
+                                            <option selected value="0">Đang chờ</option>
+                                            <option value="1">Đang vận chuyển</option>
+                                            <option value="2">Đã hoàn thành</option>
+                                        @elseif ($order->status == 1)
+                                            <option value="0">Đang chờ</option>
+                                            <option selected value="1">Đang vận chuyển</option>
+                                            <option value="2">Đã hoàn thành </option>
+                                        @else
+                                            <option value="0">Đang chờ</option>
+                                            <option value="1">Đang vận chuyển</option>
+                                            <option selected value="2">Đã hoàn thành</option>
+                                        @endif
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <div class="d-grid">

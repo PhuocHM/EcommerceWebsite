@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thuộc Tính</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Thuộc tính</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -55,25 +55,23 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Tên</th>
-                                                    <th>Slug</th>
+
                                                     <th>Thuộc danh mục</th>
-                                                    <th>Ngày tạo</th>
+
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($attributes as $attribute)
+                                                @foreach ($attributes as $key => $attribute)
                                                     <tr>
-                                                        <td>{{ $attribute->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $attribute->name }}</td>
-                                                        <td>{{ $attribute->slug }}</td>
                                                         @if ($attribute->category)
                                                             <td>{{ $attribute->category->name }}</td>
                                                         @else
                                                             <td></td>
                                                         @endif
-                                                        <td>{{ date('d-m-Y', strtotime($attribute->created_at)) }}</td>
                                                         <td>
                                                             @if ($attribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($attribute->updated_at)) }}
@@ -81,26 +79,19 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('attributes.edit', $attribute->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-                                                                <form
-                                                                    action="{{ route('attributes.destroy', [$attribute->id]) }}"
-                                                                    method="POST">
-                                                                    @method('DELETE')
-                                                                    @csrf
-                                                                    <a href="#"
-                                                                        onclick="deleteAttributes({{ $attribute->id }})"
-                                                                        class="text-danger" data-bs-toggle="modal"
-                                                                        data-bs-target="#deleteAttributes"> <i
-                                                                            class="bi bi-trash-fill"></i></a>
-                                                                </form>
+
+                                                                <a href="#"
+                                                                    onclick="deleteAttributes({{ $attribute->id }})"
+                                                                    class="text-danger" data-bs-toggle="modal"
+                                                                    data-bs-target="#deleteAttributes"> <i
+                                                                        class="bi bi-trash-fill"></i></a>
+
                                                             </div>
                                                         </td>
                                                     </tr>

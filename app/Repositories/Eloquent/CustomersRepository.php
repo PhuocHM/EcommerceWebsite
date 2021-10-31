@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Models\Admin\Users;
+use App\Models\User;
 use App\Models\Admin\Customers;
 use App\Repositories\Interfaces\CustomersInterface;
 
@@ -14,14 +14,14 @@ class CustomersRepository implements CustomersInterface
     public function getAll($request)
     {
         $query = Customers::with('user');
-        if($request->customer){
-            $search=$request->customer;
-    
-            $query->where('name','LIKE','%'.$search.'%');
-        }
-        $query->orderBy('id','DESC');
+        if ($request->customer) {
+            $search = $request->customer;
 
-        return $query->paginate(1);
+            $query->where('name', 'LIKE', '%' . $search . '%');
+        }
+        $query->orderBy('id', 'DESC');
+
+        return $query->paginate(5);
     }
     public function getOne()
     {
@@ -34,7 +34,7 @@ class CustomersRepository implements CustomersInterface
         $customer->phone           = $request->phone;
         $customer->address          = $request->address;
         $customer->bonus_points    = $request->bonus_points;
-        $customer->user_id          = $request->user_id ;
+        $customer->user_id          = $request->user_id;
         $customer->created_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
         $customer->save();
@@ -47,27 +47,27 @@ class CustomersRepository implements CustomersInterface
         $customer->phone           = $request->phone;
         $customer->address          = $request->address;
         $customer->bonus_points    = $request->bonus_points;
-        $customer->user_id          = $request->user_id ;
+        $customer->user_id          = $request->user_id;
         $customer->updated_at     = Carbon::now('Asia/Ho_Chi_Minh');
 
         $customer->save();
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return Customers::find($id);
-     }
+    }
     public function destroy($id)
     {
         $customers = Customers::find($id);
         $customers->delete();
     }
-   
+
     public function create_user()
     {
-        return Users::orderBy('id','DESC')->get();
+        return User::orderBy('id', 'DESC')->get();
     }
     public function create()
     {
-        return Users::orderBy('id','DESC')->get();
+        return User::orderBy('id', 'DESC')->get();
     }
-   
 }

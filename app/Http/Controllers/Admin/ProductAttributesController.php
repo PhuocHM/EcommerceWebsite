@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Products;
 use App\Services\ProductAttributesService;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class ProductAttributesController extends Controller
      */
     public function index(Request $request)
     {
-        $productAttributes = $this->productAttributesService->getAll($request); 
+        $productAttributes = $this->productAttributesService->getAll($request);
         // dd($productAttributes->toArray());
         $params = [
             'productAttributes' => $productAttributes,
@@ -35,6 +36,7 @@ class ProductAttributesController extends Controller
      */
     public function create()
     {
+        
         $products = $this->productAttributesService->create_product();
         $attributes     = $this->productAttributesService->create_attribute();
         $params = [
@@ -52,8 +54,10 @@ class ProductAttributesController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->product_id);
+        // dd($request->attribute_id);
         $this->productAttributesService->store($request);
-        return redirect()->route('productAttributes.index')->with('status','Thêm thuộc tính sản phẩm thành công !');
+        return redirect()->route('productAttributes.index')->with('status', 'Thêm thuộc tính sản phẩm thành công !');
     }
 
     /**
@@ -83,7 +87,7 @@ class ProductAttributesController extends Controller
             'attributes'       => $attributes,
             'productAttribute' => $productAttribute
         ];
-    
+
         return view('admin.productAttributes.edit', $params);
     }
 
@@ -97,7 +101,7 @@ class ProductAttributesController extends Controller
     public function update(Request $request, $id)
     {
         $this->productAttributesService->update($request, $id);
-        return redirect()->route('productAttributes.index')->with('status','Cập nhật thuộc tính sản phẩm thành công!');
+        return redirect()->route('productAttributes.index')->with('status', 'Cập nhật thuộc tính sản phẩm thành công!');
     }
 
     /**
@@ -108,13 +112,11 @@ class ProductAttributesController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->productAttributesService->destroy($id);
             return redirect()->route('productAttributes.index')->with('status', 'Xóa thuộc tính sản phẩm thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('productAttributes.index')->with('status', 'Xóa không thành công! ' . $e);
         }
-        catch(\Exception $e){
-            return redirect()->route('productAttributes.index')->with('status', 'Xóa không thành công! '.$e);
-
-        } 
     }
 }

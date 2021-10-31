@@ -10,7 +10,7 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Thuộc tính Sản phẩm</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Thuộc tính sản phẩm</li>
                         </ol>
                     </nav>
                 </div>
@@ -22,20 +22,19 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                  
-                  <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                  <!-- <div class="addthis_inline_share_toolbox"></div> -->
-               
-                  <form  class="form-inline my-2 my-lg-0" >
-                <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>        
-                  <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" action="{{ route('productAttributes.index') }}" method="GET" name="productAttribute" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-                       
-                      </select>
-                  </form>
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('productAttributes.index') }}" method="GET" name="productAttribute"
+                            type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+
+                        </select>
+                    </form>
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -54,21 +53,20 @@
                                                     <th>Sản phẩm</th>
                                                     <th>Thuộc tính</th>
                                                     <th>Nội dung</th>
-                                                    <th>Ngày tạo</th>
-                                                      <th>Ngày cập nhật</th>
+
+                                                    <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($productAttributes as $productAttribute)
+                                                @foreach ($productAttributes as $key => $productAttribute)
                                                     <tr>
-                                                        <td>{{ $productAttribute->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $productAttribute->product->name }}</td>
                                                         <td>{{ $productAttribute->attribute->name }}</td>
                                                         <td>{{ $productAttribute->content }}</td>
 
-                                                        <td>{{ date('d-m-Y', strtotime($productAttribute->created_at)) }}
-                                                        </td>
+                                                    
                                                         <td>
                                                             @if ($productAttribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($productAttribute->updated_at)) }}
@@ -76,10 +74,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('productAttributes.edit', $productAttribute->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""
@@ -90,7 +85,8 @@
                                                                     method="POST">
                                                                     @method('DELETE')
                                                                     @csrf
-                                                                    <a href="#" onclick="deleteProductAtrribute({{ $productAttribute->id }})"
+                                                                    <a href="#"
+                                                                        onclick="deleteProductAtrribute({{ $productAttribute->id }})"
                                                                         class="text-danger" data-bs-toggle="modal"
                                                                         data-bs-target="#deleteProductAtrribute"> <i
                                                                             class="bi bi-trash-fill"></i></a>

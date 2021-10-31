@@ -2,16 +2,21 @@
 
 namespace App\Models;
 
+use App\Models\Users\Customers;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
     protected $table = 'users';
     use HasApiTokens, HasFactory, Notifiable;
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,11 +46,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function product()
-    {
-        return  $this->belongsToMany(Products::class, 'wishlist');
-    }
 
     public function comment()
     {

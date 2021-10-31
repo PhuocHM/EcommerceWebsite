@@ -89,7 +89,7 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeesRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $this->employeesService->update($request, $id);
         return redirect()->route('employees.index')->with('status', 'Cập nhật nhân sự thành công!');

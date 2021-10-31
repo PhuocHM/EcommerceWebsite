@@ -32,16 +32,11 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email</label>
-                                    <input type="email" class="form-control" placeholder="Email" name="mail"
-                                        value="{{ $employee->mail }}">
-                                    <span style="color:red;">@error('mail'){{ $message }} @enderror</span>
+                                    <input type="email" class="form-control" placeholder="Email" name="email"
+                                        value="{{ $employee->email }}">
+                                    <span style="color:red;">@error('email'){{ $message }} @enderror</span>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label">Mật khẩu</label>
-                                    <input type="text" class="form-control" placeholder="Password" name="password"
-                                        value="{{ $employee->password }}">
-                                    <span style="color:red;">@error('password'){{ $message }} @enderror</span>
-                                </div>
+
                                 <div class="col-12">
                                     <label class="form-label">Ngày sinh</label>
                                     <input type="date" class="form-control" placeholder="Ngày sinh" name="birthday"
@@ -62,9 +57,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Hình ảnh</label>
-                                    <input type="hidden" name="image" value="{{ $employee->image }}">
-                                    <input type="file" name="image" class="form-control-file" id="image"
-                                        value="{{ $employee->image }} "> <br>
+                                    <input type="file" name="image" class="form-control-file" id="image"> <br>
                                     <img src="{{ asset('/images/employee/' . $employee->image) }}" alt=""
                                         style="width: 150px">
                                     <span style="color:red;">@error('image'){{ $message }} @enderror</span>

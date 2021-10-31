@@ -23,8 +23,15 @@ class OrdersRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'payment_method' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'payment_method.required' => 'Vui lòng nhập phương thức thanh toán',
         ];
     }
 }

@@ -10,13 +10,13 @@
                         <ol class="breadcrumb mb-0 p-0">
                             <li class=""><a href="javascript:;"><i class="fas fa-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Tài khoản khách hàng</li>
+                            <li class="breadcrumb-item active" aria-current="page">&ensp;Tài khoản khách hàng</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">Thêm mới người dùng</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -56,20 +56,17 @@
                                                     <th>#</th>
                                                     <th>Tên</th>
                                                     <th>Email</th>
-                                                    <th>Mật khẩu</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($users as $user)
+                                                @foreach ($users as $key => $user)
                                                     <tr>
-                                                        <td>{{ $user->id }}</td>
+                                                        <td>{{ ++$key }}</td>
                                                         <td>{{ $user->name }}</td>
                                                         <td>{{ $user->email }}</td>
-                                                        <td>{{ $user->password }}</td>
-
                                                         <td>{{ date('d-m-Y', strtotime($user->created_at)) }}</td>
                                                         <td>
                                                             @if ($user->updated_at != '')
@@ -78,10 +75,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-3 fs-6">
-                                                                <a href="javascript:;" class="text-primary"
-                                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                                    title="" data-bs-original-title="View detail"
-                                                                    aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+
                                                                 <a href="{{ route('users.edit', $user->id) }}"
                                                                     class="text-warning" data-bs-toggle="tooltip"
                                                                     data-bs-placement="bottom" title=""

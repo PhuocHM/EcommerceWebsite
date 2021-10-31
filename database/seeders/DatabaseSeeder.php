@@ -21,12 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductImageSeeder::class);
         $this->call(ProductAttributeSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(CartsSeeder::class);
-        $this->call(CartProductSeeder::class);
+
         $this->call(CouponsSeeder::class);
         $this->call(CustomersSeeder::class);
-        $this->call(OrdersSeeder::class);
-        $this->call(OrderItemsSeeder::class);
+
         $this->call(CommentsSeeder::class);
         $this->call(DiscountSeeder::class);
         $this->call(DiscountProductSeeder::class);
