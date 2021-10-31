@@ -30,11 +30,12 @@ class CouponsRepository implements CouponRepositoryInterface
         $data = $request->only('amounts', 'expired_day', 'description');
         $data['code'] = '#CP' . time() . 'GG';
         $file = $request->image;
+        $path = "images/coupons/";
         if (!$request->hasFile('image')) {
             $data['image'] = $file;
         } else {
             $fileExtension = $file->getClientOriginalExtension();
-            $fileName = time();
+            $fileName =  $path . time();
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/coupons'), $newFileName);
             $data['image'] = $newFileName;
@@ -47,11 +48,12 @@ class CouponsRepository implements CouponRepositoryInterface
     {
         $data = $request->only('amounts', 'expired_day', 'description');
         $file = $request->image;
+        $path = "images/coupons/";
         if (!$request->hasFile('image')) {
             $data['image'] = $file;
         } else {
             $fileExtension = $file->getClientOriginalExtension();
-            $fileName = time();
+            $fileName =  $path . time();
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/coupons'), $newFileName);
             $data['image'] = $newFileName;

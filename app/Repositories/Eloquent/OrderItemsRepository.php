@@ -30,11 +30,14 @@ class OrderItemsRepository implements OrderItemsInterface
         $orderItem->quantity    = $request->quantity;
         $orderItem->order_id    = $request->order_id;
         $orderItem->save();
+
+        $order = Orders::find($request->order_id);
+        $order->total_price = $order->total_price + $request->price * $request->quantity;
+        $order->save();
     }
 
     public function update($request, $id)
     {
-
         $orderItem              = OrderItems::find($id);
         $orderItem->product_id  = $request->product_id;
         $orderItem->price       = $request->price;
@@ -49,7 +52,7 @@ class OrderItemsRepository implements OrderItemsInterface
     }
     public function destroy($id)
     {
-        
+
         $orderItem = OrderItems::find($id);
         $orderItem->delete();
     }

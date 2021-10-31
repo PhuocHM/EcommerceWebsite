@@ -29,7 +29,6 @@
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
                             action="{{ route('products.index') }}" method="GET" name="product" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
-
                         </select>
                     </form>
                 </div>

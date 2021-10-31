@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login 05</title>
+    <title>Login Admin Horizon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,8 +25,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-7 col-lg-5">
                     <div class="wrap">
-                        <div class="img"
-                            style="background-image: url({{ url('loginAdmin/images/bg-1.jpg') }});"></div>
+                        <div class="img" style="background-image: url({{ url('loginAdmin/images/bg-1.jpg') }});"></div>
                         <div class="login-wrap p-4 p-md-5">
                             <div class="d-flex">
                                 <div class="w-100">
@@ -34,20 +33,16 @@
                                 </div>
                                 <div class="w-100">
                                     <p class="social-media d-flex justify-content-end">
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"><span
-                                                class="fa fa-facebook"></span></a>
-                                        <a href="#"
-                                            class="social-icon d-flex align-items-center justify-content-center"><span
-                                                class="fa fa-twitter"></span></a>
+                                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                        <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
                                     </p>
                                 </div>
                             </div>
                             @if (Session::has('login-fail'))
-                                <div class="login-fail">
-                                    <p class="text-danger">{{ Session::get('login-fail') }}</p>
-                                    <br>
-                                </div>
+                            <div class="login-fail">
+                                <p class="text-danger">{{ Session::get('login-fail') }}</p>
+                                <br>
+                            </div>
                             @endif
                             <form action="{{ route('login.admin.action') }}" class="signin-form" method="post">
                                 @csrf
@@ -60,8 +55,7 @@
                                 <div class="form-group">
 
                                     <input id="password-field" type="password" class="form-control" name="password" placeholder="Mật khẩu">
-                                    <span toggle="#password-field"
-                                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     <span style="color:red;">@error('password'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="form-group">
@@ -71,14 +65,14 @@
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50 text-left">
-                                        <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+                                        {{-- <label class="checkbox-wrap checkbox-primary mb-0">Ghi nhớ mật khẩu
                                             <input type="checkbox">
                                             <span class="checkmark"></span>
-                                        </label>
+                                        </label> --}}
                                     </div>
-                                    <div class="w-50 text-md-right">
+                                    {{-- <div class="w-50 text-md-right">
                                         <a href="#">Forgot Password</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </form>
                             <p class="text-center">Chào mừng các <a data-toggle="tab" href="#signup">Horizoner</a>

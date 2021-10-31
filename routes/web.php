@@ -89,8 +89,7 @@ Route::GET('api/addComment', [HomeController::class, 'addComment'])->name('home.
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Route::group(['prefix' => 'admin'], function () {
-
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::get('/home', AdminController::class)->name('home');
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
@@ -119,6 +118,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/ajaxFindProduct', [OrderItemsController::class, 'ajaxFindProduct'])->name('ajax.ajaxFindProduct');
     Route::get('/createOrderItems/{id}', [OrderItemsController::class, 'createItem'])->name('create.item');
     Route::resource('/customers', CustomersController::class);
+    Route::get('/api/seach_category', [CategoriesController::class, 'seach'])->name('category.seach');
 });
 
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');

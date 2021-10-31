@@ -6,11 +6,10 @@
          </div>
          <div>
              <a href="{{ route('home') }}">
-                 <h4 class="logo-text">Ecommerce</h4>
+                 <h4 class="logo-text">Horizon</h4>
              </a>
          </div>
-         <div class="toggle-icon ms-auto"><i class="bi bi-chevron-double-left"></i>
-         </div>
+     </div>
      </div>
      <!--navigation-->
      <ul class="metismenu" id="menu">
@@ -21,30 +20,22 @@
                  <div class="menu-title">Quản lí sản phẩm</div>
              </a>
              <ul>
-                 <li> <a style="text-decoration: none" href="{{ route('categories.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Danh mục sản phẩm</a>
+                 <li> <a style="text-decoration: none" href="{{ route('categories.index') }}"><i class="bi bi-arrow-right-short"></i>Danh mục sản phẩm</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('products.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Sản phẩm</a>
+                 <li> <a style="text-decoration: none" href="{{ route('products.index') }}"><i class="bi bi-arrow-right-short"></i>Sản phẩm</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('productImages.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Hình ảnh sản phẩm</a>
+                 <li> <a style="text-decoration: none" href="{{ route('productImages.index') }}"><i class="bi bi-arrow-right-short"></i>Hình ảnh sản phẩm</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('brands.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Thương hiệu</a>
+                 <li> <a style="text-decoration: none" href="{{ route('brands.index') }}"><i class="bi bi-arrow-right-short"></i>Thương hiệu</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('attributes.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Thuộc tính</a>
+                 <li> <a style="text-decoration: none" href="{{ route('attributes.index') }}"><i class="bi bi-arrow-right-short"></i>Thuộc tính</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('productAttributes.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Thuộc tính sản phẩm</a>
+                 <li> <a style="text-decoration: none" href="{{ route('productAttributes.index') }}"><i class="bi bi-arrow-right-short"></i>Thuộc tính sản phẩm</a>
                  </li>
 
-                 <li> <a style="text-decoration: none" href="{{ route('suppliers.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Nhà cung cấp</a>
+                 <li> <a style="text-decoration: none" href="{{ route('suppliers.index') }}"><i class="bi bi-arrow-right-short"></i>Nhà cung cấp</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('stocks.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Kho</a>
+                 <li> <a style="text-decoration: none" href="{{ route('stocks.index') }}"><i class="bi bi-arrow-right-short"></i>Kho</a>
                  </li>
              </ul>
          </li>
@@ -56,14 +47,11 @@
                  <div class="menu-title">Quản lí khuyến mãi</div>
              </a>
              <ul>
-                 <li> <a style="text-decoration: none" href="{{ route('discounts.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Chiết Khấu</a>
+                 <li> <a style="text-decoration: none" href="{{ route('discounts.index') }}"><i class="bi bi-arrow-right-short"></i>Chiết Khấu</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('discountProduct.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Chiết Khấu sản phẩm</a>
+                 <li> <a style="text-decoration: none" href="{{ route('discountProduct.index') }}"><i class="bi bi-arrow-right-short"></i>Chiết Khấu sản phẩm</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('coupons.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Thẻ giảm giá</a>
+                 <li> <a style="text-decoration: none" href="{{ route('coupons.index') }}"><i class="bi bi-arrow-right-short"></i>Thẻ giảm giá</a>
                  </li>
              </ul>
          </li>
@@ -74,8 +62,7 @@
                  <div class="menu-title">Quản lí đơn hàng</div>
              </a>
              <ul>
-                 <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Thông tin đơn hàng</a>
+                 <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i class="bi bi-arrow-right-short"></i>Thông tin đơn hàng</a>
                  </li>
              </ul>
          </li>
@@ -86,27 +73,11 @@
                  <div class="menu-title">Quản lí khách hàng</div>
              </a>
              <ul>
-                 <li> <a style="text-decoration: none" href="{{ route('users.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Tài khoản khách hàng</a>
+                 <li> <a style="text-decoration: none" href="{{ route('users.index') }}"><i class="bi bi-arrow-right-short"></i>Tài khoản khách hàng</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('customers.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Khách hàng</a>
+                 <li> <a style="text-decoration: none" href="{{ route('customers.index') }}"><i class="bi bi-arrow-right-short"></i>Khách hàng</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('discounts.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Chiết Khấu</a>
-                 </li>
-                 <li> <a style="text-decoration: none" href="{{ route('discountProduct.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Chiết Khấu sản phẩm</a>
-                 </li>
-
-                 <li> <a style="text-decoration: none" href="{{ route('comments.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Khách hàng Review SP</a>
-                 </li>
-                 <li> <a style="text-decoration: none" href="{{ route('orders.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Đơn hàng</a>
-                 </li>
-                 <li> <a style="text-decoration: none" href="{{ route('coupons.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Thẻ giảm giá</a>
+                 <li> <a style="text-decoration: none" href="{{ route('comments.index') }}"><i class="bi bi-arrow-right-short"></i>Khách hàng Review SP</a>
                  </li>
              </ul>
          </li>
@@ -118,17 +89,13 @@
                  <div class="menu-title">Quản lí nhân sự</div>
              </a>
              <ul>
-                 <li> <a style="text-decoration: none" href="{{ route('employees.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Nhân sự</a>
+                 <li> <a style="text-decoration: none" href="{{ route('employees.index') }}"><i class="bi bi-arrow-right-short"></i>Nhân sự</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('groups.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Nhóm chức vụ quản lý</a>
+                 <li> <a style="text-decoration: none" href="{{ route('groups.index') }}"><i class="bi bi-arrow-right-short"></i>Nhóm chức vụ quản lý</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('roles.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Vai trò quản lý</a>
+                 <li> <a style="text-decoration: none" href="{{ route('roles.index') }}"><i class="bi bi-arrow-right-short"></i>Vai trò quản lý</a>
                  </li>
-                 <li> <a style="text-decoration: none" href="{{ route('groupPermisions.index') }}"><i
-                             class="bi bi-arrow-right-short"></i>Phân quyền quản lý</a>
+                 <li> <a style="text-decoration: none" href="{{ route('groupPermisions.index') }}"><i class="bi bi-arrow-right-short"></i>Phân quyền quản lý</a>
                  </li>
              </ul>
          </li>
