@@ -33,14 +33,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-12">
-                                    <label class="form-label">Số tiền được chiết khấu</label>
-                                    <select name="discount_id" class="form-select" id="inputGroupSelect02">
-                                        @foreach ($discounts as $discount)
-                                            <option value="{{ $discount->id }}">{{ $discount->amounts }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                         
                                 <div class="row">
                                     <div class="col-3">
