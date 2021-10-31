@@ -7,7 +7,7 @@ use App\Services\ProductsService;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\ProductsRequest;
-
+use App\Models\Admin\Products;
 
 class ProductsController extends Controller
 {
@@ -24,8 +24,36 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $products = $this->productsService->getAll($request);
+
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
+        if (isset($request->sort_by)) {
+            $sort_by = $request->sort_by;
+            if ($sort_by == 'newest') {
+                $products = Products::orderBy('created_at', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ cũ đến mới';
+            } elseif ($sort_by == 'latest') {
+                $products = Products::orderBy('created_at', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ mới đến cũ';
+            } elseif ($sort_by == 'name_a_to_z') {
+                $products = Products::orderBy('name', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên A đến Z';
+            } elseif ($sort_by == 'name_z_to_z') {
+                $products = Products::orderBy('name', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên Z đến A';
+            } elseif ($sort_by == 'sold_a_to_z') {
+                $products = Products::orderBy('sold', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Số lượng bán ít tới nhiều';
+            } elseif ($sort_by == 'sold_z_to_a') {
+                $products = Products::orderBy('sold', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Số lượng bán nhiều tới ít';
+            }
+        };
+
         $params = [
             'products' => $products,
+            'sort_by' => $sort_by,
+            'name_sort' => $name_sort,
         ];
         return view('admin.products.index', $params);
     }

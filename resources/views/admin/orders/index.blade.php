@@ -44,7 +44,8 @@
                         <div class="col-12 d-flex">
                             <div class="card border shadow-none w-100">
                                 <div class="card-body">
-                                    <div class="table-responsive">
+                                    <i class="text-danger">* Thêm sản phẩm vào order trong phần xem chi tiết đơn hàng</i>
+                                    <div class="table-responsive mt-1">
                                         <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
@@ -70,10 +71,10 @@
 
                                                         <td>
                                                             @if ($order->status == 0)
-                                                                <span class='text text-success'>Đang chờ</span>
+                                                                <span class='text text-danger'>Đang chờ</span>
                                                             @elseif ($order->status == 1)
-                                                                <span class='text text-success'>Đang vận chuyển</span>
-                                                            @else
+                                                                <span class='text text-warning'>Đang vận chuyển</span>
+                                                            @elseif ($order->status == 2)
                                                                 <span class='text text-success'>Đã hoàn thành</span>
                                                             @endif
                                                         </td>
