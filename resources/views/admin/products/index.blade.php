@@ -23,27 +23,32 @@
             <div class="row">
                 <div class="col-md-12">
                     <form class="form-inline my-2 my-lg-0">
-                        <label for="category_filter">Filter By Category &nbsp;</label>
-                        <select class="form-control" id="category_filter" name="category_id">
-                            <option value="">Select Category</option>
-                            {{-- @if (count($categories)) --}}
-                            @foreach ($categories as $key => $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                            {{-- @endif --}}
-                        </select>
+                        {{-- <label for="category_filter">Filter By Category &nbsp;</label> --}}
+                        <div class="row justify-content-end">
+                            <div class="col-2">
+                                <select class="form-select" id="category_filter" name="category_id">
+                                    <option value="">Chọn danh mục</option>
+                                    @foreach ($categories as $key => $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                                    kiếm</button>
+                                <input style="width: 280px; margin-right: 10px; float:right" class="form-control"
+                                    action="{{ route('products.index') }}" method="GET" name="product" type="text"
+                                    placeholder="Tìm kiếm theo tên sản phẩm">
+                                
+                            </div>
+                        </div>
 
-                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
-                            placeholder="Tìm kiếm theo tên sản phẩm">
-                        <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit"
-                            onclick="search_product()">Tìm
-                            kiếm</button>
+
                     </form>
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card mt-3">
+            <div class=" card mt-3">
                 <div class="card-body">
                     @if (session(' status'))
                         <div class="alert alert-success">
@@ -131,7 +136,8 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn
+                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có
+                                                        muốn
                                                         xóa không
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -170,22 +176,6 @@
         function deleteProduct(id) {
             var url = '{{ route('products.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
-        }
-    </script>
-@endsection
-@section('javascripts')
-    <script type="text/javascript">
-        var query = <?php echo json_encode((object) Request::query()); ?>;
-        console.log(query);
-
-        function search_product() {
-            Object.assign(query, {
-                'category': $('#category_filter').val()
-            });
-            Object.assign(query, {
-                'product': $('#product').val()
-            });
-            window.location.href = "{{ route('products.index') }}?" + $.param(query);
         }
     </script>
 @endsection
