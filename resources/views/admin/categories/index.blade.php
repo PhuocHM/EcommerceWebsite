@@ -38,15 +38,18 @@
 
             <div class="col-md-9">
                 <form class="form-inline my-2 my-lg-0">
-                    <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                    <button id="seach_button" style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="button">Tìm
                         kiếm</button>
-                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('products.index') }}" method="GET" name="product" type="text" placeholder="Tìm kiếm theo tên danh mục">
+                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" name="category" id="category" type="text" placeholder="Tìm kiếm theo tên danh mục">
+                    <select id="category_id" class="form-select" name="category_id" style="width:160px;margin-right:10px;float:right">
+                        <option value="1">Theo tên</option>
+                        <option value="2">Theo danh mục tổng</option>
                     </select>
                 </form>
             </div>
         </div>
         <!--end breadcrumb-->
-        <div class="card mt-3">
+        <div class="card mt-3" id="monitor">
 
             <div class="card-body">
 
@@ -162,6 +165,24 @@
         var url = "{{ route('categories.index') }}" + '/' + id;
         $('#deleteForm').attr('action', url)
     }
+    $("#seach_button").on('click', function() {
+        let url = "{{ route('category.seach')}}";
+        let type_seach = $("#category_id").val();
+        let seach_data = $("#category").val();
+        $.ajax({
+            url: url
+            , method: "GET"
+            , data: {
+                type_seach: type_seach
+                , seach_data: seach_data
+            }
+            , success: function(response) {
+                $("#monitor").html('');
+                $("#monitor").html(response);
+
+            }
+        });
+    })
 
 </script>
 @endsection

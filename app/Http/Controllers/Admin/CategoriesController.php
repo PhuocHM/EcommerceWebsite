@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Admin\Category;
 use App\Models\Admin\Products;
+
 class CategoriesController extends Controller
 {
     private $categoryService;
@@ -27,43 +28,38 @@ class CategoriesController extends Controller
         $categories_arr = $this->categoryService->categories_arr();
         $name_sort = '--Lọc theo--';
         $sort_by = '';
-        if(isset($request->sort_by)){
-            $sort_by =$request->sort_by;
-              if($sort_by=='newest'){
-              $categories = Category::orderBy('id','ASC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Từ cũ đến mới';
-          }
-          elseif($sort_by=='latest'){
-              $categories = Category::orderBy('id','DESC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Từ mới đến cũ';
-          }
-          elseif($sort_by=='name_a_to_z'){
-              $categories = Category::orderBy('name','ASC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Tên A đến Z';
-          }
-          elseif($sort_by=='name_z_to_a'){
-              $categories = Category::orderBy('name','DESC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Tên Z đến A';
-          }
-          elseif($sort_by=='category_a_to_z'){
-              $categories = Category::orderBy('parent_id','ASC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Danh mục sản phẩm từ A đến Z';
-          }
-          elseif($sort_by=='category_z_to_a'){
-              $categories = Category::orderBy('parent_id','DESC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Danh mục sản phẩm từ Z đến A';
-          }
-      };
-      
-        
-     
+        if (isset($request->sort_by)) {
+            $sort_by = $request->sort_by;
+            if ($sort_by == 'newest') {
+                $categories = Category::orderBy('id', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ cũ đến mới';
+            } elseif ($sort_by == 'latest') {
+                $categories = Category::orderBy('id', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ mới đến cũ';
+            } elseif ($sort_by == 'name_a_to_z') {
+                $categories = Category::orderBy('name', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên A đến Z';
+            } elseif ($sort_by == 'name_z_to_a') {
+                $categories = Category::orderBy('name', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên Z đến A';
+            } elseif ($sort_by == 'category_a_to_z') {
+                $categories = Category::orderBy('parent_id', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Danh mục sản phẩm từ A đến Z';
+            } elseif ($sort_by == 'category_z_to_a') {
+                $categories = Category::orderBy('parent_id', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Danh mục sản phẩm từ Z đến A';
+            }
+        };
+
+
+
         $params = [
             'categories'        => $categories,
             'categories_arr'    => $categories_arr,
             'sort_by' => $sort_by,
             'name_sort' => $name_sort,
-           
-           
+
+
         ];
         return view('admin.categories.index', $params);
     }
