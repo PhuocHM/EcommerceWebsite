@@ -23,6 +23,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = $this->productsService->create_category();
         $products = $this->productsService->getAll($request);
 
         $name_sort = '--Lọc theo--';
@@ -54,6 +55,7 @@ class ProductsController extends Controller
             'products' => $products,
             'sort_by' => $sort_by,
             'name_sort' => $name_sort,
+            'categories' => $categories,
         ];
         return view('admin.products.index', $params);
     }

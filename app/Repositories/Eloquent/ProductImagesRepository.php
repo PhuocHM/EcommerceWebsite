@@ -15,7 +15,7 @@ class ProductImagesRepository implements ProductImagesInterface
         if ($request->productImages) {
             $search = $request->productImages;
             $products_id = Products::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
-            $query->whereIn('product_id',$products_id);
+            $query->whereIn('product_id', $products_id);
         }
         $query->orderBy('id', 'DESC');
 
