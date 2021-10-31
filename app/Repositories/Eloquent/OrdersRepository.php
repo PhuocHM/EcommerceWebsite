@@ -16,8 +16,8 @@ class OrdersRepository implements OrdersInterface
         $query = Orders::orderBy('id', 'DESC');
         if ($request->order) {
             $search = $request->order;
-
-            $query->where('customer_id', 'LIKE', '%' . $search . '%');
+            $customers_id = Customers::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $query->whereIn('customer_id', $customers_id)->orWhere('code', 'LIKE', '%' . $search . '%')->orWhere('payment_method', 'LIKE', '%' . $search . '%')->orWhere('total_price', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
         return $query->paginate(5);

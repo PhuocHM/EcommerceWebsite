@@ -16,8 +16,9 @@ class OrderItemsRepository implements OrderItemsInterface
         $query = OrderItems::orderBy('id', 'DESC');
         if ($request->orderItem) {
             $search = $request->orderItem;
-
-            $query->where('product_id', 'LIKE', '%' . $search . '%');
+            $products_id = Products::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $orders_id = Orders::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $query->whereIn('product_id', $products_id)->orWhere('order_id', $orders_id)->orWhere('price', 'LIKE', '%' . $search . '%')->orWhere('quantity	', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
         return $query->paginate(5);
@@ -49,7 +50,7 @@ class OrderItemsRepository implements OrderItemsInterface
     }
     public function destroy($id)
     {
-        
+
         $orderItem = OrderItems::find($id);
         $orderItem->delete();
     }

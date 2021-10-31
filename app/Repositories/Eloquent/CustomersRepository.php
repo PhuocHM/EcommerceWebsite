@@ -17,7 +17,7 @@ class CustomersRepository implements CustomersInterface
         if ($request->customer) {
             $search = $request->customer;
 
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('phone', 'LIKE', '%' . $search . '%')->orWhere('address', 'LIKE', '%' . $search . '%')->orWhere('bonus_points', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
 

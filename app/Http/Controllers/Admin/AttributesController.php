@@ -24,8 +24,10 @@ class AttributesController extends Controller
     public function index(Request $request)
     {
         $attributes = $this->attributesService->getAll($request);
+        $categories = $this->attributesService->create();
         $params = [
             'attributes' => $attributes,
+            'categories' => $categories
         ];
         return view('admin.attributes.index', $params);
     }

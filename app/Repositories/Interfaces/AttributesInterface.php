@@ -2,9 +2,11 @@
 
 namespace App\Repositories\Interfaces;
 
+use Illuminate\Http\Request;
+
 Interface AttributesInterface {
 
-    public function getAll($request);
+    public function getAll(Request $request);
     public function store($request);
     public function update($request, $id); 
     public function create();

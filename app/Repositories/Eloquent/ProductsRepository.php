@@ -19,15 +19,13 @@ class ProductsRepository implements ProductsInterface
         $query = Products::with('category', 'brand');
         if ($request->category_id && $request->product =='') {
             $category_id = $request->category_id;
-            $query->where('category_id',$category_id);
-            
+            $query->where('category_id',$category_id);        
         }
         if ($request->product && $request->category_id =='') {
             $search = $request->product;
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
-
-        if($request->product && $request->category_id){
+        if($request->product && $request->category_id){ 
             $category_id = $request->category_id;
             $search = $request->product;
             $query->where('category_id',$category_id)->where('name', 'LIKE', '%' . $search . '%');

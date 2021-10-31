@@ -15,8 +15,9 @@ class GroupPermisionsRepository implements GroupPermisionsInterface
         $query = GroupPermisions::with('group', 'role');
         if ($request->groupPermision) {
             $search = $request->groupPermision;
-
-            $query->where('group_id', 'LIKE', '%' . $search . '%')->orWhere('role_id', 'LIKE', '%' . $search . '%');
+            $groups_id = Groups::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $roles_id = Roles::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $query->whereIn('group_id', $groups_id)->orWhere('role_id', $roles_id);
         }
         $query->orderBy('id', 'DESC');
 

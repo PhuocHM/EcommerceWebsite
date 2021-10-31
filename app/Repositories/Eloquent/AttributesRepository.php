@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Repositories\Eloquent;
-
+    
+use Illuminate\Http\Request;
 use App\Models\Admin\Attributes;
 use App\Models\Admin\Category;
 use App\Repositories\Interfaces\AttributesInterface;
@@ -10,13 +11,21 @@ use Carbon\Carbon;
 class AttributesRepository implements AttributesInterface
 {
 
-    public function getAll($request)
+    public function getAll(Request $request)
     {
         $query = Attributes::with('category');
-        if ($request->attribute) {
+        if ($request->category_id && $request->attribute =='') {
+            $category_id = $request->category_id;
+            $query->where('category_id',$category_id);
+        }
+        if ($request->attribute && $request->category_id =='') {
             $search = $request->attribute;
-
             $query->where('name', 'LIKE', '%' . $search . '%');
+        }
+        if($request->attribute && $request->category_id){
+            $category_id = $request->category_id;
+            $search = $request->attribute;
+            $query->where('category_id',$category_id)->where('name', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
 

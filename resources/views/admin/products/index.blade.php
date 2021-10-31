@@ -23,28 +23,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <form class="form-inline my-2 my-lg-0">
-                        {{-- <label for="category_filter">Filter By Category &nbsp;</label> --}}
-                        <div class="row justify-content-end">
-                            <div class="col-2">
-                                <select class="form-select" id="category_filter" name="category_id">
-                                    <option value="">Chọn danh mục</option>
-                                    @foreach ($categories as $key => $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
-                                    kiếm</button>
-                                <input style="width: 280px; margin-right: 10px; float:right" class="form-control"
-                                    action="{{ route('products.index') }}" method="GET" name="product" type="text"
-                                    placeholder="Tìm kiếm theo tên sản phẩm">
-                                
-                            </div>
-                        </div>
-
-
-                    </form>
+                        <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
+                        <select class="form-select" name="category_id" style="width:160px;margin-right:10px;float:right">
+                            <option value="">Chọn danh mục</option>
+                            @foreach ($categories as $key => $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </form> 
                 </div>
             </div>
             <!--end breadcrumb-->

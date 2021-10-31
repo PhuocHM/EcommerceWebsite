@@ -27,4 +27,5 @@ class Attributes extends Model
     public function product(){
         return $this->belongsToMany(Products::class,'product_attribute');
     }
+    
 }
