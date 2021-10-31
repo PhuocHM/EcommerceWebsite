@@ -362,7 +362,7 @@
                     $("#noti-button-3").trigger("click");
                     $("#comment_area").append(
                         `
-                        <span><b>You</b> đã đánh giá ` + $('input[name="star_input"]').val() + `&ensp;<i class="fas fa-star" style="color:orange"></i>: ` + $("#comment_input").val() + ` </span><br>
+                        <span><b>You</b> đã đánh giá ` + $('input[name="star_input"]:checked').val() + `&ensp;<i class="fas fa-star" style="color:orange"></i>: ` + $("#comment_input").val() + ` </span><br>
                         `
                     )
                 } else {
