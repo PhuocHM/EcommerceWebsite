@@ -34,8 +34,8 @@
                             <div class="col-12">
                                 <label class="form-label">Thể loại</label>
                                 <select name="type" class="form-select" id="image_type">
-                                    <option value="0">Ảnh bìa </option>
-                                    <option value="1">Ảnh thường</option>
+                                    <option value="1">Ảnh bìa</option>
+                                    <option value="0">Ảnh thường </option>
                                 </select>
                                 <br>
                             </div>
@@ -68,7 +68,7 @@
 @section('scripts')
 <script>
     $("#image_type").on('change', function() {
-        if ($(this).val() == 1) {
+        if ($(this).val() == 0) {
             $("#add_more_image").show();
         } else {
             $("#add_more_image").hide();

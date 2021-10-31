@@ -26,42 +26,39 @@ class AttributesController extends Controller
     public function index(Request $request)
     {
         $attributes = $this->attributesService->getAll($request);
+        $categories = $this->attributesService->create();
         $name_sort = '--Lọc theo--';
         $sort_by = '';
-        if(isset($request->sort_by)){
-            $sort_by =$request->sort_by;
-              if($sort_by=='newest'){
-              $attributes = Attributes::orderBy('id','ASC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Từ cũ đến mới';
-          }
-          elseif($sort_by=='latest'){
-              $attributes = Attributes::orderBy('id','DESC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Từ mới đến cũ';
-          }
-          elseif($sort_by=='name_a_to_z'){
-              $attributes = Attributes::orderBy('name','ASC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Tên thuộc tính A đến Z';
-          }
-          elseif($sort_by=='name_z_to_a'){
-              $attributes = Attributes::orderBy('name','DESC')->paginate(5)->appends(request()->query());
-              $name_sort = 'Tên thuộc tính Z đến A';
-          }
-          elseif($sort_by=='category_a_to_z'){
-            $attributes =  Attributes::with('category')->join('categories', 'categories.id','=','attributes.category_id')
-            ->orderBy('categories.name','ASC')->paginate(5)->appends(request()->query());
-           
-            $name_sort = 'Thuộc danh mục A đến Z';
-        }
-        elseif($sort_by=='category_z_to_a'){
-            $attributes =  Attributes::with('category')->join('categories', 'categories.id','=','attributes.category_id')
-            ->orderBy('categories.name','DESC')->paginate(5)->appends(request()->query());
-            $name_sort = 'Thuộc danh mục Z đến A';
-        }
-      };
+        if (isset($request->sort_by)) {
+            $sort_by = $request->sort_by;
+            if ($sort_by == 'newest') {
+                $attributes = Attributes::orderBy('id', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ cũ đến mới';
+            } elseif ($sort_by == 'latest') {
+                $attributes = Attributes::orderBy('id', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ mới đến cũ';
+            } elseif ($sort_by == 'name_a_to_z') {
+                $attributes = Attributes::orderBy('name', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên thuộc tính A đến Z';
+            } elseif ($sort_by == 'name_z_to_a') {
+                $attributes = Attributes::orderBy('name', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên thuộc tính Z đến A';
+            } elseif ($sort_by == 'category_a_to_z') {
+                $attributes =  Attributes::with('category')->join('categories', 'categories.id', '=', 'attributes.category_id')
+                    ->orderBy('categories.name', 'ASC')->paginate(5)->appends(request()->query());
+
+                $name_sort = 'Thuộc danh mục A đến Z';
+            } elseif ($sort_by == 'category_z_to_a') {
+                $attributes =  Attributes::with('category')->join('categories', 'categories.id', '=', 'attributes.category_id')
+                    ->orderBy('categories.name', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Thuộc danh mục Z đến A';
+            }
+        };
         $params = [
             'attributes' => $attributes,
             'sort_by' => $sort_by,
             'name_sort' => $name_sort,
+            'categories' => $categories,
             // 'attributes_sort' => $attributes_sort,
         ];
         return view('admin.attributes.index', $params);
