@@ -19,28 +19,33 @@
                         <a href="{{ route('products.create') }}" class="btn btn-primary">Thêm sản phẩm</a>
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-12">
-
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
                     <form class="form-inline my-2 my-lg-0">
-                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
-                            kiếm</button>
+                        <label for="category_filter">Filter By Category &nbsp;</label>
+                        <select class="form-control" id="category_filter" name="category_id">
+                            <option value="">Select Category</option>
+                            {{-- @if (count($categories)) --}}
+                            @foreach ($categories as $key => $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                            {{-- @endif --}}
+                        </select>
+
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
                             action="{{ route('products.index') }}" method="GET" name="product" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
-                        </select>
+                        <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                            onclick="search_product()">Tìm
+                            kiếm</button>
                     </form>
                 </div>
             </div>
             <!--end breadcrumb-->
             <div class="card mt-3">
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session(' status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
@@ -56,14 +61,15 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Mã</th>
-                                                        <th>Tên</th>
+                                                        <th>Tên
+                                                            <a href="#"><i class="fa fa-sort-down" aria-hidden="true">
+                                                        </th>
                                                         <th>Danh mục</th>
                                                         <th>Thương hiệu</th>
                                                         <th>Đã bán</th>
                                                         <th>Giá (VNĐ)</th>
                                                         <th>Mô tả</th>
                                                         <th>Trạng thái</th>
-
                                                         <th>Ngày cập nhật</th>
                                                         <th>Hành động</th>
                                                     </tr>
@@ -83,7 +89,8 @@
                                                                 <td>{!! $product->description !!}</td>
                                                                 <td>
                                                                     @if ($product->status == 0)
-                                                                        <span class='text text-success'>Hiển thị</span>
+                                                                        <span class='text text-success'>Hiển
+                                                                            thị</span>
                                                                     @else
                                                                         <span class='text text-success'>Ẩn</span>
                                                                     @endif
@@ -124,7 +131,8 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn xóa không
+                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn
+                                                        xóa không
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -162,6 +170,22 @@
         function deleteProduct(id) {
             var url = '{{ route('products.index') }}' + '/' + id;
             $('#deleteForm').attr('action', url)
+        }
+    </script>
+@endsection
+@section('javascripts')
+    <script type="text/javascript">
+        var query = <?php echo json_encode((object) Request::query()); ?>;
+        console.log(query);
+
+        function search_product() {
+            Object.assign(query, {
+                'category': $('#category_filter').val()
+            });
+            Object.assign(query, {
+                'product': $('#product').val()
+            });
+            window.location.href = "{{ route('products.index') }}?" + $.param(query);
         }
     </script>
 @endsection

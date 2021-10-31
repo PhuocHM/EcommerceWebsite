@@ -24,8 +24,10 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $products = $this->productsService->getAll($request);
+        $categories = $this->productsService->create_category();
         $params = [
             'products' => $products,
+            'categories' =>  $categories
         ];
         return view('admin.products.index', $params);
     }

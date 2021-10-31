@@ -27,9 +27,8 @@ class ProductAttributesRequest extends FormRequest
             'name'=>'required|unique:attributes,name,'.$this->route('attribute'),
             'slug'=>'required',    
             
-       
             'category_id'=>'required',
-             
+        
               
         ];
     }
