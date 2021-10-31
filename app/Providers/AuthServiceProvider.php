@@ -30,8 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         foreach ($all_roles as $role) {
             Gate::define($role, function ($user, $role = '') {
                 $user_roles = Groups::with('role')->join('employees', 'groups.id', 'employees.group_id')->where('groups.id', $user->group_id)->first()->role->pluck('name', 'id')->toArray();
-                // dd($user_roles);
-                // $user_roles = $user->group_id->group_permission->pluck('name', 'id')->toArray();
+
                 if (in_array($role, $user_roles)) {
                     return true;
                 }
