@@ -82,7 +82,6 @@ class HomeController extends Controller
             "sales_items" => $data,
         ];
 
-
         return view('Website.index', $params);
     }
 
@@ -221,6 +220,9 @@ class HomeController extends Controller
     public function addToCart(Request $request)
     {
         $user_id = Auth::id();
+        if (!$user_id) {
+            return response()->json(['error' => 'Vui lòng đăng nhập']);
+        }
         $product_info = Products::find($request->product_id);
         if (!isset($request->product_quantity)) {
             $check_cart = Carts::where('user_id', '=', $user_id)->first();

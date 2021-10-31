@@ -1,11 +1,37 @@
 <!-- HEADER -->
+<div style="display: none">
+    <button id="error_login_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#error_login">
+        Launch demo modal
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="error_login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vui lòng đăng nhập để có thể thêm hàng vào giỏ
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <a href="{{ route('login') }}" class="btn btn-primary">Đăng nhập</a>
+            </div>
+        </div>
+    </div>
+</div>
 <header class="site-header header-opt-1">
     <!-- header-top -->
     <div class="header-top">
         <div class="container">
             <!-- hotline -->
             <ul class="nav-top-left">
-                <li><a href="#">Chào mừng đến với Horizon</a></li>
+                <li><a href="#">CHÀO MỪNG ĐẾN VỚI HORIZON</a></li>
             </ul><!-- hotline -->
             <!-- heder links -->
             <ul class="nav-top-right dagon-nav">
@@ -45,7 +71,9 @@
                     </strong><!-- logo -->
                 </div>
                 <div class="col-md-8 nav-mind">
-                    <input style="witdh:100px" type="text" id="seach_input" class="form-control" placeholder="Nhập tên sản phẩm cần tìm">
+                    <div style="width:66%">
+                        <input style="witdh:70%;height:50px;border-radius:30px;margin-left:154px" class="form-control" type="text" id="seach_input" placeholder="Nhập tên sản phẩm cần tìm .... ">
+                    </div>
                 </div>
                 <div class="col-md-2 nav-right">
                     <!-- block mini cart -->

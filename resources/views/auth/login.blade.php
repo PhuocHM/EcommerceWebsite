@@ -6,8 +6,8 @@
 <main class="site-main site-login">
     <div class="container">
         <ol class="breadcrumb-page">
-            <li><a href="{{route('index')}}">Trang chủ </a></li>
-            <li class="active"><a href="{{route('register')}}">Đăng kí</a></li>
+            <li><a href="{{route('index')}}">Trang chủ</a></li>
+
         </ol>
     </div>
     <div class="customer-login">
@@ -42,6 +42,7 @@
                         </p>
                         <p class="form-row">
                             <input type="submit" value="Đăng nhập" name="Login" class="button-submit">
+                            <a href="{{route('register')}}" class="forgot-password">Bạn chưa có tài khoản ?</a>
                         </p>
                     </form>
                 </div>

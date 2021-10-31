@@ -164,8 +164,8 @@
                     $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
                     checkCart();
                     $("#noti-button").trigger("click");
-                } else {
-                    //
+                } else if (response.error) {
+                    $("#error_login_button").trigger("click");
                 }
             }
         })

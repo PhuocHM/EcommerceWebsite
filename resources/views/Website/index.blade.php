@@ -204,7 +204,11 @@
                                             <div class="post-metas">
                                                 <span class="author">Post by:
                                                     <span>{{ $comment->user_name }}</span></span>
-                                                <span class="comment"><i class="fas fa-star" style="color:orange"></i>{{ $comment->star_value }}</span>
+                                                <span class="comment">
+                                                    @for ($i = 0; $i < $comment->star_value; $i++)
+                                                        <i class="fas fa-star" style="color:orange"></i>
+                                                        @endfor
+                                                </span>
                                             </div>
                                             <div>
                                                 {{ $comment->content }}

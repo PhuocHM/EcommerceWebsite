@@ -110,8 +110,8 @@
         <main class="site-main">
             <div class="container">
                 <ol class="breadcrumb-page">
-                    <li><a href="index.html">Home </a></li>
-                    <li class="active"><a href="#">Detail</a></li>
+                    <li><a href="{{ route('index') }}">Trang chủ </a></li>
+                    <li class="active"><a href="#">{{ $detail_products->name }}</a></li>
                 </ol>
             </div>
             <div class="container">
@@ -166,7 +166,7 @@
                                     <div class="stock available">
                                         <span class="label-stock">Tình trạng : </span>
                                         @if($availability != null)
-                                        Còn hàng
+                                        <span style="color:green">Còn hàng</span>
                                         @else
                                         Hết hàng
                                         @endif
@@ -195,7 +195,11 @@
                                             <input type="hidden" name="product_id" value="{{$detail_products->id}}">
                                         </div>
                                         <div class="single-add-to-cart">
+                                            @if($availability != null)
                                             <button onclick="addToCart2()" id="submit-button" type="button" class="btn-add-to-cart">Thêm vào giỏ hàng</button>
+                                            @else
+                                            <button disabled id="submit-button" type="button" class="btn-add-to-cart">Hiện đang hết hàng</button>
+                                            @endif
                                         </div>
                                     </form>
                                 </div>
@@ -247,7 +251,9 @@
                                         <p class="form-row form-row-wide" style="clear:left">
                                             <label>Viết nhận xét của bạn</label>
                                             <input type="hidden" id="id_product" name="id_product" value="{{$detail_products->id}}">
-                                            <input id="comment_input" type="text" name="comment_input" placeholder="Ghi nhận xét của bạn" class="input-text">
+                                            <div style="width:70%">
+                                                <input id="comment_input" type="text" name="comment_input" placeholder="Ghi nhận xét của bạn" class="input-text">
+                                            </div>
                                         </p>
                                         <button id="comment_button" type="button" class="btn btn-danger">Lưu</button>
                                     </div>
@@ -335,8 +341,8 @@
                     $("#noti-main-2").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
                     $("#noti-button-2").trigger("click");
                     checkCart();
-                } else {
-                    console.log('Errror !')
+                } else if (response.error) {
+                    $("#error_login_button").trigger("click");
                 }
             }
             , error: function(error) {

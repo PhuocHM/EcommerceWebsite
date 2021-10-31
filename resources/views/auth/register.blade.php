@@ -6,7 +6,6 @@
     <div class="container">
         <ol class="breadcrumb-page">
             <li><a href="{{ route('index') }}">Trang chủ </a></li>
-            <li class="active"><a href="{{ route('login') }}">Đăng nhập</a></li>
         </ol>
     </div>
     <div class="customer-login">
@@ -117,9 +116,10 @@
 
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" style="margin-bottom:200px">
                                 <p class="form-row">
                                     <input type="submit" value="Đăng kí" name="Submit" class="button-submit">
+                                    <a href="{{route('login')}}" class="forgot-password">Bạn đã có tài khoản ?</a>
                                 </p>
                             </div>
                         </div>
