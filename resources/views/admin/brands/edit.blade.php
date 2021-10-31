@@ -21,13 +21,13 @@
                                 <div class="col-12">
                                     <label class="form-label">Tên</label>
                                     <input type="text" class="form-control" placeholder="Tên danh mục" name="name"
-                                        value="{{ $brand->name }}">
+                                        onkeyup="ChangeToSlug();" id="slug" value="{{ $brand->name }}">
                                     <span style="color:red;">@error('name'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Slug</label>
                                     <input type="text" class="form-control" placeholder="Slug name" name="slug"
-                                        value="{{ $brand->slug }}">
+                                        id="convert_slug" value="{{ $brand->slug }}">
                                     <span style="color:red;">@error('slug'){{ $message }} @enderror</span>
                                 </div>
                                 <div class="col-12">

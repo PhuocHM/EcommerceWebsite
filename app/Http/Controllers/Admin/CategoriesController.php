@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -8,7 +9,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Admin\Category;
 use App\Models\Admin\Products;
 class CategoriesController extends Controller
-{   
+{
     private $categoryService;
     public function __construct(CategoryService $categoryService)
     {
@@ -21,28 +22,36 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        // $category= Category::sortable()->paginate(5);
+        
         $categories = $this->categoryService->getAll($request);
         $categories_arr = $this->categoryService->categories_arr();
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
         if(isset($request->sort_by)){
             $sort_by =$request->sort_by;
               if($sort_by=='newest'){
-              $categories = Category::orderBy('created_at','ASC')->paginate(5)->appends(request()->query());
+              $categories = Category::orderBy('id','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ cũ đến mới';
           }
           elseif($sort_by=='latest'){
-              $categories = Category::orderBy('updated_at','DESC')->paginate(5)->appends(request()->query());
+              $categories = Category::orderBy('id','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ mới đến cũ';
           }
           elseif($sort_by=='name_a_to_z'){
               $categories = Category::orderBy('name','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Tên A đến Z';
           }
-          elseif($sort_by=='name_z_to_z'){
+          elseif($sort_by=='name_z_to_a'){
               $categories = Category::orderBy('name','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Tên Z đến A';
           }
           elseif($sort_by=='category_a_to_z'){
               $categories = Category::orderBy('parent_id','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Danh mục sản phẩm từ A đến Z';
           }
           elseif($sort_by=='category_z_to_a'){
               $categories = Category::orderBy('parent_id','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Danh mục sản phẩm từ Z đến A';
           }
       };
       
@@ -51,11 +60,12 @@ class CategoriesController extends Controller
         $params = [
             'categories'        => $categories,
             'categories_arr'    => $categories_arr,
-            // 'category'    => $category,
+            'sort_by' => $sort_by,
+            'name_sort' => $name_sort,
            
            
         ];
-        return view('admin.categories.index',$params);
+        return view('admin.categories.index', $params);
     }
 
     /**
@@ -66,8 +76,19 @@ class CategoriesController extends Controller
     public function create()
     {
         $categories = $this->categoryService->create();
-       
+
         return view('admin.categories.create')->with(compact('categories'));
+    }
+
+    public function seach(Request $request)
+    {
+        $categories =  $this->categoryService->seach($request->type_seach, $request->seach_data);
+        $categories_arr = $this->categoryService->categories_arr();
+        $params = [
+            "categories" => $categories,
+            "categories_arr" => $categories_arr
+        ];
+        return view('admin.categories.seach', $params)->render();
     }
 
     /**
@@ -79,7 +100,7 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         $this->categoryService->store($request);
-        return redirect()->route('categories.index')->with('status','Thêm danh mục sản phẩm thành công !');
+        return redirect()->route('categories.index')->with('status', 'Thêm danh mục sản phẩm thành công !');
     }
 
     /**
@@ -99,11 +120,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id )
+    public function edit($id)
     {
         $categories = $this->categoryService->create_category();
         $category = $this->categoryService->edit($id);
-        $params=[
+        $params = [
             'categories' => $categories,
             'category'   => $category
         ];
@@ -119,9 +140,9 @@ class CategoriesController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        
+
         $this->categoryService->update($request, $id);
-        return redirect()->route('categories.index')->with('status','Cập nhật danh mục sản phẩm thành công!');    
+        return redirect()->route('categories.index')->with('status', 'Cập nhật danh mục sản phẩm thành công!');
     }
 
     /**
@@ -133,14 +154,13 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         // $check= Attributes::where('category_id','=',$id)->get();
-        try{
+        try {
             $this->categoryService->destroy($id);
             return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('categories.index')->with('status', 'Xóa không thành công! ' . $e);
         }
-       catch(\Exception $e){
-        return redirect()->route('categories.index')->with('status', 'Xóa không thành công! '.$e);
     }
-       }
-        // return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
-    
+    // return redirect()->route('categories.index')->with('status', 'Xóa sản phẩm thành công !');
+
 }

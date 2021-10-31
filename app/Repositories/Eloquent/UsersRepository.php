@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Models\Admin\Customers;
 use App\Models\User;
 use App\Repositories\Interfaces\UsersInterface;
 use Carbon\Carbon;
@@ -17,7 +18,7 @@ class UsersRepository implements UsersInterface
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function store($request)
     {
@@ -48,5 +49,4 @@ class UsersRepository implements UsersInterface
         $user = User::find($id);
         $user->delete();
     }
-
 }

@@ -48,6 +48,6 @@ class LoginAdminService
         $admin->password = Hash::make($request->new_password);
         $admin->save();
 
-        return redirect()->route('home')->with('status', 'Đổi mật khẩu thành công');
+        return redirect()->route('home')->with('status-password', 'Đổi mật khẩu thành công');
     }
 }

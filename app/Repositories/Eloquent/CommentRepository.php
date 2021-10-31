@@ -22,12 +22,14 @@ class CommentRepository implements CommentRepositoryInterface
                 ->orWhere('products.name', 'LIKE', '%' . $search . '%')
                 ->orWhere('users.name', 'LIKE', '%' . $search . '%');
         }
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
 
     public function destroy($id)
     {
         $query = Comments::find($id);
         $query->delete();
+
+        
     }
 }

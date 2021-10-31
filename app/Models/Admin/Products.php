@@ -16,7 +16,7 @@ class Products extends Model
         // your other new column
     ];
     protected $fillable = [
-        'code', 'name', 'slug', 'sold', 'price', 'description', 'status', 'brand_id', 'category_id'
+        'code', 'name', 'slug', 'price', 'description', 'status', 'brand_id', 'category_id'
     ];
     protected $primaryKey = 'id';
     protected $table = 'products';
@@ -32,16 +32,16 @@ class Products extends Model
     }
     public function attribute()
     {
-        return $this->belongsToMany(Attributes::class, 'product_attribute');
+        return $this->belongsToMany(Attributes::class, 'product_attribute', 'product_id', 'attribute_id')->withPivot('content');
     }
     public function productImage()
     {
-        return $this->hasMany(ProductImages::class);
+        return $this->hasMany(ProductImages::class, 'product_id');
     }
 
     public function supplier()
     {
-        return $this->belongsToMany(Supplier::class, 'stock', 'product_id', 'supplier_id')->withPivot('employee_id', 'quantity', 'cost_price', 'created_at', 'updated_at');
+        return $this->belongsToMany(Suppliers::class, 'stocks', 'product_id', 'supplier_id')->withPivot('employee_id', 'quantity', 'cost_price', 'created_at', 'updated_at');
     }
 
     public function comment()
@@ -55,6 +55,6 @@ class Products extends Model
     }
     public function orderItem()
     {
-        return $this->belongsTo(Order::class,'brand_id','id');
+        return $this->hasMany(Order::class, 'product_id', 'id');
     }
 }

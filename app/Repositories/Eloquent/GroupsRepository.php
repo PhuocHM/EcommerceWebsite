@@ -17,7 +17,7 @@ class GroupsRepository implements GroupsInterface
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
-        return $query->paginate(2);
+        return $query->paginate(5);
     }
     public function store($request)
     {
@@ -46,5 +46,5 @@ class GroupsRepository implements GroupsInterface
         $group = Groups::find($id);
         $group->delete();
     }
-   
+
 }

@@ -21,39 +21,30 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{Request::url()}}?sort_by=newest">--Từ cũ đến mới--</option>
+                         <option value="{{Request::url()}}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{Request::url()}}?sort_by=name_a_to_z">Lọc theo tên A đến Z</option>
+                            <option value="{{Request::url()}}?sort_by=name_z_to_a">Lọc theo tên Z đến A</option>
+                         <option value="{{Request::url()}}?sort_by=category_a_to_z">Lọc theo danh mục A đến Z</option>
+                         <option value="{{Request::url()}}?sort_by=category_z_to_a">Lọc theo danh mục Z đến A</option>
+                        </select>
+                    </form>
+                </div>
 
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
+                <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('attributes.index') }}" method="GET" name="attribute" type="text"
+                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
-
                         </select>
                     </form>
                 </div>
-                <div class="col-md-2">
-                                    
-                                    <label for="amount">Sắp xếp theo</label>
-
-                                    <form>
-
-                                    <select name="sort" id="sort" class="form-control">
-                                        <option value="{{Request::url()}}?sort_by=none">--Lọc theo--</option>
-                                        <option value="{{Request::url()}}?sort_by=newest">--Từ cũ đến mới--</option>
-                                        <option value="{{Request::url()}}?sort_by=latest">--Từ mới đến cũ--</option>
-                                        <option value="{{Request::url()}}?sort_by=name_a_to_z">Lọc theo tên A đến Z</option>
-                                        <option value="{{Request::url()}}?sort_by=name_z_to_z">Lọc theo tên Z đến A</option>
-                                        <option value="{{Request::url()}}?sort_by=category_a_to_z">Lọc theo danh mục A đến Z</option>
-                                        <option value="{{Request::url()}}?sort_by=category_z_to_a">Lọc theo danh mục Z đến A</option>
-                                    </select>
-                                    </form>
-                               
-                            </div>
             </div>
             <!--end breadcrumb-->
             <div class="card mt-3">
@@ -71,8 +62,8 @@
                                         <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
-                                                    <th>@sortablelink('#')</th>
-                                                    <th>@sortablelink('name')</th>
+                                                    <th>#</th>
+                                                    <th>name</th>
                                                     <th>Slug</th>
                                                     <th>Thuộc danh mục</th>
                                                     <th>Ngày tạo</th>
@@ -122,7 +113,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        {!! $attributes->appends(\Request::except('page'))->render() !!}
+                                      
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->

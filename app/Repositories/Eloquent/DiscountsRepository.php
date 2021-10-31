@@ -12,22 +12,21 @@ class DiscountsRepository implements DiscountsInterface
 
     public function getAll($request)
     {
-        $query = Discounts::orderBy('id','DESC');
-        if($request->discount){
-            $search=$request->discount;
-        
-            $query->where('name','LIKE','%'.$search.'%');
+        $query = Discounts::orderBy('id', 'DESC');
+        if ($request->discount) {
+            $search = $request->discount;
+
+            $query->where('name', 'LIKE', '%' . $search . '%');
         }
 
-        return $query->paginate(1);
-        // return discount::all();
+        return $query->paginate(5);
     }
     public function getOne()
     {
     }
     public function store($request)
-    {  
-                
+    {
+
         $discount                    = new Discounts();
         $discount->name              = $request->name;
         $discount->amounts           = $request->amounts;
@@ -40,7 +39,7 @@ class DiscountsRepository implements DiscountsInterface
             $path = 'images/discount/';
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $new_image =  $path . $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
             $get_image->move($path, $new_image);
             $discount->image = $new_image;
             $data['discount_image'] = $new_image;
@@ -58,7 +57,6 @@ class DiscountsRepository implements DiscountsInterface
         $discount->start_date    = $request->start_date;
         $discount->expired_date    = $request->expired_date;
         $discount->description    = $request->description;
-
         if ($request->hasFile('image')) {
             $get_image = $request->file('image');
             if ($get_image) {
@@ -69,7 +67,7 @@ class DiscountsRepository implements DiscountsInterface
                 $path = 'images/discount/';
                 $get_name_image = $get_image->getClientOriginalName();
                 $name_image = current(explode('.', $get_name_image));
-                $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+                $new_image = $path . $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
                 $get_image->move($path, $new_image);
                 $discount->image = $new_image;
                 $data['discount_image'] = $new_image;
@@ -79,9 +77,10 @@ class DiscountsRepository implements DiscountsInterface
 
         $discount->save();
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return Discounts::find($id);
-     }
+    }
     public function destroy($id)
     {
         $discount = Discounts::find($id);
@@ -89,12 +88,12 @@ class DiscountsRepository implements DiscountsInterface
         if (file_exists($path)) {
             unlink($path);
         }
-        $discountProduct = DiscountProduct::where('discount_id',$id);
+        $discountProduct = DiscountProduct::where('discount_id', $id);
         $discountProduct->delete();
         $discount->delete();
     }
     public function create_discount()
     {
-        return Discounts::orderBy('id','DESC')->get();
+        return Discounts::orderBy('id', 'DESC')->get();
     }
 }

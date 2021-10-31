@@ -9,7 +9,8 @@ interface ProductsInterface
     public function getOne($id);
     public function store($request);
     public function update($request, $id);
-    public function edit($id);
+    public function findDetail($id);
+    public function find($id);
     public function destroy($id);
     public function create_category();
     public function create_brand();

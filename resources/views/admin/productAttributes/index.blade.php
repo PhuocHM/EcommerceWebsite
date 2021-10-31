@@ -20,15 +20,29 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{Request::url()}}?sort_by=newest">--Từ cũ đến mới--</option>
+                         <option value="{{Request::url()}}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{Request::url()}}?sort_by=product_a_to_z"> Sản phẩm từ A đến z</option>
+                            <option value="{{Request::url()}}?sort_by=product_z_to_a"> Sản phẩm từ Z đến A</option>
+                         <option value="{{Request::url()}}?sort_by=attribute_a_to_z"> Thuộc tính từ A đến Z</option>
+                         <option value="{{Request::url()}}?sort_by=attribute_z_to_a">Thuộc tính từ Z đến A</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('productAttributes.index') }}" method="GET" name="productAttribute"
-                            type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-
+                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
                         </select>
                     </form>
                 </div>
@@ -53,7 +67,7 @@
                                                     <th>Sản phẩm</th>
                                                     <th>Thuộc tính</th>
                                                     <th>Nội dung</th>
-                                                    <th>Ngày tạo</th>
+
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -66,8 +80,7 @@
                                                         <td>{{ $productAttribute->attribute->name }}</td>
                                                         <td>{{ $productAttribute->content }}</td>
 
-                                                        <td>{{ date('d-m-Y', strtotime($productAttribute->created_at)) }}
-                                                        </td>
+                                                    
                                                         <td>
                                                             @if ($productAttribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($productAttribute->updated_at)) }}

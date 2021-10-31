@@ -5,22 +5,17 @@
             <i class="bi bi-list"></i>
         </div>
         <div class="narbar d-none d-xl-block justufy-content-end">
-            @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-            @endif
         </div>
         <div class="ms-3 float-right  d-none d-xl-block">
-            <ul class="navbar-nav align-items-center">
+            {{-- <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            <img src="{{ asset('images/employee/' . $admin->image) }}" class="user-img" alt="">
-                            <div class="user-name d-none d-sm-block">{{ $admin->name }}</div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                            {{-- <img src="{{ asset('images/employee/' . $admin->image) }}" class="user-img" alt=""> --}}
+                            {{-- <div class="user-name d-none d-sm-block">{{ $admin->name }}</div> --}}
+                        {{-- </div>
+                    </a> --}}
+                    {{-- <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
@@ -50,9 +45,9 @@
                                 </div>
                             </a>
                         </li>
-                    </ul>
-                </li>
-            </ul>
+                    </ul> --}}
+                {{-- </li>
+            </ul> --}}
         </div>
     </nav>
 </header>
