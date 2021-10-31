@@ -7,19 +7,19 @@
         <div class="narbar d-none d-xl-block justufy-content-end">
         </div>
         <div class="ms-3 float-right  d-none d-xl-block">
-            {{-- <ul class="navbar-nav align-items-center">
+            <ul class="navbar-nav align-items-center">
                 <li class="nav-item dropdown dropdown-large">
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-setting d-flex align-items-center gap-1">
-                            {{-- <img src="{{ asset('images/employee/' . $admin->image) }}" class="user-img" alt=""> --}}
-                            {{-- <div class="user-name d-none d-sm-block">{{ $admin->name }}</div> --}}
-                        {{-- </div>
-                    </a> --}}
-                    {{-- <ul class="dropdown-menu dropdown-menu-end">
+                            <img src="{{ asset( $admin->image) }}" class="user-img" alt="">
+                            <div class="user-name d-none d-sm-block">{{ $admin->name }}</div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ asset('images/employee/' . $admin->image) }}" alt="" class="rounded-circle" width="60" height="60">
+                                    <img src="{{ asset($admin->image) }}" alt="" class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
                                         <h6 class="mb-0 dropdown-user-name">{{ $admin->name }}</h6>
                                     </div>
@@ -45,9 +45,15 @@
                                 </div>
                             </a>
                         </li>
+<<<<<<< HEAD
                     </ul> --}}
                 {{-- </li>
             </ul> --}}
+=======
+                    </ul>
+                </li>
+            </ul>
+>>>>>>> 4c85cc668aed9fb0a0184773d674c951e8a95260
         </div>
     </nav>
 </header>

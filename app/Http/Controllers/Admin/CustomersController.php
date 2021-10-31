@@ -21,7 +21,8 @@ class CustomersController extends Controller
      */
     public function index(Request $request)
     {
-        $customers = $this->customersService->getAll($request); 
+        $this->authorize('customer-show', 'customer-show');
+        $customers = $this->customersService->getAll($request);
         $params = [
             'customers' => $customers,
         ];
@@ -50,9 +51,9 @@ class CustomersController extends Controller
      */
     public function store(CustomersRequest $request)
     {
-        
-        $customers =$this->customersService->store($request);
-        return redirect()->route('customers.index')->with('status','Thêm khách hàng thành công !');
+
+        $customers = $this->customersService->store($request);
+        return redirect()->route('customers.index')->with('status', 'Thêm khách hàng thành công !');
     }
 
     /**
@@ -93,7 +94,7 @@ class CustomersController extends Controller
     public function update(CustomersRequest $request, $id)
     {
         $this->customersService->update($request, $id);
-        return redirect()->route('customers.index')->with('status','Cập nhật khách hàng thành công!'); 
+        return redirect()->route('customers.index')->with('status', 'Cập nhật khách hàng thành công!');
     }
 
     /**
@@ -104,13 +105,11 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->customersService->destroy($id);
             return redirect()->route('customers.index')->with('status', 'Xóa khách hàng thành công !');
+        } catch (\Exception $e) {
+            return redirect()->route('customers.index')->with('status', 'Xóa không thành công! ' . $e);
         }
-        catch(\Exception $e){
-            return redirect()->route('customers.index')->with('status', 'Xóa không thành công! '.$e);
-
-        } 
     }
 }
