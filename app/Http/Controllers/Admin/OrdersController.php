@@ -23,8 +23,38 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         $orders = $this->ordersService->getAll($request);
+
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
+        if (isset($request->sort_by)) {
+            $sort_by = $request->sort_by;
+            if ($sort_by == 'newest') {
+                $orders = Orders::orderBy('id', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ cũ đến mới';
+            } elseif ($sort_by == 'latest') {
+                $orders = Orders::orderBy('id', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ mới đến cũ';
+            } elseif ($sort_by == 'name_a_to_z') {
+                $orders = Orders::with('customer')->join('customers', 'customers.id', '=', 'orders.customer_id')
+                    ->orderBy('name', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên khách hàng A đến Z';
+            } elseif ($sort_by == 'name_z_to_a') {
+                $orders = Orders::with('customer')->join('customers', 'customers.id', '=', 'orders.customer_id')
+                    ->orderBy('name', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Tên khách hàng Z đến A';
+            } elseif ($sort_by == 'amount_a_to_z') {
+                $orders = Orders::orderBy('total_price', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Số tiền Order ít tới nhiều';
+            } elseif ($sort_by == 'amount_z_to_a') {
+                $orders = Orders::orderBy('total_price', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Số tiền Order nhiều tới ít';
+            }
+        }
+
         $params = [
             'orders' => $orders,
+            'sort_by' => $sort_by,
+            'name_sort' => $name_sort,
         ];
         return view('admin.orders.index', $params);
     }

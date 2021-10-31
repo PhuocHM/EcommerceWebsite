@@ -22,10 +22,6 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
                 <form class="form-inline my-2 my-lg-0">
                     <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                         kiếm</button>
