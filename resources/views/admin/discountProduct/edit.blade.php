@@ -38,16 +38,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Số tiền chiết khấu</label>
-                                    <select name="discount_id"
-                                        class="form-select" id="inputGroupSelect02">
-                                        @foreach ($discounts as $discount)
-                                            <option {{ $discount->id == $product->discount_id ? 'selected' : '' }}
-                                                value="{{ $discount->id }}">{{ $discount->amounts }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                
                                 <div class="col-3">
                                     <div class="d-grid">

@@ -52,7 +52,6 @@
                                                     <th>#</th>
                                                     <th> Thuộc Sản phẩm</th>
                                                     <th>Thuộc Chiết khấu</th>
-                                                    <th>Số tiền được chiết khấu</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
@@ -64,7 +63,7 @@
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $discountProduct->product->name }}</td>
                                                         <td>{{ $discountProduct->discount->name }}</td>
-                                                        <td>{{ $discountProduct->discount->amounts }}</td>
+                                                       
 
 
                                                         <td>{{ date('d-m-Y', strtotime($discountProduct->created_at)) }}

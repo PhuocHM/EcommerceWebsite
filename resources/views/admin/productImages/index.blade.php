@@ -21,20 +21,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{ Request::url() }}?sort_by=newest">--Từ cũ đến mới--</option>
+                            <option value="{{ Request::url() }}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_a_to_z">--Tên A đến Z--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_z_to_a">--Tên Z đến A--</option>
+                        </select>
+                    </form>
+                </div>
 
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
-                <form class="form-inline my-2 my-lg-0">
-                    <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
-                        kiếm</button>
-                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('productImages.index') }}" method="GET" name="productImages" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
-
-                    </select>
-                </form>
+                <div class="col-md-9">
+                    <form class="form-inline my-2 my-lg-0">
+                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                            kiếm</button>
+                        <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
+                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
+                            placeholder="Tìm kiếm theo tên sản phẩm">
+                        </select>
+                    </form>
+                </div>
             </div>
-        </div>
         <!--end breadcrumb-->
         <div class="card mt-3">
             <div class="card-body">

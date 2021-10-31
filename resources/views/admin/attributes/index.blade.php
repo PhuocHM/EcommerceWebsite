@@ -21,18 +21,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{Request::url()}}?sort_by=newest">--Từ cũ đến mới--</option>
+                         <option value="{{Request::url()}}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{Request::url()}}?sort_by=name_a_to_z">Lọc theo tên A đến Z</option>
+                            <option value="{{Request::url()}}?sort_by=name_z_to_a">Lọc theo tên Z đến A</option>
+                         <option value="{{Request::url()}}?sort_by=category_a_to_z">Lọc theo danh mục A đến Z</option>
+                         <option value="{{Request::url()}}?sort_by=category_z_to_a">Lọc theo danh mục Z đến A</option>
+                        </select>
+                    </form>
+                </div>
 
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
+                <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('attributes.index') }}" method="GET" name="attribute" type="text"
+                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
-
                         </select>
                     </form>
                 </div>
@@ -54,10 +63,10 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Tên</th>
-
+                                                    <th>name</th>
+                                                    <th>Slug</th>
                                                     <th>Thuộc danh mục</th>
-
+                                                    <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
                                                 </tr>
@@ -67,11 +76,13 @@
                                                     <tr>
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $attribute->name }}</td>
+                                                        <td>{{ $attribute->slug }}</td>
                                                         @if ($attribute->category)
                                                             <td>{{ $attribute->category->name }}</td>
                                                         @else
                                                             <td></td>
                                                         @endif
+                                                        <td>{{ date('d-m-Y', strtotime($attribute->created_at)) }}</td>
                                                         <td>
                                                             @if ($attribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($attribute->updated_at)) }}
@@ -85,19 +96,24 @@
                                                                     data-bs-placement="bottom" title=""
                                                                     data-bs-original-title="Edit info" aria-label="Edit"><i
                                                                         class="bi bi-pencil-fill"></i></a>
-
-                                                                <a href="#"
-                                                                    onclick="deleteAttributes({{ $attribute->id }})"
-                                                                    class="text-danger" data-bs-toggle="modal"
-                                                                    data-bs-target="#deleteAttributes"> <i
-                                                                        class="bi bi-trash-fill"></i></a>
-
+                                                                <form
+                                                                    action="{{ route('attributes.destroy', [$attribute->id]) }}"
+                                                                    method="POST">
+                                                                    @method('DELETE')
+                                                                    @csrf
+                                                                    <a href="#"
+                                                                        onclick="deleteAttributes({{ $attribute->id }})"
+                                                                        class="text-danger" data-bs-toggle="modal"
+                                                                        data-bs-target="#deleteAttributes"> <i
+                                                                            class="bi bi-trash-fill"></i></a>
+                                                                </form>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                      
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->

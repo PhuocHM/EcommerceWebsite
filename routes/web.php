@@ -89,8 +89,9 @@ Route::GET('api/addComment', [HomeController::class, 'addComment'])->name('home.
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/home', AdminController::class)->name('home');
+    Route::resource('/categories', CategoriesController::class);
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
     Route::resource('/brands', BrandsController::class);
@@ -116,13 +117,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::POST('/export-latest-order', [ExcelController::class, 'export_latest_orders'])->name('excel.export_latest_orders');
     Route::resource('/orderItems', OrderItemsController::class);
     Route::get('/ajaxFindProduct', [OrderItemsController::class, 'ajaxFindProduct'])->name('ajax.ajaxFindProduct');
-    Route::get('/createOrderItems/{id}', [OrderItemsController::class, 'createItem'])->name('create.item');
+    Route::get('/createOrderItems/{id}', [OrderItemsController::class,'createItem'])->name('create.item');
     Route::resource('/customers', CustomersController::class);
     Route::get('/api/seach_category', [CategoriesController::class, 'seach'])->name('category.seach');
 });
+
+
 
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
 Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');
 Route::get('admin/logout', [LoginAdminController::class, 'logoutAction'])->name('logout.admin.action');
 
 Route::post('/status', [OrdersController::class, 'status']);
+
+

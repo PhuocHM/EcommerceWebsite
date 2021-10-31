@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="col-12 text-end">
-                        <button class="btn btn-secondary " onclick="window.history.go(-1); return false;">Quay
+                        <button class="btn btn-danger " onclick="window.history.go(-1); return false;">Quay
                             lại</button>
                     </div>
                 </div>

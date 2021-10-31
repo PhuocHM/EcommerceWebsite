@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*

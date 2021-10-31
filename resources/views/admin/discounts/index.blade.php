@@ -53,7 +53,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên chiết khấu</th>
-                                                <th>Số tiền giảm</th>
+                                                <th>Số tiền giảm (VNĐ)</th>
                                                 <th>Ngày bắt đầu</th>
                                                 <th>Ngày kết thúc</th>
                                                 <th>Chương trình khuyến mãi</th>
@@ -68,7 +68,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $discount->name }}</td>
-                                                <td>{{ $discount->amounts }}</td>
+                                                <td>{{ number_format($discount->amounts) }}</td>
                                                 <td>{{ $discount->start_date }}</td>
                                                 <td>{{ $discount->expired_date }}</td>
                                                 <td>
