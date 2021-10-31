@@ -19,7 +19,8 @@
 
                             <div class="col-12">
                                 <label class="form-label">Sản phẩm</label>
-                                <select name="product_id" class="form-select" id="inputGroupSelect02">
+                                <select name="product_id" class="form-select js-example-basic-single form-product" data-select2-id="2" tabindex="-1" aria-hidden="true">
+                                    <option>Thêm sản phẩm</option>
                                     @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
                                     @endforeach
@@ -27,7 +28,8 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Thuộc tính</label>
-                                <select name="attribute_id" class="form-select" id="inputGroupSelect02">
+                                <select name="attribute_id[]" class="form-select js-example-basic-single form-attribute" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option>Thêm thuộc tính</option>
                                     @foreach ($attributes as $attribute)
                                     <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                                     @endforeach
@@ -35,14 +37,22 @@
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Nội dung</label>
-                                <input type="text" name="content" value="{{ old('content') }}" class="form-control" placeholder="Nội dung">
+                                <input type="text" name="content[]" value="{{ old('content') }}" class="form-control" placeholder="Nội dung">
                                 <span style="color:red;">@error('content'){{ $message }} @enderror</span>
                                 <br>
+                            </div>
+                            <div id="more_attributes">
+                                {{-- --}}
                             </div>
                             <div class="row">
                                 <div class="col-3">
                                     <div class="d-grid">
                                         <button class="btn btn-primary">Thêm mới</button>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="d-grid">
+                                        <button type="button" class="btn btn-warning" id="more_button">Thêm thuộc tính</button>
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -56,4 +66,36 @@
                     </div>
                 </div>
             </div>
-            @endsection
+        </div>
+    </main>
+</div>
+@endsection
+@section('scripts')
+<script>
+    var select2_id = 3;
+    $("#more_button").click(function() {
+        select2_id = select2_id + 1;
+        console.log(select2_id);
+        $("#more_attributes").append(
+            `
+            <div class="col-12">
+                                <label class="form-label">Thuộc tính</label>
+                                <select name="attribute_id[]" class="form-select js-example-basic-single form-attribute" data-select2-id="` + select2_id + `" tabindex="-1" aria-hidden="true">
+                                    <option>Thêm thuộc tính</option>
+                                    @foreach ($attributes as $attribute)
+                                    <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Nội dung</label>
+                                <input type="text" name="content[]" value="{{ old('content') }}" class="form-control" placeholder="Nội dung">
+                                <span style="color:red;">@error('content'){{ $message }} @enderror</span>
+                                <br>
+                            </div>
+            `
+        );
+    })
+
+</script>
+@endsection

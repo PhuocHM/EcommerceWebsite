@@ -34,13 +34,14 @@ class ProductAttributesRepository implements ProductAttributesInterface
     }
     public function store($request)
     {
-        $productAttribute                = new ProductAttributes();
-        $productAttribute->product_id    = $request->product_id;
-        $productAttribute->attribute_id  = $request->attribute_id;
-        $productAttribute->content       = $request->content;
-        $productAttribute->created_at    = Carbon::now('Asia/Ho_Chi_Minh');
-
-        $productAttribute->save();
+        $product_id = $request->product_id;
+        foreach ($request->attribute_id as $key => $value) {
+            $productAttribute                = new ProductAttributes();
+            $productAttribute->product_id    = $product_id;
+            $productAttribute->attribute_id  = $value;
+            $productAttribute->content       = $request->content[$key];
+            $productAttribute->save();
+        }
     }
     public function edit($id)
     {

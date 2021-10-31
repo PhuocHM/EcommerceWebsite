@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\Eloquent\CategoryRepository;
@@ -6,8 +7,10 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Requests\CategoryRequest;
 
 class CategoryService
-{   private $categoryRepository;
-    public function __construct(CategoryRepository $categoryRepository){
+{
+    private $categoryRepository;
+    public function __construct(CategoryRepository $categoryRepository)
+    {
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -19,8 +22,9 @@ class CategoryService
     {
         return $this->categoryRepository->update($request, $id);
     }
-    public function store(CategoryRequest $request){
-       
+    public function store(CategoryRequest $request)
+    {
+
         return $this->categoryRepository->store($request);
     }
     public function categories_arr()
@@ -42,5 +46,9 @@ class CategoryService
     public function create_category()
     {
         return $this->categoryRepository->create_category();
+    }
+    public function seach($type, $content)
+    {
+        return $this->categoryRepository->seach($type, $content);
     }
 }

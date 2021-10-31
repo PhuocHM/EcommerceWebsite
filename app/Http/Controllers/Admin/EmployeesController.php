@@ -21,6 +21,7 @@ class EmployeesController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('employee-show', 'employee-show');
         $employees = $this->employeesService->getAll($request);
         $params = [
             'employees' => $employees,

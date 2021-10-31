@@ -28,10 +28,7 @@ class OrdersRepository implements OrdersInterface
         $order->code            = '#ORDEW' . time();
         $order->customer_id     = $request->customer_id;
         $order->payment_method  = $request->payment_method;
-        $order->total_price     = $request->total_price;
         $order->status          = $request->status;
-        $order->created_at      = Carbon::now('Asia/Ho_Chi_Minh');
-
         $order->save();
     }
 
@@ -44,7 +41,7 @@ class OrdersRepository implements OrdersInterface
         $order->total_price     = $request->total_price;
         $order->status          = $request->status;
         $order->updated_at      = Carbon::now('Asia/Ho_Chi_Minh');
-       
+
 
         $order->save();
     }

@@ -36,7 +36,7 @@ class ProductImagesRepository implements ProductImagesInterface
                 $path = 'images/product/';
                 $get_name_image = $get_image->getClientOriginalName();
                 $name_image = current(explode('.', $get_name_image));
-                $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+                $new_image = $path . $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
                 $get_image->move($path, $new_image);
                 $productImage->image = $new_image;
                 $data['productImage_image'] = $new_image;
@@ -53,13 +53,14 @@ class ProductImagesRepository implements ProductImagesInterface
         $productImage             = ProductImages::find($id);
         $productImage->product_id = $request->product_id;
         $productImage->type       = $request->type;
-
+        $path = 'images/product/';
         $file = $request->image;
         if (!$request->hasFile('image')) {
             $productImage->image = $file;
         } else {
             $fileExtension = $file->getClientOriginalExtension();
             $fileName = time() + 2;
+            $fileName = $path . $fileName;
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/product'), $newFileName);
             $productImage->image = $newFileName;

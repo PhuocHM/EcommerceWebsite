@@ -21,7 +21,23 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{ Request::url() }}?sort_by=newest">--Từ cũ đến mới--</option>
+                            <option value="{{ Request::url() }}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_a_to_z">--Tên A đến Z--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_z_to_a">--Tên Z đến A--</option>
+                            <option value="{{ Request::url() }}?sort_by=sold_a_to_z">--Số lượng bán ít tới nhiều--
+                            </option>
+                            <option value="{{ Request::url() }}?sort_by=sold_z_to_a">--Số lượng bán nhiều tới ít--
+                            </option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
                         <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -56,16 +72,10 @@
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Mã</th>
-                                                        <th>Tên
-                                                            <a href="#"><i class="fa fa-sort-down" aria-hidden="true">
-                                                        </th>
-                                                        <th>Danh mục</th>
-                                                        <th>Thương hiệu</th>
+                                                        <th>Tên</th>
+                                                        <th>Còn hàng</th>
                                                         <th>Đã bán</th>
-                                                        <th>Giá (VNĐ)</th>
-                                                        <th>Mô tả</th>
                                                         <th>Trạng thái</th>
-                                                        <th>Ngày cập nhật</th>
                                                         <th>Hành động</th>
                                                     </tr>
                                                 </thead>
@@ -76,12 +86,12 @@
                                                                 <td>{{ ++$key }}</td>
                                                                 <td>{{ $product->code }}</td>
                                                                 <td>{{ $product->name }}</td>
-
-                                                                <td>{{ $product->category->name }}</td>
-                                                                <td>{{ $product->brand->name }}</td>
+                                                                <td>
+                                                                    @if (isset($product->supplier->first()->pivot->quantity))
+                                                                        {{ $product->supplier->first()->pivot->quantity }}
+                                                                    @endif
+                                                                </td>
                                                                 <td>{{ $product->sold }}</td>
-                                                                <td>{{ number_format($product->price) }}</td>
-                                                                <td>{!! $product->description !!}</td>
                                                                 <td>
                                                                     @if ($product->status == 0)
                                                                         <span class='text text-success'>Hiển
@@ -91,12 +101,13 @@
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    @if ($product->updated_at != '')
-                                                                        {{ date('d-m-Y', strtotime($product->updated_at)) }}
-                                                                    @endif
-                                                                </td>
-                                                                <td>
                                                                     <div class="d-flex justify-content-center gap-3 fs-6">
+                                                                        <a href="{{ route('products.show', $product->id) }}"
+                                                                            class="text-primary" data-bs-toggle="tooltip"
+                                                                            data-bs-placement="bottom" title=""
+                                                                            data-bs-original-title="View detail"
+                                                                            aria-label="Views"><i
+                                                                                class="bi bi-eye-fill"></i></a>
                                                                         <a href="{{ route('products.edit', $product->id) }}"
                                                                             class="text-warning" data-bs-toggle="tooltip"
                                                                             data-bs-placement="bottom" title=""
