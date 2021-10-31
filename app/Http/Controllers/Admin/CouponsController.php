@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CouponsRequest;
+use App\Models\Admin\Coupons;
 use App\Services\CouponsService;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,37 @@ class CouponsController extends Controller
     public function index(Request $request)
     {
         $coupons = $this->couponsService->getAll($request);
+
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
+        if (isset($request->sort_by)) {
+            $sort_by = $request->sort_by;
+            if ($sort_by == 'newest') {
+                $coupons = Coupons::orderBy('id', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ cũ đến mới';
+            } elseif ($sort_by == 'latest') {
+                $coupons = Coupons::orderBy('id', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Từ mới đến cũ';
+            } elseif ($sort_by == 'amounts_a_to_z') {
+                $coupons = Coupons::orderBy('amounts', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Số tiền giảm từ A đến Z';
+            } elseif ($sort_by == 'amounts_z_to_a') {
+                $coupons = Coupons::orderBy('amounts', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Số tiền giảm từ Z đến A';
+            } elseif ($sort_by == 'expired_date_a_to_z') {
+                $coupons = Coupons::orderBy('expired_day', 'ASC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Ngày hết hạn trước->sau';
+            } elseif ($sort_by == 'expired_date_z_to_a') {
+                $coupons = Coupons::orderBy('expired_day', 'DESC')->paginate(5)->appends(request()->query());
+                $name_sort = 'Ngày hết hạn sau->trước';
+            }
+        }
+
         $params = [
             'coupons' => $coupons,
+            'sort_by' => $sort_by,
+            'name_sort' => $name_sort
+
         ];
         return view('admin.coupons.index', $params);
     }
