@@ -16,7 +16,7 @@ class ProductAttributesRepository implements ProductAttributesInterface
         if ($request->productAttribute) {
             $search = $request->productAttribute;
 
-            $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%') ;
+            $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
 
@@ -32,13 +32,14 @@ class ProductAttributesRepository implements ProductAttributesInterface
     }
     public function store($request)
     {
-        $productAttribute                = new ProductAttributes();
-        $productAttribute->product_id    = $request->product_id;
-        $productAttribute->attribute_id  = $request->attribute_id;
-        $productAttribute->content       = $request->content;
-        $productAttribute->created_at    = Carbon::now('Asia/Ho_Chi_Minh');
-
-        $productAttribute->save();
+        $product_id = $request->product_id;
+        foreach ($request->attribute_id as $key => $value) {
+            $productAttribute                = new ProductAttributes();
+            $productAttribute->product_id    = $product_id;
+            $productAttribute->attribute_id  = $value;
+            $productAttribute->content       = $request->content[$key];
+            $productAttribute->save();
+        }
     }
     public function edit($id)
     {
@@ -59,5 +60,4 @@ class ProductAttributesRepository implements ProductAttributesInterface
         $productAttribute = ProductAttributes::find($id);
         return $productAttribute->delete();
     }
-
 }
