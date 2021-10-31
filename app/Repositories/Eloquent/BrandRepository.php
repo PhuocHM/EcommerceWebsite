@@ -33,7 +33,7 @@ class BrandRepository implements BrandInterface
             $path = 'images/brand/';
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
-            $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $new_image = $path . $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
             $get_image->move($path, $new_image);
             $brand->image = $new_image;
             $data['brand_image'] = $new_image;
@@ -48,21 +48,21 @@ class BrandRepository implements BrandInterface
         $brand = Brand::find($id);
         $brand->name  = $request->name;
         $brand->slug    = $request->slug;
-
-            $get_image = $request->file('image');
-            if ($get_image) {
-                $path = 'images/brand/' . $brand->image;
-                if (file_exists($path)) {
-                    unlink($path);
-                }
-                $path = 'images/brand/';
-                $get_name_image = $get_image->getClientOriginalName();
-                $name_image = current(explode('.', $get_name_image));
-                $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-                $get_image->move($path, $new_image);
-                $brand->image = $new_image;
-                $data['brand_image'] = $new_image;
+        $path = 'images/brand/';
+        $get_image = $request->file('image');
+        if ($get_image) {
+            $path = 'images/brand/' . $brand->image;
+            if (file_exists($path)) {
+                unlink($path);
             }
+            $path = 'images/brand/';
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.', $get_name_image));
+            $new_image = $path . $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
+            $get_image->move($path, $new_image);
+            $brand->image = $new_image;
+            $data['brand_image'] = $new_image;
+        }
 
         $brand->updated_at = Carbon::now('Asia/Ho_Chi_Minh');
 
@@ -81,5 +81,4 @@ class BrandRepository implements BrandInterface
         }
         $brand->delete();
     }
-
 }

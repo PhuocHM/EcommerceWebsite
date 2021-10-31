@@ -30,11 +30,12 @@ class EmployeesRepository implements EmployeesInterface
         $data = $request->only('name', 'slug', 'email', 'birthday', 'address', 'identification', 'group_id');
         $data['password'] = Hash::make($request->password);
         $file = $request->image;
+        $path = "images/employee/";
         if (!$request->hasFile('image')) {
             $data['image'] = $file;
         } else {
             $fileExtension = $file->getClientOriginalExtension();
-            $fileName = time() + 2;
+            $fileName =  $path . time() + 2;
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/employee'), $newFileName);
             $data['image'] = $newFileName;
@@ -50,13 +51,14 @@ class EmployeesRepository implements EmployeesInterface
     {
         $data =  $request->only('name', 'slug', 'email', 'birthday', 'address', 'identification', 'group_id');
         $data['password'] = Hash::make($request->password);
+        $path = "images/employee/";
         if ($request->image) {
             $data['image'] = $request->image;
         }
 
         if ($request->hasFile('image')) {
             $fileExtension = $request->image->getClientOriginalExtension();
-            $fileName = time() + 2;
+            $fileName =  $path . time() + 2;
             $newFileName = "$fileName.$fileExtension";
             $request->file('image')->move(public_path('images/employee'), $newFileName);
             $data['image'] = $newFileName;
