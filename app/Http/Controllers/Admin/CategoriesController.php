@@ -21,6 +21,7 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('product-show', 'product-show');
         $categories = $this->categoryService->getAll($request);
         $categories_arr = $this->categoryService->categories_arr();
 

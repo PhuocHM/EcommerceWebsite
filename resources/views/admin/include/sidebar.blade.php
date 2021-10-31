@@ -13,6 +13,7 @@
      </div>
      <!--navigation-->
      <ul class="metismenu" id="menu">
+         @can('product-show', 'product-show')
          <li>
              <a href="javascript:;" class="has-arrow">
                  <div class="parent-icon"><i class="fas fa-cubes"></i>
@@ -39,7 +40,8 @@
                  </li>
              </ul>
          </li>
-
+         @endcan
+         @can('discount-show', 'discount-show')
          <li>
              <a href="javascript:;" class="has-arrow">
                  <div class="parent-icon"><i class="fas fa-money-bill-wave"></i>
@@ -55,6 +57,8 @@
                  </li>
              </ul>
          </li>
+         @endcan
+         @can('order-show', 'order-show')
          <li>
              <a href="javascript:;" class="has-arrow">
                  <div class="parent-icon"><i class="fas fa-file-invoice-dollar"></i>
@@ -66,6 +70,8 @@
                  </li>
              </ul>
          </li>
+         @endcan
+         @can('customer-show', 'customer-show')
          <li>
              <a href="javascript:;" class="has-arrow">
                  <div class="parent-icon"><i class="fas fa-users"></i>
@@ -81,7 +87,8 @@
                  </li>
              </ul>
          </li>
-
+         @endcan
+         @can('employee-show', 'employee-show')
          <li>
              <a href="javascript:;" class="has-arrow">
                  <div class="parent-icon"><i class="fas fa-user-shield"></i>
@@ -99,6 +106,7 @@
                  </li>
              </ul>
          </li>
+         @endcan
      </ul>
      <!--end navigation-->
  </aside>
