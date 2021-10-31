@@ -39,7 +39,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                         kiếm</button>
-                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('attributes.index') }}" method="GET" name="attribute" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('attributes.index') }}" method="GET" name="attribute" type="text" placeholder="Tìm kiếm">
                     <select class="form-select" name="category_id" style="width:160px;margin-right:10px;float:right">
                         <option value="">Chọn danh mục</option>
                         @foreach ($categories as $key => $category)

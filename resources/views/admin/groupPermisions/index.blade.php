@@ -28,7 +28,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                         kiếm</button>
-                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('groupPermisions.index') }}" method="GET" name="groupPermision" type="text" placeholder="Tìm kiếm theo tên ">
+                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('groupPermisions.index') }}" method="GET" name="groupPermision" type="text" placeholder="Tìm kiếm">
                     </select>
                 </form>
             </div>

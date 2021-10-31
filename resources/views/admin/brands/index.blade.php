@@ -37,7 +37,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                         kiếm</button>
-                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('brands.index') }}" method="GET" name="brand" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" action="{{ route('brands.index') }}" method="GET" name="brand" type="text" placeholder="Tìm kiếm">
                     </select>
                 </form>
             </div>
