@@ -26,7 +26,7 @@
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('stocks.index') }}" method="GET" name="stock" type="text"
+                            action="{{ route('stocks.index') }}" method="GET" name="stocks" type="text"
                             placeholder="Tìm kiếm theo tên nhà cung cấp">
                         </select>
                     </form>

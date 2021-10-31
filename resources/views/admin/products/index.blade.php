@@ -19,7 +19,6 @@
                         <a href="{{ route('products.create') }}" class="btn btn-primary">Thêm sản phẩm</a>
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-3">
@@ -40,19 +39,24 @@
 
                 <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
-                        <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
+                        <button style=" float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
                             action="{{ route('products.index') }}" method="GET" name="product" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
+                        <select class="form-select" name="category_id" style="width:160px;margin-right:10px;float:right">
+                            <option value="">Chọn danh mục</option>
+                            @foreach ($categories as $key => $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
-                    </form>
+                    </form> 
                 </div>
             </div>
             <!--end breadcrumb-->
-            <div class="card mt-3">
+            <div class=" card mt-3">
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session(' status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
@@ -90,7 +94,8 @@
                                                                 <td>{{ $product->sold }}</td>
                                                                 <td>
                                                                     @if ($product->status == 0)
-                                                                        <span class='text text-success'>Hiển thị</span>
+                                                                        <span class='text text-success'>Hiển
+                                                                            thị</span>
                                                                     @else
                                                                         <span class='text text-success'>Ẩn</span>
                                                                     @endif
@@ -132,7 +137,9 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn xóa không
+                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn có
+                                                        muốn
+                                                        xóa không
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>

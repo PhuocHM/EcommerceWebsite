@@ -8,12 +8,13 @@ use Carbon\Carbon;
 
 class SuppliersRepository implements SupplierRepositoryInterface
 {
-    public function getAll($request){
-        $query = Suppliers::orderBy('id','DESC');
+    public function getAll($request)
+    {
+        $query = Suppliers::orderBy('id', 'DESC');
 
-        if($request->supplier){
+        if ($request->supplier) {
             $search = $request->supplier;
-            $query->where('name','LIKE','%'.$search.'%');
+            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('address', 'LIKE', '%' . $search . '%')->orWhere('phone', 'LIKE', '%' . $search . '%');
         }
         return $query->paginate(5);
     }

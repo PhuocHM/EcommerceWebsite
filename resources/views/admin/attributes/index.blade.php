@@ -42,6 +42,11 @@
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
                             action="{{ route('products.index') }}" method="GET" name="product" type="text"
                             placeholder="Tìm kiếm theo tên sản phẩm">
+                        <select class="form-select" name="category_id" style="width:160px;margin-right:10px;float:right">
+                            <option value="">Chọn danh mục</option>
+                            @foreach ($categories as $key => $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </form>
                 </div>

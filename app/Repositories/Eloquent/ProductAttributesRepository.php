@@ -13,11 +13,13 @@ class ProductAttributesRepository implements ProductAttributesInterface
     public function getAll($request)
     {
         $query = ProductAttributes::with('product', 'attribute');
-        if ($request->productAttribute) {
-            $search = $request->productAttribute;
-
-            $query->where('product_id', 'LIKE', '%' . $search . '%')->orWhere('attribute_id', 'LIKE', '%' . $search . '%');
+        if ($request->productAttributes) {
+            $search = $request->productAttributes;
+            $products_id = Products::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $attributes_id = Attributes::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $query->whereIn('product_id', $products_id)->orWhere('attribute_id', $attributes_id);
         }
+
         $query->orderBy('id', 'DESC');
 
         return $query->paginate(5);

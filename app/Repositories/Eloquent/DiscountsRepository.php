@@ -12,11 +12,10 @@ class DiscountsRepository implements DiscountsInterface
 
     public function getAll($request)
     {
-        $query = Discounts::orderBy('id', 'DESC');
-        if ($request->discount) {
-            $search = $request->discount;
-
-            $query->where('name', 'LIKE', '%' . $search . '%');
+        $query = Discounts::orderBy('id','DESC');
+        if($request->discount){
+            $search=$request->discount;          
+            $query->where('name','LIKE','%'.$search.'%')->orWhere('amounts', 'LIKE', '%' . $search . '%')->orWhere('start_date','LIKE', '%' . $search . '%')->orWhere('expired_date','LIKE', '%' . $search . '%');
         }
 
         return $query->paginate(5);

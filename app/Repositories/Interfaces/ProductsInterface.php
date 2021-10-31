@@ -2,10 +2,12 @@
 
 namespace App\Repositories\Interfaces;
 
+use Illuminate\Http\Request;
+
 interface ProductsInterface
 {
 
-    public function getAll($request);
+    public function getAll(Request $request);
     public function getOne($id);
     public function store($request);
     public function update($request, $id);

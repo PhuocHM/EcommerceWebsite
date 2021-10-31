@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use Illuminate\Http\Request;
 use App\Models\Admin\Brand;
 use App\Models\Admin\Products;
 use App\Models\Admin\Category;
@@ -13,13 +14,21 @@ use Carbon\Carbon;
 class ProductsRepository implements ProductsInterface
 {
 
-    public function getAll($request)
+    public function getAll(Request $request)
     {
         $query = Products::with('category', 'brand');
-        if ($request->product) {
+        if ($request->category_id && $request->product =='') {
+            $category_id = $request->category_id;
+            $query->where('category_id',$category_id);        
+        }
+        if ($request->product && $request->category_id =='') {
             $search = $request->product;
-
-            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('', 'LIKE', '%' . $search . '%');
+            $query->where('name', 'LIKE', '%' . $search . '%');
+        }
+        if($request->product && $request->category_id){ 
+            $category_id = $request->category_id;
+            $search = $request->product;
+            $query->where('category_id',$category_id)->where('name', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
 

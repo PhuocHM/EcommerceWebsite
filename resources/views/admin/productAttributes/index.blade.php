@@ -41,9 +41,8 @@
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
                         <input style="width: 300px; margin-right: 10px; float:right" class="form-control"
-                            action="{{ route('products.index') }}" method="GET" name="product" type="text"
-                            placeholder="Tìm kiếm theo tên sản phẩm">
-                        </select>
+                            action="{{ route('productAttributes.index') }}" method="GET" name="productAttributes"
+                            type="text" placeholder="Tìm kiếm theo tên sản phẩm">
                     </form>
                 </div>
             </div>
@@ -80,7 +79,7 @@
                                                         <td>{{ $productAttribute->attribute->name }}</td>
                                                         <td>{{ $productAttribute->content }}</td>
 
-                                                    
+
                                                         <td>
                                                             @if ($productAttribute->updated_at != '')
                                                                 {{ date('d-m-Y', strtotime($productAttribute->updated_at)) }}

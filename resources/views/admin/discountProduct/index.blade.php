@@ -50,7 +50,7 @@
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>#</th>
-                                                    <th> Thuộc Sản phẩm</th>
+                                                    <th>Thuộc Sản phẩm</th>
                                                     <th>Thuộc Chiết khấu</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>

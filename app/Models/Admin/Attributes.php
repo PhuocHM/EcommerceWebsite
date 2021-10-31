@@ -30,4 +30,5 @@ class Attributes extends Model
     {
         return $this->belongsToMany(Products::class, 'product_attribute', 'product_id', 'attribute_id')->withPivot('content');
     }
+    
 }
