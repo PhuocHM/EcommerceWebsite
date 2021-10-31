@@ -23,10 +23,6 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-
-                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
-
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -57,14 +53,9 @@
                                                         <th>#</th>
                                                         <th>Mã</th>
                                                         <th>Tên</th>
-                                                        <th>Danh mục</th>
-                                                        <th>Thương hiệu</th>
+                                                        <th>Còn hàng</th>
                                                         <th>Đã bán</th>
-                                                        <th>Giá (VNĐ)</th>
-                                                        <th>Mô tả</th>
                                                         <th>Trạng thái</th>
-
-                                                        <th>Ngày cập nhật</th>
                                                         <th>Hành động</th>
                                                     </tr>
                                                 </thead>
@@ -75,12 +66,12 @@
                                                                 <td>{{ ++$key }}</td>
                                                                 <td>{{ $product->code }}</td>
                                                                 <td>{{ $product->name }}</td>
-
-                                                                <td>{{ $product->category->name }}</td>
-                                                                <td>{{ $product->brand->name }}</td>
+                                                                <td>
+                                                                    @if (isset($product->supplier->first()->pivot->quantity))
+                                                                        {{ $product->supplier->first()->pivot->quantity }}
+                                                                    @endif
+                                                                </td>
                                                                 <td>{{ $product->sold }}</td>
-                                                                <td>{{ number_format($product->price) }}</td>
-                                                                <td>{!! $product->description !!}</td>
                                                                 <td>
                                                                     @if ($product->status == 0)
                                                                         <span class='text text-success'>Hiển thị</span>
@@ -89,12 +80,13 @@
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    @if ($product->updated_at != '')
-                                                                        {{ date('d-m-Y', strtotime($product->updated_at)) }}
-                                                                    @endif
-                                                                </td>
-                                                                <td>
                                                                     <div class="d-flex justify-content-center gap-3 fs-6">
+                                                                        <a href="{{ route('products.show', $product->id) }}"
+                                                                            class="text-primary" data-bs-toggle="tooltip"
+                                                                            data-bs-placement="bottom" title=""
+                                                                            data-bs-original-title="View detail"
+                                                                            aria-label="Views"><i
+                                                                                class="bi bi-eye-fill"></i></a>
                                                                         <a href="{{ route('products.edit', $product->id) }}"
                                                                             class="text-warning" data-bs-toggle="tooltip"
                                                                             data-bs-placement="bottom" title=""

@@ -15,13 +15,13 @@ class ProductImages extends Model
     protected $fillable = [
         'amounts', 'start_day', 'expired_day', 'description', 'image'
     ];
-    
+
     protected $primaryKey = 'id';
     protected $table = 'product_image';
     public $timestamps = true;
 
     public function product()
     {
-        return $this->belongsTo(Products::class, 'product_id', 'id');
+        return $this->belongsTo(Products::class, 'product_id');
     }
 }

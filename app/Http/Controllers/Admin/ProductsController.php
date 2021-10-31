@@ -66,7 +66,12 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->productsService->findDetail($id);
+
+        $params = [
+            'product' => $product,
+        ];
+        return view('admin.products.show', $params);
     }
 
     /**
@@ -79,7 +84,7 @@ class ProductsController extends Controller
     {
         $categories = $this->productsService->create_category();
         $brands     = $this->productsService->create_brand();
-        $products   = $this->productsService->edit($id);
+        $products   = $this->productsService->find($id);
         $params = [
             'categories'     => $categories,
             'products'       =>  $products,
