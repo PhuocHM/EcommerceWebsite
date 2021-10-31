@@ -77,7 +77,7 @@ class ProductsRepository implements ProductsInterface
 
     public function findDetail($id)
     {
-        // dd(Products::with('comment', 'discount')->find($id));
+      
         return Products::with('category', 'brand', 'attribute', 'productImage', 'supplier', 'comment', 'discount')->find($id);
     }
 

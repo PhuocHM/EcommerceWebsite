@@ -21,7 +21,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{ Request::url() }}?sort_by=newest">--Từ cũ đến mới--</option>
+                            <option value="{{ Request::url() }}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_a_to_z">--Tên sản phẩm A đến Z--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_z_to_a">--Tên sản phẩm Z đến A--</option>
+                            <option value="{{ Request::url() }}?sort_by=amount_a_to_z">--Số tiền KM ít tới nhiều--
+                            </option>
+                            <option value="{{ Request::url() }}?sort_by=amount_z_to_a">--Số tiền KM nhiều tới ít--
+                            </option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
@@ -52,6 +67,7 @@
                                                     <th>#</th>
                                                     <th>Thuộc Sản phẩm</th>
                                                     <th>Thuộc Chiết khấu</th>
+                                                    <th>Số tiền được chiết khấu (VNĐ)</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Ngày cập nhật</th>
                                                     <th>Hành động</th>
@@ -63,7 +79,7 @@
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $discountProduct->product->name }}</td>
                                                         <td>{{ $discountProduct->discount->name }}</td>
-                                                       
+                                                        <td>{{ number_format($discountProduct->discount->amounts) }}</td>
 
 
                                                         <td>{{ date('d-m-Y', strtotime($discountProduct->created_at)) }}

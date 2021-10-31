@@ -21,7 +21,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3">
+                    <form class="form-inline my-2 my-lg-0">
+                        <select name="sort" id="sort" class="form-control">
+                            <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                            <option value="{{ Request::url() }}?sort_by=newest">--Từ cũ đến mới--</option>
+                            <option value="{{ Request::url() }}?sort_by=latest">--Từ mới đến cũ--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_a_to_z">--Tên khách hàng A đến Z--</option>
+                            <option value="{{ Request::url() }}?sort_by=name_z_to_a">--Tên khách hàng Z đến A--</option>
+                            <option value="{{ Request::url() }}?sort_by=amount_a_to_z">--Số tiền Order ít tới nhiều--
+                            </option>
+                            <option value="{{ Request::url() }}?sort_by=amount_z_to_a">--Số tiền Order nhiều tới ít--
+                            </option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-9">
                     <form class="form-inline my-2 my-lg-0">
                         <button style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm
                             kiếm</button>
