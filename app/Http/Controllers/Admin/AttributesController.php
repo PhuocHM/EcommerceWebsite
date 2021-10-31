@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\AttributesService;
 use Illuminate\Http\Request;
+use App\Models\Admin\Attributes;
 
 use App\Http\Requests\AttributesRequest;
 
@@ -24,8 +25,31 @@ class AttributesController extends Controller
     public function index(Request $request)
     {
         $attributes = $this->attributesService->getAll($request);
+        // $attributes_sort=Attributes::sortable()->paginate(5);
+    //     if(isset($request->sort_by)){
+    //         $sort_by =$request->sort_by;
+    //           if($sort_by=='newest'){
+    //           $attributes = Attributes::orderBy('created_at','ASC')->paginate(5)->appends(request()->query());
+    //       }
+    //       elseif($sort_by=='latest'){
+    //           $attributes = Attributes::orderBy('updated_at','DESC')->paginate(5)->appends(request()->query());
+    //       }
+    //       elseif($sort_by=='name_a_to_z'){
+    //           $attributes = Attributes::orderBy('name','ASC')->paginate(5)->appends(request()->query());
+    //       }
+    //       elseif($sort_by=='name_z_to_z'){
+    //           $attributes = Category::orderBy('name','DESC')->paginate(5)->appends(request()->query());
+    //       }
+    //       elseif($sort_by=='category_a_to_z'){
+    //           $attributes = Category::orderBy('category_id ','ASC')->paginate(5)->appends(request()->query());
+    //       }
+    //       elseif($sort_by=='category_z_to_a'){
+    //           $attributes = Attributes::orderBy('category_id ','DESC')->paginate(5)->appends(request()->query());
+    //       }
+    //   };
         $params = [
             'attributes' => $attributes,
+            // 'attributes_sort' => $attributes_sort,
         ];
         return view('admin.attributes.index', $params);
     }

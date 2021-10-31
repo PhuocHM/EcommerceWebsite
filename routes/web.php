@@ -92,6 +92,7 @@ Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart'
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::get('/home', AdminController::class)->name('home');
     Route::resource('/categories', CategoriesController::class);
+    Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
     Route::resource('/brands', BrandsController::class);
     Route::resource('/productAttributes', ProductAttributesController::class);
@@ -120,6 +121,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
     Route::resource('/customers', CustomersController::class);
 
 });
+
+
 
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
 Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');

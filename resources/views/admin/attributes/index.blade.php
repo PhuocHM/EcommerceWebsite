@@ -36,6 +36,24 @@
                         </select>
                     </form>
                 </div>
+                <div class="col-md-2">
+                                    
+                                    <label for="amount">Sắp xếp theo</label>
+
+                                    <form>
+
+                                    <select name="sort" id="sort" class="form-control">
+                                        <option value="{{Request::url()}}?sort_by=none">--Lọc theo--</option>
+                                        <option value="{{Request::url()}}?sort_by=newest">--Từ cũ đến mới--</option>
+                                        <option value="{{Request::url()}}?sort_by=latest">--Từ mới đến cũ--</option>
+                                        <option value="{{Request::url()}}?sort_by=name_a_to_z">Lọc theo tên A đến Z</option>
+                                        <option value="{{Request::url()}}?sort_by=name_z_to_z">Lọc theo tên Z đến A</option>
+                                        <option value="{{Request::url()}}?sort_by=category_a_to_z">Lọc theo danh mục A đến Z</option>
+                                        <option value="{{Request::url()}}?sort_by=category_z_to_a">Lọc theo danh mục Z đến A</option>
+                                    </select>
+                                    </form>
+                               
+                            </div>
             </div>
             <!--end breadcrumb-->
             <div class="card mt-3">
@@ -53,8 +71,8 @@
                                         <table id="dataTable" class="table ">
                                             <thead class="table-light">
                                                 <tr>
-                                                    <th>#</th>
-                                                    <th>Tên</th>
+                                                    <th>@sortablelink('#')</th>
+                                                    <th>@sortablelink('name')</th>
                                                     <th>Slug</th>
                                                     <th>Thuộc danh mục</th>
                                                     <th>Ngày tạo</th>
@@ -104,6 +122,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {!! $attributes->appends(\Request::except('page'))->render() !!}
                                     </div>
                                     {{-- Test Modal Delete --}}
                                     <!-- Modal -->

@@ -9,12 +9,14 @@ class CategoryRepository implements CategoryInterface {
 
     public function getAll($request)
     {
+
         $query = Category::orderBy('id','DESC');
         if($request->category){
             $search=$request->category;
         
             $query->where('name','LIKE','%'.$search.'%');
         }
+        
 
         return $query->paginate(5);
     }

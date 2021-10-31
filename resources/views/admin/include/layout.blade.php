@@ -136,6 +136,28 @@
             format: 'Y-m-d H:i:s',
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#sort').on('change',function(){
+
+                var url = $(this).val(); 
+                // alert(url);
+                  if (url) {    
+                      window.location = url;
+                  }
+                return false;
+            });
+
+        }); 
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+  } );
+  </script>
 </body>
 
 </html>

@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Admin\Category;
+use App\Models\Admin\Products;
 class CategoriesController extends Controller
 {   
     private $categoryService;
@@ -19,12 +21,39 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
+        // $category= Category::sortable()->paginate(5);
         $categories = $this->categoryService->getAll($request);
         $categories_arr = $this->categoryService->categories_arr();
+        if(isset($request->sort_by)){
+            $sort_by =$request->sort_by;
+              if($sort_by=='newest'){
+              $categories = Category::orderBy('created_at','ASC')->paginate(5)->appends(request()->query());
+          }
+          elseif($sort_by=='latest'){
+              $categories = Category::orderBy('updated_at','DESC')->paginate(5)->appends(request()->query());
+          }
+          elseif($sort_by=='name_a_to_z'){
+              $categories = Category::orderBy('name','ASC')->paginate(5)->appends(request()->query());
+          }
+          elseif($sort_by=='name_z_to_z'){
+              $categories = Category::orderBy('name','DESC')->paginate(5)->appends(request()->query());
+          }
+          elseif($sort_by=='category_a_to_z'){
+              $categories = Category::orderBy('parent_id','ASC')->paginate(5)->appends(request()->query());
+          }
+          elseif($sort_by=='category_z_to_a'){
+              $categories = Category::orderBy('parent_id','DESC')->paginate(5)->appends(request()->query());
+          }
+      };
+      
         
+     
         $params = [
             'categories'        => $categories,
             'categories_arr'    => $categories_arr,
+            // 'category'    => $category,
+           
+           
         ];
         return view('admin.categories.index',$params);
     }
