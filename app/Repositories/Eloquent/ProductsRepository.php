@@ -60,10 +60,19 @@ class ProductsRepository implements ProductsInterface
 
         $product->save();
     }
-    public function edit($id)
+
+    public function find($id)
     {
         return Products::find($id);
     }
+
+    public function findDetail($id)
+    {
+        // dd(Products::with('comment', 'discount')->find($id));
+        return Products::with('category', 'brand', 'attribute', 'productImage', 'supplier', 'comment', 'discount')->find($id);
+    }
+
+
     public function destroy($id)
     {
         $product = Products::find($id);

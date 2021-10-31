@@ -35,10 +35,16 @@ class ProductsService
     {
         return $this->productsRepository->update($request, $id);
     }
-    public function edit($id)
+    public function find($id)
     {
-        return $this->productsRepository->edit($id);
+        return $this->productsRepository->find($id);
     }
+
+    public function  findDetail($id)
+    {
+        return $this->productsRepository-> findDetail($id);
+    }
+
     public function destroy($id)
     {
         return $this->productsRepository->destroy($id);

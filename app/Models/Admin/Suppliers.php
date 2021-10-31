@@ -18,6 +18,6 @@ class Suppliers extends Model
 
     public function product()
     {
-        return $this->belongsToMany(Products::class, 'stock', 'product_id', 'supplier_id')->withPivot('employee_id', 'quantity', 'cost_price', 'created_at', 'updated_at');
+        return $this->belongsToMany(Products::class, 'stocks', 'product_id', 'supplier_id')->withPivot('employee_id', 'quantity', 'cost_price', 'created_at', 'updated_at');
     }
 }
