@@ -13,15 +13,15 @@
                         <div class="user-setting d-flex align-items-center gap-1">
                             {{-- <img src="{{ asset('images/employee/' . $admin->image) }}" class="user-img" alt=""> --}}
                             {{-- <div class="user-name d-none d-sm-block">{{ $admin->name }}</div> --}}
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                        {{-- </div>
+                    </a> --}}
+                    {{-- <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="#">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ asset('images/employee/' . $admin->image) }}" alt="" class="rounded-circle" width="60" height="60">
                                     <div class="ms-3">
-                                        {{-- <h6 class="mb-0 dropdown-user-name">{{ $admin->name }}</h6> --}}
+                                        <h6 class="mb-0 dropdown-user-name">{{ $admin->name }}</h6>
                                     </div>
                                 </div>
                             </a>
@@ -45,8 +45,8 @@
                                 </div>
                             </a>
                         </li>
-                    </ul>
-                </li>
+                    </ul> --}}
+                {{-- </li>
             </ul> --}}
         </div>
     </nav>
