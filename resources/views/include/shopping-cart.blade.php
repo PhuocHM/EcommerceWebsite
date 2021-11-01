@@ -121,7 +121,6 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                             <button type="submit" class="btn btn-primary">Đặt hàng</button>
                         </div>
                     </form>

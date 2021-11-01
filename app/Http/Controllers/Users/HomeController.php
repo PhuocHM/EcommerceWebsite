@@ -228,7 +228,7 @@ class HomeController extends Controller
             $check_cart = Carts::where('user_id', '=', $user_id)->first();
             if ($check_cart == null) {
                 $cart = new Carts;
-                $cart->code = Carbon::now()->timestamp;
+                $cart->code = "#ORDEW" . Carbon::now()->timestamp;
                 $cart->user_id = $user_id;
                 $cart->save();
 
@@ -254,7 +254,7 @@ class HomeController extends Controller
             $check_cart = Carts::where('user_id', '=', $user_id)->first();
             if ($check_cart == null) {
                 $cart = new Carts;
-                $cart->code = Carbon::now()->timestamp;
+                $cart->code = "#ORDEW" . Carbon::now()->timestamp;
                 $cart->user_id = $user_id;
                 $cart->save();
 

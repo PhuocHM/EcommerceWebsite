@@ -3,7 +3,7 @@
 @section('main')
 <body class="index-opt-5">
     @if (session('update'))
-    <div class="alert alert-success custom-alert" id="notification">
+    <div class="alert alert-success custom-alert text-center" id="notification">
         {{ session('update') }}
     </div>
     @endif
@@ -458,7 +458,7 @@
     });
     setTimeout(function() {
         $("#notification").hide();
-    }, 1500)
+    }, 3000)
 
 </script>
 @endsection

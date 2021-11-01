@@ -43,11 +43,17 @@
                             <span class="text-light">{{ Auth::user()->name }}&ensp;<i class="fas fa-angle-down"></i></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style=" text-align:center;border-radius: 5%;border:1px solid #fff">
-
+                            <a href="{{ route('coupon.index') }}" class="dropdown-item text-dark" style="color: #7a7a7a">Mã của bạn</a>
+                            <br>
+                            <a href="{{ route('order.orderDetail') }}" class="dropdown-item text-dark" style="color: #7a7a7a">Đơn hàng</a>
+                            <br>
                             <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.pass') }}">Đổi mật khẩu</a>
                             <br>
                             <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.user') }}">Chỉnh sửa thông tin</a>
                             <br>
+
+
+
                             <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('logout.user') }}">Đăng xuất</a>
                         </div>
                     </div>
@@ -115,23 +121,20 @@
                                 <a href="{{ route('index') }}">Trang chủ</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="{{ route('coupon.index') }}">Mã của bạn</a>
+                                <a href="{{ route('category.show',7) }}">Điện máy - Điện gia dụng</a>
                             </li>
-
-                            @if (Auth::check())
                             <li class="menu-item-has-children">
-                                <a href="{{ route('order.orderDetail') }}">Đơn hàng</a>
+                                <a href="{{ route('category.show',8) }}">Laptop & Macbook</a>
                             </li>
-                            @endif
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('category.show',9) }}">Tivi & Màn hình TV</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('category.show',10) }}">Điện thoại - Thiết bị thông minh</a>
+                            </li>
                             <li class="menu-item-has-children">
                                 <a href="{{ route('about.index') }}">Giới thiệu</a>
                             </li>
-                            @if (!Auth::check())
-                            <li class="menu-item-has-children">
-                                <a href="{{ route('login') }}">Đăng nhập</a>
-                            </li>
-                            @endif
-
                         </ul>
                     </div>
 

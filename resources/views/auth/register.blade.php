@@ -20,7 +20,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
-                                <input type="hidden" name="slug" id="convert_slug">
+                                <input type="hidden" name="slug" id="convert_slug" value="{{ old('slug') }}">
                             </div>
                             <div class="col-sm-6">
                                 <p class="form-row form-row-wide padding-left">
@@ -85,11 +85,7 @@
                                 </p>
 
                             </div>
-
-                            <div class="col-sm-12">
-                                <h5 class="title-login title-login-bottom">Login Information</h5>
-                            </div>
-
+                 
                             <div class="col-sm-6">
                                 <p class="form-row form-row-wide padding-left">
                                     <label>Mật khẩu<span class="required">*</span></label>
