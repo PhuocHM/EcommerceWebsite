@@ -41,6 +41,7 @@ use App\Http\Controllers\Users\CouponController;
 
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\OrderItemsController;
+use App\Http\Controllers\Users\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,8 @@ Route::resource('category', CategoriesProductController::class);
 Route::resource('product-detail', ProductDetailController::class);
 Route::resource('order', OrderController::class);
 Route::resource('coupon', CouponController::class);
-
 Route::resource('cart', CartController::class);
+Route::resource('about', AboutUsController::class);
 Route::GET('order-detail', [OrderController::class, 'orderDetail'])->name('order.orderDetail');
 Route::GET('api/deleteDiscount', [FlashSalesController::class, 'deleteDiscount'])->name('discount.deleteDiscount');
 Route::GET('api/deleteSession', [HomeController::class, 'deleteSession'])->name('order.deleteSession');

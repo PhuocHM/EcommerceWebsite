@@ -112,6 +112,9 @@
                         <ul class="header-nav dagon-nav">
                             <li class="btn-close hidden-md"><i class="flaticon-close" aria-hidden="true"></i></li>
                             <li class="menu-item-has-children">
+                                <a href="{{ route('index') }}">Trang chủ</a>
+                            </li>
+                            <li class="menu-item-has-children">
                                 <a href="{{ route('coupon.index') }}">Mã của bạn</a>
                             </li>
 
@@ -120,11 +123,15 @@
                                 <a href="{{ route('order.orderDetail') }}">Đơn hàng</a>
                             </li>
                             @endif
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('about.index') }}">Giới thiệu</a>
+                            </li>
                             @if (!Auth::check())
                             <li class="menu-item-has-children">
                                 <a href="{{ route('login') }}">Đăng nhập</a>
                             </li>
                             @endif
+
                         </ul>
                     </div>
 

@@ -1,5 +1,5 @@
 @extends('include.layout')
-@section('title', 'Đăng nhập')
+@section('title', 'Khuyến mãi')
 @section('main')
 
 <body class="page-inner">

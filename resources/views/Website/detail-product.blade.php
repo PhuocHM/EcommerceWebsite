@@ -1,5 +1,5 @@
 @extends('include.layout')
-@section('title', 'Chi tiết')
+@section('title', 'Chi tiết sản phẩm')
 @section('main')
 <body class="page-product detail-product">
     <div style="display:none;">

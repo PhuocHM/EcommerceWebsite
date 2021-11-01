@@ -7275,3 +7275,12 @@ label.inline {
  }
 
  .space-bw-2{margin-top: 50px; margin-bottom: 50px;}
+
+ .custom-alert{
+	width: 201px;
+	margin: 0px auto;
+	border-radius: 9px;
+	position: absolute;
+	top: 25px;
+	left: 867px;
+ }

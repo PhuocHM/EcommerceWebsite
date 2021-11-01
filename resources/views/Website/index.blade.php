@@ -1,8 +1,12 @@
 @extends('include.layout')
 @section('title', 'Trang chủ')
 @section('main')
-
 <body class="index-opt-5">
+    @if (session('update'))
+    <div class="alert alert-success custom-alert" id="notification">
+        {{ session('update') }}
+    </div>
+    @endif
     <div style="display:none;">
         <button id="noti-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Launch demo modal
@@ -452,6 +456,9 @@
     $(document).ready(function() {
         getFlashSales();
     });
+    setTimeout(function() {
+        $("#notification").hide();
+    }, 1500)
 
 </script>
 @endsection

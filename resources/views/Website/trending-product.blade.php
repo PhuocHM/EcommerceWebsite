@@ -1,5 +1,5 @@
 @extends('include.layout')
-@section('title', 'Best Seller Product')
+@section('title', 'Sản phẩm xu hướng')
 @section('main')
 
 <body class="page-product grid-view">
