@@ -181,6 +181,7 @@
                         v.removeClass("owl-changed")
                     }, s.smartSpeed)
                 });
+                console.log(v);
                 v.owlCarousel(s)
             })
         }
