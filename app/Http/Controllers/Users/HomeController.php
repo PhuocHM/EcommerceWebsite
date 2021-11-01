@@ -155,7 +155,7 @@ class HomeController extends Controller
             }
         }
         $cate_ids = $items->pluck('category_id')->toArray();
-        $related_items = Products::with('cover2Image', 'discount')->whereIn('category_id', $cate_ids)->get();
+        $related_items = Products::with('cover2Image', 'discount')->whereIn('category_id', $cate_ids)->limit(3)->get();
         $params = [
             'items' => $items,
             'related_items' => $related_items,
