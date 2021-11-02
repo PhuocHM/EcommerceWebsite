@@ -85,7 +85,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $category->name }}</td>
-                                                <td>{{ $category->description }}</td>
+                                                <td>{!!$category->description !!}</td>
                                                 <td>{{ $categories_arr[$category->parent_id] }}</td>
                                                 <td>
                                                     @if ($category->status == 0)
