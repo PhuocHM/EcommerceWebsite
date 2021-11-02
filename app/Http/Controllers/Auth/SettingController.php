@@ -32,7 +32,7 @@ class SettingController extends Controller
         $data['name'] = $request->customer_name;
         Customers::findOrFail($id)->update($data);
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('update', 'Cập nhật thông tin thành công');
     }
 
     public function settingPassword()
@@ -46,6 +46,6 @@ class SettingController extends Controller
         $user->password = Hash::make($request->new_password);
         $user->save();
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with('update', 'Cập nhật mật khẩu thành công');
     }
 }

@@ -20,22 +20,36 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <form class="form-inline my-2 my-lg-0">
+                    <select name="sort" id="sort" class="form-control">
+                        <option value="{{ Request::url() }}?sort_by={{ $sort_by }}">{{ $name_sort }}</option>
+                        <option value="{{Request::url()}}?sort_by=newest">--Từ cũ đến mới--</option>
+                        <option value="{{Request::url()}}?sort_by=latest">--Từ mới đến cũ--</option>
+                        <option value="{{Request::url()}}?sort_by=name_a_to_z">Lọc theo tên A đến Z</option>
+                        <option value="{{Request::url()}}?sort_by=name_z_to_a">Lọc theo tên Z đến A</option>
+                        <option value="{{Request::url()}}?sort_by=category_a_to_z">Lọc theo danh mục A đến Z</option>
+                        <option value="{{Request::url()}}?sort_by=category_z_to_a">Lọc theo danh mục Z đến A</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="col-md-9">
                 <form class="form-inline my-2 my-lg-0">
                     <button id="seach_button" style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="button">Tìm
                         kiếm</button>
-                    <input id="seach_input_category" style="width: 300px; margin-right: 10px; float:right" class="form-control" name="seach_input_category" type="text" placeholder="Tìm kiếm danh mục sản phẩm">
-                    <select name="type_seach" style="width: 160px; margin-right: 10px; float:right" class="form-select" id="type_seach">
-                        <option value="0">Tất cả</option>
-                        <option value="1">Tên danh mục</option>
-                        <option value="2">Danh mục tổng</option>
+                    <input style="width: 300px; margin-right: 10px; float:right" class="form-control" name="category" id="category" type="text" placeholder="Tìm kiếm theo tên danh mục">
+                    <select id="category_id" class="form-select" name="category_id" style="width:160px;margin-right:10px;float:right">
+                        <option value="1">Theo tên</option>
+                        <option value="2">Theo danh mục tổng</option>
                     </select>
                 </form>
             </div>
         </div>
         <!--end breadcrumb-->
-        <div class="card mt-3">
+        <div class="card mt-3" id="monitor">
 
             <div class="card-body">
 
@@ -46,7 +60,7 @@
                 @endif
                 <div class="row">
                     <div class="col-12 d-flex">
-                        <div class="card border shadow-none w-100" id="monitor">
+                        <div class="card border shadow-none w-100">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     @if (isset($categories))
@@ -56,9 +70,11 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Tên</th>
+
                                                 <th>Mô tả</th>
                                                 <th>Thuộc danh mục</th>
                                                 <th>Trạng thái</th>
+                                                <th>Ngày tạo</th>
                                                 <th>Ngày cập nhật</th>
                                                 <th>Hành động</th>
                                             </tr>
@@ -69,7 +85,7 @@
                                             <tr>
                                                 <td>{{ ++$key }}</td>
                                                 <td>{{ $category->name }}</td>
-                                                <td>{!! $category->description !!}</td>
+                                                <td>{!!$category->description !!}</td>
                                                 <td>{{ $categories_arr[$category->parent_id] }}</td>
                                                 <td>
                                                     @if ($category->status == 0)
@@ -77,6 +93,8 @@
                                                     @else
                                                     <span class='text text-success'>Ẩn</span>
                                                     @endif
+                                                </td>
+                                                <td>{{ date('d-m-Y', strtotime($category->created_at)) }}
                                                 </td>
                                                 <td>
                                                     @if ($category->updated_at != '')
@@ -148,22 +166,22 @@
         $('#deleteForm').attr('action', url)
     }
     $("#seach_button").on('click', function() {
-        let url = "{{ route('category.seach') }}";
-        let seach_data = $("#seach_input_category").val();
-        let type_seach = $("#type_seach").val();
-        console.log(type_seach);
+        let url = "{{ route('category.seach')}}";
+        let type_seach = $("#category_id").val();
+        let seach_data = $("#category").val();
         $.ajax({
             url: url
-            , method: 'GET'
+            , method: "GET"
             , data: {
-                seach_data: seach_data
-                , type_seach: type_seach
+                type_seach: type_seach
+                , seach_data: seach_data
             }
             , success: function(response) {
                 $("#monitor").html('');
                 $("#monitor").html(response);
+
             }
-        })
+        });
     })
 
 </script>

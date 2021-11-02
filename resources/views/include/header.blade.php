@@ -1,11 +1,37 @@
 <!-- HEADER -->
+<div style="display: none">
+    <button id="error_login_button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#error_login">
+        Launch demo modal
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="error_login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vui lòng đăng nhập để có thể thêm hàng vào giỏ
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <a href="{{ route('login') }}" class="btn btn-primary">Đăng nhập</a>
+            </div>
+        </div>
+    </div>
+</div>
 <header class="site-header header-opt-1">
     <!-- header-top -->
     <div class="header-top">
         <div class="container">
             <!-- hotline -->
             <ul class="nav-top-left">
-                <li><a href="#">Chào mừng đến với Horizon</a></li>
+                <li><a href="#">CHÀO MỪNG ĐẾN VỚI HORIZON</a></li>
             </ul><!-- hotline -->
             <!-- heder links -->
             <ul class="nav-top-right dagon-nav">
@@ -17,11 +43,17 @@
                             <span class="text-light">{{ Auth::user()->name }}&ensp;<i class="fas fa-angle-down"></i></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style=" text-align:center;border-radius: 5%;border:1px solid #fff">
-
+                            <a href="{{ route('coupon.index') }}" class="dropdown-item text-dark" style="color: #7a7a7a">Mã của bạn</a>
+                            <br>
+                            <a href="{{ route('order.orderDetail') }}" class="dropdown-item text-dark" style="color: #7a7a7a">Đơn hàng</a>
+                            <br>
                             <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.pass') }}">Đổi mật khẩu</a>
                             <br>
                             <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('setting.user') }}">Chỉnh sửa thông tin</a>
                             <br>
+
+
+
                             <a class="dropdown-item text-dark" style="color: #7a7a7a" href="{{ route('logout.user') }}">Đăng xuất</a>
                         </div>
                     </div>
@@ -45,7 +77,9 @@
                     </strong><!-- logo -->
                 </div>
                 <div class="col-md-8 nav-mind">
-                    <input style="witdh:100px" type="text" id="seach_input" class="form-control" placeholder="Nhập tên sản phẩm cần tìm">
+                    <div style="width:66%">
+                        <input style="witdh:70%;height:50px;border-radius:30px;margin-left:154px" class="form-control" type="text" id="seach_input" placeholder="Nhập tên sản phẩm cần tìm .... ">
+                    </div>
                 </div>
                 <div class="col-md-2 nav-right">
                     <!-- block mini cart -->
@@ -84,19 +118,23 @@
                         <ul class="header-nav dagon-nav">
                             <li class="btn-close hidden-md"><i class="flaticon-close" aria-hidden="true"></i></li>
                             <li class="menu-item-has-children">
-                                <a href="{{ route('coupon.index') }}">Mã của bạn</a>
+                                <a href="{{ route('index') }}">Trang chủ</a>
                             </li>
-
-                            @if (Auth::check())
                             <li class="menu-item-has-children">
-                                <a href="{{ route('order.orderDetail') }}">Đơn hàng</a>
+                                <a href="{{ route('category.show',7) }}">Điện máy - Điện gia dụng</a>
                             </li>
-                            @endif
-                            @if (!Auth::check())
                             <li class="menu-item-has-children">
-                                <a href="{{ route('login') }}">Đăng nhập</a>
+                                <a href="{{ route('category.show',8) }}">Laptop & Macbook</a>
                             </li>
-                            @endif
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('category.show',9) }}">Tivi & Màn hình TV</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('category.show',10) }}">Điện thoại - Thiết bị thông minh</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{{ route('about.index') }}">Giới thiệu</a>
+                            </li>
                         </ul>
                     </div>
 

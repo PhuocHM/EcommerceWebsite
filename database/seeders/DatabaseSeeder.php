@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentsSeeder::class);
         $this->call(DiscountSeeder::class);
         $this->call(DiscountProductSeeder::class);
+        $this->call(RoleSeeder::class);
     }
 }

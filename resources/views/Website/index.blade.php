@@ -1,8 +1,12 @@
 @extends('include.layout')
 @section('title', 'Trang chủ')
 @section('main')
-
 <body class="index-opt-5">
+    @if (session('update'))
+    <div class="alert alert-success custom-alert text-center" id="notification">
+        {{ session('update') }}
+    </div>
+    @endif
     <div style="display:none;">
         <button id="noti-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Launch demo modal
@@ -114,7 +118,7 @@
                         <a href="#" class="banner-img"><img src="{{ asset('images/home3/banner2-1.jpg') }}" alt="banner2"></a>
                         <div class="promotion-banner-inner">
                             <h4>Sản phẩm bán chạy</h4>
-                            <h3>Tháng 10</h3>
+                            <h3>Tháng 11</h3>
                             <a class="banner-link" href="{{ route('bestseller.index') }}">Mua ngay</a>
                         </div>
                     </div>
@@ -204,7 +208,11 @@
                                             <div class="post-metas">
                                                 <span class="author">Post by:
                                                     <span>{{ $comment->user_name }}</span></span>
-                                                <span class="comment"><i class="fas fa-star" style="color:orange"></i>{{ $comment->star_value }}</span>
+                                                <span class="comment">
+                                                    @for ($i = 0; $i < $comment->star_value; $i++)
+                                                        <i class="fas fa-star" style="color:orange"></i>
+                                                        @endfor
+                                                </span>
                                             </div>
                                             <div>
                                                 {{ $comment->content }}
@@ -448,6 +456,9 @@
     $(document).ready(function() {
         getFlashSales();
     });
+    setTimeout(function() {
+        $("#notification").hide();
+    }, 3000)
 
 </script>
 @endsection

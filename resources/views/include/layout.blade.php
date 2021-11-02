@@ -52,10 +52,17 @@
             // 
         }
     }).autocomplete("instance")._renderItem = function(ul, item) {
-        var url = `{{ route('product-detail.index') }}`;
-        return $("<li>")
-            .append(`<a href="` + url + `/` + item.id + `">` + item.name + `</a></li>`)
-            .appendTo(ul);
+
+        if (item.id) {
+            var url = `{{ route('product-detail.index') }}`;
+            return $("<li>")
+                .append(`<a href="` + url + `/` + item.id + `">` + item.name + `</a></li>`)
+                .appendTo(ul);
+        } else {
+            return $("<li>")
+                .append(`Không có dữ liệu</li>`)
+                .appendTo(ul);
+        }
     };;
 
     function checkCoupon() {
@@ -164,8 +171,8 @@
                     $("#noti-main").html('Đã thêm ' + response.success.name + ' vào giỏ hàng !')
                     checkCart();
                     $("#noti-button").trigger("click");
-                } else {
-                    //
+                } else if (response.error) {
+                    $("#error_login_button").trigger("click");
                 }
             }
         })

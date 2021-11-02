@@ -30,7 +30,6 @@
                             <div class="col-12">
                                 <label class="form-label">Danh mục sản phẩm</label>
                                 <select name="category_id" class="form-select js-example-basic-single form-product" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option>Chọn danh mục</option>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -39,7 +38,6 @@
                             <div class="col-12">
                                 <label class="form-label">Thương hiệu</label>
                                 <select name="brand_id" class="form-select js-example-basic-single form-product" data-select2-id="2" tabindex="-1" aria-hidden="true">
-                                    <option>Chọn thương hiệu</option>
                                     @foreach ($brands as $brand)
                                     <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                     @endforeach

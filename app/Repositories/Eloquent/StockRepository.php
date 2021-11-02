@@ -15,10 +15,12 @@ class StockRepository implements StockRepositoryInterface
     public function getAll($request)
     {
         $query = Stocks::with('product', 'supplier')->orderBy('id', 'DESC');
-
-        if ($request->stock) {
-            $search = $request->stock;
-            $query->product->where('name', 'LIKE', '%' . $search . '%');
+        if ($request->stocks) {
+            $search = $request->stocks;
+            $products_id = Products::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $employees_id = Employees::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $suppliers_id = Suppliers::where('name', 'LIKE', '%' . $search . '%')->pluck('id')->toArray();
+            $query->whereIn('product_id', $products_id)->orWhere('employee_id',$employees_id)->orWhere('supplier_id',$suppliers_id);
         }
         return $query->paginate(5);
     }

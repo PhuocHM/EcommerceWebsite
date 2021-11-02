@@ -11,6 +11,8 @@ use App\Models\Users\ProductAttribute;
 class Attributes extends Model
 {
     use HasFactory;
+   
+    
     protected $table = "attributes";
 
     public function category()

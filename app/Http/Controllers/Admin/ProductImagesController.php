@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductImagesRequest;
 use App\Services\ProductImagesService;
 use Illuminate\Http\Request;
+use App\Models\Admin\ProductImages;
+
+use App\Models\Admin\Products;
 
 class ProductImagesController extends Controller
 {
@@ -22,9 +25,36 @@ class ProductImagesController extends Controller
     public function index(Request $request)
     {
         $productImages = $this->productImagesService->getAll($request);
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
+        if(isset($request->sort_by)){
+            $sort_by =$request->sort_by;
+              if($sort_by=='newest'){
+              $productImages = ProductImages::orderBy('id','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ cũ đến mới';
+          }
+          elseif($sort_by=='latest'){
+              $productImages = ProductImages::orderBy('id','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ mới đến cũ';
+          }
+          elseif($sort_by=='name_a_to_z'){
+              $productImages = ProductImages::with('product')->join('products', 'products.id','=','product_image.product_id')
+              ->orderBy('products.name','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Tên A đến Z';
+          }
+          elseif($sort_by=='name_z_to_z'){
+              $productImages =  ProductImages::with('product')->join('products', 'products.id','=','product_image.product_id')
+              ->orderBy('name','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Tên Z đến A';
+          }
+       
+      };
 
         $params = [
             'productImages' => $productImages,
+            'sort_by' => $sort_by,
+            'name_sort' => $name_sort,
+        
         ];
         return view('admin.productImages.index', $params);
     }

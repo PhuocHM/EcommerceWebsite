@@ -121,7 +121,6 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                             <button type="submit" class="btn btn-primary">Đặt hàng</button>
                         </div>
                     </form>
@@ -134,50 +133,53 @@
 <div class="block-recent-view single">
     <div class="container">
         <div class="title-of-section">Có thể bạn sẽ thích</div>
-        {{-- {{dd($related_items)}} --}}
-        <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":4}}'>
+        <div class="row">
             @foreach ($related_items as $related_item)
-            <div class="product-item style1">
-                <div class="product-inner equal-elem">
-                    <div class="product-thumb">
-                        <div class="thumb-inner">
-                            <a href="#"><img src="{{ asset($related_item->cover2Image->first()->image) }}" alt="r3"></a>
+            <div class="col-md-4">
+                <div class="product-item style1">
+                    <div class="product-inner equal-elem">
+                        <div class="product-thumb">
+                            <div class="thumb-inner">
+                                <a href="#"><img src="{{ asset($related_item->cover2Image->first()->image) }}" alt="r3"></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-innfo">
-                        <div class="product-name"><a href="{{ route('product-detail.show', $related_item->id) }}">{{ $related_item->name }}&ensp;<u>đ</u></a></div>
-                        <span class="price price-dark">
-                            @if($related_item->discount->first() != null)
-                            <ins style="color:red">{{ number_format($related_item->price-$related_item->discount->first()->amounts) }}&ensp;<u>đ</u></ins>
-                            <del>{{ number_format($related_item->price) }}</del>
-                            @else
-                            <ins style="color:red">{{ number_format($related_item->price) }}&ensp;<u>đ</u></ins>
-                            @endif
+                        <div class="product-innfo">
+                            <div class="product-name"><a href="{{ route('product-detail.show', $related_item->id) }}">{{ $related_item->name }}&ensp;<u>đ</u></a></div>
+                            <span class="price price-dark">
+                                @if($related_item->discount->first() != null)
+                                <ins style="color:red">{{ number_format($related_item->price-$related_item->discount->first()->amounts) }}&ensp;<u>đ</u></ins>
+                                <del>{{ number_format($related_item->price) }}</del>
+                                @else
+                                <ins style="color:red">{{ number_format($related_item->price) }}&ensp;<u>đ</u></ins>
+                                @endif
 
-                        </span>
-                        <span class="star-rating">
+                            </span>
+                            <span class="star-rating">
 
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                            <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
 
-                            <span class="review">5 Review(s)</span>
+                                <span class="review">5 Review(s)</span>
 
-                        </span>
-                        <div class="group-btn-hover style2">
-                            <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                            <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            </span>
+                            <div class="group-btn-hover style2">
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
+
+
         </div>
     </div>
 </div>

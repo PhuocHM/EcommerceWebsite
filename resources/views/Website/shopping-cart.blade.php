@@ -97,7 +97,7 @@
                 , method: 'GET'
                 , success: function(response) {
                     $("#cart-area").html(response);
-                    g();
+                   
                     $(".syncQuantity").on('click', function() {
                         let product_id = $(this).data('product_id');
                         syncQuantity(product_id);
@@ -106,84 +106,7 @@
             })
         }
 
-        function g() {
-            a(".owl-carousel").each(function(u, t) {
-                var s = a(this).data();
-                s.navText = ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'];
-                var r = a(this).data("animateout");
-                var q = a(this).data("animatein");
-                var w = a(this).data("slidespeed");
-                if (typeof r != "undefined") {
-                    s.animateOut = r
-                }
-                if (typeof q != "undefined") {
-                    s.animateIn = q
-                }
-                if (typeof(w) != "undefined") {
-                    s.smartSpeed = w
-                }
-                var v = a(this);
-                v.on("initialized.owl.carousel", function(x) {
-                    var z = v.find(".owl-item.active").length;
-                    var y = 0;
-                    v.find(".owl-item").removeClass("item-first item-last");
-                    setTimeout(function() {
-                        v.find(".owl-item.active").each(function() {
-                            y++;
-                            if (y == 1) {
-                                a(this).addClass("item-first")
-                            }
-                            if (y == z) {
-                                a(this).addClass("item-last")
-                            }
-                        })
-                    }, 100)
-                });
-                v.on("refreshed.owl.carousel", function(x) {
-                    var z = v.find(".owl-item.active").length;
-                    var y = 0;
-                    v.find(".owl-item").removeClass("item-first item-last");
-                    setTimeout(function() {
-                        v.find(".owl-item.active").each(function() {
-                            y++;
-                            if (y == 1) {
-                                a(this).addClass("item-first")
-                            }
-                            if (y == z) {
-                                a(this).addClass("item-last")
-                            }
-                        })
-                    }, 100)
-                });
-                v.on("change.owl.carousel", function(x) {
-                    var z = v.find(".owl-item.active").length;
-                    var y = 0;
-                    v.find(".owl-item").removeClass("item-first item-last");
-                    setTimeout(function() {
-                        v.find(".owl-item.active").each(function() {
-                            y++;
-                            if (y == 1) {
-                                a(this).addClass("item-first")
-                            }
-                            if (y == z) {
-                                a(this).addClass("item-last")
-                            }
-                        })
-                    }, 100);
-                    v.addClass("owl-changed");
-                    setTimeout(function() {
-                        v.removeClass("owl-changed")
-                    }, s.smartSpeed)
-                });
-                v.on("drag.owl.carousel", function(x) {
-                    v.addClass("owl-changed");
-                    setTimeout(function() {
-                        v.removeClass("owl-changed")
-                    }, s.smartSpeed)
-                });
-                v.owlCarousel(s)
-            })
-        }
+     
 
 
         $(document).ready(function() {

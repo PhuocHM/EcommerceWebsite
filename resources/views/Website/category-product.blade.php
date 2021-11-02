@@ -1,5 +1,5 @@
 @extends('include.layout')
-@section('title', 'Danh mục')
+@section('title', 'Danh mục sản phẩm')
 @section('main')
 
 <body class="page-product grid-view">
@@ -55,7 +55,6 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <span class="review">5 Review(s)</span>
                         </span>
-                        <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Add to Wishlist</a>
                         <div class="product-infomation">
                             Description Our new HPB12 / A12 battery is rated at 2000mAh and designed to power up Black and
                             Decker FireStorm line of 12V tools allowing...
@@ -190,9 +189,7 @@
                                                 <p>Guarantee: 2 Year</p>
                                             </div>
                                             <div class="single-add-to-cart">
-                                                <button type="button" onclick="addToCart({{ $product->id }})" class="btn-add-to-cart">Add to cart</button>
-                                                <a href="compare.html" class="compare"><i class="fa fa-exchange"></i>Compare</a>
-                                                <a href="wishlist.html" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
+                                                <button type="button" onclick="addToCart({{ $product->id }})" class="btn-add-to-cart">Thêm vào giỏ</button>
                                             </div>
                                         </div>
                                     </div>

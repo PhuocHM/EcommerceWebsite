@@ -41,6 +41,7 @@ use App\Http\Controllers\Users\CouponController;
 
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\OrderItemsController;
+use App\Http\Controllers\Users\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,8 @@ Route::resource('category', CategoriesProductController::class);
 Route::resource('product-detail', ProductDetailController::class);
 Route::resource('order', OrderController::class);
 Route::resource('coupon', CouponController::class);
-
 Route::resource('cart', CartController::class);
+Route::resource('about', AboutUsController::class);
 Route::GET('order-detail', [OrderController::class, 'orderDetail'])->name('order.orderDetail');
 Route::GET('api/deleteDiscount', [FlashSalesController::class, 'deleteDiscount'])->name('discount.deleteDiscount');
 Route::GET('api/deleteSession', [HomeController::class, 'deleteSession'])->name('order.deleteSession');
@@ -89,8 +90,10 @@ Route::GET('api/addComment', [HomeController::class, 'addComment'])->name('home.
 Route::resource('cart', CartController::class);
 Route::GET('carts', [HomeController::class, 'addToCart'])->name('cart.addToCart');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admins'], function () {
+
     Route::get('/home', AdminController::class)->name('home');
+    Route::resource('/categories', CategoriesController::class);
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/attributes', AttributesController::class);
     Route::resource('/brands', BrandsController::class);
@@ -120,6 +123,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/customers', CustomersController::class);
     Route::get('/api/seach_category', [CategoriesController::class, 'seach'])->name('category.seach');
 });
+
+
 
 Route::get('admin/login', [LoginAdminController::class, 'formLogin'])->name('login.admin');
 Route::post('admin/login', [LoginAdminController::class, 'loginAction'])->name('login.admin.action');

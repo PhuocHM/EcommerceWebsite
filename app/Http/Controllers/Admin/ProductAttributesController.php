@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Products;
 use App\Services\ProductAttributesService;
 use Illuminate\Http\Request;
+use App\Models\Admin\ProductAttributes;
+use App\Models\Admin\Attributes;
 
 class ProductAttributesController extends Controller
 {
@@ -22,9 +24,47 @@ class ProductAttributesController extends Controller
     public function index(Request $request)
     {
         $productAttributes = $this->productAttributesService->getAll($request);
-        // dd($productAttributes->toArray());
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
+        if(isset($request->sort_by)){
+            $sort_by =$request->sort_by;
+              if($sort_by=='newest'){
+              $productAttributes = ProductAttributes::orderBy('id','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ cũ đến mới';
+          }
+          elseif($sort_by=='latest'){
+              $productAttributes = ProductAttributes::orderBy('id','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ mới đến cũ';
+          }
+         
+          elseif($sort_by=='product_a_to_z'){
+            $productAttributes =  ProductAttributes::with('product')->join('products', 'products.id','=','product_attribute.product_id')
+            ->orderBy('name','DESC')->paginate(5)->appends(request()->query());
+           
+            $name_sort = 'Thuộc sản phẩm A đến Z';
+        }
+        elseif($sort_by=='product_z_to_a'){
+            $productAttributes =  ProductAttributes::with('product')->join('products', 'products.id','=','product_attribute.product_id')
+            ->orderBy('name','ASC')->paginate(5)->appends(request()->query());
+            $name_sort = 'Thuộc sản phẩm Z đến A';
+        }
+        elseif($sort_by=='attribute_a_to_z'){
+            $productAttributes =  ProductAttributes::with('attribute')->join('attributes', 'attributes.id','=','product_attribute.attribute_id')
+            ->orderBy('attributes.name','ASC')->paginate(5)->appends(request()->query());
+           
+            $name_sort = 'Thuộc thuộc tính A đến Z';
+        }
+        elseif($sort_by=='attribute_z_to_a'){
+            $productAttributes =  ProductAttributes::with('attribute')->join('attributes', 'attributes.id','=','product_attribute.attribute_id')
+            ->orderBy('attributes.name','DESC')->paginate(5)->appends(request()->query());
+            $name_sort = 'Thuộc thuộc tính Z đến A';
+        }
+      };
+        
         $params = [
             'productAttributes' => $productAttributes,
+            'name_sort' => $name_sort,
+            'sort_by' => $sort_by,
         ];
         return view('admin.productAttributes.index', $params);
     }

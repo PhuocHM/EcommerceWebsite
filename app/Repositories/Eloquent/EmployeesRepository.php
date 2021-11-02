@@ -15,8 +15,7 @@ class EmployeesRepository implements EmployeesInterface
         $query = Employees::orderBy('id', 'DESC');
         if ($request->employee) {
             $search = $request->employee;
-
-            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('email', 'LIKE', '%' . $search . '%');
+            $query->where('name', 'LIKE', '%' . $search . '%')->orWhere('email', 'LIKE', '%' . $search . '%')->orWhere('birthday', 'LIKE', '%' . $search . '%')->orWhere('address', 'LIKE', '%' . $search . '%')->orWhere('identification', 'LIKE', '%' . $search . '%');
         }
         $query->orderBy('id', 'DESC');
         return $query->paginate(5);

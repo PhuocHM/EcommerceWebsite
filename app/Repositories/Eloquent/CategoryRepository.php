@@ -11,12 +11,14 @@ class CategoryRepository implements CategoryInterface
 
     public function getAll($request)
     {
+
         $query = Category::orderBy('id', 'DESC');
         if ($request->category) {
             $search = $request->category;
 
             $query->where('name', 'LIKE', '%' . $search . '%');
         }
+
 
         return $query->paginate(5);
     }
@@ -70,11 +72,8 @@ class CategoryRepository implements CategoryInterface
     public function seach($type, $content)
     {
         switch ($type) {
-            case 0:
-                $items = Category::where('name', 'LIKE', '%' . $content . '%')->paginate(5);
-                break;
             case 1:
-                $items = Category::where('name', 'LIKE', '%' . $content . '%')->where('parent_id', '>', 0)->paginate(5);
+                $items = Category::where('name', 'LIKE', '%' . $content . '%')->paginate(5);
                 break;
             case 2:
                 $items = Category::where('name', 'LIKE', '%' . $content . '%')->where('parent_id', 0)->paginate(5);

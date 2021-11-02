@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandRequest;
 use App\Services\BrandService;
 use Illuminate\Http\Request;
-
+use App\Models\Admin\Brand;
 
 
 // use App\Http\Requests\BrandRequest;
@@ -26,8 +26,32 @@ class BrandsController extends Controller
     public function index(Request $request)
     {
         $brands = $this->brandService->getAll($request);
+        $name_sort = '--Lọc theo--';
+        $sort_by = '';
+        if(isset($request->sort_by)){
+            $sort_by =$request->sort_by;
+              if($sort_by=='newest'){
+              $brands = Brand::orderBy('id','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ cũ đến mới';
+          }
+          elseif($sort_by=='latest'){
+              $brands = Brand::orderBy('id','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Từ mới đến cũ';
+          }
+          elseif($sort_by=='name_a_to_z'){
+              $brands = Brand::orderBy('name','ASC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Tên thương hiệu A đến Z';
+          }
+          elseif($sort_by=='name_z_to_a'){
+              $brands = Brand::orderBy('name','DESC')->paginate(5)->appends(request()->query());
+              $name_sort = 'Tên thương hiệu Z đến A';
+          }
+       
+      };
         $params = [
             'brands' => $brands,
+            'sort_by' => $sort_by,
+            'name_sort' => $name_sort,
         ];
         return view('admin.brands.index', $params);
     }

@@ -82,7 +82,6 @@ class HomeController extends Controller
             "sales_items" => $data,
         ];
 
-
         return view('Website.index', $params);
     }
 
@@ -156,7 +155,7 @@ class HomeController extends Controller
             }
         }
         $cate_ids = $items->pluck('category_id')->toArray();
-        $related_items = Products::with('cover2Image', 'discount')->whereIn('category_id', $cate_ids)->get();
+        $related_items = Products::with('cover2Image', 'discount')->whereIn('category_id', $cate_ids)->limit(3)->get();
         $params = [
             'items' => $items,
             'related_items' => $related_items,
@@ -221,12 +220,15 @@ class HomeController extends Controller
     public function addToCart(Request $request)
     {
         $user_id = Auth::id();
+        if (!$user_id) {
+            return response()->json(['error' => 'Vui lòng đăng nhập']);
+        }
         $product_info = Products::find($request->product_id);
         if (!isset($request->product_quantity)) {
             $check_cart = Carts::where('user_id', '=', $user_id)->first();
             if ($check_cart == null) {
                 $cart = new Carts;
-                $cart->code = Carbon::now()->timestamp;
+                $cart->code = "#ORDEW" . Carbon::now()->timestamp;
                 $cart->user_id = $user_id;
                 $cart->save();
 
@@ -252,7 +254,7 @@ class HomeController extends Controller
             $check_cart = Carts::where('user_id', '=', $user_id)->first();
             if ($check_cart == null) {
                 $cart = new Carts;
-                $cart->code = Carbon::now()->timestamp;
+                $cart->code = "#ORDEW" . Carbon::now()->timestamp;
                 $cart->user_id = $user_id;
                 $cart->save();
 

@@ -13,7 +13,6 @@ class Roles extends Model
 
     public function group()
     {
-        return $this->belongsToMany(Groups::class,'group_permision','group_id','role_id');
+        return $this->belongsToMany(Groups::class, 'group_permision', 'group_id', 'role_id');
     }
-    
 }
